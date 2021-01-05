@@ -64,7 +64,7 @@ def test_init_annotations(Estimator):
 def test_annotation_object(Estimator):
     """Check annotation objects."""
     annotation_obj = _ALL_ANNOTATIONS[Estimator]
-    obj_params = signature(annotation_obj.__init__).parameters
+    obj_params = signature(annotation_obj).parameters
     init_params = signature(Estimator).parameters
 
     assert set(obj_params) == set(init_params)

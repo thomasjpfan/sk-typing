@@ -10,6 +10,7 @@ class CalibratedClassifierCVAnnotation:
     __estimator__ = CalibratedClassifierCV
 
     def __init__(
+        self,
         base_estimator: BaseEstimator = None,
         method: Literal["sigmoid", "isotonic"] = "sigmoid",
         cv: CV = None,
