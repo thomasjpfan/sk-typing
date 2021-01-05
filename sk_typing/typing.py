@@ -4,6 +4,7 @@ from typing import Union
 from typing import Protocol
 from typing import Iterator
 from typing import Literal
+from typing import Tuple
 
 
 class CVSplitter(Protocol):
@@ -14,4 +15,6 @@ class CVSplitter(Protocol):
         ...
 
 
-CV = Union[int, CVSplitter, Iterator[np.array, np.array], Literal["prefit"], None]
+CV = Union[
+    int, CVSplitter, Iterator[Tuple[np.array, np.array]], Literal["prefit"], None
+]
