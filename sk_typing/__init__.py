@@ -1,13 +1,16 @@
 from importlib import import_module
+from inspect import getmembers
 
 _ALL_ANNOTATIONS = {}
 
-_MODULES = ["calibration"]
+_MODULES = ["calibration", "cluster"]
 
 for modules in _MODULES:
     mod = import_module(f".{modules}", package="sk_typing")
-    for annotation in mod.annotations:
-        _ALL_ANNOTATIONS[annotation.__estimator__] = annotation
+    for _, member in getmembers(mod):
+        if not hasattr(member, "__estimator__"):
+            continue
+        _ALL_ANNOTATIONS[member.__estimator__] = member
 
 __all__ = ["get_init_annotations"]
 

@@ -5,6 +5,7 @@ from typing import Protocol
 from typing import Iterator
 from typing import Literal
 from typing import Tuple
+from typing import TypeVar
 
 
 class CVSplitter(Protocol):
@@ -16,5 +17,8 @@ class CVSplitter(Protocol):
 
 
 CV = Union[
-    int, CVSplitter, Iterator[Tuple[np.array, np.array]], Literal["prefit"], None
+    int, CVSplitter, Iterator[Tuple[np.array, np.ndarray]], Literal["prefit"], None
 ]
+
+ArrayLike = TypeVar("ArrayLike")
+RandomState = Union[int, np.random.RandomState, None]
