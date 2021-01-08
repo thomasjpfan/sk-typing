@@ -16,7 +16,7 @@ class CVSplitter(Protocol):
         ...
 
 
-CV = Union[
+CVType = Union[
     int, CVSplitter, Iterator[Tuple[np.array, np.ndarray]], Literal["prefit"], None
 ]
 

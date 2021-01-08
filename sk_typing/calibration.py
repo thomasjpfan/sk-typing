@@ -3,7 +3,7 @@ from typing import Optional
 
 from sklearn.base import BaseEstimator
 from sklearn.calibration import CalibratedClassifierCV
-from ._typing import CV
+from ._typing import CVType
 
 
 class CalibratedClassifierCVAnnotation:
@@ -14,7 +14,7 @@ class CalibratedClassifierCVAnnotation:
         base_estimator: BaseEstimator = None,
         *,
         method: Literal["sigmoid", "isotonic"] = "sigmoid",
-        cv: CV = None,
+        cv: CVType = None,
         n_jobs: Optional[int] = None,
         ensemble: bool = True,
     ):
