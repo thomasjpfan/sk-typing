@@ -30,11 +30,19 @@ class {class_name}Annotation:
     ):
         pass"""
 
+
+def _format_param(name, p):
+    default = p.default
+    if isinstance(default, str):
+        return f'{name}="{default}"'
+    return f"{name}={default}"
+
+
 for name, est in estimators:
     est_signature = signature(est)
     params = est_signature.parameters
 
-    param_with_defaults = [f"{name}={p.default}" for name, p in params.items()]
+    param_with_defaults = [_format_param(name, p) for name, p in params.items()]
     params_formated = ",\n        ".join([p for p in param_with_defaults])
     module = est.__module__.split(".")[1]
 

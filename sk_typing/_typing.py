@@ -1,4 +1,5 @@
 import numpy as np
+from joblib import Memory
 
 from typing import Union
 from typing import Protocol
@@ -22,3 +23,4 @@ CVType = Union[
 
 ArrayLike = TypeVar("ArrayLike")
 RandomState = Union[int, np.random.RandomState, None]
+MemroyType = Union[str, Memory, None]
