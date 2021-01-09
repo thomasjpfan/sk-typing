@@ -1,5 +1,6 @@
 import argparse
 from inspect import signature
+from inspect import Parameter
 
 from sklearn.utils import all_estimators
 
@@ -35,6 +36,8 @@ def _format_param(name, p):
     default = p.default
     if isinstance(default, str):
         return f'{name}="{default}"'
+    elif default == Parameter.empty:
+        return name
     return f"{name}={default}"
 
 

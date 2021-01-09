@@ -1,9 +1,9 @@
 from typing import Literal
 from typing import Optional
 
-from sklearn.base import BaseEstimator
 from sklearn.calibration import CalibratedClassifierCV
 from ._typing import CVType
+from ._typing import BaseEstimatorType
 
 
 class CalibratedClassifierCVAnnotation:
@@ -11,7 +11,7 @@ class CalibratedClassifierCVAnnotation:
 
     def __init__(
         self,
-        base_estimator: BaseEstimator = None,
+        base_estimator: BaseEstimatorType = None,
         *,
         method: Literal["sigmoid", "isotonic"] = "sigmoid",
         cv: CVType = None,

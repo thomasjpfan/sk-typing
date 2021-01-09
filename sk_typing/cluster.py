@@ -4,7 +4,7 @@ from typing import Optional
 from collections.abc import Callable
 import numpy as np
 
-from sklearn.base import BaseEstimator
+from sklearn.base import BaseEstimatorType
 from sklearn.cluster import AffinityPropagation
 from sklearn.cluster import AgglomerativeClustering
 from sklearn.cluster import SpectralBiclustering
@@ -64,7 +64,7 @@ class BirchAnnotation:
         self,
         threshold: float = 0.5,
         branching_factor: int = 50,
-        n_clusters: Union[int, BaseEstimator, None] = 3,
+        n_clusters: Union[int, BaseEstimatorType, None] = 3,
         compute_labels: bool = True,
         copy: bool = True,
     ):
