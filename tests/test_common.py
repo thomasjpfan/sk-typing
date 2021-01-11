@@ -54,9 +54,11 @@ def test_init_annotations(Estimator):
     init_annotations = get_init_annotations(Estimator)
     init_parameters = signature(Estimator).parameters
 
-    print(init_annotations)
-    print(init_parameters)
     assert set(init_annotations) == set(init_parameters)
+
+    # All hyperparameters are annotated
+    for p in init_parameters:
+        assert p in init_annotations
 
 
 @pytest.mark.parametrize("Estimator", ESTIMATORS_TO_CHECK, ids=lambda est: est.__name__)

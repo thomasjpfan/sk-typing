@@ -4,7 +4,6 @@ from typing import Optional
 from collections.abc import Callable
 import numpy as np
 
-from sklearn.base import BaseEstimatorType
 from sklearn.cluster import AffinityPropagation
 from sklearn.cluster import AgglomerativeClustering
 from sklearn.cluster import SpectralBiclustering
@@ -21,6 +20,7 @@ from sklearn.cluster import SpectralClustering
 from ._typing import ArrayLike
 from ._typing import RandomState
 from ._typing import MemroyType
+from ._typing import BaseEstimatorType
 
 
 class AffinityPropagationAnnotation:
