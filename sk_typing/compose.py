@@ -1,5 +1,7 @@
 from typing import Union
 from typing import Literal
+from typing import Optional
+from collections.abc import Callable
 from sklearn.compose import ColumnTransformer
 from sklearn.compose import TransformedTargetRegressor
 
@@ -14,9 +16,9 @@ class ColumnTransformerAnnotation:
         transformers: list,
         remainder: Union[Literal["drop", "passthrough"], BaseEstimatorType] = "drop",
         sparse_threshold: float = 0.3,
-        n_jobs=None,
-        transformer_weights=None,
-        verbose=False,
+        n_jobs: Optional[int] = None,
+        transformer_weights: Optional[dict] = None,
+        verbose: bool = False,
     ):
         pass
 
@@ -26,10 +28,10 @@ class TransformedTargetRegressorAnnotation:
 
     def __init__(
         self,
-        regressor=None,
-        transformer=None,
-        func=None,
-        inverse_func=None,
-        check_inverse=True,
+        regressor: Optional[BaseEstimatorType] = None,
+        transformer: Optional[BaseEstimatorType] = None,
+        func: Callable = None,
+        inverse_func: Callable = None,
+        check_inverse: bool = True,
     ):
         pass
