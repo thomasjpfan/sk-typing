@@ -3,7 +3,14 @@ from inspect import getmembers
 
 _ALL_ANNOTATIONS = {}
 
-_MODULES = ["calibration", "cluster", "compose", "covariance", "cross_decomposition"]
+_MODULES = [
+    "calibration",
+    "cluster",
+    "compose",
+    "covariance",
+    "cross_decomposition",
+    "decomposition",
+]
 
 for modules in _MODULES:
     mod = import_module(f".{modules}", package="sk_typing")

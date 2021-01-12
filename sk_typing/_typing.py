@@ -22,6 +22,7 @@ CVType = Union[
 ]
 
 ArrayLike = TypeVar("ArrayLike")
+NDArary = TypeVar("NDArray")
 BaseEstimatorType = TypeVar("BaseEstimatorType")
 RandomState = Union[int, np.random.RandomState, None]
 MemroyType = Union[str, Memory, None]
