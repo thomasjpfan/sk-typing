@@ -17,7 +17,7 @@ from sklearn.decomposition import MiniBatchDictionaryLearning
 from sklearn.decomposition import SparseCoder
 
 from ._typing import NDArray
-from ._typing import RandomState
+from ._typing import RandomStateType
 from ._typing import Literal
 
 
@@ -41,7 +41,7 @@ class DictionaryLearningAnnotation:
         dict_init: Optional[NDArray] = None,
         verbose: bool = False,
         split_sign: bool = False,
-        random_state: RandomState = None,
+        random_state: RandomStateType = None,
         positive_code: bool = False,
         positive_dict: bool = False,
         transform_max_iter: int = 1000,
@@ -62,7 +62,7 @@ class FactorAnalysisAnnotation:
         svd_method: Literal["lapack", "randomized"] = "randomized",
         iterated_power: int = 3,
         rotation: Literal["varimax", "quartimax"] = None,
-        random_state: RandomState = 0,
+        random_state: RandomStateType = 0,
     ):
         pass
 
@@ -80,7 +80,7 @@ class FastICAAnnotation:
         max_iter: int = 200,
         tol: float = 0.0001,
         w_init: Optional[NDArray] = None,
-        random_state: RandomState = None,
+        random_state: RandomStateType = None,
     ):
         pass
 
@@ -117,7 +117,7 @@ class KernelPCAAnnotation:
         tol: float = 0,
         max_iter: Optional[None] = None,
         remove_zero_eig: bool = False,
-        random_state: RandomState = None,
+        random_state: RandomStateType = None,
         copy_X: bool = True,
         n_jobs: Optional[int] = None,
     ):
@@ -144,7 +144,7 @@ class LatentDirichletAllocationAnnotation:
         max_doc_update_iter: int = 100,
         n_jobs: Optional[int] = None,
         verbose: int = 0,
-        random_state: RandomState = None,
+        random_state: RandomStateType = None,
     ):
         pass
 
@@ -169,7 +169,7 @@ class MiniBatchDictionaryLearningAnnotation:
         transform_alpha: Optional[float] = None,
         verbose: bool = False,
         split_sign: bool = False,
-        random_state: RandomState = None,
+        random_state: RandomStateType = None,
         positive_code: bool = False,
         positive_dict: bool = False,
         transform_max_iter: int = 1000,
@@ -192,7 +192,7 @@ class MiniBatchSparsePCAAnnotation:
         shuffle: bool = True,
         n_jobs: Optional[int] = None,
         method: Literal["lars", "cd"] = "lars",
-        random_state: RandomState = None,
+        random_state: RandomStateType = None,
     ):
         pass
 
@@ -212,7 +212,7 @@ class NMFAnnotation:
         ] = "frobenius",
         tol: float = 0.0001,
         max_iter: int = 200,
-        random_state: RandomState = None,
+        random_state: RandomStateType = None,
         alpha: float = 0.0,
         l1_ratio: float = 0.0,
         verbose: int = 0,
@@ -233,7 +233,7 @@ class PCAAnnotation:
         svd_solver: Literal["auto", "full", "arpack", "randomized"] = "auto",
         tol: float = 0.0,
         iterated_power: Union[int, Literal["auto"]] = "auto",
-        random_state: RandomState = None,
+        random_state: RandomStateType = None,
     ):
         pass
 
@@ -272,7 +272,7 @@ class SparsePCAAnnotation:
         U_init: Optional[NDArray] = None,
         V_init: Optional[NDArray] = None,
         verbose: Union[int, bool] = False,
-        random_state: RandomState = None,
+        random_state: RandomStateType = None,
     ):
         pass
 
@@ -285,7 +285,7 @@ class TruncatedSVDAnnotation:
         n_components: int = 2,
         algorithm: Literal["arpack", "randomized"] = "randomized",
         n_iter: int = 5,
-        random_state: RandomState = None,
+        random_state: RandomStateType = None,
         tol: float = 0.0,
     ):
         pass

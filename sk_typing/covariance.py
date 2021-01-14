@@ -10,7 +10,7 @@ from sklearn.covariance import ShrunkCovariance
 from sklearn.covariance import LedoitWolf
 from sklearn.covariance import EllipticEnvelope
 
-from ._typing import RandomState
+from ._typing import RandomStateType
 from ._typing import ArrayLike
 from ._typing import CVType
 from ._typing import Literal
@@ -25,7 +25,7 @@ class EllipticEnvelopeAnnotation:
         assume_centered: bool = False,
         support_fraction: Optional[float] = None,
         contamination: float = 0.1,
-        random_state: RandomState = None,
+        random_state: RandomStateType = None,
     ):
         pass
 
@@ -92,7 +92,7 @@ class MinCovDetAnnotation:
         store_precision: bool = True,
         assume_centered: bool = False,
         support_fraction: Optional[float] = None,
-        random_state: RandomState = None,
+        random_state: RandomStateType = None,
     ):
         pass
 

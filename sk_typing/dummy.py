@@ -5,7 +5,7 @@ from sklearn.dummy import DummyRegressor
 from sklearn.dummy import DummyClassifier
 
 from ._typing import Literal
-from ._typing import RandomState
+from ._typing import RandomStateType
 from ._typing import ArrayLike
 
 
@@ -17,7 +17,7 @@ class DummyClassifierAnnotation:
         strategy: Literal[
             "stratified", "most_frequent", "prior", "uniform", "constant"
         ] = "prior",
-        random_state: RandomState = None,
+        random_state: RandomStateType = None,
         constant: Union[int, str, ArrayLike, None] = None,
     ):
         pass

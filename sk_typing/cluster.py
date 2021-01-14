@@ -17,7 +17,7 @@ from sklearn.cluster import SpectralCoclustering
 from sklearn.cluster import SpectralClustering
 
 from ._typing import ArrayLike
-from ._typing import RandomState
+from ._typing import RandomStateType
 from ._typing import MemroyType
 from ._typing import BaseEstimatorType
 from ._typing import Literal
@@ -35,7 +35,7 @@ class AffinityPropagationAnnotation:
         preference: Union[ArrayLike, float, None] = None,
         affinity: Literal["euclidean", "precomputed"] = "euclidean",
         verbose: bool = False,
-        random_state: Union[RandomState, Literal["warn"]] = "warn",
+        random_state: Union[RandomStateType, Literal["warn"]] = "warn",
     ):
         pass
 
@@ -118,7 +118,7 @@ class KMeansAnnotation:
         tol: float = 0.0001,
         precompute_distances: Union[Literal["auto", "deprecated"], bool] = "deprecated",
         verbose: int = 0,
-        random_state: RandomState = None,
+        random_state: RandomStateType = None,
         copy_x: bool = True,
         n_jobs: Union[int, None, Literal["deprecated"]] = "deprecated",
         algorithm: Literal["auto", "full", "elkan"] = "auto",
@@ -153,7 +153,7 @@ class MiniBatchKMeansAnnotation:
         batch_size: int = 100,
         verbose: int = 0,
         compute_labels: bool = True,
-        random_state: RandomState = None,
+        random_state: RandomStateType = None,
         tol: float = 0.0,
         max_no_improvement: int = 10,
         init_size: Optional[int] = None,
@@ -200,7 +200,7 @@ class SpectralBiclusteringAnnotation:
         init: Union[Literal["k-means++", "random"], np.ndarray] = "k-means++",
         n_init: int = 10,
         n_jobs: Union[int, None, Literal["deprecated"]] = "deprecated",
-        random_state: RandomState = None,
+        random_state: RandomStateType = None,
     ):
         pass
 
@@ -213,7 +213,7 @@ class SpectralClusteringAnnotation:
         n_clusters: int = 8,
         eigen_solver: Literal["arpack", "lobpcg", "amg", None] = None,
         n_components: Optional[int] = None,
-        random_state: RandomState = None,
+        random_state: RandomStateType = None,
         n_init: int = 10,
         gamma: float = 1.0,
         affinity: Union[
@@ -249,6 +249,6 @@ class SpectralCoclusteringAnnotation:
         init: Union[Literal["k-means++", "random"], np.ndarray] = "k-means++",
         n_init: int = 10,
         n_jobs: Union[int, None, Literal["deprecated"]] = "deprecated",
-        random_state: RandomState = None,
+        random_state: RandomStateType = None,
     ):
         pass
