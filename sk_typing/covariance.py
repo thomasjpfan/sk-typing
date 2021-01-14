@@ -1,5 +1,4 @@
 from typing import Optional
-from typing import Literal
 from typing import Union
 
 from sklearn.covariance import OAS
@@ -14,6 +13,7 @@ from sklearn.covariance import EllipticEnvelope
 from ._typing import RandomState
 from ._typing import ArrayLike
 from ._typing import CVType
+from ._typing import Literal
 
 
 class EllipticEnvelopeAnnotation:

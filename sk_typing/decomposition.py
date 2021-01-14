@@ -1,5 +1,4 @@
 from typing import Optional
-from typing import Literal
 from typing import Union
 from collections.abc import Callable
 
@@ -17,8 +16,9 @@ from sklearn.decomposition import NMF
 from sklearn.decomposition import MiniBatchDictionaryLearning
 from sklearn.decomposition import SparseCoder
 
-from ._typing import NDArary
+from ._typing import NDArray
 from ._typing import RandomState
+from ._typing import Literal
 
 
 class DictionaryLearningAnnotation:
@@ -37,8 +37,8 @@ class DictionaryLearningAnnotation:
         transform_n_nonzero_coefs: Optional[int] = None,
         transform_alpha: Optional[float] = None,
         n_jobs: Optional[int] = None,
-        code_init: Optional[NDArary] = None,
-        dict_init: Optional[NDArary] = None,
+        code_init: Optional[NDArray] = None,
+        dict_init: Optional[NDArray] = None,
         verbose: bool = False,
         split_sign: bool = False,
         random_state: RandomState = None,
@@ -58,7 +58,7 @@ class FactorAnalysisAnnotation:
         tol: float = 0.01,
         copy: bool = True,
         max_iter: int = 1000,
-        noise_variance_init: Optional[NDArary] = None,
+        noise_variance_init: Optional[NDArray] = None,
         svd_method: Literal["lapack", "randomized"] = "randomized",
         iterated_power: int = 3,
         rotation: Literal["varimax", "quartimax"] = None,
@@ -79,7 +79,7 @@ class FastICAAnnotation:
         fun_args: Optional[dict] = None,
         max_iter: int = 200,
         tol: float = 0.0001,
-        w_init: Optional[NDArary] = None,
+        w_init: Optional[NDArray] = None,
         random_state: RandomState = None,
     ):
         pass
@@ -138,7 +138,7 @@ class LatentDirichletAllocationAnnotation:
         max_iter: int = 10,
         batch_size: int = 128,
         evaluate_every: int = -1,
-        total_samples: int = 1000000.0,
+        total_samples: int = 1_000_000,
         perp_tol: float = 0.1,
         mean_change_tol: float = 0.001,
         max_doc_update_iter: int = 100,
@@ -161,7 +161,7 @@ class MiniBatchDictionaryLearningAnnotation:
         n_jobs: Optional[int] = None,
         batch_size: int = 3,
         shuffle: bool = True,
-        dict_init: Optional[NDArary] = None,
+        dict_init: Optional[NDArray] = None,
         transform_algorithm: Literal[
             "lasso_lars", "lasso_cd", "lars", "omp", "threshold"
         ] = "omp",
@@ -215,7 +215,7 @@ class NMFAnnotation:
         random_state: RandomState = None,
         alpha: float = 0.0,
         l1_ratio: float = 0.0,
-        verbose: bool = 0,
+        verbose: int = 0,
         shuffle: bool = False,
         regularization: Literal["both", "components", "transformation", None] = "both",
     ):
@@ -243,7 +243,7 @@ class SparseCoderAnnotation:
 
     def __init__(
         self,
-        dictionary: NDArary,
+        dictionary: NDArray,
         transform_algorithm: Literal[
             "lasso_lars", "lasso_cd", "lars", "omp", "threshold"
         ] = "omp",
@@ -269,8 +269,8 @@ class SparsePCAAnnotation:
         tol: float = 1e-08,
         method: Literal["lars", "cd"] = "lars",
         n_jobs: Optional[int] = None,
-        U_init: Optional[NDArary] = None,
-        V_init: Optional[NDArary] = None,
+        U_init: Optional[NDArray] = None,
+        V_init: Optional[NDArray] = None,
         verbose: Union[int, bool] = False,
         random_state: RandomState = None,
     ):

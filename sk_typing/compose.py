@@ -1,11 +1,11 @@
 from typing import Union
-from typing import Literal
 from typing import Optional
 from collections.abc import Callable
 from sklearn.compose import ColumnTransformer
 from sklearn.compose import TransformedTargetRegressor
 
 from ._typing import BaseEstimatorType
+from ._typing import Literal
 
 
 class ColumnTransformerAnnotation:

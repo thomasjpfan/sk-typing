@@ -1,9 +1,9 @@
-from typing import Literal
-
 from sklearn.cross_decomposition import PLSCanonical
 from sklearn.cross_decomposition import PLSRegression
 from sklearn.cross_decomposition import PLSSVD
 from sklearn.cross_decomposition import CCA
+
+from ._typing import Literal
 
 
 class CCAAnnotation:

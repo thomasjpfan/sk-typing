@@ -1,5 +1,4 @@
 from typing import Union
-from typing import Literal
 from typing import Optional
 from collections.abc import Callable
 import numpy as np
@@ -21,6 +20,7 @@ from ._typing import ArrayLike
 from ._typing import RandomState
 from ._typing import MemroyType
 from ._typing import BaseEstimatorType
+from ._typing import Literal
 
 
 class AffinityPropagationAnnotation:

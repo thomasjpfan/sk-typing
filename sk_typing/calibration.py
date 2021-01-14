@@ -1,9 +1,9 @@
-from typing import Literal
 from typing import Optional
 
 from sklearn.calibration import CalibratedClassifierCV
 from ._typing import CVType
 from ._typing import BaseEstimatorType
+from ._typing import Literal
 
 
 class CalibratedClassifierCVAnnotation:
