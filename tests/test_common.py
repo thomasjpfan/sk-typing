@@ -8,7 +8,6 @@ from sk_typing import get_init_annotations
 from sk_typing import _ALL_ANNOTATIONS
 
 MODULES_TO_IGNORE = {
-    "dummy",
     "ensemble",
     "feature_extraction",
     "feature_selection",

@@ -11,6 +11,7 @@ _MODULES = [
     "cross_decomposition",
     "decomposition",
     "discriminant_analysis",
+    "dummy",
 ]
 
 for modules in _MODULES:
