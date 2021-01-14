@@ -10,6 +10,7 @@ _MODULES = [
     "covariance",
     "cross_decomposition",
     "decomposition",
+    "discriminant_analysis",
 ]
 
 for modules in _MODULES:
