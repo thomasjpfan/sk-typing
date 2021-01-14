@@ -1,3 +1,5 @@
+from pathlib import Path
+import sys
 import argparse
 from inspect import signature
 from inspect import Parameter
@@ -9,6 +11,7 @@ parser = argparse.ArgumentParser(
     description="Generate template for specific sklearn module"
 )
 parser.add_argument("module", help="module to generate annotations for")
+parser.add_argument("--force", action="store_true")
 
 args = parser.parse_args()
 
@@ -17,6 +20,10 @@ estimators = [
     for name, est in all_estimators()
     if est.__module__.split(".")[1] == args.module
 ]
+
+if not estimators:
+    print(f"There are no estimators in {args.module}")
+    sys.exit(1)
 
 imports_set = set()
 annotations = []
@@ -58,4 +65,12 @@ for name, est in estimators:
 all_imports = "\n".join(list(imports_set))
 all_annotations = "\n\n".join(annotations)
 
-print(f"{all_imports}\n\n{all_annotations}")
+output_path = Path("sk_typing") / f"{args.module}.py"
+
+if output_path.exists() and not args.force:
+    print(f"{output_path} already exists pass --force to overwrite")
+    sys.exit(0)
+
+with output_path.open("w") as f:
+    f.write(f"{all_imports}\n\n{all_annotations}")
+print(f"{output_path} generated")
