@@ -9,16 +9,12 @@ from typing import TypeVar
 from typing import Any
 
 
-if hasattr(typing, "Protocol"):
-    from typing import Protocol  # noqa
-elif typing.TYPE_CHECKING:
+if typing.TYPE_CHECKING:
     from typing_extensions import Protocol  # noqa
 else:
     Protocol = Any
 
-if hasattr(typing, "Literal"):
-    from typing import Literal  # noqa
-elif typing.TYPE_CHECKING:
+if typing.TYPE_CHECKING:
     from typing_extensions import Literal  # noqa
 else:
 
