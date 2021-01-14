@@ -11,8 +11,17 @@ from typing import Any
 
 if typing.TYPE_CHECKING:
     from typing_extensions import Protocol  # noqa
+
+    class CVSplitter(Protocol):
+        def get_n_splits(self):
+            ...
+
+        def split(self, X, y=None, groups=None):
+            ...
+
+
 else:
-    Protocol = Any
+    CVSplitter = Any
 
 if typing.TYPE_CHECKING:
     from typing_extensions import Literal  # noqa
@@ -23,14 +32,6 @@ else:
             return typing.Any
 
     Literal = _SimpleLiteral()
-
-
-class CVSplitter(Protocol):
-    def get_n_splits(self):
-        ...
-
-    def split(self, X, y=None, groups=None):
-        ...
 
 
 CVType = Union[
