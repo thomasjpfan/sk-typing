@@ -1,4 +1,5 @@
 from typing import Optional
+from typing import Union
 
 from sklearn.calibration import CalibratedClassifierCV
 from ._typing import CVType
@@ -14,7 +15,7 @@ class CalibratedClassifierCVAnnotation:
         base_estimator: BaseEstimatorType = None,
         *,
         method: Literal["sigmoid", "isotonic"] = "sigmoid",
-        cv: CVType = None,
+        cv: Union[CVType, Literal["prefit"]] = None,
         n_jobs: Optional[int] = None,
         ensemble: bool = True,
     ):

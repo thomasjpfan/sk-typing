@@ -1,6 +1,8 @@
 from typing import Optional
 from typing import Union
+from typing import Callable
 
+from sklearn.experimental import enable_hist_gradient_boosting  # noqa
 from sklearn.ensemble import RandomTreesEmbedding
 from sklearn.ensemble import VotingClassifier
 from sklearn.ensemble import AdaBoostRegressor
@@ -24,6 +26,8 @@ from sklearn.ensemble import RandomForestRegressor
 from ._typing import BaseEstimatorType
 from ._typing import Literal
 from ._typing import RandomStateType
+from ._typing import ArrayLike
+from ._typing import CVType
 
 
 class AdaBoostClassifierAnnotation:
@@ -59,17 +63,17 @@ class BaggingClassifierAnnotation:
 
     def __init__(
         self,
-        base_estimator=None,
-        n_estimators=10,
-        max_samples=1.0,
-        max_features=1.0,
-        bootstrap=True,
-        bootstrap_features=False,
-        oob_score=False,
-        warm_start=False,
-        n_jobs=None,
-        random_state=None,
-        verbose=0,
+        base_estimator: Optional[BaseEstimatorType] = None,
+        n_estimators: int = 10,
+        max_samples: Union[float, int] = 1.0,
+        max_features: Union[float, int] = 1.0,
+        bootstrap: bool = True,
+        bootstrap_features: bool = False,
+        oob_score: bool = False,
+        warm_start: bool = False,
+        n_jobs: Optional[int] = None,
+        random_state: RandomStateType = None,
+        verbose: int = 0,
     ):
         pass
 
@@ -79,17 +83,17 @@ class BaggingRegressorAnnotation:
 
     def __init__(
         self,
-        base_estimator=None,
-        n_estimators=10,
-        max_samples=1.0,
-        max_features=1.0,
-        bootstrap=True,
-        bootstrap_features=False,
-        oob_score=False,
-        warm_start=False,
-        n_jobs=None,
-        random_state=None,
-        verbose=0,
+        base_estimator: Optional[BaseEstimatorType] = None,
+        n_estimators: int = 10,
+        max_samples: Union[float, int] = 1.0,
+        max_features: Union[float, int] = 1.0,
+        bootstrap: bool = True,
+        bootstrap_features: bool = False,
+        oob_score: bool = False,
+        warm_start: bool = False,
+        n_jobs: Optional[int] = None,
+        random_state: RandomStateType = None,
+        verbose: int = 0,
     ):
         pass
 
@@ -99,25 +103,27 @@ class ExtraTreesClassifierAnnotation:
 
     def __init__(
         self,
-        n_estimators=100,
-        criterion="gini",
-        max_depth=None,
-        min_samples_split=2,
-        min_samples_leaf=1,
-        min_weight_fraction_leaf=0.0,
-        max_features="auto",
-        max_leaf_nodes=None,
-        min_impurity_decrease=0.0,
-        min_impurity_split=None,
-        bootstrap=False,
-        oob_score=False,
-        n_jobs=None,
-        random_state=None,
-        verbose=0,
-        warm_start=False,
-        class_weight=None,
-        ccp_alpha=0.0,
-        max_samples=None,
+        n_estimators: int = 100,
+        criterion: Literal["gini", "entropy"] = "gini",
+        max_depth: Optional[int] = None,
+        min_samples_split: Union[int, float] = 2,
+        min_samples_leaf: Union[int, float] = 1,
+        min_weight_fraction_leaf: float = 0.0,
+        max_features: Union[Literal["auto", "sqrt", "log2"], int, float] = "auto",
+        max_leaf_nodes: Optional[int] = None,
+        min_impurity_decrease: float = 0.0,
+        min_impurity_split: Optional[float] = None,
+        bootstrap: bool = False,
+        oob_score: bool = False,
+        n_jobs: Optional[int] = None,
+        random_state: RandomStateType = None,
+        verbose: int = 0,
+        warm_start: bool = False,
+        class_weight: Union[
+            Literal["balanced", "balanced_subsample"], dict, list, None
+        ] = None,
+        ccp_alpha: float = 0.0,
+        max_samples: Union[int, float, None] = None,
     ):
         pass
 
@@ -127,24 +133,24 @@ class ExtraTreesRegressorAnnotation:
 
     def __init__(
         self,
-        n_estimators=100,
-        criterion="mse",
-        max_depth=None,
-        min_samples_split=2,
-        min_samples_leaf=1,
-        min_weight_fraction_leaf=0.0,
-        max_features="auto",
-        max_leaf_nodes=None,
-        min_impurity_decrease=0.0,
-        min_impurity_split=None,
-        bootstrap=False,
-        oob_score=False,
-        n_jobs=None,
-        random_state=None,
-        verbose=0,
-        warm_start=False,
-        ccp_alpha=0.0,
-        max_samples=None,
+        n_estimators: int = 100,
+        criterion: Literal["mse", "mae"] = "mse",
+        max_depth: Optional[int] = None,
+        min_samples_split: Union[int, float] = 2,
+        min_samples_leaf: Union[int, float] = 1,
+        min_weight_fraction_leaf: float = 0.0,
+        max_features: Union[Literal["auto", "sqrt", "log2"], int, float] = "auto",
+        max_leaf_nodes: Optional[int] = None,
+        min_impurity_decrease: float = 0.0,
+        min_impurity_split: Optional[float] = None,
+        bootstrap: bool = False,
+        oob_score: bool = False,
+        n_jobs: Optional[int] = None,
+        random_state: RandomStateType = None,
+        verbose: int = 0,
+        warm_start: bool = False,
+        ccp_alpha: float = 0.0,
+        max_samples: Union[int, float, None] = None,
     ):
         pass
 
@@ -154,27 +160,27 @@ class GradientBoostingClassifierAnnotation:
 
     def __init__(
         self,
-        loss="deviance",
-        learning_rate=0.1,
-        n_estimators=100,
-        subsample=1.0,
-        criterion="friedman_mse",
-        min_samples_split=2,
-        min_samples_leaf=1,
-        min_weight_fraction_leaf=0.0,
-        max_depth=3,
-        min_impurity_decrease=0.0,
-        min_impurity_split=None,
-        init=None,
-        random_state=None,
-        max_features=None,
-        verbose=0,
-        max_leaf_nodes=None,
-        warm_start=False,
-        validation_fraction=0.1,
-        n_iter_no_change=None,
-        tol=0.0001,
-        ccp_alpha=0.0,
+        loss: Literal["deviance", "exponential"] = "deviance",
+        learning_rate: float = 0.1,
+        n_estimators: int = 100,
+        subsample: float = 1.0,
+        criterion: Literal["friedman_mse", "mse", "mae"] = "friedman_mse",
+        min_samples_split: Union[int, float] = 2,
+        min_samples_leaf: Union[int, float] = 1,
+        min_weight_fraction_leaf: float = 0.0,
+        max_depth: int = 3,
+        min_impurity_decrease: float = 0.0,
+        min_impurity_split: Optional[float] = None,
+        init: Union[BaseEstimatorType, Literal["zero"], None] = None,
+        random_state: RandomStateType = None,
+        max_features: Union[Literal["auto", "sqrt", "log2"], int, float] = None,
+        verbose: int = 0,
+        max_leaf_nodes: Optional[None] = None,
+        warm_start: bool = False,
+        validation_fraction: float = 0.1,
+        n_iter_no_change: Optional[int] = None,
+        tol: float = 0.0001,
+        ccp_alpha: float = 0.0,
     ):
         pass
 
@@ -184,28 +190,28 @@ class GradientBoostingRegressorAnnotation:
 
     def __init__(
         self,
-        loss="ls",
-        learning_rate=0.1,
-        n_estimators=100,
-        subsample=1.0,
-        criterion="friedman_mse",
-        min_samples_split=2,
-        min_samples_leaf=1,
-        min_weight_fraction_leaf=0.0,
-        max_depth=3,
-        min_impurity_decrease=0.0,
-        min_impurity_split=None,
-        init=None,
-        random_state=None,
-        max_features=None,
-        alpha=0.9,
-        verbose=0,
-        max_leaf_nodes=None,
-        warm_start=False,
-        validation_fraction=0.1,
-        n_iter_no_change=None,
-        tol=0.0001,
-        ccp_alpha=0.0,
+        loss: Literal["ls", "lad", "huber", "quantile"] = "ls",
+        learning_rate: float = 0.1,
+        n_estimators: int = 100,
+        subsample: float = 1.0,
+        criterion: Literal["friedman_mse", "mse", "mae"] = "friedman_mse",
+        min_samples_split: Union[int, float] = 2,
+        min_samples_leaf: Union[int, float] = 1,
+        min_weight_fraction_leaf: float = 0.0,
+        max_depth: int = 3,
+        min_impurity_decrease: float = 0.0,
+        min_impurity_split: Optional[float] = None,
+        init: Union[BaseEstimatorType, Literal["zero"], None] = None,
+        random_state: RandomStateType = None,
+        max_features: Union[Literal["auto", "sqrt", "log2"], int, float] = None,
+        alpha: float = 0.9,
+        verbose: int = 0,
+        max_leaf_nodes: Optional[int] = None,
+        warm_start: bool = False,
+        validation_fraction: float = 0.1,
+        n_iter_no_change: Optional[int] = None,
+        tol: float = 0.0001,
+        ccp_alpha: float = 0.0,
     ):
         pass
 
@@ -215,24 +221,26 @@ class HistGradientBoostingClassifierAnnotation:
 
     def __init__(
         self,
-        loss="auto",
-        learning_rate=0.1,
-        max_iter=100,
-        max_leaf_nodes=31,
-        max_depth=None,
-        min_samples_leaf=20,
-        l2_regularization=0.0,
-        max_bins=255,
-        categorical_features=None,
-        monotonic_cst=None,
-        warm_start=False,
-        early_stopping="auto",
-        scoring="loss",
-        validation_fraction=0.1,
-        n_iter_no_change=10,
-        tol=1e-07,
-        verbose=0,
-        random_state=None,
+        loss: Literal[
+            "auto", "binary_crossentropy", "categorical_crossentropy"
+        ] = "auto",
+        learning_rate: float = 0.1,
+        max_iter: int = 100,
+        max_leaf_nodes: Optional[int] = 31,
+        max_depth: Optional[int] = None,
+        min_samples_leaf: int = 20,
+        l2_regularization: float = 0.0,
+        max_bins: int = 255,
+        categorical_features: Optional[ArrayLike] = None,
+        monotonic_cst: Optional[ArrayLike] = None,
+        warm_start: bool = False,
+        early_stopping: Union[Literal["auto"], bool] = "auto",
+        scoring: Union[str, Callable, None] = "loss",
+        validation_fraction: Union[int, float, None] = 0.1,
+        n_iter_no_change: int = 10,
+        tol: Optional[float] = 1e-07,
+        verbose: int = 0,
+        random_state: RandomStateType = None,
     ):
         pass
 
@@ -242,24 +250,26 @@ class HistGradientBoostingRegressorAnnotation:
 
     def __init__(
         self,
-        loss="least_squares",
-        learning_rate=0.1,
-        max_iter=100,
-        max_leaf_nodes=31,
-        max_depth=None,
-        min_samples_leaf=20,
-        l2_regularization=0.0,
-        max_bins=255,
-        categorical_features=None,
-        monotonic_cst=None,
-        warm_start=False,
-        early_stopping="auto",
-        scoring="loss",
-        validation_fraction=0.1,
-        n_iter_no_change=10,
-        tol=1e-07,
-        verbose=0,
-        random_state=None,
+        loss: Literal[
+            "least_squares", "least_absolute_deviation", "poisson"
+        ] = "least_squares",
+        learning_rate: float = 0.1,
+        max_iter: int = 100,
+        max_leaf_nodes: Optional[int] = 31,
+        max_depth: Optional[int] = None,
+        min_samples_leaf: int = 20,
+        l2_regularization: float = 0.0,
+        max_bins: int = 255,
+        categorical_features: Optional[ArrayLike] = None,
+        monotonic_cst: Optional[ArrayLike] = None,
+        warm_start: bool = False,
+        early_stopping: Union[Literal["auto"], bool] = "auto",
+        scoring: Union[str, Callable, None] = "loss",
+        validation_fraction: Union[int, float, None] = 0.1,
+        n_iter_no_change: int = 10,
+        tol: Optional[float] = 1e-07,
+        verbose: int = 0,
+        random_state: RandomStateType = None,
     ):
         pass
 
@@ -269,15 +279,15 @@ class IsolationForestAnnotation:
 
     def __init__(
         self,
-        n_estimators=100,
-        max_samples="auto",
-        contamination="auto",
-        max_features=1.0,
-        bootstrap=False,
-        n_jobs=None,
-        random_state=None,
-        verbose=0,
-        warm_start=False,
+        n_estimators: int = 100,
+        max_samples: Union[Literal["auto"], int, float] = "auto",
+        contamination: Union[Literal["auto"], float] = "auto",
+        max_features: Union[int, float] = 1.0,
+        bootstrap: bool = False,
+        n_jobs: Optional[int] = None,
+        random_state: RandomStateType = None,
+        verbose: int = 0,
+        warm_start: bool = False,
     ):
         pass
 
@@ -287,25 +297,27 @@ class RandomForestClassifierAnnotation:
 
     def __init__(
         self,
-        n_estimators=100,
-        criterion="gini",
-        max_depth=None,
-        min_samples_split=2,
-        min_samples_leaf=1,
-        min_weight_fraction_leaf=0.0,
-        max_features="auto",
-        max_leaf_nodes=None,
-        min_impurity_decrease=0.0,
-        min_impurity_split=None,
-        bootstrap=True,
-        oob_score=False,
-        n_jobs=None,
-        random_state=None,
-        verbose=0,
-        warm_start=False,
-        class_weight=None,
-        ccp_alpha=0.0,
-        max_samples=None,
+        n_estimators: int = 100,
+        criterion: Literal["gini", "entropy"] = "gini",
+        max_depth: Optional[int] = None,
+        min_samples_split: Union[int, float] = 2,
+        min_samples_leaf: Union[int, float] = 1,
+        min_weight_fraction_leaf: float = 0.0,
+        max_features: Union[Literal["auto", "sqrt", "log2"], int, float] = "auto",
+        max_leaf_nodes: Optional[int] = None,
+        min_impurity_decrease: float = 0.0,
+        min_impurity_split: Optional[float] = None,
+        bootstrap: bool = True,
+        oob_score: bool = False,
+        n_jobs: Optional[int] = None,
+        random_state: RandomStateType = None,
+        verbose: int = 0,
+        warm_start: bool = False,
+        class_weight: Union[
+            Literal["balanced", "balanced_subsample"], dict, list, None
+        ] = None,
+        ccp_alpha: float = 0.0,
+        max_samples: Union[int, float, None] = None,
     ):
         pass
 
@@ -315,24 +327,24 @@ class RandomForestRegressorAnnotation:
 
     def __init__(
         self,
-        n_estimators=100,
-        criterion="mse",
-        max_depth=None,
-        min_samples_split=2,
-        min_samples_leaf=1,
-        min_weight_fraction_leaf=0.0,
-        max_features="auto",
-        max_leaf_nodes=None,
-        min_impurity_decrease=0.0,
-        min_impurity_split=None,
-        bootstrap=True,
-        oob_score=False,
-        n_jobs=None,
-        random_state=None,
-        verbose=0,
-        warm_start=False,
-        ccp_alpha=0.0,
-        max_samples=None,
+        n_estimators: int = 100,
+        criterion: Literal["mse", "mae"] = "mse",
+        max_depth: Optional[int] = None,
+        min_samples_split: Union[int, float] = 2,
+        min_samples_leaf: Union[int, float] = 1,
+        min_weight_fraction_leaf: float = 0.0,
+        max_features: Union[Literal["auto", "sqrt", "log2"], int, float] = "auto",
+        max_leaf_nodes: Optional[int] = None,
+        min_impurity_decrease: float = 0.0,
+        min_impurity_split: Optional[float] = None,
+        bootstrap: bool = True,
+        oob_score: bool = False,
+        n_jobs: Optional[int] = None,
+        random_state: RandomStateType = None,
+        verbose: int = 0,
+        warm_start: bool = False,
+        ccp_alpha: float = 0.0,
+        max_samples: Union[int, float, None] = None,
     ):
         pass
 
@@ -342,19 +354,19 @@ class RandomTreesEmbeddingAnnotation:
 
     def __init__(
         self,
-        n_estimators=100,
-        max_depth=5,
-        min_samples_split=2,
-        min_samples_leaf=1,
-        min_weight_fraction_leaf=0.0,
-        max_leaf_nodes=None,
-        min_impurity_decrease=0.0,
-        min_impurity_split=None,
-        sparse_output=True,
-        n_jobs=None,
-        random_state=None,
-        verbose=0,
-        warm_start=False,
+        n_estimators: int = 100,
+        max_depth: int = 5,
+        min_samples_split: Union[int, float] = 2,
+        min_samples_leaf: Union[int, float] = 1,
+        min_weight_fraction_leaf: float = 0.0,
+        max_leaf_nodes: Optional[float] = None,
+        min_impurity_decrease: float = 0.0,
+        min_impurity_split: Optional[float] = None,
+        sparse_output: bool = True,
+        n_jobs: Optional[int] = None,
+        random_state: RandomStateType = None,
+        verbose: int = 0,
+        warm_start: bool = False,
     ):
         pass
 
@@ -364,13 +376,15 @@ class StackingClassifierAnnotation:
 
     def __init__(
         self,
-        estimators,
-        final_estimator=None,
-        cv=None,
-        stack_method="auto",
-        n_jobs=None,
-        passthrough=False,
-        verbose=0,
+        estimators: list,
+        final_estimator: Optional[BaseEstimatorType] = None,
+        cv: CVType = None,
+        stack_method: Literal[
+            "auto", "predict_proba", "decision_function", "predict"
+        ] = "auto",
+        n_jobs: Optional[int] = None,
+        passthrough: bool = False,
+        verbose: int = 0,
     ):
         pass
 
@@ -380,12 +394,12 @@ class StackingRegressorAnnotation:
 
     def __init__(
         self,
-        estimators,
-        final_estimator=None,
-        cv=None,
-        n_jobs=None,
-        passthrough=False,
-        verbose=0,
+        estimators: list,
+        final_estimator: Optional[BaseEstimatorType] = None,
+        cv: CVType = None,
+        n_jobs: Optional[int] = None,
+        passthrough: bool = False,
+        verbose: int = 0,
     ):
         pass
 
@@ -395,12 +409,12 @@ class VotingClassifierAnnotation:
 
     def __init__(
         self,
-        estimators,
-        voting="hard",
-        weights=None,
-        n_jobs=None,
-        flatten_transform=True,
-        verbose=False,
+        estimators: list,
+        voting: Literal["hard", "soft"] = "hard",
+        weights: Optional[ArrayLike] = None,
+        n_jobs: Optional[int] = None,
+        flatten_transform: bool = True,
+        verbose: bool = False,
     ):
         pass
 
@@ -408,5 +422,11 @@ class VotingClassifierAnnotation:
 class VotingRegressorAnnotation:
     __estimator__ = VotingRegressor
 
-    def __init__(self, estimators, weights=None, n_jobs=None, verbose=False):
+    def __init__(
+        self,
+        estimators: list,
+        weights: Optional[ArrayLike] = None,
+        n_jobs: Optional[int] = None,
+        verbose: bool = False,
+    ):
         pass

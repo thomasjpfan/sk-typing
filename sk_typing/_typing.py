@@ -34,9 +34,7 @@ else:
     Literal = _SimpleLiteral()
 
 
-CVType = Union[
-    int, CVSplitter, Iterator[Tuple[np.array, np.ndarray]], Literal["prefit"], None
-]
+CVType = Union[int, CVSplitter, Iterator[Tuple[np.array, np.ndarray]], None]
 
 ArrayLike = TypeVar("ArrayLike")
 NDArray = TypeVar("NDArray")

@@ -12,6 +12,7 @@ _MODULES = [
     "decomposition",
     "discriminant_analysis",
     "dummy",
+    "ensemble",
 ]
 
 for modules in _MODULES:
