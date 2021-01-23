@@ -20,10 +20,10 @@ if typing.TYPE_CHECKING or TYPING_EXTENSION_INSTALLED:
 
     class CVSplitter(Protocol):
         def get_n_splits(self):
-            ...
+            """Get the number of splits."""
 
         def split(self, X, y=None, groups=None):
-            ...
+            """Split data"""
 
 
 else:
