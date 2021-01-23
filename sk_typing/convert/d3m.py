@@ -24,6 +24,14 @@ def _get_output_for_estimator(name, estimator):
     hyperparmas = []
 
     for param, annotation in annotations.items():
+
+        # Remove parameters that is not JSON serializable
+        default = init_params[param].default
+        try:
+            json.dumps(default)
+        except TypeError:
+            continue
+
         try:
             hyperparam = get_d3m_representation(
                 param,
@@ -33,6 +41,7 @@ def _get_output_for_estimator(name, estimator):
             )
         except ValueError as e:
             raise ValueError(f"Failed parsing {name}: {e}")
+
         hyperparmas.append(hyperparam)
 
     estimator_output = {}

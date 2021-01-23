@@ -1,9 +1,11 @@
+from typing import Union
+from typing import Optional
+import json
+
 import pytest
 
 from sklearn.utils import all_estimators
 from sk_typing.convert.d3m import _get_output_for_estimator
-from typing import Union
-from typing import Optional
 
 from typing_extensions import Literal
 
@@ -232,4 +234,5 @@ ESTIMATORS_TO_CHECK = [
 @pytest.mark.parametrize("name, estimator", ESTIMATORS_TO_CHECK)
 def test_get_output_for_module(name, estimator):
     """Smoke test for modules"""
-    _get_output_for_estimator(name, estimator)
+    output = _get_output_for_estimator(name, estimator)
+    json.dumps(output)
