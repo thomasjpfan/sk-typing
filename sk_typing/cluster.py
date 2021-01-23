@@ -211,7 +211,7 @@ class SpectralClusteringAnnotation:
     def __init__(
         self,
         n_clusters: int = 8,
-        eigen_solver: Literal["arpack", "lobpcg", "amg", None] = None,
+        eigen_solver: Optional[Literal["arpack", "lobpcg", "amg"]] = None,
         n_components: Optional[int] = None,
         random_state: RandomStateType = None,
         n_init: int = 10,

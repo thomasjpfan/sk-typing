@@ -6,10 +6,16 @@ from typing import Union
 from typing import Iterator
 from typing import Tuple
 from typing import TypeVar
-from typing import Any
+
+try:
+    import typing_extensions  # noqa
+
+    TYPING_EXTENSION_INSTALLED = True
+except ImportError:
+    TYPING_EXTENSION_INSTALLED = False
 
 
-if typing.TYPE_CHECKING:
+if typing.TYPE_CHECKING or TYPING_EXTENSION_INSTALLED:
     from typing_extensions import Protocol  # noqa
 
     class CVSplitter(Protocol):
@@ -21,9 +27,9 @@ if typing.TYPE_CHECKING:
 
 
 else:
-    CVSplitter = Any
+    CVSplitter = TypeVar("CVSplitter")  # typing: ignore
 
-if typing.TYPE_CHECKING:
+if typing.TYPE_CHECKING or TYPING_EXTENSION_INSTALLED:
     from typing_extensions import Literal  # noqa
 else:
 
