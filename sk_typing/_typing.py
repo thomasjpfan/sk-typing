@@ -44,6 +44,6 @@ CVType = Union[int, CVSplitter, Iterator[Tuple[np.array, np.ndarray]], None]
 
 ArrayLike = TypeVar("ArrayLike")
 NDArray = TypeVar("NDArray")
-BaseEstimatorType = TypeVar("BaseEstimatorType")
+EstimatorType = TypeVar("EstimatorType")
 RandomStateType = Union[int, np.random.RandomState, None]
-MemroyType = Union[str, Memory, None]
+MemoryType = Union[str, Memory, None]

@@ -6,7 +6,7 @@ from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 
 from ._typing import Literal
 from ._typing import ArrayLike
-from ._typing import BaseEstimatorType
+from ._typing import EstimatorType
 
 
 class LinearDiscriminantAnalysisAnnotation:
@@ -20,7 +20,7 @@ class LinearDiscriminantAnalysisAnnotation:
         n_components: Optional[int] = None,
         store_covariance: bool = False,
         tol: float = 0.0001,
-        covariance_estimator: Optional[BaseEstimatorType] = None,
+        covariance_estimator: Optional[EstimatorType] = None,
     ):
         pass
 

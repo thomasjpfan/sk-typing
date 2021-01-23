@@ -3,7 +3,7 @@ from typing import Union
 
 from sklearn.calibration import CalibratedClassifierCV
 from ._typing import CVType
-from ._typing import BaseEstimatorType
+from ._typing import EstimatorType
 from ._typing import Literal
 
 
@@ -12,7 +12,7 @@ class CalibratedClassifierCVAnnotation:
 
     def __init__(
         self,
-        base_estimator: BaseEstimatorType = None,
+        base_estimator: EstimatorType = None,
         *,
         method: Literal["sigmoid", "isotonic"] = "sigmoid",
         cv: Union[CVType, Literal["prefit"]] = None,

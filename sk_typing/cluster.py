@@ -18,8 +18,8 @@ from sklearn.cluster import SpectralClustering
 
 from ._typing import ArrayLike
 from ._typing import RandomStateType
-from ._typing import MemroyType
-from ._typing import BaseEstimatorType
+from ._typing import MemoryType
+from ._typing import EstimatorType
 from ._typing import Literal
 
 
@@ -47,7 +47,7 @@ class AgglomerativeClusteringAnnotation:
         self,
         n_clusters: Optional[int] = 2,
         affinity: Union[str, Callable] = "euclidean",
-        memory: MemroyType = None,
+        memory: MemoryType = None,
         connectivity: Union[ArrayLike, Callable, None] = None,
         compute_full_tree: Union[Literal["auto"], bool] = "auto",
         linkage: Literal["ward", "complete", "average", "single"] = "ward",
@@ -64,7 +64,7 @@ class BirchAnnotation:
         self,
         threshold: float = 0.5,
         branching_factor: int = 50,
-        n_clusters: Union[int, BaseEstimatorType, None] = 3,
+        n_clusters: Union[int, EstimatorType, None] = 3,
         compute_labels: bool = True,
         copy: bool = True,
     ):
@@ -95,7 +95,7 @@ class FeatureAgglomerationAnnotation:
         self,
         n_clusters: int = 2,
         affinity: Union[str, Callable] = "euclidean",
-        memory: MemroyType = None,
+        memory: MemoryType = None,
         connectivity: Union[ArrayLike, Callable] = None,
         compute_full_tree: Union[Literal["auto"], bool] = "auto",
         linkage: Literal["ward", "complete", "average", "single"] = "ward",

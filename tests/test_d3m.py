@@ -1,8 +1,16 @@
+import pytest
+
+from sklearn.utils import all_estimators
+from sk_typing.convert.d3m import _get_output_for_estimator
 from typing import Union
 from typing import Optional
 
-import pytest
 from typing_extensions import Literal
+
+from sk_typing._typing import ArrayLike
+from sk_typing._typing import NDArray
+from sk_typing._typing import EstimatorType
+
 
 from sk_typing.convert import get_d3m_representation
 
@@ -160,3 +168,68 @@ def test_get_d3m_representation_optional(annotation):
     assert none_output["name"] == "n_jobs__None"
     assert none_output["type"] == "Constant"
     assert none_output["init_args"]["_structural_type"] == "None"
+
+
+@pytest.mark.parametrize("array_like", [ArrayLike, NDArray])
+def test_get_d3m_representation_ndarray(array_like):
+    output = get_d3m_representation("X", Optional[array_like], default=None)
+    assert output["name"] == "X"
+    assert output["type"] == "Union"
+    assert output["init_args"]["default"] == "X__None"
+
+    hyperparams = output["hyperparams"]
+    assert len(hyperparams) == 2
+
+    array_output = hyperparams[0]
+    assert array_output["name"] == "X__ndarray"
+    assert array_output["type"] == "Hyperparameter"
+    assert array_output["init_args"]["_structural_type"] == "ndarray"
+
+    none_output = hyperparams[1]
+    assert none_output["name"] == "X__None"
+    assert none_output["type"] == "Constant"
+    assert none_output["init_args"]["_structural_type"] == "None"
+
+
+def test_get_d3m_representation_base_estimator():
+    output = get_d3m_representation("base_estimator", EstimatorType)
+    assert output["name"] == "base_estimator"
+    assert output["type"] == "Hyperparameter"
+    assert output["init_args"]["_structural_type"] == "Estimator"
+
+
+MODULES_TO_IGNORE = {
+    "feature_extraction",
+    "feature_selection",
+    "gaussian_process",
+    "impute",
+    "isotonic",
+    "kernel_approximation",
+    "kernel_ridge",
+    "linear_model",
+    "manifold",
+    "mixture",
+    "model_selection",
+    "multiclass",
+    "multioutput",
+    "naive_bayes",
+    "neighbors",
+    "neural_network",
+    "pipeline",
+    "preprocessing",
+    "random_projection",
+    "semi_supervised",
+    "svm",
+    "tree",
+}
+ESTIMATORS_TO_CHECK = [
+    (name, est)
+    for name, est in all_estimators()
+    if est.__module__.split(".")[1] not in MODULES_TO_IGNORE
+]
+
+
+@pytest.mark.parametrize("name, estimator", ESTIMATORS_TO_CHECK)
+def test_get_output_for_module(name, estimator):
+    """Smoke test for modules"""
+    _get_output_for_estimator(name, estimator)

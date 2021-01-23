@@ -14,7 +14,7 @@ def _get_default(default):
 
 def _is_instance(value, annotation):
     annotation_meta = unpack_annotation(annotation)
-    if annotation_meta.class_name in {"bool", "int", "float", "str"}:
+    if annotation_meta.class_name in {"bool", "int", "float", "str", "list", "dict"}:
         return isinstance(value, annotation)
     elif annotation_meta.class_name == "Literal":
         for item in annotation_meta.args:
@@ -23,6 +23,8 @@ def _is_instance(value, annotation):
         return False
     elif annotation_meta.class_name == "None":
         return value is None
+    elif annotation_meta.class_name == "Callable":
+        return callable(value)
     else:
         ValueError(f"Unsupported annotation: {annotation}")
 
@@ -73,11 +75,13 @@ def _process_union(name, annotation_meta, default=inspect.Parameter.empty):
     output = {"name": name, "type": "Union", "init_args": {"semantic_types": [name]}}
 
     hyperparams = []
-
     normalized_default = ""
 
     for sub_annotation in annotation_meta.args:
-        sub_output = get_d3m_representation(name, sub_annotation)
+        try:
+            sub_output = get_d3m_representation(name, sub_annotation)
+        except ValueError:
+            continue
         sub_type = sub_output["init_args"]["_structural_type"]
         sub_name = f"{name}__{sub_type}"
         sub_output["name"] = sub_name
@@ -98,23 +102,39 @@ def _process_union(name, annotation_meta, default=inspect.Parameter.empty):
     return output, default
 
 
+def _process_type_var(name, annotation_meta):
+    type_name = annotation_meta.args[0]
+
+    if type_name in {"NDArray", "ArrayLike"}:
+        return {
+            "name": name,
+            "type": "Hyperparameter",
+            "init_args": {"_structural_type": "ndarray", "semantic_types": [name]},
+        }
+    elif type_name == "EstimatorType":
+        return {
+            "name": name,
+            "type": "Hyperparameter",
+            "init_args": {"_structural_type": "Estimator", "semantic_types": [name]},
+        }
+
+    raise ValueError(f"Unsupported Typevar {name}")
+
+
 def get_d3m_representation(
     name, annotation, description="", default=inspect.Parameter.empty
 ):
     annotation_meta = unpack_annotation(annotation)
 
-    if annotation_meta.class_name not in {
+    if annotation_meta.class_name in {
         "bool",
         "int",
         "float",
         "str",
-        "Literal",
-        "None",
-        "Union",
+        "list",
+        "dict",
+        "Callable",
     }:
-        raise ValueError(f"Unsupported class_name: {annotation_meta.class_name}")
-
-    if annotation_meta.class_name in {"bool", "int", "float", "str"}:
         output = _process_builtins(
             name,
             annotation_meta=annotation_meta,
@@ -125,10 +145,16 @@ def get_d3m_representation(
         output, default = _process_union(
             name, annotation_meta=annotation_meta, default=default
         )
-    else:  # Literal
+    elif annotation_meta.class_name == "TypeVar":
+        output = _process_type_var(name, annotation_meta=annotation_meta)
+    elif annotation_meta.class_name == "Literal":
         output = _process_literal(
             name,
             annotation_meta=annotation_meta,
+        )
+    else:  # Literal
+        raise ValueError(
+            f"Unsupported class_name: {annotation_meta.class_name} in {name}"
         )
 
     if default != inspect.Parameter.empty:

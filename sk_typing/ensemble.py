@@ -23,7 +23,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import RandomForestRegressor
 
 
-from ._typing import BaseEstimatorType
+from ._typing import EstimatorType
 from ._typing import Literal
 from ._typing import RandomStateType
 from ._typing import ArrayLike
@@ -35,7 +35,7 @@ class AdaBoostClassifierAnnotation:
 
     def __init__(
         self,
-        base_estimator: Optional[BaseEstimatorType] = None,
+        base_estimator: Optional[EstimatorType] = None,
         n_estimators: int = 50,
         learning_rate: float = 1.0,
         algorithm: Literal["SAMME", "SAMME.R"] = "SAMME.R",
@@ -49,7 +49,7 @@ class AdaBoostRegressorAnnotation:
 
     def __init__(
         self,
-        base_estimator: Optional[BaseEstimatorType] = None,
+        base_estimator: Optional[EstimatorType] = None,
         n_estimators: int = 50,
         learning_rate: float = 1.0,
         loss: Literal["linear", "square", "exponential"] = "linear",
@@ -63,7 +63,7 @@ class BaggingClassifierAnnotation:
 
     def __init__(
         self,
-        base_estimator: Optional[BaseEstimatorType] = None,
+        base_estimator: Optional[EstimatorType] = None,
         n_estimators: int = 10,
         max_samples: Union[float, int] = 1.0,
         max_features: Union[float, int] = 1.0,
@@ -83,7 +83,7 @@ class BaggingRegressorAnnotation:
 
     def __init__(
         self,
-        base_estimator: Optional[BaseEstimatorType] = None,
+        base_estimator: Optional[EstimatorType] = None,
         n_estimators: int = 10,
         max_samples: Union[float, int] = 1.0,
         max_features: Union[float, int] = 1.0,
@@ -171,7 +171,7 @@ class GradientBoostingClassifierAnnotation:
         max_depth: int = 3,
         min_impurity_decrease: float = 0.0,
         min_impurity_split: Optional[float] = None,
-        init: Union[BaseEstimatorType, Literal["zero"], None] = None,
+        init: Union[EstimatorType, Literal["zero"], None] = None,
         random_state: RandomStateType = None,
         max_features: Union[Literal["auto", "sqrt", "log2"], int, float] = None,
         verbose: int = 0,
@@ -201,7 +201,7 @@ class GradientBoostingRegressorAnnotation:
         max_depth: int = 3,
         min_impurity_decrease: float = 0.0,
         min_impurity_split: Optional[float] = None,
-        init: Union[BaseEstimatorType, Literal["zero"], None] = None,
+        init: Union[EstimatorType, Literal["zero"], None] = None,
         random_state: RandomStateType = None,
         max_features: Union[Literal["auto", "sqrt", "log2"], int, float] = None,
         alpha: float = 0.9,
@@ -377,7 +377,7 @@ class StackingClassifierAnnotation:
     def __init__(
         self,
         estimators: list,
-        final_estimator: Optional[BaseEstimatorType] = None,
+        final_estimator: Optional[EstimatorType] = None,
         cv: CVType = None,
         stack_method: Literal[
             "auto", "predict_proba", "decision_function", "predict"
@@ -395,7 +395,7 @@ class StackingRegressorAnnotation:
     def __init__(
         self,
         estimators: list,
-        final_estimator: Optional[BaseEstimatorType] = None,
+        final_estimator: Optional[EstimatorType] = None,
         cv: CVType = None,
         n_jobs: Optional[int] = None,
         passthrough: bool = False,
