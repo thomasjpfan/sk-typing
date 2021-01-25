@@ -6,6 +6,8 @@ from ._extract import AnnotatedMeta
 def _get_default(default):
     if isinstance(default, bool):
         return str(default)
+    elif isinstance(default, tuple):
+        return f"&esc{default}"
     elif default is None:
         return "None"
     else:
@@ -134,6 +136,7 @@ def get_d3m_representation(
         "list",
         "dict",
         "Callable",
+        "tuple",
     }:
         output = _process_builtins(
             name,
@@ -152,7 +155,7 @@ def get_d3m_representation(
             name,
             annotation_meta=annotation_meta,
         )
-    else:  # Literal
+    else:
         raise ValueError(
             f"Unsupported class_name: {annotation_meta.class_name} in {name}"
         )

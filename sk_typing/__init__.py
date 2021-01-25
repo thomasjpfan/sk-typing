@@ -20,6 +20,7 @@ _MODULES = [
     "discriminant_analysis",
     "dummy",
     "ensemble",
+    "feature_extraction",
 ]
 
 for modules in _MODULES:

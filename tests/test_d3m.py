@@ -1,13 +1,11 @@
 from typing import Union
 from typing import Optional
 import json
-from importlib import import_module
 
 import pytest
 
 from sklearn.utils import all_estimators
 from sk_typing.convert.d3m import _get_output_for_estimator
-from sk_typing.convert.d3m import _normalized_estimator_name
 
 from typing_extensions import Literal
 
@@ -19,7 +17,7 @@ from sk_typing._typing import EstimatorType
 from sk_typing.convert import get_d3m_representation
 
 
-@pytest.mark.parametrize("annotation", [bool, int, float, str])
+@pytest.mark.parametrize("annotation", [bool, int, float, str, tuple])
 def test_get_d3m_representation_builtin(annotation):
     output = get_d3m_representation("parameter", annotation)
     assert output["type"] == "Hyperparameter"
@@ -30,7 +28,7 @@ def test_get_d3m_representation_builtin(annotation):
 
 @pytest.mark.parametrize(
     "annotation, default",
-    [(bool, True), (int, 10), (float, 0.1), (str, "Hello world")],
+    [(bool, True), (int, 10), (float, 0.1), (str, "Hello world"), (tuple, (1, 2))],
 )
 def test_get_d3m_representation_builtin_default(annotation, default):
     output = get_d3m_representation(
@@ -38,6 +36,8 @@ def test_get_d3m_representation_builtin_default(annotation, default):
     )
     if annotation == bool:
         assert output["init_args"]["default"] == str(default)
+    elif annotation == tuple:
+        assert output["init_args"]["default"] == f"&esc{default}"
     else:
         assert output["init_args"]["default"] == default
     assert output["init_args"]["description"] == "This is awesome"
@@ -204,7 +204,6 @@ def test_get_d3m_representation_base_estimator():
 
 ALL_ESTIMATORS = all_estimators()
 MODULES_TO_IGNORE = {
-    "feature_extraction",
     "feature_selection",
     "gaussian_process",
     "impute",
