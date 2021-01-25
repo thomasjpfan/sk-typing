@@ -2095,6 +2095,16 @@
               "_structural_type": "int",
               "default": 3
             }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "n_clusters__tuple",
+            "init_args": {
+              "semantic_types": [
+                "n_clusters"
+              ],
+              "_structural_type": "tuple"
+            }
           }
         ]
       },
