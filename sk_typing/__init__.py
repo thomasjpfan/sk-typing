@@ -22,6 +22,7 @@ _MODULES = [
     "ensemble",
     "feature_extraction",
     "feature_selection",
+    "gaussian_process",
 ]
 
 for modules in _MODULES:

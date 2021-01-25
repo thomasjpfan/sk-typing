@@ -64,8 +64,7 @@ for name, est in estimators:
     )
 
 all_imports = "\n".join(list(imports_set))
-all_imports = f"""
-from typing import Optional
+all_imports = f"""from typing import Optional
 from typing import Union
 from typing import Callable
 from typing import Mapping
@@ -77,6 +76,7 @@ from ._typing import RandomStateType
 from ._typing import ArrayLike
 from ._typing import CVType
 from ._typing import DType
+from ._typing import NDArray
 
 {all_imports}
 """

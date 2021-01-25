@@ -46,5 +46,6 @@ ArrayLike = TypeVar("ArrayLike")
 NDArray = TypeVar("NDArray")
 EstimatorType = TypeVar("EstimatorType")
 DType = TypeVar("Dtype")
+KernelType = TypeVar("KernelType")
 RandomStateType = Union[int, np.random.RandomState, None]
 MemoryType = Union[str, Memory, None]
