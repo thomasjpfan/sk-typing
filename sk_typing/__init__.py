@@ -23,6 +23,7 @@ _MODULES = [
     "feature_extraction",
     "feature_selection",
     "gaussian_process",
+    "impute",
 ]
 
 for modules in _MODULES:

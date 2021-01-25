@@ -1,0 +1,845 @@
+{
+  "IterativeImputer": {
+    "name": "sklearn.impute._iterative.IterativeImputer",
+    "common_name": "IterativeImputer",
+    "description": "Multivariate imputer that estimates each feature from all the others. A strategy for imputing missing values by modeling each feature with missing values as a function of other features in a round-robin fashion.  Read more in the :ref:`User Guide <iterative_imputer>`.  .. versionadded:: 0.21  .. note::    This estimator is still **experimental** for now: the predictions   and the API might change without any deprecation cycle. To use it,   you need to explicitly import ``enable_iterative_imputer``::      >>> # explicitly require this experimental feature     >>> from sklearn.experimental import enable_iterative_imputer  # noqa     >>> # now you can import normally from sklearn.impute     >>> from sklearn.impute import IterativeImputer",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "name": "estimator",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "estimator"
+          ],
+          "default": "estimator__None",
+          "description": "The estimator to use at each step of the round-robin imputation. If ``sample_posterior`` is True, the estimator must support ``return_std`` in its ``predict`` method."
+        },
+        "hyperparams": [
+          {
+            "name": "estimator__Estimator",
+            "type": "Hyperparameter",
+            "init_args": {
+              "_structural_type": "Estimator",
+              "semantic_types": [
+                "estimator"
+              ]
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "estimator__None",
+            "init_args": {
+              "semantic_types": [
+                "estimator"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "missing_values",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "missing_values"
+          ],
+          "default": "missing_values__float",
+          "description": "The placeholder for the missing values. All occurrences of `missing_values` will be imputed. For pandas' dataframes with nullable integer dtypes with missing values, `missing_values` should be set to `np.nan`, since `pd.NA` will be converted to `np.nan`."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "missing_values__int",
+            "init_args": {
+              "semantic_types": [
+                "missing_values"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "missing_values__float",
+            "init_args": {
+              "semantic_types": [
+                "missing_values"
+              ],
+              "_structural_type": "float",
+              "default": NaN
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "sample_posterior",
+        "init_args": {
+          "semantic_types": [
+            "sample_posterior"
+          ],
+          "_structural_type": "bool",
+          "default": "False",
+          "description": "Whether to sample from the (Gaussian) predictive posterior of the fitted estimator for each imputation. Estimator must support ``return_std`` in its ``predict`` method if set to ``True``. Set to ``True`` if using ``IterativeImputer`` for multiple imputations."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "max_iter",
+        "init_args": {
+          "semantic_types": [
+            "max_iter"
+          ],
+          "_structural_type": "int",
+          "default": 10,
+          "description": "Maximum number of imputation rounds to perform before returning the imputations computed during the final round. A round is a single imputation of each feature with missing values. The stopping criterion is met once `max(abs(X_t - X_{t-1}))/max(abs(X[known_vals]))` < tol, where `X_t` is `X` at iteration `t. Note that early stopping is only applied if ``sample_posterior=False``."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "tol",
+        "init_args": {
+          "semantic_types": [
+            "tol"
+          ],
+          "_structural_type": "float",
+          "default": 0.001,
+          "description": "Tolerance of the stopping condition."
+        }
+      },
+      {
+        "name": "n_nearest_features",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "n_nearest_features"
+          ],
+          "default": "n_nearest_features__None",
+          "description": "Number of other features to use to estimate the missing values of each feature column. Nearness between features is measured using the absolute correlation coefficient between each feature pair (after initial imputation). To ensure coverage of features throughout the imputation process, the neighbor features are not necessarily nearest, but are drawn with probability proportional to correlation for each imputed target feature. Can provide significant speed-up when the number of features is huge. If ``None``, all features will be used."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "n_nearest_features__int",
+            "init_args": {
+              "semantic_types": [
+                "n_nearest_features"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "n_nearest_features__None",
+            "init_args": {
+              "semantic_types": [
+                "n_nearest_features"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Enumeration",
+        "name": "initial_strategy",
+        "init_args": {
+          "semantic_types": [
+            "initial_strategy"
+          ],
+          "values": [
+            "mean",
+            "median",
+            "most_frequent",
+            "constant"
+          ],
+          "_structural_type": "str",
+          "default": "mean",
+          "description": "Which strategy to use to initialize the missing values. Same as the ``strategy`` parameter in :class:`~sklearn.impute.SimpleImputer` Valid values: {\"mean\", \"median\", \"most_frequent\", or \"constant\"}."
+        }
+      },
+      {
+        "type": "Enumeration",
+        "name": "imputation_order",
+        "init_args": {
+          "semantic_types": [
+            "imputation_order"
+          ],
+          "values": [
+            "ascending",
+            "descending",
+            "roman",
+            "arabic",
+            "random"
+          ],
+          "_structural_type": "str",
+          "default": "ascending",
+          "description": "The order in which the features will be imputed. Possible values:  \"ascending\"     From features with fewest missing values to most. \"descending\"     From features with most missing values to fewest. \"roman\"     Left to right. \"arabic\"     Right to left. \"random\"     A random order for each round."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "skip_complete",
+        "init_args": {
+          "semantic_types": [
+            "skip_complete"
+          ],
+          "_structural_type": "bool",
+          "default": "False",
+          "description": "If ``True`` then features with missing values during ``transform`` which did not have any missing values during ``fit`` will be imputed with the initial imputation method only. Set to ``True`` if you have many features with no missing values at both ``fit`` and ``transform`` time to save compute."
+        }
+      },
+      {
+        "name": "min_value",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "min_value"
+          ],
+          "default": "min_value__float",
+          "description": "Minimum possible imputed value. Broadcast to shape (n_features,) if scalar. If array-like, expects shape (n_features,), one min value for each feature. The default is `-np.inf`.  .. versionchanged:: 0.23    Added support for array-like."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "min_value__float",
+            "init_args": {
+              "semantic_types": [
+                "min_value"
+              ],
+              "_structural_type": "float",
+              "default": -Infinity
+            }
+          },
+          {
+            "name": "min_value__ndarray",
+            "type": "Hyperparameter",
+            "init_args": {
+              "_structural_type": "ndarray",
+              "semantic_types": [
+                "min_value"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "max_value",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "max_value"
+          ],
+          "default": "max_value__float",
+          "description": "Maximum possible imputed value. Broadcast to shape (n_features,) if scalar. If array-like, expects shape (n_features,), one max value for each feature. The default is `np.inf`.  .. versionchanged:: 0.23    Added support for array-like."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "max_value__float",
+            "init_args": {
+              "semantic_types": [
+                "max_value"
+              ],
+              "_structural_type": "float",
+              "default": Infinity
+            }
+          },
+          {
+            "name": "max_value__ndarray",
+            "type": "Hyperparameter",
+            "init_args": {
+              "_structural_type": "ndarray",
+              "semantic_types": [
+                "max_value"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "verbose",
+        "init_args": {
+          "semantic_types": [
+            "verbose"
+          ],
+          "_structural_type": "int",
+          "default": 0,
+          "description": "Verbosity flag, controls the debug messages that are issued as functions are evaluated. The higher, the more verbose. Can be 0, 1, or 2."
+        }
+      },
+      {
+        "name": "random_state",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "random_state"
+          ],
+          "default": "random_state__None",
+          "description": "The seed of the pseudo random number generator to use. Randomizes selection of estimator features if n_nearest_features is not None, the ``imputation_order`` if ``random``, and the sampling from posterior if ``sample_posterior`` is True. Use an integer for determinism. See :term:`the Glossary <random_state>`."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "random_state__int",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "random_state__None",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "add_indicator",
+        "init_args": {
+          "semantic_types": [
+            "add_indicator"
+          ],
+          "_structural_type": "bool",
+          "default": "False",
+          "description": "If True, a :class:`MissingIndicator` transform will stack onto output of the imputer's transform. This allows a predictive estimator to account for missingness despite imputation. If a feature has no missing values at fit/train time, the feature won't appear on the missing indicator even if there are missing values at transform/test time."
+        }
+      }
+    ],
+    "Params": [
+      {
+        "name": "initial_imputer_",
+        "type": "object of type :class:`~sklearn.impute.SimpleImputer`",
+        "description": "Imputer used to initialize the missing values."
+      },
+      {
+        "name": "imputation_sequence_",
+        "type": "list of tuples",
+        "description": "Each tuple has ``(feat_idx, neighbor_feat_idx, estimator)``, where ``feat_idx`` is the current feature to be imputed, ``neighbor_feat_idx`` is the array of other features used to impute the current feature, and ``estimator`` is the trained estimator used for the imputation. Length is ``self.n_features_with_missing_ * self.n_iter_``."
+      },
+      {
+        "name": "n_iter_",
+        "type": "int",
+        "description": "Number of iteration rounds that occurred. Will be less than ``self.max_iter`` if early stopping criterion was reached."
+      },
+      {
+        "name": "n_features_with_missing_",
+        "type": "int",
+        "description": "Number of features with missing values."
+      },
+      {
+        "name": "indicator_",
+        "type": ":class:`~sklearn.impute.MissingIndicator`",
+        "description": "Indicator used to add binary indicators for missing values. ``None`` if add_indicator is False."
+      },
+      {
+        "name": "random_state_",
+        "type": "RandomState instance",
+        "description": "RandomState instance that is generated either from a seed, the random number generator or by `np.random`."
+      }
+    ]
+  },
+  "KNNImputer": {
+    "name": "sklearn.impute._knn.KNNImputer",
+    "common_name": "KNNImputer",
+    "description": "Imputation for completing missing values using k-Nearest Neighbors. Each sample's missing values are imputed using the mean value from `n_neighbors` nearest neighbors found in the training set. Two samples are close if the features that neither is missing are close.  Read more in the :ref:`User Guide <knnimpute>`.  .. versionadded:: 0.22",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "name": "missing_values",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "missing_values"
+          ],
+          "default": "missing_values__float",
+          "description": "The placeholder for the missing values. All occurrences of `missing_values` will be imputed. For pandas' dataframes with nullable integer dtypes with missing values, `missing_values` should be set to np.nan, since `pd.NA` will be converted to np.nan."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "missing_values__int",
+            "init_args": {
+              "semantic_types": [
+                "missing_values"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "missing_values__float",
+            "init_args": {
+              "semantic_types": [
+                "missing_values"
+              ],
+              "_structural_type": "float",
+              "default": NaN
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "missing_values__str",
+            "init_args": {
+              "semantic_types": [
+                "missing_values"
+              ],
+              "_structural_type": "str"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "missing_values__None",
+            "init_args": {
+              "semantic_types": [
+                "missing_values"
+              ],
+              "_structural_type": "None"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "n_neighbors",
+        "init_args": {
+          "semantic_types": [
+            "n_neighbors"
+          ],
+          "_structural_type": "int",
+          "default": 5,
+          "description": "Number of neighboring samples to use for imputation."
+        }
+      },
+      {
+        "name": "weights",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "weights"
+          ],
+          "default": "weights__str",
+          "description": "Weight function used in prediction.  Possible values:  - 'uniform' : uniform weights. All points in each neighborhood are   weighted equally. - 'distance' : weight points by the inverse of their distance.   in this case, closer neighbors of a query point will have a   greater influence than neighbors which are further away. - callable : a user-defined function which accepts an   array of distances, and returns an array of the same shape   containing the weights."
+        },
+        "hyperparams": [
+          {
+            "type": "Enumeration",
+            "name": "weights__str",
+            "init_args": {
+              "semantic_types": [
+                "weights"
+              ],
+              "values": [
+                "uniform",
+                "distance"
+              ],
+              "_structural_type": "str",
+              "default": "uniform"
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "weights__Callable",
+            "init_args": {
+              "semantic_types": [
+                "weights"
+              ],
+              "_structural_type": "Callable"
+            }
+          }
+        ]
+      },
+      {
+        "name": "metric",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "metric"
+          ],
+          "default": "metric__str",
+          "description": "Distance metric for searching neighbors. Possible values:  - 'nan_euclidean' - callable : a user-defined function which conforms to the definition   of ``_pairwise_callable(X, Y, metric, **kwds)``. The function   accepts two arrays, X and Y, and a `missing_values` keyword in   `kwds` and returns a scalar distance value."
+        },
+        "hyperparams": [
+          {
+            "type": "Constant",
+            "name": "metric__str",
+            "init_args": {
+              "semantic_types": [
+                "metric"
+              ],
+              "_structural_type": "str",
+              "default": "nan_euclidean"
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "metric__Callable",
+            "init_args": {
+              "semantic_types": [
+                "metric"
+              ],
+              "_structural_type": "Callable"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "copy",
+        "init_args": {
+          "semantic_types": [
+            "copy"
+          ],
+          "_structural_type": "bool",
+          "default": "True",
+          "description": "If True, a copy of X will be created. If False, imputation will be done in-place whenever possible."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "add_indicator",
+        "init_args": {
+          "semantic_types": [
+            "add_indicator"
+          ],
+          "_structural_type": "bool",
+          "default": "False",
+          "description": "If True, a :class:`MissingIndicator` transform will stack onto the output of the imputer's transform. This allows a predictive estimator to account for missingness despite imputation. If a feature has no missing values at fit/train time, the feature won't appear on the missing indicator even if there are missing values at transform/test time."
+        }
+      }
+    ],
+    "Params": [
+      {
+        "name": "indicator_",
+        "type": ":class:`~sklearn.impute.MissingIndicator`",
+        "description": "Indicator used to add binary indicators for missing values. ``None`` if add_indicator is False."
+      }
+    ]
+  },
+  "MissingIndicator": {
+    "name": "sklearn.impute._base.MissingIndicator",
+    "common_name": "MissingIndicator",
+    "description": "Binary indicators for missing values. Note that this component typically should not be used in a vanilla :class:`Pipeline` consisting of transformers and a classifier, but rather could be added using a :class:`FeatureUnion` or :class:`ColumnTransformer`.  Read more in the :ref:`User Guide <impute>`.  .. versionadded:: 0.20",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "name": "missing_values",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "missing_values"
+          ],
+          "default": "missing_values__float",
+          "description": "The placeholder for the missing values. All occurrences of `missing_values` will be imputed. For pandas' dataframes with nullable integer dtypes with missing values, `missing_values` should be set to `np.nan`, since `pd.NA` will be converted to `np.nan`."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "missing_values__int",
+            "init_args": {
+              "semantic_types": [
+                "missing_values"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "missing_values__float",
+            "init_args": {
+              "semantic_types": [
+                "missing_values"
+              ],
+              "_structural_type": "float",
+              "default": NaN
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "missing_values__str",
+            "init_args": {
+              "semantic_types": [
+                "missing_values"
+              ],
+              "_structural_type": "str"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "missing_values__None",
+            "init_args": {
+              "semantic_types": [
+                "missing_values"
+              ],
+              "_structural_type": "None"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Enumeration",
+        "name": "features",
+        "init_args": {
+          "semantic_types": [
+            "features"
+          ],
+          "values": [
+            "missing-only",
+            "all"
+          ],
+          "_structural_type": "str",
+          "default": "missing-only",
+          "description": "Whether the imputer mask should represent all or a subset of features.  - If 'missing-only' (default), the imputer mask will only represent   features containing missing values during fit time. - If 'all', the imputer mask will represent all features."
+        }
+      },
+      {
+        "name": "sparse",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "sparse"
+          ],
+          "default": "sparse__str",
+          "description": "Whether the imputer mask format should be sparse or dense.  - If 'auto' (default), the imputer mask will be of same type as   input. - If True, the imputer mask will be a sparse matrix. - If False, the imputer mask will be a numpy array."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "sparse__bool",
+            "init_args": {
+              "semantic_types": [
+                "sparse"
+              ],
+              "_structural_type": "bool"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "sparse__str",
+            "init_args": {
+              "semantic_types": [
+                "sparse"
+              ],
+              "_structural_type": "str",
+              "default": "auto"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "error_on_new",
+        "init_args": {
+          "semantic_types": [
+            "error_on_new"
+          ],
+          "_structural_type": "bool",
+          "default": "True",
+          "description": "If True, transform will raise an error when there are features with missing values in transform that have no missing values in fit. This is applicable only when `features='missing-only'`."
+        }
+      }
+    ],
+    "Params": [
+      {
+        "name": "features_",
+        "type": "ndarray, shape (n_missing_features,) or (n_features,)",
+        "description": "The features indices which will be returned when calling ``transform``. They are computed during ``fit``. For ``features='all'``, it is to ``range(n_features)``."
+      }
+    ]
+  },
+  "SimpleImputer": {
+    "name": "sklearn.impute._base.SimpleImputer",
+    "common_name": "SimpleImputer",
+    "description": "Imputation transformer for completing missing values. Read more in the :ref:`User Guide <impute>`.  .. versionadded:: 0.20    `SimpleImputer` replaces the previous `sklearn.preprocessing.Imputer`    estimator which is now removed.",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "name": "missing_values",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "missing_values"
+          ],
+          "default": "missing_values__float",
+          "description": "The placeholder for the missing values. All occurrences of `missing_values` will be imputed. For pandas' dataframes with nullable integer dtypes with missing values, `missing_values` should be set to `np.nan`, since `pd.NA` will be converted to `np.nan`."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "missing_values__int",
+            "init_args": {
+              "semantic_types": [
+                "missing_values"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "missing_values__float",
+            "init_args": {
+              "semantic_types": [
+                "missing_values"
+              ],
+              "_structural_type": "float",
+              "default": NaN
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "missing_values__str",
+            "init_args": {
+              "semantic_types": [
+                "missing_values"
+              ],
+              "_structural_type": "str"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "missing_values__None",
+            "init_args": {
+              "semantic_types": [
+                "missing_values"
+              ],
+              "_structural_type": "None"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Enumeration",
+        "name": "strategy",
+        "init_args": {
+          "semantic_types": [
+            "strategy"
+          ],
+          "values": [
+            "mean",
+            "median",
+            "most_frequent",
+            "constant"
+          ],
+          "_structural_type": "str",
+          "default": "mean",
+          "description": "The imputation strategy.  - If \"mean\", then replace missing values using the mean along   each column. Can only be used with numeric data. - If \"median\", then replace missing values using the median along   each column. Can only be used with numeric data. - If \"most_frequent\", then replace missing using the most frequent   value along each column. Can be used with strings or numeric data.   If there is more than one such value, only the smallest is returned. - If \"constant\", then replace missing values with fill_value. Can be   used with strings or numeric data.  .. versionadded:: 0.20    strategy=\"constant\" for fixed value imputation."
+        }
+      },
+      {
+        "name": "fill_value",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "fill_value"
+          ],
+          "default": "fill_value__None",
+          "description": "When strategy == \"constant\", fill_value is used to replace all occurrences of missing_values. If left to the default, fill_value will be 0 when imputing numerical data and \"missing_value\" for strings or object data types."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "fill_value__str",
+            "init_args": {
+              "semantic_types": [
+                "fill_value"
+              ],
+              "_structural_type": "str"
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "fill_value__float",
+            "init_args": {
+              "semantic_types": [
+                "fill_value"
+              ],
+              "_structural_type": "float"
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "fill_value__int",
+            "init_args": {
+              "semantic_types": [
+                "fill_value"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "fill_value__None",
+            "init_args": {
+              "semantic_types": [
+                "fill_value"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "verbose",
+        "init_args": {
+          "semantic_types": [
+            "verbose"
+          ],
+          "_structural_type": "int",
+          "default": 0,
+          "description": "Controls the verbosity of the imputer."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "copy",
+        "init_args": {
+          "semantic_types": [
+            "copy"
+          ],
+          "_structural_type": "bool",
+          "default": "True",
+          "description": "If True, a copy of X will be created. If False, imputation will be done in-place whenever possible. Note that, in the following cases, a new copy will always be made, even if `copy=False`:  - If X is not an array of floating values; - If X is encoded as a CSR matrix; - If add_indicator=True."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "add_indicator",
+        "init_args": {
+          "semantic_types": [
+            "add_indicator"
+          ],
+          "_structural_type": "bool",
+          "default": "False",
+          "description": "If True, a :class:`MissingIndicator` transform will stack onto output of the imputer's transform. This allows a predictive estimator to account for missingness despite imputation. If a feature has no missing values at fit/train time, the feature won't appear on the missing indicator even if there are missing values at transform/test time."
+        }
+      }
+    ],
+    "Params": [
+      {
+        "name": "statistics_",
+        "type": "array of shape (n_features,)",
+        "description": "The imputation fill value for each feature. Computing statistics can result in `np.nan` values. During :meth:`transform`, features corresponding to `np.nan` statistics will be discarded."
+      },
+      {
+        "name": "indicator_",
+        "type": ":class:`~sklearn.impute.MissingIndicator`",
+        "description": "Indicator used to add binary indicators for missing values. ``None`` if add_indicator is False."
+      }
+    ]
+  }
+}
