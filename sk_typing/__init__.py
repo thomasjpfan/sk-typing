@@ -24,6 +24,7 @@ _MODULES = [
     "feature_selection",
     "gaussian_process",
     "impute",
+    "isotonic",
 ]
 
 for modules in _MODULES:

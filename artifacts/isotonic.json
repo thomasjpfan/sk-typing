@@ -1,0 +1,161 @@
+{
+  "IsotonicRegression": {
+    "name": "sklearn.isotonic.IsotonicRegression",
+    "common_name": "IsotonicRegression",
+    "description": "Isotonic regression model. Read more in the :ref:`User Guide <isotonic>`.  .. versionadded:: 0.13",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "name": "y_min",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "y_min"
+          ],
+          "default": "y_min__None",
+          "description": "Lower bound on the lowest predicted value (the minimum value may still be higher). If not set, defaults to -inf."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "y_min__float",
+            "init_args": {
+              "semantic_types": [
+                "y_min"
+              ],
+              "_structural_type": "float"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "y_min__None",
+            "init_args": {
+              "semantic_types": [
+                "y_min"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "y_max",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "y_max"
+          ],
+          "default": "y_max__None",
+          "description": "Upper bound on the highest predicted value (the maximum may still be lower). If not set, defaults to +inf."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "y_max__float",
+            "init_args": {
+              "semantic_types": [
+                "y_max"
+              ],
+              "_structural_type": "float"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "y_max__None",
+            "init_args": {
+              "semantic_types": [
+                "y_max"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "increasing",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "increasing"
+          ],
+          "default": "increasing__bool",
+          "description": "Determines whether the predictions should be constrained to increase or decrease with `X`. 'auto' will decide based on the Spearman correlation estimate's sign."
+        },
+        "hyperparams": [
+          {
+            "type": "Constant",
+            "name": "increasing__str",
+            "init_args": {
+              "semantic_types": [
+                "increasing"
+              ],
+              "_structural_type": "str"
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "increasing__bool",
+            "init_args": {
+              "semantic_types": [
+                "increasing"
+              ],
+              "_structural_type": "bool",
+              "default": "True"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Enumeration",
+        "name": "out_of_bounds",
+        "init_args": {
+          "semantic_types": [
+            "out_of_bounds"
+          ],
+          "values": [
+            "nan",
+            "clip",
+            "raise"
+          ],
+          "_structural_type": "str",
+          "default": "nan",
+          "description": "Handles how `X` values outside of the training domain are handled during prediction.  - 'nan', predictions will be NaN. - 'clip', predictions will be set to the value corresponding to   the nearest train interval endpoint. - 'raise', a `ValueError` is raised."
+        }
+      }
+    ],
+    "Params": [
+      {
+        "name": "X_min_",
+        "type": "float",
+        "description": "Minimum value of input array `X_` for left bound."
+      },
+      {
+        "name": "X_max_",
+        "type": "float",
+        "description": "Maximum value of input array `X_` for right bound."
+      },
+      {
+        "name": "X_thresholds_",
+        "type": "ndarray of shape (n_thresholds,)",
+        "description": "Unique ascending `X` values used to interpolate the y = f(X) monotonic function.  .. versionadded:: 0.24"
+      },
+      {
+        "name": "y_thresholds_",
+        "type": "ndarray of shape (n_thresholds,)",
+        "description": "De-duplicated `y` values suitable to interpolate the y = f(X) monotonic function.  .. versionadded:: 0.24"
+      },
+      {
+        "name": "f_",
+        "type": "function",
+        "description": "The stepwise interpolating function that covers the input domain ``X``."
+      },
+      {
+        "name": "increasing_",
+        "type": "bool",
+        "description": "Inferred value for ``increasing``."
+      }
+    ]
+  }
+}
