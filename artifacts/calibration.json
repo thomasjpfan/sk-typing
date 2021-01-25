@@ -1,0 +1,140 @@
+{
+  "CalibratedClassifierCV": {
+    "name": "sklearn.calibration.CalibratedClassifierCV",
+    "common_name": "CalibratedClassifierCV",
+    "description": "Probability calibration with isotonic regression or logistic regression. This class uses cross-validation to both estimate the parameters of a classifier and subsequently calibrate a classifier. With default `ensemble=True`, for each cv split it fits a copy of the base estimator to the training subset, and calibrates it using the testing subset. For prediction, predicted probabilities are averaged across these individual calibrated classifiers. When `ensemble=False`, cross-validation is used to obtain unbiased predictions, via :func:`~sklearn.model_selection.cross_val_predict`, which are then used for calibration. For prediction, the base estimator, trained using all the data, is used. This is the method implemented when `probabilities=True` for :mod:`sklearn.svm` estimators.  Already fitted classifiers can be calibrated via the parameter `cv=\"prefit\"`. In this case, no cross-validation is used and all provided data is used for calibration. The user has to take care manually that data for model fitting and calibration are disjoint.  The calibration is based on the :term:`decision_function` method of the `base_estimator` if it exists, else on :term:`predict_proba`.  Read more in the :ref:`User Guide <calibration>`.",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "name": "base_estimator",
+        "type": "Hyperparameter",
+        "init_args": {
+          "_structural_type": "Estimator",
+          "semantic_types": [
+            "base_estimator"
+          ],
+          "default": "None",
+          "description": "The classifier whose output need to be calibrated to provide more accurate `predict_proba` outputs. The default classifier is a :class:`~sklearn.svm.LinearSVC`."
+        }
+      },
+      {
+        "type": "Enumeration",
+        "name": "method",
+        "init_args": {
+          "semantic_types": [
+            "method"
+          ],
+          "values": [
+            "sigmoid",
+            "isotonic"
+          ],
+          "_structural_type": "str",
+          "default": "sigmoid",
+          "description": "The method to use for calibration. Can be 'sigmoid' which corresponds to Platt's method (i.e. a logistic regression model) or 'isotonic' which is a non-parametric approach. It is not advised to use isotonic calibration with too few calibration samples ``(<<1000)`` since it tends to overfit."
+        }
+      },
+      {
+        "name": "cv",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "cv"
+          ],
+          "default": "cv__None",
+          "description": "Determines the cross-validation splitting strategy. Possible inputs for cv are:  - None, to use the default 5-fold cross-validation, - integer, to specify the number of folds. - :term:`CV splitter`, - An iterable yielding (train, test) splits as arrays of indices.  For integer/None inputs, if ``y`` is binary or multiclass, :class:`~sklearn.model_selection.StratifiedKFold` is used. If ``y`` is neither binary nor multiclass, :class:`~sklearn.model_selection.KFold` is used.  Refer to the :ref:`User Guide <cross_validation>` for the various cross-validation strategies that can be used here.  If \"prefit\" is passed, it is assumed that `base_estimator` has been fitted already and all data is used for calibration.  .. versionchanged:: 0.22     ``cv`` default value if None changed from 3-fold to 5-fold."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "cv__int",
+            "init_args": {
+              "semantic_types": [
+                "cv"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "cv__None",
+            "init_args": {
+              "semantic_types": [
+                "cv"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "cv__str",
+            "init_args": {
+              "semantic_types": [
+                "cv"
+              ],
+              "_structural_type": "str"
+            }
+          }
+        ]
+      },
+      {
+        "name": "n_jobs",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "n_jobs"
+          ],
+          "default": "n_jobs__None",
+          "description": "Number of jobs to run in parallel. ``None`` means 1 unless in a :obj:`joblib.parallel_backend` context. ``-1`` means using all processors.  Base estimator clones are fitted in parallel across cross-validation iterations. Therefore parallelism happens only when `cv != \"prefit\"`.  See :term:`Glossary <n_jobs>` for more details.  .. versionadded:: 0.24"
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "n_jobs__int",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "n_jobs__None",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "ensemble",
+        "init_args": {
+          "semantic_types": [
+            "ensemble"
+          ],
+          "_structural_type": "bool",
+          "default": "True",
+          "description": "Determines how the calibrator is fitted when `cv` is not `'prefit'`. Ignored if `cv='prefit'`.  If `True`, the `base_estimator` is fitted using training data and calibrated using testing data, for each `cv` fold. The final estimator is an ensemble of `n_cv` fitted classifer and calibrator pairs, where `n_cv` is the number of cross-validation folds. The output is the average predicted probabilities of all pairs.  If `False`, `cv` is used to compute unbiased predictions, via :func:`~sklearn.model_selection.cross_val_predict`, which are then used for calibration. At prediction time, the classifier used is the `base_estimator` trained on all the data. Note that this method is also internally implemented  in :mod:`sklearn.svm` estimators with the `probabilities=True` parameter.  .. versionadded:: 0.24"
+        }
+      }
+    ],
+    "Params": [
+      {
+        "name": "classes_",
+        "type": "ndarray of shape (n_classes,)",
+        "description": "The class labels."
+      },
+      {
+        "name": "calibrated_classifiers_",
+        "type": "list (len() equal to cv or 1 if `cv=\"prefit\"`             or `ensemble=False`)",
+        "description": "The list of classifier and calibrator pairs.  - When `cv=\"prefit\"`, the fitted `base_estimator` and fitted   calibrator. - When `cv` is not \"prefit\" and `ensemble=True`, `n_cv` fitted   `base_estimator` and calibrator pairs. `n_cv` is the number of   cross-validation folds. - When `cv` is not \"prefit\" and `ensemble=False`, the `base_estimator`,   fitted on all the data, and fitted calibrator.  .. versionchanged:: 0.24     Single calibrated classifier case when `ensemble=False`."
+      }
+    ]
+  }
+}

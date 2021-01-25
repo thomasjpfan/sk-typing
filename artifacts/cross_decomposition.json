@@ -1,0 +1,444 @@
+{
+  "CCA": {
+    "name": "sklearn.cross_decomposition._pls.CCA",
+    "common_name": "CCA",
+    "description": "Canonical Correlation Analysis, also known as \"Mode B\" PLS. Read more in the :ref:`User Guide <cross_decomposition>`.",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "type": "Hyperparameter",
+        "name": "n_components",
+        "init_args": {
+          "semantic_types": [
+            "n_components"
+          ],
+          "_structural_type": "int",
+          "default": 2,
+          "description": "Number of components to keep. Should be in `[1, min(n_samples, n_features, n_targets)]`."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "scale",
+        "init_args": {
+          "semantic_types": [
+            "scale"
+          ],
+          "_structural_type": "bool",
+          "default": "True",
+          "description": "Whether to scale `X` and `Y`."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "max_iter",
+        "init_args": {
+          "semantic_types": [
+            "max_iter"
+          ],
+          "_structural_type": "int",
+          "default": 500,
+          "description": "the maximum number of iterations of the power method."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "tol",
+        "init_args": {
+          "semantic_types": [
+            "tol"
+          ],
+          "_structural_type": "float",
+          "default": 1e-06,
+          "description": "The tolerance used as convergence criteria in the power method: the algorithm stops whenever the squared norm of `u_i - u_{i-1}` is less than `tol`, where `u` corresponds to the left singular vector."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "copy",
+        "init_args": {
+          "semantic_types": [
+            "copy"
+          ],
+          "_structural_type": "bool",
+          "default": "True",
+          "description": "Whether to copy `X` and `Y` in fit before applying centering, and potentially scaling. If False, these operations will be done inplace, modifying both arrays."
+        }
+      }
+    ],
+    "Params": [
+      {
+        "name": "x_weights_",
+        "type": "ndarray of shape (n_features, n_components)",
+        "description": "The left singular vectors of the cross-covariance matrices of each iteration."
+      },
+      {
+        "name": "y_weights_",
+        "type": "ndarray of shape (n_targets, n_components)",
+        "description": "The right singular vectors of the cross-covariance matrices of each iteration."
+      },
+      {
+        "name": "x_loadings_",
+        "type": "ndarray of shape (n_features, n_components)",
+        "description": "The loadings of `X`."
+      },
+      {
+        "name": "y_loadings_",
+        "type": "ndarray of shape (n_targets, n_components)",
+        "description": "The loadings of `Y`."
+      },
+      {
+        "name": "x_scores_",
+        "type": "ndarray of shape (n_samples, n_components)",
+        "description": "The transformed training samples.  .. deprecated:: 0.24    `x_scores_` is deprecated in 0.24 and will be removed in 1.1    (renaming of 0.26). You can just call `transform` on the training    data instead."
+      },
+      {
+        "name": "y_scores_",
+        "type": "ndarray of shape (n_samples, n_components)",
+        "description": "The transformed training targets.  .. deprecated:: 0.24    `y_scores_` is deprecated in 0.24 and will be removed in 1.1    (renaming of 0.26). You can just call `transform` on the training    data instead."
+      },
+      {
+        "name": "x_rotations_",
+        "type": "ndarray of shape (n_features, n_components)",
+        "description": "The projection matrix used to transform `X`."
+      },
+      {
+        "name": "y_rotations_",
+        "type": "ndarray of shape (n_features, n_components)",
+        "description": "The projection matrix used to transform `Y`."
+      },
+      {
+        "name": "coef_",
+        "type": "ndarray of shape (n_features, n_targets)",
+        "description": "The coefficients of the linear model such that `Y` is approximated as `Y = X @ coef_`."
+      },
+      {
+        "name": "n_iter_",
+        "type": "list of shape (n_components,)",
+        "description": "Number of iterations of the power method, for each component."
+      }
+    ]
+  },
+  "PLSCanonical": {
+    "name": "sklearn.cross_decomposition._pls.PLSCanonical",
+    "common_name": "PLSCanonical",
+    "description": "Partial Least Squares transformer and regressor. Read more in the :ref:`User Guide <cross_decomposition>`.  .. versionadded:: 0.8",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "type": "Hyperparameter",
+        "name": "n_components",
+        "init_args": {
+          "semantic_types": [
+            "n_components"
+          ],
+          "_structural_type": "int",
+          "default": 2,
+          "description": "Number of components to keep. Should be in `[1, min(n_samples, n_features, n_targets)]`."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "scale",
+        "init_args": {
+          "semantic_types": [
+            "scale"
+          ],
+          "_structural_type": "bool",
+          "default": "True",
+          "description": "Whether to scale `X` and `Y`."
+        }
+      },
+      {
+        "type": "Enumeration",
+        "name": "algorithm",
+        "init_args": {
+          "semantic_types": [
+            "algorithm"
+          ],
+          "values": [
+            "nipals",
+            "svd"
+          ],
+          "_structural_type": "str",
+          "default": "nipals",
+          "description": "The algorithm used to estimate the first singular vectors of the cross-covariance matrix. 'nipals' uses the power method while 'svd' will compute the whole SVD."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "max_iter",
+        "init_args": {
+          "semantic_types": [
+            "max_iter"
+          ],
+          "_structural_type": "int",
+          "default": 500,
+          "description": "the maximum number of iterations of the power method when `algorithm='nipals'`. Ignored otherwise."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "tol",
+        "init_args": {
+          "semantic_types": [
+            "tol"
+          ],
+          "_structural_type": "float",
+          "default": 1e-06,
+          "description": "The tolerance used as convergence criteria in the power method: the algorithm stops whenever the squared norm of `u_i - u_{i-1}` is less than `tol`, where `u` corresponds to the left singular vector."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "copy",
+        "init_args": {
+          "semantic_types": [
+            "copy"
+          ],
+          "_structural_type": "bool",
+          "default": "True",
+          "description": "Whether to copy `X` and `Y` in fit before applying centering, and potentially scaling. If False, these operations will be done inplace, modifying both arrays."
+        }
+      }
+    ],
+    "Params": [
+      {
+        "name": "x_weights_",
+        "type": "ndarray of shape (n_features, n_components)",
+        "description": "The left singular vectors of the cross-covariance matrices of each iteration."
+      },
+      {
+        "name": "y_weights_",
+        "type": "ndarray of shape (n_targets, n_components)",
+        "description": "The right singular vectors of the cross-covariance matrices of each iteration."
+      },
+      {
+        "name": "x_loadings_",
+        "type": "ndarray of shape (n_features, n_components)",
+        "description": "The loadings of `X`."
+      },
+      {
+        "name": "y_loadings_",
+        "type": "ndarray of shape (n_targets, n_components)",
+        "description": "The loadings of `Y`."
+      },
+      {
+        "name": "x_scores_",
+        "type": "ndarray of shape (n_samples, n_components)",
+        "description": "The transformed training samples.  .. deprecated:: 0.24    `x_scores_` is deprecated in 0.24 and will be removed in 1.1    (renaming of 0.26). You can just call `transform` on the training    data instead."
+      },
+      {
+        "name": "y_scores_",
+        "type": "ndarray of shape (n_samples, n_components)",
+        "description": "The transformed training targets.  .. deprecated:: 0.24    `y_scores_` is deprecated in 0.24 and will be removed in 1.1    (renaming of 0.26). You can just call `transform` on the training    data instead."
+      },
+      {
+        "name": "x_rotations_",
+        "type": "ndarray of shape (n_features, n_components)",
+        "description": "The projection matrix used to transform `X`."
+      },
+      {
+        "name": "y_rotations_",
+        "type": "ndarray of shape (n_features, n_components)",
+        "description": "The projection matrix used to transform `Y`."
+      },
+      {
+        "name": "coef_",
+        "type": "ndarray of shape (n_features, n_targets)",
+        "description": "The coefficients of the linear model such that `Y` is approximated as `Y = X @ coef_`."
+      },
+      {
+        "name": "n_iter_",
+        "type": "list of shape (n_components,)",
+        "description": "Number of iterations of the power method, for each component. Empty if `algorithm='svd'`."
+      }
+    ]
+  },
+  "PLSRegression": {
+    "name": "sklearn.cross_decomposition._pls.PLSRegression",
+    "common_name": "PLSRegression",
+    "description": "PLS regression PLSRegression is also known as PLS2 or PLS1, depending on the number of targets.  Read more in the :ref:`User Guide <cross_decomposition>`.  .. versionadded:: 0.8",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "type": "Hyperparameter",
+        "name": "n_components",
+        "init_args": {
+          "semantic_types": [
+            "n_components"
+          ],
+          "_structural_type": "int",
+          "default": 2,
+          "description": "Number of components to keep. Should be in `[1, min(n_samples, n_features, n_targets)]`."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "scale",
+        "init_args": {
+          "semantic_types": [
+            "scale"
+          ],
+          "_structural_type": "bool",
+          "default": "True",
+          "description": "Whether to scale `X` and `Y`."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "max_iter",
+        "init_args": {
+          "semantic_types": [
+            "max_iter"
+          ],
+          "_structural_type": "int",
+          "default": 500,
+          "description": "The maximum number of iterations of the power method when `algorithm='nipals'`. Ignored otherwise."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "tol",
+        "init_args": {
+          "semantic_types": [
+            "tol"
+          ],
+          "_structural_type": "float",
+          "default": 1e-06,
+          "description": "The tolerance used as convergence criteria in the power method: the algorithm stops whenever the squared norm of `u_i - u_{i-1}` is less than `tol`, where `u` corresponds to the left singular vector."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "copy",
+        "init_args": {
+          "semantic_types": [
+            "copy"
+          ],
+          "_structural_type": "bool",
+          "default": "True",
+          "description": "Whether to copy `X` and `Y` in fit before applying centering, and potentially scaling. If False, these operations will be done inplace, modifying both arrays."
+        }
+      }
+    ],
+    "Params": [
+      {
+        "name": "x_weights_",
+        "type": "ndarray of shape (n_features, n_components)",
+        "description": "The left singular vectors of the cross-covariance matrices of each iteration."
+      },
+      {
+        "name": "y_weights_",
+        "type": "ndarray of shape (n_targets, n_components)",
+        "description": "The right singular vectors of the cross-covariance matrices of each iteration."
+      },
+      {
+        "name": "x_loadings_",
+        "type": "ndarray of shape (n_features, n_components)",
+        "description": "The loadings of `X`."
+      },
+      {
+        "name": "y_loadings_",
+        "type": "ndarray of shape (n_targets, n_components)",
+        "description": "The loadings of `Y`."
+      },
+      {
+        "name": "x_scores_",
+        "type": "ndarray of shape (n_samples, n_components)",
+        "description": "The transformed training samples."
+      },
+      {
+        "name": "y_scores_",
+        "type": "ndarray of shape (n_samples, n_components)",
+        "description": "The transformed training targets."
+      },
+      {
+        "name": "x_rotations_",
+        "type": "ndarray of shape (n_features, n_components)",
+        "description": "The projection matrix used to transform `X`."
+      },
+      {
+        "name": "y_rotations_",
+        "type": "ndarray of shape (n_features, n_components)",
+        "description": "The projection matrix used to transform `Y`."
+      },
+      {
+        "name": "coef_",
+        "type": "ndarray of shape (n_features, n_targets)",
+        "description": "The coefficients of the linear model such that `Y` is approximated as `Y = X @ coef_`."
+      },
+      {
+        "name": "n_iter_",
+        "type": "list of shape (n_components,)",
+        "description": "Number of iterations of the power method, for each component. Empty if `algorithm='svd'`."
+      }
+    ]
+  },
+  "PLSSVD": {
+    "name": "sklearn.cross_decomposition._pls.PLSSVD",
+    "common_name": "PLSSVD",
+    "description": "Partial Least Square SVD. This transformer simply performs a SVD on the crosscovariance matrix X'Y. It is able to project both the training data `X` and the targets `Y`. The training data X is projected on the left singular vectors, while the targets are projected on the right singular vectors.  Read more in the :ref:`User Guide <cross_decomposition>`.  .. versionadded:: 0.8",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "type": "Hyperparameter",
+        "name": "n_components",
+        "init_args": {
+          "semantic_types": [
+            "n_components"
+          ],
+          "_structural_type": "int",
+          "default": 2,
+          "description": "The number of components to keep. Should be in `[1, min(n_samples, n_features, n_targets)]`."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "scale",
+        "init_args": {
+          "semantic_types": [
+            "scale"
+          ],
+          "_structural_type": "bool",
+          "default": "True",
+          "description": "Whether to scale `X` and `Y`."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "copy",
+        "init_args": {
+          "semantic_types": [
+            "copy"
+          ],
+          "_structural_type": "bool",
+          "default": "True",
+          "description": "Whether to copy `X` and `Y` in fit before applying centering, and potentially scaling. If False, these operations will be done inplace, modifying both arrays."
+        }
+      }
+    ],
+    "Params": [
+      {
+        "name": "x_weights_",
+        "type": "ndarray of shape (n_features, n_components)",
+        "description": "The left singular vectors of the SVD of the cross-covariance matrix. Used to project `X` in `transform`."
+      },
+      {
+        "name": "y_weights_",
+        "type": "ndarray of (n_targets, n_components)",
+        "description": "The right singular vectors of the SVD of the cross-covariance matrix. Used to project `X` in `transform`."
+      },
+      {
+        "name": "x_scores_",
+        "type": "ndarray of shape (n_samples, n_components)",
+        "description": "The transformed training samples.  .. deprecated:: 0.24    `x_scores_` is deprecated in 0.24 and will be removed in 1.1    (renaming of 0.26). You can just call `transform` on the training    data instead."
+      },
+      {
+        "name": "y_scores_",
+        "type": "ndarray of shape (n_samples, n_components)",
+        "description": "The transformed training targets.  .. deprecated:: 0.24    `y_scores_` is deprecated in 0.24 and will be removed in 1.1    (renaming of 0.26). You can just call `transform` on the training    data instead."
+      }
+    ]
+  }
+}

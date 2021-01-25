@@ -1,11 +1,13 @@
 from typing import Union
 from typing import Optional
 import json
+from importlib import import_module
 
 import pytest
 
 from sklearn.utils import all_estimators
 from sk_typing.convert.d3m import _get_output_for_estimator
+from sk_typing.convert.d3m import _normalized_estimator_name
 
 from typing_extensions import Literal
 
@@ -200,6 +202,7 @@ def test_get_d3m_representation_base_estimator():
     assert output["init_args"]["_structural_type"] == "Estimator"
 
 
+ALL_ESTIMATORS = all_estimators()
 MODULES_TO_IGNORE = {
     "feature_extraction",
     "feature_selection",
@@ -226,7 +229,7 @@ MODULES_TO_IGNORE = {
 }
 ESTIMATORS_TO_CHECK = [
     (name, est)
-    for name, est in all_estimators()
+    for name, est in ALL_ESTIMATORS
     if est.__module__.split(".")[1] not in MODULES_TO_IGNORE
 ]
 
