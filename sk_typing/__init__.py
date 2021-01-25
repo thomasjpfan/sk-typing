@@ -25,6 +25,7 @@ _MODULES = [
     "gaussian_process",
     "impute",
     "isotonic",
+    "kernel_approximation",
 ]
 
 for modules in _MODULES:
