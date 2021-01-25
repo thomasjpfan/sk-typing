@@ -28,16 +28,20 @@ def _get_output_for_estimator(name, estimator):
 
         # Remove parameters that is not JSON serializable
         default = init_params[param].default
-        try:
-            json.dumps(default)
-        except TypeError:
+
+        if callable(default):
             continue
+
+        try:
+            description = param_descriptions[param]
+        except KeyError:
+            description = ""
 
         try:
             hyperparam = get_d3m_representation(
                 param,
                 annotation,
-                description=param_descriptions[param],
+                description=description,
                 default=init_params[param].default,
             )
         except ValueError as e:

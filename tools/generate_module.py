@@ -26,6 +26,7 @@ if not estimators:
     sys.exit(1)
 
 imports_set = set()
+
 annotations = []
 
 annotation_template = """
@@ -63,6 +64,22 @@ for name, est in estimators:
     )
 
 all_imports = "\n".join(list(imports_set))
+all_imports = f"""
+from typing import Optional
+from typing import Union
+from typing import Callable
+from typing import Mapping
+from typing import Iterable
+
+from ._typing import EstimatorType
+from ._typing import Literal
+from ._typing import RandomStateType
+from ._typing import ArrayLike
+from ._typing import CVType
+from ._typing import DType
+
+{all_imports}
+"""
 all_annotations = "\n\n".join(annotations)
 
 output_path = Path("sk_typing") / f"{args.module}.py"

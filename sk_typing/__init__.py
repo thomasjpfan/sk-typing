@@ -21,6 +21,7 @@ _MODULES = [
     "dummy",
     "ensemble",
     "feature_extraction",
+    "feature_selection",
 ]
 
 for modules in _MODULES:
