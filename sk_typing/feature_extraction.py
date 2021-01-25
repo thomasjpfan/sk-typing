@@ -13,11 +13,8 @@ from sklearn.feature_extraction import DictVectorizer
 from sklearn.feature_extraction.text import HashingVectorizer
 from sklearn.feature_extraction.text import CountVectorizer
 
-from ._typing import EstimatorType
 from ._typing import Literal
 from ._typing import RandomStateType
-from ._typing import ArrayLike
-from ._typing import CVType
 from ._typing import DType
 
 

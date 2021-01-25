@@ -17,6 +17,44 @@ from sk_typing._typing import EstimatorType
 from sk_typing.convert import get_d3m_representation
 
 
+ALL_ESTIMATORS = all_estimators()
+MODULES_TO_IGNORE = {
+    "feature_selection",
+    "gaussian_process",
+    "impute",
+    "isotonic",
+    "kernel_approximation",
+    "kernel_ridge",
+    "linear_model",
+    "manifold",
+    "mixture",
+    "model_selection",
+    "multiclass",
+    "multioutput",
+    "naive_bayes",
+    "neighbors",
+    "neural_network",
+    "pipeline",
+    "preprocessing",
+    "random_projection",
+    "semi_supervised",
+    "svm",
+    "tree",
+}
+ESTIMATORS_TO_CHECK = [
+    (name, est)
+    for name, est in ALL_ESTIMATORS
+    if est.__module__.split(".")[1] not in MODULES_TO_IGNORE
+]
+
+
+@pytest.mark.parametrize("name, estimator", ESTIMATORS_TO_CHECK)
+def test_get_output_for_module(name, estimator):
+    """Smoke test for modules"""
+    output = _get_output_for_estimator(name, estimator)
+    json.dumps(output)
+
+
 @pytest.mark.parametrize("annotation", [bool, int, float, str, tuple])
 def test_get_d3m_representation_builtin(annotation):
     output = get_d3m_representation("parameter", annotation)
@@ -200,41 +238,3 @@ def test_get_d3m_representation_base_estimator():
     assert output["name"] == "base_estimator"
     assert output["type"] == "Hyperparameter"
     assert output["init_args"]["_structural_type"] == "Estimator"
-
-
-ALL_ESTIMATORS = all_estimators()
-MODULES_TO_IGNORE = {
-    "feature_selection",
-    "gaussian_process",
-    "impute",
-    "isotonic",
-    "kernel_approximation",
-    "kernel_ridge",
-    "linear_model",
-    "manifold",
-    "mixture",
-    "model_selection",
-    "multiclass",
-    "multioutput",
-    "naive_bayes",
-    "neighbors",
-    "neural_network",
-    "pipeline",
-    "preprocessing",
-    "random_projection",
-    "semi_supervised",
-    "svm",
-    "tree",
-}
-ESTIMATORS_TO_CHECK = [
-    (name, est)
-    for name, est in ALL_ESTIMATORS
-    if est.__module__.split(".")[1] not in MODULES_TO_IGNORE
-]
-
-
-@pytest.mark.parametrize("name, estimator", ESTIMATORS_TO_CHECK)
-def test_get_output_for_module(name, estimator):
-    """Smoke test for modules"""
-    output = _get_output_for_estimator(name, estimator)
-    json.dumps(output)
