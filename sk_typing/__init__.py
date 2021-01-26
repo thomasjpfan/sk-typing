@@ -31,6 +31,7 @@ _MODULES = [
     "manifold",
     "mixture",
     "model_selection",
+    "multiclass",
 ]
 
 for modules in _MODULES:

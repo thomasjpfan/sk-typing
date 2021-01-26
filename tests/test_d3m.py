@@ -19,7 +19,6 @@ from sk_typing.convert import get_d3m_representation
 
 ALL_ESTIMATORS = all_estimators()
 MODULES_TO_IGNORE = {
-    "multiclass",
     "multioutput",
     "naive_bayes",
     "neighbors",
