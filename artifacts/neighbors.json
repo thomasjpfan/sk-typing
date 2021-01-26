@@ -1,0 +1,2172 @@
+{
+  "KNeighborsClassifier": {
+    "name": "sklearn.neighbors._classification.KNeighborsClassifier",
+    "common_name": "KNeighborsClassifier",
+    "description": "Classifier implementing the k-nearest neighbors vote. Read more in the :ref:`User Guide <classification>`.",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "type": "Hyperparameter",
+        "name": "n_neighbors",
+        "init_args": {
+          "semantic_types": [
+            "n_neighbors"
+          ],
+          "_structural_type": "int",
+          "default": 5,
+          "description": "Number of neighbors to use by default for :meth:`kneighbors` queries."
+        }
+      },
+      {
+        "name": "weights",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "weights"
+          ],
+          "default": "weights__str",
+          "description": "weight function used in prediction.  Possible values:  - 'uniform' : uniform weights.  All points in each neighborhood   are weighted equally. - 'distance' : weight points by the inverse of their distance.   in this case, closer neighbors of a query point will have a   greater influence than neighbors which are further away. - [callable] : a user-defined function which accepts an   array of distances, and returns an array of the same shape   containing the weights."
+        },
+        "hyperparams": [
+          {
+            "type": "Enumeration",
+            "name": "weights__str",
+            "init_args": {
+              "semantic_types": [
+                "weights"
+              ],
+              "values": [
+                "uniform",
+                "distance"
+              ],
+              "_structural_type": "str",
+              "default": "uniform"
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "weights__Callable",
+            "init_args": {
+              "semantic_types": [
+                "weights"
+              ],
+              "_structural_type": "Callable"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Enumeration",
+        "name": "algorithm",
+        "init_args": {
+          "semantic_types": [
+            "algorithm"
+          ],
+          "values": [
+            "auto",
+            "ball_tree",
+            "kd_tree",
+            "brute"
+          ],
+          "_structural_type": "str",
+          "default": "auto",
+          "description": "Algorithm used to compute the nearest neighbors:  - 'ball_tree' will use :class:`BallTree` - 'kd_tree' will use :class:`KDTree` - 'brute' will use a brute-force search. - 'auto' will attempt to decide the most appropriate algorithm   based on the values passed to :meth:`fit` method.  Note: fitting on sparse input will override the setting of this parameter, using brute force."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "leaf_size",
+        "init_args": {
+          "semantic_types": [
+            "leaf_size"
+          ],
+          "_structural_type": "int",
+          "default": 30,
+          "description": "Leaf size passed to BallTree or KDTree.  This can affect the speed of the construction and query, as well as the memory required to store the tree.  The optimal value depends on the nature of the problem."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "p",
+        "init_args": {
+          "semantic_types": [
+            "p"
+          ],
+          "_structural_type": "int",
+          "default": 2,
+          "description": "Power parameter for the Minkowski metric. When p = 1, this is equivalent to using manhattan_distance (l1), and euclidean_distance (l2) for p = 2. For arbitrary p, minkowski_distance (l_p) is used."
+        }
+      },
+      {
+        "name": "metric",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "metric"
+          ],
+          "default": "metric__str",
+          "description": "the distance metric to use for the tree.  The default metric is minkowski, and with p=2 is equivalent to the standard Euclidean metric. See the documentation of :class:`DistanceMetric` for a list of available metrics. If metric is \"precomputed\", X is assumed to be a distance matrix and must be square during fit. X may be a :term:`sparse graph`, in which case only \"nonzero\" elements may be considered neighbors."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "metric__str",
+            "init_args": {
+              "semantic_types": [
+                "metric"
+              ],
+              "_structural_type": "str",
+              "default": "minkowski"
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "metric__Callable",
+            "init_args": {
+              "semantic_types": [
+                "metric"
+              ],
+              "_structural_type": "Callable"
+            }
+          }
+        ]
+      },
+      {
+        "name": "metric_params",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "metric_params"
+          ],
+          "default": "metric_params__None",
+          "description": "Additional keyword arguments for the metric function."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "metric_params__dict",
+            "init_args": {
+              "semantic_types": [
+                "metric_params"
+              ],
+              "_structural_type": "dict"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "metric_params__None",
+            "init_args": {
+              "semantic_types": [
+                "metric_params"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "n_jobs",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "n_jobs"
+          ],
+          "default": "n_jobs__None",
+          "description": "The number of parallel jobs to run for neighbors search. ``None`` means 1 unless in a :obj:`joblib.parallel_backend` context. ``-1`` means using all processors. See :term:`Glossary <n_jobs>` for more details. Doesn't affect :meth:`fit` method."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "n_jobs__int",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "n_jobs__None",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      }
+    ],
+    "Params": [
+      {
+        "name": "classes_",
+        "type": "array of shape (n_classes,)",
+        "description": "Class labels known to the classifier"
+      },
+      {
+        "name": "effective_metric_",
+        "type": "str or callble",
+        "description": "The distance metric used. It will be same as the `metric` parameter or a synonym of it, e.g. 'euclidean' if the `metric` parameter set to 'minkowski' and `p` parameter set to 2."
+      },
+      {
+        "name": "effective_metric_params_",
+        "type": "dict",
+        "description": "Additional keyword arguments for the metric function. For most metrics will be same with `metric_params` parameter, but may also contain the `p` parameter value if the `effective_metric_` attribute is set to 'minkowski'."
+      },
+      {
+        "name": "n_samples_fit_",
+        "type": "int",
+        "description": "Number of samples in the fitted data."
+      },
+      {
+        "name": "outputs_2d_",
+        "type": "bool",
+        "description": "False when `y`'s shape is (n_samples, ) or (n_samples, 1) during fit otherwise True."
+      }
+    ]
+  },
+  "KNeighborsRegressor": {
+    "name": "sklearn.neighbors._regression.KNeighborsRegressor",
+    "common_name": "KNeighborsRegressor",
+    "description": "Regression based on k-nearest neighbors. The target is predicted by local interpolation of the targets associated of the nearest neighbors in the training set.  Read more in the :ref:`User Guide <regression>`.  .. versionadded:: 0.9",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "type": "Hyperparameter",
+        "name": "n_neighbors",
+        "init_args": {
+          "semantic_types": [
+            "n_neighbors"
+          ],
+          "_structural_type": "int",
+          "default": 5,
+          "description": "Number of neighbors to use by default for :meth:`kneighbors` queries."
+        }
+      },
+      {
+        "name": "weights",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "weights"
+          ],
+          "default": "weights__str",
+          "description": "weight function used in prediction.  Possible values:  - 'uniform' : uniform weights.  All points in each neighborhood   are weighted equally. - 'distance' : weight points by the inverse of their distance.   in this case, closer neighbors of a query point will have a   greater influence than neighbors which are further away. - [callable] : a user-defined function which accepts an   array of distances, and returns an array of the same shape   containing the weights.  Uniform weights are used by default."
+        },
+        "hyperparams": [
+          {
+            "type": "Enumeration",
+            "name": "weights__str",
+            "init_args": {
+              "semantic_types": [
+                "weights"
+              ],
+              "values": [
+                "uniform",
+                "distance"
+              ],
+              "_structural_type": "str",
+              "default": "uniform"
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "weights__Callable",
+            "init_args": {
+              "semantic_types": [
+                "weights"
+              ],
+              "_structural_type": "Callable"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Enumeration",
+        "name": "algorithm",
+        "init_args": {
+          "semantic_types": [
+            "algorithm"
+          ],
+          "values": [
+            "auto",
+            "ball_tree",
+            "kd_tree",
+            "brute"
+          ],
+          "_structural_type": "str",
+          "default": "auto",
+          "description": "Algorithm used to compute the nearest neighbors:  - 'ball_tree' will use :class:`BallTree` - 'kd_tree' will use :class:`KDTree` - 'brute' will use a brute-force search. - 'auto' will attempt to decide the most appropriate algorithm   based on the values passed to :meth:`fit` method.  Note: fitting on sparse input will override the setting of this parameter, using brute force."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "leaf_size",
+        "init_args": {
+          "semantic_types": [
+            "leaf_size"
+          ],
+          "_structural_type": "int",
+          "default": 30,
+          "description": "Leaf size passed to BallTree or KDTree.  This can affect the speed of the construction and query, as well as the memory required to store the tree.  The optimal value depends on the nature of the problem."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "p",
+        "init_args": {
+          "semantic_types": [
+            "p"
+          ],
+          "_structural_type": "int",
+          "default": 2,
+          "description": "Power parameter for the Minkowski metric. When p = 1, this is equivalent to using manhattan_distance (l1), and euclidean_distance (l2) for p = 2. For arbitrary p, minkowski_distance (l_p) is used."
+        }
+      },
+      {
+        "name": "metric",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "metric"
+          ],
+          "default": "metric__str",
+          "description": "the distance metric to use for the tree.  The default metric is minkowski, and with p=2 is equivalent to the standard Euclidean metric. See the documentation of :class:`DistanceMetric` for a list of available metrics. If metric is \"precomputed\", X is assumed to be a distance matrix and must be square during fit. X may be a :term:`sparse graph`, in which case only \"nonzero\" elements may be considered neighbors."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "metric__str",
+            "init_args": {
+              "semantic_types": [
+                "metric"
+              ],
+              "_structural_type": "str",
+              "default": "minkowski"
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "metric__Callable",
+            "init_args": {
+              "semantic_types": [
+                "metric"
+              ],
+              "_structural_type": "Callable"
+            }
+          }
+        ]
+      },
+      {
+        "name": "metric_params",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "metric_params"
+          ],
+          "default": "metric_params__None",
+          "description": "Additional keyword arguments for the metric function."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "metric_params__dict",
+            "init_args": {
+              "semantic_types": [
+                "metric_params"
+              ],
+              "_structural_type": "dict"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "metric_params__None",
+            "init_args": {
+              "semantic_types": [
+                "metric_params"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "n_jobs",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "n_jobs"
+          ],
+          "default": "n_jobs__None",
+          "description": "The number of parallel jobs to run for neighbors search. ``None`` means 1 unless in a :obj:`joblib.parallel_backend` context. ``-1`` means using all processors. See :term:`Glossary <n_jobs>` for more details. Doesn't affect :meth:`fit` method."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "n_jobs__int",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "n_jobs__None",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      }
+    ],
+    "Params": [
+      {
+        "name": "effective_metric_",
+        "type": "str or callable",
+        "description": "The distance metric to use. It will be same as the `metric` parameter or a synonym of it, e.g. 'euclidean' if the `metric` parameter set to 'minkowski' and `p` parameter set to 2."
+      },
+      {
+        "name": "effective_metric_params_",
+        "type": "dict",
+        "description": "Additional keyword arguments for the metric function. For most metrics will be same with `metric_params` parameter, but may also contain the `p` parameter value if the `effective_metric_` attribute is set to 'minkowski'."
+      },
+      {
+        "name": "n_samples_fit_",
+        "type": "int",
+        "description": "Number of samples in the fitted data."
+      }
+    ]
+  },
+  "KNeighborsTransformer": {
+    "name": "sklearn.neighbors._graph.KNeighborsTransformer",
+    "common_name": "KNeighborsTransformer",
+    "description": "Transform X into a (weighted) graph of k nearest neighbors The transformed data is a sparse graph as returned by kneighbors_graph.  Read more in the :ref:`User Guide <neighbors_transformer>`.  .. versionadded:: 0.22",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "type": "Enumeration",
+        "name": "mode",
+        "init_args": {
+          "semantic_types": [
+            "mode"
+          ],
+          "values": [
+            "distance",
+            "connectivity"
+          ],
+          "_structural_type": "str",
+          "default": "distance",
+          "description": "Type of returned matrix: 'connectivity' will return the connectivity matrix with ones and zeros, and 'distance' will return the distances between neighbors according to the given metric."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "n_neighbors",
+        "init_args": {
+          "semantic_types": [
+            "n_neighbors"
+          ],
+          "_structural_type": "int",
+          "default": 5,
+          "description": "Number of neighbors for each sample in the transformed sparse graph. For compatibility reasons, as each sample is considered as its own neighbor, one extra neighbor will be computed when mode == 'distance'. In this case, the sparse graph contains (n_neighbors + 1) neighbors."
+        }
+      },
+      {
+        "type": "Enumeration",
+        "name": "algorithm",
+        "init_args": {
+          "semantic_types": [
+            "algorithm"
+          ],
+          "values": [
+            "auto",
+            "ball_tree",
+            "kd_tree",
+            "brute"
+          ],
+          "_structural_type": "str",
+          "default": "auto",
+          "description": "Algorithm used to compute the nearest neighbors:  - 'ball_tree' will use :class:`BallTree` - 'kd_tree' will use :class:`KDTree` - 'brute' will use a brute-force search. - 'auto' will attempt to decide the most appropriate algorithm   based on the values passed to :meth:`fit` method.  Note: fitting on sparse input will override the setting of this parameter, using brute force."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "leaf_size",
+        "init_args": {
+          "semantic_types": [
+            "leaf_size"
+          ],
+          "_structural_type": "int",
+          "default": 30,
+          "description": "Leaf size passed to BallTree or KDTree.  This can affect the speed of the construction and query, as well as the memory required to store the tree.  The optimal value depends on the nature of the problem."
+        }
+      },
+      {
+        "name": "metric",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "metric"
+          ],
+          "default": "metric__str",
+          "description": "metric to use for distance computation. Any metric from scikit-learn or scipy.spatial.distance can be used.  If metric is a callable function, it is called on each pair of instances (rows) and the resulting value recorded. The callable should take two arrays as input and return one value indicating the distance between them. This works for Scipy's metrics, but is less efficient than passing the metric name as a string.  Distance matrices are not supported.  Valid values for metric are:  - from scikit-learn: ['cityblock', 'cosine', 'euclidean', 'l1', 'l2',   'manhattan']  - from scipy.spatial.distance: ['braycurtis', 'canberra', 'chebyshev',   'correlation', 'dice', 'hamming', 'jaccard', 'kulsinski',   'mahalanobis', 'minkowski', 'rogerstanimoto', 'russellrao',   'seuclidean', 'sokalmichener', 'sokalsneath', 'sqeuclidean',   'yule']  See the documentation for scipy.spatial.distance for details on these metrics."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "metric__str",
+            "init_args": {
+              "semantic_types": [
+                "metric"
+              ],
+              "_structural_type": "str",
+              "default": "minkowski"
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "metric__Callable",
+            "init_args": {
+              "semantic_types": [
+                "metric"
+              ],
+              "_structural_type": "Callable"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "p",
+        "init_args": {
+          "semantic_types": [
+            "p"
+          ],
+          "_structural_type": "int",
+          "default": 2,
+          "description": "Parameter for the Minkowski metric from sklearn.metrics.pairwise.pairwise_distances. When p = 1, this is equivalent to using manhattan_distance (l1), and euclidean_distance (l2) for p = 2. For arbitrary p, minkowski_distance (l_p) is used."
+        }
+      },
+      {
+        "name": "metric_params",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "metric_params"
+          ],
+          "default": "metric_params__None",
+          "description": "Additional keyword arguments for the metric function."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "metric_params__dict",
+            "init_args": {
+              "semantic_types": [
+                "metric_params"
+              ],
+              "_structural_type": "dict"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "metric_params__None",
+            "init_args": {
+              "semantic_types": [
+                "metric_params"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "n_jobs",
+        "init_args": {
+          "semantic_types": [
+            "n_jobs"
+          ],
+          "_structural_type": "int",
+          "default": 1,
+          "description": "The number of parallel jobs to run for neighbors search. If ``-1``, then the number of jobs is set to the number of CPU cores."
+        }
+      }
+    ],
+    "Params": [
+      {
+        "name": "effective_metric_",
+        "type": "str or callable",
+        "description": "The distance metric used. It will be same as the `metric` parameter or a synonym of it, e.g. 'euclidean' if the `metric` parameter set to 'minkowski' and `p` parameter set to 2."
+      },
+      {
+        "name": "effective_metric_params_",
+        "type": "dict",
+        "description": "Additional keyword arguments for the metric function. For most metrics will be same with `metric_params` parameter, but may also contain the `p` parameter value if the `effective_metric_` attribute is set to 'minkowski'."
+      },
+      {
+        "name": "n_samples_fit_",
+        "type": "int",
+        "description": "Number of samples in the fitted data."
+      }
+    ]
+  },
+  "KernelDensity": {
+    "name": "sklearn.neighbors._kde.KernelDensity",
+    "common_name": "KernelDensity",
+    "description": "Kernel Density Estimation. Read more in the :ref:`User Guide <kernel_density>`.",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "type": "Hyperparameter",
+        "name": "bandwidth",
+        "init_args": {
+          "semantic_types": [
+            "bandwidth"
+          ],
+          "_structural_type": "float",
+          "default": 1.0,
+          "description": "The bandwidth of the kernel."
+        }
+      },
+      {
+        "type": "Enumeration",
+        "name": "algorithm",
+        "init_args": {
+          "semantic_types": [
+            "algorithm"
+          ],
+          "values": [
+            "kd_tree",
+            "ball_tree",
+            "auto"
+          ],
+          "_structural_type": "str",
+          "default": "auto",
+          "description": "The tree algorithm to use."
+        }
+      },
+      {
+        "type": "Enumeration",
+        "name": "kernel",
+        "init_args": {
+          "semantic_types": [
+            "kernel"
+          ],
+          "values": [
+            "gaussian",
+            "tophat",
+            "epanechnikov",
+            "exponential",
+            "linear",
+            "cosine"
+          ],
+          "_structural_type": "str",
+          "default": "gaussian",
+          "description": "The kernel to use."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "metric",
+        "init_args": {
+          "semantic_types": [
+            "metric"
+          ],
+          "_structural_type": "str",
+          "default": "euclidean",
+          "description": "The distance metric to use.  Note that not all metrics are valid with all algorithms.  Refer to the documentation of :class:`BallTree` and :class:`KDTree` for a description of available algorithms.  Note that the normalization of the density output is correct only for the Euclidean distance metric. Default is 'euclidean'."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "atol",
+        "init_args": {
+          "semantic_types": [
+            "atol"
+          ],
+          "_structural_type": "float",
+          "default": 0,
+          "description": "The desired absolute tolerance of the result.  A larger tolerance will generally lead to faster execution."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "rtol",
+        "init_args": {
+          "semantic_types": [
+            "rtol"
+          ],
+          "_structural_type": "float",
+          "default": 0,
+          "description": "The desired relative tolerance of the result.  A larger tolerance will generally lead to faster execution."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "breadth_first",
+        "init_args": {
+          "semantic_types": [
+            "breadth_first"
+          ],
+          "_structural_type": "bool",
+          "default": "True",
+          "description": "If true (default), use a breadth-first approach to the problem. Otherwise use a depth-first approach."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "leaf_size",
+        "init_args": {
+          "semantic_types": [
+            "leaf_size"
+          ],
+          "_structural_type": "int",
+          "default": 40,
+          "description": "Specify the leaf size of the underlying tree.  See :class:`BallTree` or :class:`KDTree` for details."
+        }
+      },
+      {
+        "name": "metric_params",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "metric_params"
+          ],
+          "default": "metric_params__None",
+          "description": "Additional parameters to be passed to the tree for use with the metric.  For more information, see the documentation of :class:`BallTree` or :class:`KDTree`."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "metric_params__dict",
+            "init_args": {
+              "semantic_types": [
+                "metric_params"
+              ],
+              "_structural_type": "dict"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "metric_params__None",
+            "init_args": {
+              "semantic_types": [
+                "metric_params"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      }
+    ],
+    "Params": [
+      {
+        "name": "tree_",
+        "type": "``BinaryTree`` instance",
+        "description": "The tree algorithm for fast generalized N-point problems."
+      }
+    ]
+  },
+  "LocalOutlierFactor": {
+    "name": "sklearn.neighbors._lof.LocalOutlierFactor",
+    "common_name": "LocalOutlierFactor",
+    "description": "Unsupervised Outlier Detection using Local Outlier Factor (LOF) The anomaly score of each sample is called Local Outlier Factor. It measures the local deviation of density of a given sample with respect to its neighbors. It is local in that the anomaly score depends on how isolated the object is with respect to the surrounding neighborhood. More precisely, locality is given by k-nearest neighbors, whose distance is used to estimate the local density. By comparing the local density of a sample to the local densities of its neighbors, one can identify samples that have a substantially lower density than their neighbors. These are considered outliers.  .. versionadded:: 0.19",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "type": "Hyperparameter",
+        "name": "n_neighbors",
+        "init_args": {
+          "semantic_types": [
+            "n_neighbors"
+          ],
+          "_structural_type": "int",
+          "default": 20,
+          "description": "Number of neighbors to use by default for :meth:`kneighbors` queries. If n_neighbors is larger than the number of samples provided, all samples will be used."
+        }
+      },
+      {
+        "type": "Enumeration",
+        "name": "algorithm",
+        "init_args": {
+          "semantic_types": [
+            "algorithm"
+          ],
+          "values": [
+            "auto",
+            "ball_tree",
+            "kd_tree",
+            "brute"
+          ],
+          "_structural_type": "str",
+          "default": "auto",
+          "description": "Algorithm used to compute the nearest neighbors:  - 'ball_tree' will use :class:`BallTree` - 'kd_tree' will use :class:`KDTree` - 'brute' will use a brute-force search. - 'auto' will attempt to decide the most appropriate algorithm   based on the values passed to :meth:`fit` method.  Note: fitting on sparse input will override the setting of this parameter, using brute force."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "leaf_size",
+        "init_args": {
+          "semantic_types": [
+            "leaf_size"
+          ],
+          "_structural_type": "int",
+          "default": 30,
+          "description": "Leaf size passed to :class:`BallTree` or :class:`KDTree`. This can affect the speed of the construction and query, as well as the memory required to store the tree. The optimal value depends on the nature of the problem."
+        }
+      },
+      {
+        "name": "metric",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "metric"
+          ],
+          "default": "metric__str",
+          "description": "metric used for the distance computation. Any metric from scikit-learn or scipy.spatial.distance can be used.  If metric is \"precomputed\", X is assumed to be a distance matrix and must be square. X may be a sparse matrix, in which case only \"nonzero\" elements may be considered neighbors.  If metric is a callable function, it is called on each pair of instances (rows) and the resulting value recorded. The callable should take two arrays as input and return one value indicating the distance between them. This works for Scipy's metrics, but is less efficient than passing the metric name as a string.  Valid values for metric are:  - from scikit-learn: ['cityblock', 'cosine', 'euclidean', 'l1', 'l2',   'manhattan']  - from scipy.spatial.distance: ['braycurtis', 'canberra', 'chebyshev',   'correlation', 'dice', 'hamming', 'jaccard', 'kulsinski',   'mahalanobis', 'minkowski', 'rogerstanimoto', 'russellrao',   'seuclidean', 'sokalmichener', 'sokalsneath', 'sqeuclidean',   'yule']  See the documentation for scipy.spatial.distance for details on these metrics: https://docs.scipy.org/doc/scipy/reference/spatial.distance.html"
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "metric__str",
+            "init_args": {
+              "semantic_types": [
+                "metric"
+              ],
+              "_structural_type": "str",
+              "default": "minkowski"
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "metric__Callable",
+            "init_args": {
+              "semantic_types": [
+                "metric"
+              ],
+              "_structural_type": "Callable"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "p",
+        "init_args": {
+          "semantic_types": [
+            "p"
+          ],
+          "_structural_type": "int",
+          "default": 2,
+          "description": "Parameter for the Minkowski metric from :func:`sklearn.metrics.pairwise.pairwise_distances`. When p = 1, this is equivalent to using manhattan_distance (l1), and euclidean_distance (l2) for p = 2. For arbitrary p, minkowski_distance (l_p) is used."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "metric_params",
+        "init_args": {
+          "semantic_types": [
+            "metric_params"
+          ],
+          "_structural_type": "dict",
+          "default": "None",
+          "description": "Additional keyword arguments for the metric function."
+        }
+      },
+      {
+        "name": "contamination",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "contamination"
+          ],
+          "default": "contamination__str",
+          "description": "The amount of contamination of the data set, i.e. the proportion of outliers in the data set. When fitting this is used to define the threshold on the scores of the samples.  - if 'auto', the threshold is determined as in the   original paper, - if a float, the contamination should be in the range [0, 0.5].  .. versionchanged:: 0.22    The default value of ``contamination`` changed from 0.1    to ``'auto'``."
+        },
+        "hyperparams": [
+          {
+            "type": "Constant",
+            "name": "contamination__str",
+            "init_args": {
+              "semantic_types": [
+                "contamination"
+              ],
+              "_structural_type": "str",
+              "default": "auto"
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "contamination__float",
+            "init_args": {
+              "semantic_types": [
+                "contamination"
+              ],
+              "_structural_type": "float"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "novelty",
+        "init_args": {
+          "semantic_types": [
+            "novelty"
+          ],
+          "_structural_type": "bool",
+          "default": "False",
+          "description": "By default, LocalOutlierFactor is only meant to be used for outlier detection (novelty=False). Set novelty to True if you want to use LocalOutlierFactor for novelty detection. In this case be aware that that you should only use predict, decision_function and score_samples on new unseen data and not on the training set.  .. versionadded:: 0.20"
+        }
+      },
+      {
+        "name": "n_jobs",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "n_jobs"
+          ],
+          "default": "n_jobs__None",
+          "description": "The number of parallel jobs to run for neighbors search. ``None`` means 1 unless in a :obj:`joblib.parallel_backend` context. ``-1`` means using all processors. See :term:`Glossary <n_jobs>` for more details."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "n_jobs__int",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "n_jobs__None",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      }
+    ],
+    "Params": [
+      {
+        "name": "negative_outlier_factor_",
+        "type": "ndarray of shape (n_samples,)",
+        "description": "The opposite LOF of the training samples. The higher, the more normal. Inliers tend to have a LOF score close to 1 (``negative_outlier_factor_`` close to -1), while outliers tend to have a larger LOF score.  The local outlier factor (LOF) of a sample captures its supposed 'degree of abnormality'. It is the average of the ratio of the local reachability density of a sample and those of its k-nearest neighbors."
+      },
+      {
+        "name": "n_neighbors_",
+        "type": "int",
+        "description": "The actual number of neighbors used for :meth:`kneighbors` queries."
+      },
+      {
+        "name": "offset_",
+        "type": "float",
+        "description": "Offset used to obtain binary labels from the raw scores. Observations having a negative_outlier_factor smaller than `offset_` are detected as abnormal. The offset is set to -1.5 (inliers score around -1), except when a contamination parameter different than \"auto\" is provided. In that case, the offset is defined in such a way we obtain the expected number of outliers in training.  .. versionadded:: 0.20"
+      },
+      {
+        "name": "effective_metric_",
+        "type": "str",
+        "description": "The effective metric used for the distance computation."
+      },
+      {
+        "name": "effective_metric_params_",
+        "type": "dict",
+        "description": "The effective additional keyword arguments for the metric function."
+      },
+      {
+        "name": "n_samples_fit_",
+        "type": "int",
+        "description": "It is the number of samples in the fitted data."
+      }
+    ]
+  },
+  "NearestCentroid": {
+    "name": "sklearn.neighbors._nearest_centroid.NearestCentroid",
+    "common_name": "NearestCentroid",
+    "description": "Nearest centroid classifier. Each class is represented by its centroid, with test samples classified to the class with the nearest centroid.  Read more in the :ref:`User Guide <nearest_centroid_classifier>`.",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "name": "metric",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "metric"
+          ],
+          "default": "metric__str",
+          "description": "The metric to use when calculating distance between instances in a feature array. If metric is a string or callable, it must be one of the options allowed by metrics.pairwise.pairwise_distances for its metric parameter. The centroids for the samples corresponding to each class is the point from which the sum of the distances (according to the metric) of all samples that belong to that particular class are minimized. If the \"manhattan\" metric is provided, this centroid is the median and for all other metrics, the centroid is now set to be the mean.  .. versionchanged:: 0.19     ``metric='precomputed'`` was deprecated and now raises an error"
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "metric__str",
+            "init_args": {
+              "semantic_types": [
+                "metric"
+              ],
+              "_structural_type": "str",
+              "default": "euclidean"
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "metric__Callable",
+            "init_args": {
+              "semantic_types": [
+                "metric"
+              ],
+              "_structural_type": "Callable"
+            }
+          }
+        ]
+      },
+      {
+        "name": "shrink_threshold",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "shrink_threshold"
+          ],
+          "default": "shrink_threshold__None",
+          "description": "Threshold for shrinking centroids to remove features."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "shrink_threshold__float",
+            "init_args": {
+              "semantic_types": [
+                "shrink_threshold"
+              ],
+              "_structural_type": "float"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "shrink_threshold__None",
+            "init_args": {
+              "semantic_types": [
+                "shrink_threshold"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      }
+    ],
+    "Params": [
+      {
+        "name": "centroids_",
+        "type": "array-like of shape (n_classes, n_features)",
+        "description": "Centroid of each class."
+      },
+      {
+        "name": "classes_",
+        "type": "array of shape (n_classes,)",
+        "description": "The unique classes labels."
+      }
+    ]
+  },
+  "NearestNeighbors": {
+    "name": "sklearn.neighbors._unsupervised.NearestNeighbors",
+    "common_name": "NearestNeighbors",
+    "description": "Unsupervised learner for implementing neighbor searches. Read more in the :ref:`User Guide <unsupervised_neighbors>`.  .. versionadded:: 0.9",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "type": "Hyperparameter",
+        "name": "n_neighbors",
+        "init_args": {
+          "semantic_types": [
+            "n_neighbors"
+          ],
+          "_structural_type": "int",
+          "default": 5,
+          "description": "Number of neighbors to use by default for :meth:`kneighbors` queries."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "radius",
+        "init_args": {
+          "semantic_types": [
+            "radius"
+          ],
+          "_structural_type": "float",
+          "default": 1.0,
+          "description": "Range of parameter space to use by default for :meth:`radius_neighbors` queries."
+        }
+      },
+      {
+        "type": "Enumeration",
+        "name": "algorithm",
+        "init_args": {
+          "semantic_types": [
+            "algorithm"
+          ],
+          "values": [
+            "auto",
+            "ball_tree",
+            "kd_tree",
+            "brute"
+          ],
+          "_structural_type": "str",
+          "default": "auto",
+          "description": "Algorithm used to compute the nearest neighbors:  - 'ball_tree' will use :class:`BallTree` - 'kd_tree' will use :class:`KDTree` - 'brute' will use a brute-force search. - 'auto' will attempt to decide the most appropriate algorithm   based on the values passed to :meth:`fit` method.  Note: fitting on sparse input will override the setting of this parameter, using brute force."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "leaf_size",
+        "init_args": {
+          "semantic_types": [
+            "leaf_size"
+          ],
+          "_structural_type": "int",
+          "default": 30,
+          "description": "Leaf size passed to BallTree or KDTree.  This can affect the speed of the construction and query, as well as the memory required to store the tree.  The optimal value depends on the nature of the problem."
+        }
+      },
+      {
+        "name": "metric",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "metric"
+          ],
+          "default": "metric__str",
+          "description": "the distance metric to use for the tree.  The default metric is minkowski, and with p=2 is equivalent to the standard Euclidean metric. See the documentation of :class:`DistanceMetric` for a list of available metrics. If metric is \"precomputed\", X is assumed to be a distance matrix and must be square during fit. X may be a :term:`sparse graph`, in which case only \"nonzero\" elements may be considered neighbors."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "metric__str",
+            "init_args": {
+              "semantic_types": [
+                "metric"
+              ],
+              "_structural_type": "str",
+              "default": "minkowski"
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "metric__Callable",
+            "init_args": {
+              "semantic_types": [
+                "metric"
+              ],
+              "_structural_type": "Callable"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "p",
+        "init_args": {
+          "semantic_types": [
+            "p"
+          ],
+          "_structural_type": "int",
+          "default": 2,
+          "description": "Parameter for the Minkowski metric from sklearn.metrics.pairwise.pairwise_distances. When p = 1, this is equivalent to using manhattan_distance (l1), and euclidean_distance (l2) for p = 2. For arbitrary p, minkowski_distance (l_p) is used."
+        }
+      },
+      {
+        "name": "metric_params",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "metric_params"
+          ],
+          "default": "metric_params__None",
+          "description": "Additional keyword arguments for the metric function."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "metric_params__dict",
+            "init_args": {
+              "semantic_types": [
+                "metric_params"
+              ],
+              "_structural_type": "dict"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "metric_params__None",
+            "init_args": {
+              "semantic_types": [
+                "metric_params"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "n_jobs",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "n_jobs"
+          ],
+          "default": "n_jobs__None",
+          "description": "The number of parallel jobs to run for neighbors search. ``None`` means 1 unless in a :obj:`joblib.parallel_backend` context. ``-1`` means using all processors. See :term:`Glossary <n_jobs>` for more details."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "n_jobs__int",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "n_jobs__None",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      }
+    ],
+    "Params": [
+      {
+        "name": "effective_metric_",
+        "type": "str",
+        "description": "Metric used to compute distances to neighbors."
+      },
+      {
+        "name": "effective_metric_params_",
+        "type": "dict",
+        "description": "Parameters for the metric used to compute distances to neighbors."
+      },
+      {
+        "name": "n_samples_fit_",
+        "type": "int",
+        "description": "Number of samples in the fitted data."
+      }
+    ]
+  },
+  "NeighborhoodComponentsAnalysis": {
+    "name": "sklearn.neighbors._nca.NeighborhoodComponentsAnalysis",
+    "common_name": "NeighborhoodComponentsAnalysis",
+    "description": "Neighborhood Components Analysis Neighborhood Component Analysis (NCA) is a machine learning algorithm for metric learning. It learns a linear transformation in a supervised fashion to improve the classification accuracy of a stochastic nearest neighbors rule in the transformed space.  Read more in the :ref:`User Guide <nca>`.",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "name": "n_components",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "n_components"
+          ],
+          "default": "n_components__None",
+          "description": "Preferred dimensionality of the projected space. If None it will be set to ``n_features``."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "n_components__int",
+            "init_args": {
+              "semantic_types": [
+                "n_components"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "n_components__None",
+            "init_args": {
+              "semantic_types": [
+                "n_components"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Enumeration",
+        "name": "init",
+        "init_args": {
+          "semantic_types": [
+            "init"
+          ],
+          "values": [
+            "auto",
+            "pca",
+            "lda",
+            "identity",
+            "random"
+          ],
+          "_structural_type": "str",
+          "default": "auto",
+          "description": "Initialization of the linear transformation. Possible options are 'auto', 'pca', 'lda', 'identity', 'random', and a numpy array of shape (n_features_a, n_features_b).  'auto'     Depending on ``n_components``, the most reasonable initialization     will be chosen. If ``n_components <= n_classes`` we use 'lda', as     it uses labels information. If not, but     ``n_components < min(n_features, n_samples)``, we use 'pca', as     it projects data in meaningful directions (those of higher     variance). Otherwise, we just use 'identity'.  'pca'     ``n_components`` principal components of the inputs passed     to :meth:`fit` will be used to initialize the transformation.     (See :class:`~sklearn.decomposition.PCA`)  'lda'     ``min(n_components, n_classes)`` most discriminative     components of the inputs passed to :meth:`fit` will be used to     initialize the transformation. (If ``n_components > n_classes``,     the rest of the components will be zero.) (See     :class:`~sklearn.discriminant_analysis.LinearDiscriminantAnalysis`)  'identity'     If ``n_components`` is strictly smaller than the     dimensionality of the inputs passed to :meth:`fit`, the identity     matrix will be truncated to the first ``n_components`` rows.  'random'     The initial transformation will be a random array of shape     `(n_components, n_features)`. Each value is sampled from the     standard normal distribution.  numpy array     n_features_b must match the dimensionality of the inputs passed to     :meth:`fit` and n_features_a must be less than or equal to that.     If ``n_components`` is not None, n_features_a must match it."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "warm_start",
+        "init_args": {
+          "semantic_types": [
+            "warm_start"
+          ],
+          "_structural_type": "bool",
+          "default": "False",
+          "description": "If True and :meth:`fit` has been called before, the solution of the previous call to :meth:`fit` is used as the initial linear transformation (``n_components`` and ``init`` will be ignored)."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "max_iter",
+        "init_args": {
+          "semantic_types": [
+            "max_iter"
+          ],
+          "_structural_type": "int",
+          "default": 50,
+          "description": "Maximum number of iterations in the optimization."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "tol",
+        "init_args": {
+          "semantic_types": [
+            "tol"
+          ],
+          "_structural_type": "float",
+          "default": 1e-05,
+          "description": "Convergence tolerance for the optimization."
+        }
+      },
+      {
+        "name": "callback",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "callback"
+          ],
+          "default": "callback__None",
+          "description": "If not None, this function is called after every iteration of the optimizer, taking as arguments the current solution (flattened transformation matrix) and the number of iterations. This might be useful in case one wants to examine or store the transformation found after each iteration."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "callback__Callable",
+            "init_args": {
+              "semantic_types": [
+                "callback"
+              ],
+              "_structural_type": "Callable"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "callback__None",
+            "init_args": {
+              "semantic_types": [
+                "callback"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "verbose",
+        "init_args": {
+          "semantic_types": [
+            "verbose"
+          ],
+          "_structural_type": "int",
+          "default": 0,
+          "description": "If 0, no progress messages will be printed. If 1, progress messages will be printed to stdout. If > 1, progress messages will be printed and the ``disp`` parameter of :func:`scipy.optimize.minimize` will be set to ``verbose - 2``."
+        }
+      },
+      {
+        "name": "random_state",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "random_state"
+          ],
+          "default": "random_state__None",
+          "description": "A pseudo random number generator object or a seed for it if int. If ``init='random'``, ``random_state`` is used to initialize the random transformation. If ``init='pca'``, ``random_state`` is passed as an argument to PCA when initializing the transformation. Pass an int for reproducible results across multiple function calls. See :term: `Glossary <random_state>`."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "random_state__int",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "random_state__None",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      }
+    ],
+    "Params": [
+      {
+        "name": "components_",
+        "type": "ndarray of shape (n_components, n_features)",
+        "description": "The linear transformation learned during fitting."
+      },
+      {
+        "name": "n_iter_",
+        "type": "int",
+        "description": "Counts the number of iterations performed by the optimizer."
+      },
+      {
+        "name": "random_state_",
+        "type": "numpy.RandomState",
+        "description": "Pseudo random number generator object used during initialization."
+      }
+    ]
+  },
+  "RadiusNeighborsClassifier": {
+    "name": "sklearn.neighbors._classification.RadiusNeighborsClassifier",
+    "common_name": "RadiusNeighborsClassifier",
+    "description": "Classifier implementing a vote among neighbors within a given radius Read more in the :ref:`User Guide <classification>`.",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "type": "Hyperparameter",
+        "name": "radius",
+        "init_args": {
+          "semantic_types": [
+            "radius"
+          ],
+          "_structural_type": "float",
+          "default": 1.0,
+          "description": "Range of parameter space to use by default for :meth:`radius_neighbors` queries."
+        }
+      },
+      {
+        "name": "weights",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "weights"
+          ],
+          "default": "weights__str",
+          "description": "weight function used in prediction.  Possible values:  - 'uniform' : uniform weights.  All points in each neighborhood   are weighted equally. - 'distance' : weight points by the inverse of their distance.   in this case, closer neighbors of a query point will have a   greater influence than neighbors which are further away. - [callable] : a user-defined function which accepts an   array of distances, and returns an array of the same shape   containing the weights.  Uniform weights are used by default."
+        },
+        "hyperparams": [
+          {
+            "type": "Enumeration",
+            "name": "weights__str",
+            "init_args": {
+              "semantic_types": [
+                "weights"
+              ],
+              "values": [
+                "uniform",
+                "distance"
+              ],
+              "_structural_type": "str",
+              "default": "uniform"
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "weights__Callable",
+            "init_args": {
+              "semantic_types": [
+                "weights"
+              ],
+              "_structural_type": "Callable"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Enumeration",
+        "name": "algorithm",
+        "init_args": {
+          "semantic_types": [
+            "algorithm"
+          ],
+          "values": [
+            "auto",
+            "ball_tree",
+            "kd_tree",
+            "brute"
+          ],
+          "_structural_type": "str",
+          "default": "auto",
+          "description": "Algorithm used to compute the nearest neighbors:  - 'ball_tree' will use :class:`BallTree` - 'kd_tree' will use :class:`KDTree` - 'brute' will use a brute-force search. - 'auto' will attempt to decide the most appropriate algorithm   based on the values passed to :meth:`fit` method.  Note: fitting on sparse input will override the setting of this parameter, using brute force."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "leaf_size",
+        "init_args": {
+          "semantic_types": [
+            "leaf_size"
+          ],
+          "_structural_type": "int",
+          "default": 30,
+          "description": "Leaf size passed to BallTree or KDTree.  This can affect the speed of the construction and query, as well as the memory required to store the tree.  The optimal value depends on the nature of the problem."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "p",
+        "init_args": {
+          "semantic_types": [
+            "p"
+          ],
+          "_structural_type": "int",
+          "default": 2,
+          "description": "Power parameter for the Minkowski metric. When p = 1, this is equivalent to using manhattan_distance (l1), and euclidean_distance (l2) for p = 2. For arbitrary p, minkowski_distance (l_p) is used."
+        }
+      },
+      {
+        "name": "metric",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "metric"
+          ],
+          "default": "metric__str",
+          "description": "the distance metric to use for the tree.  The default metric is minkowski, and with p=2 is equivalent to the standard Euclidean metric. See the documentation of :class:`DistanceMetric` for a list of available metrics. If metric is \"precomputed\", X is assumed to be a distance matrix and must be square during fit. X may be a :term:`sparse graph`, in which case only \"nonzero\" elements may be considered neighbors."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "metric__str",
+            "init_args": {
+              "semantic_types": [
+                "metric"
+              ],
+              "_structural_type": "str",
+              "default": "minkowski"
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "metric__Callable",
+            "init_args": {
+              "semantic_types": [
+                "metric"
+              ],
+              "_structural_type": "Callable"
+            }
+          }
+        ]
+      },
+      {
+        "name": "outlier_label",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "outlier_label"
+          ],
+          "default": "outlier_label__None",
+          "description": "label for outlier samples (samples with no neighbors in given radius).  - manual label: str or int label (should be the same type as y)   or list of manual labels if multi-output is used. - 'most_frequent' : assign the most frequent label of y to outliers. - None : when any outlier is detected, ValueError will be raised."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "outlier_label__str",
+            "init_args": {
+              "semantic_types": [
+                "outlier_label"
+              ],
+              "_structural_type": "str"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "outlier_label__str",
+            "init_args": {
+              "semantic_types": [
+                "outlier_label"
+              ],
+              "_structural_type": "str"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "outlier_label__None",
+            "init_args": {
+              "semantic_types": [
+                "outlier_label"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "metric_params",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "metric_params"
+          ],
+          "default": "metric_params__None",
+          "description": "Additional keyword arguments for the metric function."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "metric_params__dict",
+            "init_args": {
+              "semantic_types": [
+                "metric_params"
+              ],
+              "_structural_type": "dict"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "metric_params__None",
+            "init_args": {
+              "semantic_types": [
+                "metric_params"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "n_jobs",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "n_jobs"
+          ],
+          "default": "n_jobs__None",
+          "description": "The number of parallel jobs to run for neighbors search. ``None`` means 1 unless in a :obj:`joblib.parallel_backend` context. ``-1`` means using all processors. See :term:`Glossary <n_jobs>` for more details."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "n_jobs__int",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "n_jobs__None",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      }
+    ],
+    "Params": [
+      {
+        "name": "classes_",
+        "type": "ndarray of shape (n_classes,)",
+        "description": "Class labels known to the classifier."
+      },
+      {
+        "name": "effective_metric_",
+        "type": "str or callable",
+        "description": "The distance metric used. It will be same as the `metric` parameter or a synonym of it, e.g. 'euclidean' if the `metric` parameter set to 'minkowski' and `p` parameter set to 2."
+      },
+      {
+        "name": "effective_metric_params_",
+        "type": "dict",
+        "description": "Additional keyword arguments for the metric function. For most metrics will be same with `metric_params` parameter, but may also contain the `p` parameter value if the `effective_metric_` attribute is set to 'minkowski'."
+      },
+      {
+        "name": "n_samples_fit_",
+        "type": "int",
+        "description": "Number of samples in the fitted data."
+      },
+      {
+        "name": "outlier_label_",
+        "type": "int or array-like of shape (n_class,)",
+        "description": "Label which is given for outlier samples (samples with no neighbors on given radius)."
+      },
+      {
+        "name": "outputs_2d_",
+        "type": "bool",
+        "description": "False when `y`'s shape is (n_samples, ) or (n_samples, 1) during fit otherwise True."
+      }
+    ]
+  },
+  "RadiusNeighborsRegressor": {
+    "name": "sklearn.neighbors._regression.RadiusNeighborsRegressor",
+    "common_name": "RadiusNeighborsRegressor",
+    "description": "Regression based on neighbors within a fixed radius. The target is predicted by local interpolation of the targets associated of the nearest neighbors in the training set.  Read more in the :ref:`User Guide <regression>`.  .. versionadded:: 0.9",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "type": "Hyperparameter",
+        "name": "radius",
+        "init_args": {
+          "semantic_types": [
+            "radius"
+          ],
+          "_structural_type": "float",
+          "default": 1.0,
+          "description": "Range of parameter space to use by default for :meth:`radius_neighbors` queries."
+        }
+      },
+      {
+        "name": "weights",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "weights"
+          ],
+          "default": "weights__str",
+          "description": "weight function used in prediction.  Possible values:  - 'uniform' : uniform weights.  All points in each neighborhood   are weighted equally. - 'distance' : weight points by the inverse of their distance.   in this case, closer neighbors of a query point will have a   greater influence than neighbors which are further away. - [callable] : a user-defined function which accepts an   array of distances, and returns an array of the same shape   containing the weights.  Uniform weights are used by default."
+        },
+        "hyperparams": [
+          {
+            "type": "Enumeration",
+            "name": "weights__str",
+            "init_args": {
+              "semantic_types": [
+                "weights"
+              ],
+              "values": [
+                "uniform",
+                "distance"
+              ],
+              "_structural_type": "str",
+              "default": "uniform"
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "weights__Callable",
+            "init_args": {
+              "semantic_types": [
+                "weights"
+              ],
+              "_structural_type": "Callable"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Enumeration",
+        "name": "algorithm",
+        "init_args": {
+          "semantic_types": [
+            "algorithm"
+          ],
+          "values": [
+            "auto",
+            "ball_tree",
+            "kd_tree",
+            "brute"
+          ],
+          "_structural_type": "str",
+          "default": "auto",
+          "description": "Algorithm used to compute the nearest neighbors:  - 'ball_tree' will use :class:`BallTree` - 'kd_tree' will use :class:`KDTree` - 'brute' will use a brute-force search. - 'auto' will attempt to decide the most appropriate algorithm   based on the values passed to :meth:`fit` method.  Note: fitting on sparse input will override the setting of this parameter, using brute force."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "leaf_size",
+        "init_args": {
+          "semantic_types": [
+            "leaf_size"
+          ],
+          "_structural_type": "int",
+          "default": 30,
+          "description": "Leaf size passed to BallTree or KDTree.  This can affect the speed of the construction and query, as well as the memory required to store the tree.  The optimal value depends on the nature of the problem."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "p",
+        "init_args": {
+          "semantic_types": [
+            "p"
+          ],
+          "_structural_type": "int",
+          "default": 2,
+          "description": "Power parameter for the Minkowski metric. When p = 1, this is equivalent to using manhattan_distance (l1), and euclidean_distance (l2) for p = 2. For arbitrary p, minkowski_distance (l_p) is used."
+        }
+      },
+      {
+        "name": "metric",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "metric"
+          ],
+          "default": "metric__str",
+          "description": "the distance metric to use for the tree.  The default metric is minkowski, and with p=2 is equivalent to the standard Euclidean metric. See the documentation of :class:`DistanceMetric` for a list of available metrics. If metric is \"precomputed\", X is assumed to be a distance matrix and must be square during fit. X may be a :term:`sparse graph`, in which case only \"nonzero\" elements may be considered neighbors."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "metric__str",
+            "init_args": {
+              "semantic_types": [
+                "metric"
+              ],
+              "_structural_type": "str",
+              "default": "minkowski"
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "metric__Callable",
+            "init_args": {
+              "semantic_types": [
+                "metric"
+              ],
+              "_structural_type": "Callable"
+            }
+          }
+        ]
+      },
+      {
+        "name": "metric_params",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "metric_params"
+          ],
+          "default": "metric_params__None",
+          "description": "Additional keyword arguments for the metric function."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "metric_params__dict",
+            "init_args": {
+              "semantic_types": [
+                "metric_params"
+              ],
+              "_structural_type": "dict"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "metric_params__None",
+            "init_args": {
+              "semantic_types": [
+                "metric_params"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "n_jobs",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "n_jobs"
+          ],
+          "default": "n_jobs__None",
+          "description": "The number of parallel jobs to run for neighbors search. ``None`` means 1 unless in a :obj:`joblib.parallel_backend` context. ``-1`` means using all processors. See :term:`Glossary <n_jobs>` for more details."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "n_jobs__int",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "n_jobs__None",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      }
+    ],
+    "Params": [
+      {
+        "name": "effective_metric_",
+        "type": "str or callable",
+        "description": "The distance metric to use. It will be same as the `metric` parameter or a synonym of it, e.g. 'euclidean' if the `metric` parameter set to 'minkowski' and `p` parameter set to 2."
+      },
+      {
+        "name": "effective_metric_params_",
+        "type": "dict",
+        "description": "Additional keyword arguments for the metric function. For most metrics will be same with `metric_params` parameter, but may also contain the `p` parameter value if the `effective_metric_` attribute is set to 'minkowski'."
+      },
+      {
+        "name": "n_samples_fit_",
+        "type": "int",
+        "description": "Number of samples in the fitted data."
+      }
+    ]
+  },
+  "RadiusNeighborsTransformer": {
+    "name": "sklearn.neighbors._graph.RadiusNeighborsTransformer",
+    "common_name": "RadiusNeighborsTransformer",
+    "description": "Transform X into a (weighted) graph of neighbors nearer than a radius The transformed data is a sparse graph as returned by radius_neighbors_graph.  Read more in the :ref:`User Guide <neighbors_transformer>`.  .. versionadded:: 0.22",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "type": "Enumeration",
+        "name": "mode",
+        "init_args": {
+          "semantic_types": [
+            "mode"
+          ],
+          "values": [
+            "distance",
+            "connectivity"
+          ],
+          "_structural_type": "str",
+          "default": "distance",
+          "description": "Type of returned matrix: 'connectivity' will return the connectivity matrix with ones and zeros, and 'distance' will return the distances between neighbors according to the given metric."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "radius",
+        "init_args": {
+          "semantic_types": [
+            "radius"
+          ],
+          "_structural_type": "float",
+          "default": 1.0,
+          "description": "Radius of neighborhood in the transformed sparse graph."
+        }
+      },
+      {
+        "type": "Enumeration",
+        "name": "algorithm",
+        "init_args": {
+          "semantic_types": [
+            "algorithm"
+          ],
+          "values": [
+            "auto",
+            "ball_tree",
+            "kd_tree",
+            "brute"
+          ],
+          "_structural_type": "str",
+          "default": "auto",
+          "description": "Algorithm used to compute the nearest neighbors:  - 'ball_tree' will use :class:`BallTree` - 'kd_tree' will use :class:`KDTree` - 'brute' will use a brute-force search. - 'auto' will attempt to decide the most appropriate algorithm   based on the values passed to :meth:`fit` method.  Note: fitting on sparse input will override the setting of this parameter, using brute force."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "leaf_size",
+        "init_args": {
+          "semantic_types": [
+            "leaf_size"
+          ],
+          "_structural_type": "int",
+          "default": 30,
+          "description": "Leaf size passed to BallTree or KDTree.  This can affect the speed of the construction and query, as well as the memory required to store the tree.  The optimal value depends on the nature of the problem."
+        }
+      },
+      {
+        "name": "metric",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "metric"
+          ],
+          "default": "metric__str",
+          "description": "metric to use for distance computation. Any metric from scikit-learn or scipy.spatial.distance can be used.  If metric is a callable function, it is called on each pair of instances (rows) and the resulting value recorded. The callable should take two arrays as input and return one value indicating the distance between them. This works for Scipy's metrics, but is less efficient than passing the metric name as a string.  Distance matrices are not supported.  Valid values for metric are:  - from scikit-learn: ['cityblock', 'cosine', 'euclidean', 'l1', 'l2',   'manhattan']  - from scipy.spatial.distance: ['braycurtis', 'canberra', 'chebyshev',   'correlation', 'dice', 'hamming', 'jaccard', 'kulsinski',   'mahalanobis', 'minkowski', 'rogerstanimoto', 'russellrao',   'seuclidean', 'sokalmichener', 'sokalsneath', 'sqeuclidean',   'yule']  See the documentation for scipy.spatial.distance for details on these metrics."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "metric__str",
+            "init_args": {
+              "semantic_types": [
+                "metric"
+              ],
+              "_structural_type": "str",
+              "default": "minkowski"
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "metric__Callable",
+            "init_args": {
+              "semantic_types": [
+                "metric"
+              ],
+              "_structural_type": "Callable"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "p",
+        "init_args": {
+          "semantic_types": [
+            "p"
+          ],
+          "_structural_type": "int",
+          "default": 2,
+          "description": "Parameter for the Minkowski metric from sklearn.metrics.pairwise.pairwise_distances. When p = 1, this is equivalent to using manhattan_distance (l1), and euclidean_distance (l2) for p = 2. For arbitrary p, minkowski_distance (l_p) is used."
+        }
+      },
+      {
+        "name": "metric_params",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "metric_params"
+          ],
+          "default": "metric_params__None",
+          "description": "Additional keyword arguments for the metric function."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "metric_params__dict",
+            "init_args": {
+              "semantic_types": [
+                "metric_params"
+              ],
+              "_structural_type": "dict"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "metric_params__None",
+            "init_args": {
+              "semantic_types": [
+                "metric_params"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "n_jobs",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "n_jobs"
+          ],
+          "default": "n_jobs__int",
+          "description": "The number of parallel jobs to run for neighbors search. If ``-1``, then the number of jobs is set to the number of CPU cores."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "n_jobs__int",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "int",
+              "default": 1
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "n_jobs__None",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "None"
+            }
+          }
+        ]
+      }
+    ],
+    "Params": [
+      {
+        "name": "effective_metric_",
+        "type": "str or callable",
+        "description": "The distance metric used. It will be same as the `metric` parameter or a synonym of it, e.g. 'euclidean' if the `metric` parameter set to 'minkowski' and `p` parameter set to 2."
+      },
+      {
+        "name": "effective_metric_params_",
+        "type": "dict",
+        "description": "Additional keyword arguments for the metric function. For most metrics will be same with `metric_params` parameter, but may also contain the `p` parameter value if the `effective_metric_` attribute is set to 'minkowski'."
+      },
+      {
+        "name": "n_samples_fit_",
+        "type": "int",
+        "description": "Number of samples in the fitted data."
+      }
+    ]
+  }
+}
