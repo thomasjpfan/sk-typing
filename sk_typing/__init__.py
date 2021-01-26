@@ -34,6 +34,7 @@ _MODULES = [
     "multiclass",
     "multioutput",
     "naive_bayes",
+    "neighbors",
 ]
 
 for modules in _MODULES:
