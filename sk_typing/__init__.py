@@ -37,6 +37,7 @@ _MODULES = [
     "neighbors",
     "neural_network",
     "pipeline",
+    "preprocessing",
 ]
 
 for modules in _MODULES:
