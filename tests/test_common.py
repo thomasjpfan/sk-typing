@@ -7,14 +7,7 @@ from numpy.testing import assert_allclose
 from sk_typing import get_init_annotations
 from sk_typing import _ALL_ANNOTATIONS
 
-MODULES_TO_IGNORE = {
-    "tree",
-}
-ESTIMATORS_TO_CHECK = [
-    est
-    for _, est in all_estimators()
-    if est.__module__.split(".")[1] not in MODULES_TO_IGNORE
-]
+ESTIMATORS_TO_CHECK = [est for _, est in all_estimators()]
 
 
 @pytest.mark.parametrize("Estimator", ESTIMATORS_TO_CHECK, ids=lambda est: est.__name__)

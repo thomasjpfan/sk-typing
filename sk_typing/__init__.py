@@ -41,6 +41,7 @@ _MODULES = [
     "random_projection",
     "semi_supervised",
     "svm",
+    "tree",
 ]
 
 for modules in _MODULES:

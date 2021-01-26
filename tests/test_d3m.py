@@ -18,17 +18,9 @@ from sk_typing.convert import get_d3m_representation
 
 
 ALL_ESTIMATORS = all_estimators()
-MODULES_TO_IGNORE = {
-    "tree",
-}
-ESTIMATORS_TO_CHECK = [
-    (name, est)
-    for name, est in ALL_ESTIMATORS
-    if est.__module__.split(".")[1] not in MODULES_TO_IGNORE
-]
 
 
-@pytest.mark.parametrize("name, estimator", ESTIMATORS_TO_CHECK)
+@pytest.mark.parametrize("name, estimator", ALL_ESTIMATORS)
 def test_get_output_for_module(name, estimator):
     """Smoke test for modules"""
     output = _get_output_for_estimator(name, estimator)
