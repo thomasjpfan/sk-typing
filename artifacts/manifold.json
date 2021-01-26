@@ -1,0 +1,1210 @@
+{
+  "Isomap": {
+    "name": "sklearn.manifold._isomap.Isomap",
+    "common_name": "Isomap",
+    "description": "Isomap Embedding Non-linear dimensionality reduction through Isometric Mapping  Read more in the :ref:`User Guide <isomap>`.",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "type": "Hyperparameter",
+        "name": "n_neighbors",
+        "init_args": {
+          "semantic_types": [
+            "n_neighbors"
+          ],
+          "_structural_type": "int",
+          "default": 5,
+          "description": "number of neighbors to consider for each point."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "n_components",
+        "init_args": {
+          "semantic_types": [
+            "n_components"
+          ],
+          "_structural_type": "int",
+          "default": 2,
+          "description": "number of coordinates for the manifold"
+        }
+      },
+      {
+        "type": "Enumeration",
+        "name": "eigen_solver",
+        "init_args": {
+          "semantic_types": [
+            "eigen_solver"
+          ],
+          "values": [
+            "auto",
+            "arpack",
+            "dense"
+          ],
+          "_structural_type": "str",
+          "default": "auto",
+          "description": "'auto' : Attempt to choose the most efficient solver for the given problem.  'arpack' : Use Arnoldi decomposition to find the eigenvalues and eigenvectors.  'dense' : Use a direct solver (i.e. LAPACK) for the eigenvalue decomposition."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "tol",
+        "init_args": {
+          "semantic_types": [
+            "tol"
+          ],
+          "_structural_type": "float",
+          "default": 0,
+          "description": "Convergence tolerance passed to arpack or lobpcg. not used if eigen_solver == 'dense'."
+        }
+      },
+      {
+        "name": "max_iter",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "max_iter"
+          ],
+          "default": "max_iter__None",
+          "description": "Maximum number of iterations for the arpack solver. not used if eigen_solver == 'dense'."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "max_iter__int",
+            "init_args": {
+              "semantic_types": [
+                "max_iter"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "max_iter__None",
+            "init_args": {
+              "semantic_types": [
+                "max_iter"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Enumeration",
+        "name": "path_method",
+        "init_args": {
+          "semantic_types": [
+            "path_method"
+          ],
+          "values": [
+            "auto",
+            "FW",
+            "D"
+          ],
+          "_structural_type": "str",
+          "default": "auto",
+          "description": "Method to use in finding shortest path.  'auto' : attempt to choose the best algorithm automatically.  'FW' : Floyd-Warshall algorithm.  'D' : Dijkstra's algorithm."
+        }
+      },
+      {
+        "type": "Enumeration",
+        "name": "neighbors_algorithm",
+        "init_args": {
+          "semantic_types": [
+            "neighbors_algorithm"
+          ],
+          "values": [
+            "auto",
+            "brute",
+            "kd_tree",
+            "ball_tree"
+          ],
+          "_structural_type": "str",
+          "default": "auto",
+          "description": "Algorithm to use for nearest neighbors search, passed to neighbors.NearestNeighbors instance."
+        }
+      },
+      {
+        "name": "n_jobs",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "n_jobs"
+          ],
+          "default": "n_jobs__None",
+          "description": "The number of parallel jobs to run. ``None`` means 1 unless in a :obj:`joblib.parallel_backend` context. ``-1`` means using all processors. See :term:`Glossary <n_jobs>` for more details."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "n_jobs__int",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "n_jobs__None",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "metric",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "metric"
+          ],
+          "default": "minkowski",
+          "description": "The metric to use when calculating distance between instances in a feature array. If metric is a string or callable, it must be one of the options allowed by :func:`sklearn.metrics.pairwise_distances` for its metric parameter. If metric is \"precomputed\", X is assumed to be a distance matrix and must be square. X may be a :term:`Glossary <sparse graph>`.  .. versionadded:: 0.22"
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "metric__int",
+            "init_args": {
+              "semantic_types": [
+                "metric"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "metric__Callable",
+            "init_args": {
+              "semantic_types": [
+                "metric"
+              ],
+              "_structural_type": "Callable"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "p",
+        "init_args": {
+          "semantic_types": [
+            "p"
+          ],
+          "_structural_type": "int",
+          "default": 2,
+          "description": "Parameter for the Minkowski metric from sklearn.metrics.pairwise.pairwise_distances. When p = 1, this is equivalent to using manhattan_distance (l1), and euclidean_distance (l2) for p = 2. For arbitrary p, minkowski_distance (l_p) is used.  .. versionadded:: 0.22"
+        }
+      },
+      {
+        "name": "metric_params",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "metric_params"
+          ],
+          "default": "metric_params__None",
+          "description": "Additional keyword arguments for the metric function.  .. versionadded:: 0.22"
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "metric_params__dict",
+            "init_args": {
+              "semantic_types": [
+                "metric_params"
+              ],
+              "_structural_type": "dict"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "metric_params__None",
+            "init_args": {
+              "semantic_types": [
+                "metric_params"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      }
+    ],
+    "Params": [
+      {
+        "name": "embedding_",
+        "type": "array-like, shape (n_samples, n_components)",
+        "description": "Stores the embedding vectors."
+      },
+      {
+        "name": "kernel_pca_",
+        "type": "object",
+        "description": ":class:`~sklearn.decomposition.KernelPCA` object used to implement the embedding."
+      },
+      {
+        "name": "nbrs_",
+        "type": "sklearn.neighbors.NearestNeighbors instance",
+        "description": "Stores nearest neighbors instance, including BallTree or KDtree if applicable."
+      },
+      {
+        "name": "dist_matrix_",
+        "type": "array-like, shape (n_samples, n_samples)",
+        "description": "Stores the geodesic distance matrix of training data."
+      }
+    ]
+  },
+  "LocallyLinearEmbedding": {
+    "name": "sklearn.manifold._locally_linear.LocallyLinearEmbedding",
+    "common_name": "LocallyLinearEmbedding",
+    "description": "Locally Linear Embedding Read more in the :ref:`User Guide <locally_linear_embedding>`.",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "type": "Hyperparameter",
+        "name": "n_neighbors",
+        "init_args": {
+          "semantic_types": [
+            "n_neighbors"
+          ],
+          "_structural_type": "int",
+          "default": 5,
+          "description": "number of neighbors to consider for each point."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "n_components",
+        "init_args": {
+          "semantic_types": [
+            "n_components"
+          ],
+          "_structural_type": "int",
+          "default": 2,
+          "description": "number of coordinates for the manifold"
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "reg",
+        "init_args": {
+          "semantic_types": [
+            "reg"
+          ],
+          "_structural_type": "float",
+          "default": 0.001,
+          "description": "regularization constant, multiplies the trace of the local covariance matrix of the distances."
+        }
+      },
+      {
+        "type": "Enumeration",
+        "name": "eigen_solver",
+        "init_args": {
+          "semantic_types": [
+            "eigen_solver"
+          ],
+          "values": [
+            "auto",
+            "arpack",
+            "dense"
+          ],
+          "_structural_type": "str",
+          "default": "auto",
+          "description": "auto : algorithm will attempt to choose the best method for input data  arpack : use arnoldi iteration in shift-invert mode.             For this method, M may be a dense matrix, sparse matrix,             or general linear operator.             Warning: ARPACK can be unstable for some problems.  It is             best to try several random seeds in order to check results.  dense  : use standard dense matrix operations for the eigenvalue             decomposition.  For this method, M must be an array             or matrix type.  This method should be avoided for             large problems."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "tol",
+        "init_args": {
+          "semantic_types": [
+            "tol"
+          ],
+          "_structural_type": "float",
+          "default": 1e-06,
+          "description": "Tolerance for 'arpack' method Not used if eigen_solver=='dense'."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "max_iter",
+        "init_args": {
+          "semantic_types": [
+            "max_iter"
+          ],
+          "_structural_type": "int",
+          "default": 100,
+          "description": "maximum number of iterations for the arpack solver. Not used if eigen_solver=='dense'."
+        }
+      },
+      {
+        "type": "Enumeration",
+        "name": "method",
+        "init_args": {
+          "semantic_types": [
+            "method"
+          ],
+          "values": [
+            "standard",
+            "hessian",
+            "modified",
+            "ltsa"
+          ],
+          "_structural_type": "str",
+          "default": "standard",
+          "description": "standard : use the standard locally linear embedding algorithm.  see            reference [1] hessian  : use the Hessian eigenmap method. This method requires            ``n_neighbors > n_components * (1 + (n_components + 1) / 2``            see reference [2] modified : use the modified locally linear embedding algorithm.            see reference [3] ltsa     : use local tangent space alignment algorithm            see reference [4]"
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "hessian_tol",
+        "init_args": {
+          "semantic_types": [
+            "hessian_tol"
+          ],
+          "_structural_type": "float",
+          "default": 0.0001,
+          "description": "Tolerance for Hessian eigenmapping method. Only used if ``method == 'hessian'``"
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "modified_tol",
+        "init_args": {
+          "semantic_types": [
+            "modified_tol"
+          ],
+          "_structural_type": "float",
+          "default": 1e-12,
+          "description": "Tolerance for modified LLE method. Only used if ``method == 'modified'``"
+        }
+      },
+      {
+        "type": "Enumeration",
+        "name": "neighbors_algorithm",
+        "init_args": {
+          "semantic_types": [
+            "neighbors_algorithm"
+          ],
+          "values": [
+            "auto",
+            "brute",
+            "kd_tree",
+            "ball_tree"
+          ],
+          "_structural_type": "str",
+          "default": "auto",
+          "description": "algorithm to use for nearest neighbors search, passed to neighbors.NearestNeighbors instance"
+        }
+      },
+      {
+        "name": "random_state",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "random_state"
+          ],
+          "default": "random_state__None",
+          "description": "Determines the random number generator when ``eigen_solver`` == 'arpack'. Pass an int for reproducible results across multiple function calls. See :term: `Glossary <random_state>`."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "random_state__int",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "random_state__None",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "n_jobs",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "n_jobs"
+          ],
+          "default": "n_jobs__None",
+          "description": "The number of parallel jobs to run. ``None`` means 1 unless in a :obj:`joblib.parallel_backend` context. ``-1`` means using all processors. See :term:`Glossary <n_jobs>` for more details."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "n_jobs__int",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "n_jobs__None",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      }
+    ],
+    "Params": [
+      {
+        "name": "embedding_",
+        "type": "array-like, shape [n_samples, n_components]",
+        "description": "Stores the embedding vectors"
+      },
+      {
+        "name": "reconstruction_error_",
+        "type": "float",
+        "description": "Reconstruction error associated with `embedding_`"
+      },
+      {
+        "name": "nbrs_",
+        "type": "NearestNeighbors object",
+        "description": "Stores nearest neighbors instance, including BallTree or KDtree if applicable."
+      }
+    ]
+  },
+  "MDS": {
+    "name": "sklearn.manifold._mds.MDS",
+    "common_name": "MDS",
+    "description": "Multidimensional scaling. Read more in the :ref:`User Guide <multidimensional_scaling>`.",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "type": "Hyperparameter",
+        "name": "n_components",
+        "init_args": {
+          "semantic_types": [
+            "n_components"
+          ],
+          "_structural_type": "int",
+          "default": 2,
+          "description": "Number of dimensions in which to immerse the dissimilarities."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "metric",
+        "init_args": {
+          "semantic_types": [
+            "metric"
+          ],
+          "_structural_type": "bool",
+          "default": "True",
+          "description": "If ``True``, perform metric MDS; otherwise, perform nonmetric MDS."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "n_init",
+        "init_args": {
+          "semantic_types": [
+            "n_init"
+          ],
+          "_structural_type": "int",
+          "default": 4,
+          "description": "Number of times the SMACOF algorithm will be run with different initializations. The final results will be the best output of the runs, determined by the run with the smallest final stress."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "max_iter",
+        "init_args": {
+          "semantic_types": [
+            "max_iter"
+          ],
+          "_structural_type": "int",
+          "default": 300,
+          "description": "Maximum number of iterations of the SMACOF algorithm for a single run."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "verbose",
+        "init_args": {
+          "semantic_types": [
+            "verbose"
+          ],
+          "_structural_type": "int",
+          "default": 0,
+          "description": "Level of verbosity."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "eps",
+        "init_args": {
+          "semantic_types": [
+            "eps"
+          ],
+          "_structural_type": "float",
+          "default": 0.001,
+          "description": "Relative tolerance with respect to stress at which to declare convergence."
+        }
+      },
+      {
+        "name": "n_jobs",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "n_jobs"
+          ],
+          "default": "n_jobs__None",
+          "description": "The number of jobs to use for the computation. If multiple initializations are used (``n_init``), each run of the algorithm is computed in parallel.  ``None`` means 1 unless in a :obj:`joblib.parallel_backend` context. ``-1`` means using all processors. See :term:`Glossary <n_jobs>` for more details."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "n_jobs__int",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "n_jobs__None",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "random_state",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "random_state"
+          ],
+          "default": "random_state__None",
+          "description": "Determines the random number generator used to initialize the centers. Pass an int for reproducible results across multiple function calls. See :term: `Glossary <random_state>`."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "random_state__int",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "random_state__None",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Enumeration",
+        "name": "dissimilarity",
+        "init_args": {
+          "semantic_types": [
+            "dissimilarity"
+          ],
+          "values": [
+            "euclidean",
+            "precomputed"
+          ],
+          "_structural_type": "str",
+          "default": "euclidean",
+          "description": "Dissimilarity measure to use:  - 'euclidean':     Pairwise Euclidean distances between points in the dataset.  - 'precomputed':     Pre-computed dissimilarities are passed directly to ``fit`` and     ``fit_transform``."
+        }
+      }
+    ],
+    "Params": [
+      {
+        "name": "embedding_",
+        "type": "ndarray of shape (n_samples, n_components)",
+        "description": "Stores the position of the dataset in the embedding space."
+      },
+      {
+        "name": "stress_",
+        "type": "float",
+        "description": "The final value of the stress (sum of squared distance of the disparities and the distances for all constrained points)."
+      },
+      {
+        "name": "dissimilarity_matrix_",
+        "type": "ndarray of shape (n_samples, n_samples)",
+        "description": "Pairwise dissimilarities between the points. Symmetric matrix that:  - either uses a custom dissimilarity matrix by setting `dissimilarity`   to 'precomputed'; - or constructs a dissimilarity matrix from data using   Euclidean distances."
+      },
+      {
+        "name": "n_iter_",
+        "type": "int",
+        "description": "The number of iterations corresponding to the best stress."
+      }
+    ]
+  },
+  "SpectralEmbedding": {
+    "name": "sklearn.manifold._spectral_embedding.SpectralEmbedding",
+    "common_name": "SpectralEmbedding",
+    "description": "Spectral embedding for non-linear dimensionality reduction. Forms an affinity matrix given by the specified function and applies spectral decomposition to the corresponding graph laplacian. The resulting transformation is given by the value of the eigenvectors for each data point.  Note : Laplacian Eigenmaps is the actual algorithm implemented here.  Read more in the :ref:`User Guide <spectral_embedding>`.",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "type": "Hyperparameter",
+        "name": "n_components",
+        "init_args": {
+          "semantic_types": [
+            "n_components"
+          ],
+          "_structural_type": "int",
+          "default": 2,
+          "description": "The dimension of the projected subspace."
+        }
+      },
+      {
+        "type": "Enumeration",
+        "name": "affinity",
+        "init_args": {
+          "semantic_types": [
+            "affinity"
+          ],
+          "values": [
+            "nearest_neighbors",
+            "rbf",
+            "precomputed",
+            "precomputed_nearest_neighbors"
+          ],
+          "_structural_type": "str",
+          "default": "nearest_neighbors",
+          "description": "How to construct the affinity matrix.  - 'nearest_neighbors' : construct the affinity matrix by computing a    graph of nearest neighbors.  - 'rbf' : construct the affinity matrix by computing a radial basis    function (RBF) kernel.  - 'precomputed' : interpret ``X`` as a precomputed affinity matrix.  - 'precomputed_nearest_neighbors' : interpret ``X`` as a sparse graph    of precomputed nearest neighbors, and constructs the affinity matrix    by selecting the ``n_neighbors`` nearest neighbors.  - callable : use passed in function as affinity    the function takes in data matrix (n_samples, n_features)    and return affinity matrix (n_samples, n_samples)."
+        }
+      },
+      {
+        "name": "gamma",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "gamma"
+          ],
+          "default": "gamma__None",
+          "description": "Kernel coefficient for rbf kernel. If None, gamma will be set to 1/n_features."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "gamma__float",
+            "init_args": {
+              "semantic_types": [
+                "gamma"
+              ],
+              "_structural_type": "float"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "gamma__None",
+            "init_args": {
+              "semantic_types": [
+                "gamma"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "random_state",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "random_state"
+          ],
+          "default": "random_state__None",
+          "description": "Determines the random number generator used for the initialization of the lobpcg eigenvectors when ``solver`` == 'amg'.  Pass an int for reproducible results across multiple function calls. See :term: `Glossary <random_state>`."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "random_state__int",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "random_state__None",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Enumeration",
+        "name": "eigen_solver",
+        "init_args": {
+          "semantic_types": [
+            "eigen_solver"
+          ],
+          "values": [
+            "arpack",
+            "logpcg",
+            "amg"
+          ],
+          "_structural_type": "str",
+          "default": "None",
+          "description": "The eigenvalue decomposition strategy to use. AMG requires pyamg to be installed. It can be faster on very large, sparse problems. If None, then ``'arpack'`` is used."
+        }
+      },
+      {
+        "name": "n_neighbors",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "n_neighbors"
+          ],
+          "default": "n_neighbors__None",
+          "description": "Number of nearest neighbors for nearest_neighbors graph building. If None, n_neighbors will be set to max(n_samples/10, 1)."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "n_neighbors__int",
+            "init_args": {
+              "semantic_types": [
+                "n_neighbors"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "n_neighbors__None",
+            "init_args": {
+              "semantic_types": [
+                "n_neighbors"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "n_jobs",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "n_jobs"
+          ],
+          "default": "n_jobs__None",
+          "description": "The number of parallel jobs to run. ``None`` means 1 unless in a :obj:`joblib.parallel_backend` context. ``-1`` means using all processors. See :term:`Glossary <n_jobs>` for more details."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "n_jobs__int",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "n_jobs__None",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      }
+    ],
+    "Params": [
+      {
+        "name": "embedding_",
+        "type": "ndarray of shape (n_samples, n_components)",
+        "description": "Spectral embedding of the training matrix."
+      },
+      {
+        "name": "affinity_matrix_",
+        "type": "ndarray of shape (n_samples, n_samples)",
+        "description": "Affinity_matrix constructed from samples or precomputed."
+      },
+      {
+        "name": "n_neighbors_",
+        "type": "int",
+        "description": "Number of nearest neighbors effectively used."
+      }
+    ]
+  },
+  "TSNE": {
+    "name": "sklearn.manifold._t_sne.TSNE",
+    "common_name": "TSNE",
+    "description": "t-distributed Stochastic Neighbor Embedding. t-SNE [1] is a tool to visualize high-dimensional data. It converts similarities between data points to joint probabilities and tries to minimize the Kullback-Leibler divergence between the joint probabilities of the low-dimensional embedding and the high-dimensional data. t-SNE has a cost function that is not convex, i.e. with different initializations we can get different results.  It is highly recommended to use another dimensionality reduction method (e.g. PCA for dense data or TruncatedSVD for sparse data) to reduce the number of dimensions to a reasonable amount (e.g. 50) if the number of features is very high. This will suppress some noise and speed up the computation of pairwise distances between samples. For more tips see Laurens van der Maaten's FAQ [2].  Read more in the :ref:`User Guide <t_sne>`.",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "type": "Hyperparameter",
+        "name": "n_components",
+        "init_args": {
+          "semantic_types": [
+            "n_components"
+          ],
+          "_structural_type": "int",
+          "default": 2,
+          "description": "Dimension of the embedded space."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "perplexity",
+        "init_args": {
+          "semantic_types": [
+            "perplexity"
+          ],
+          "_structural_type": "float",
+          "default": 30.0,
+          "description": "The perplexity is related to the number of nearest neighbors that is used in other manifold learning algorithms. Larger datasets usually require a larger perplexity. Consider selecting a value between 5 and 50. Different values can result in significantly different results."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "early_exaggeration",
+        "init_args": {
+          "semantic_types": [
+            "early_exaggeration"
+          ],
+          "_structural_type": "float",
+          "default": 12.0,
+          "description": "Controls how tight natural clusters in the original space are in the embedded space and how much space will be between them. For larger values, the space between natural clusters will be larger in the embedded space. Again, the choice of this parameter is not very critical. If the cost function increases during initial optimization, the early exaggeration factor or the learning rate might be too high."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "learning_rate",
+        "init_args": {
+          "semantic_types": [
+            "learning_rate"
+          ],
+          "_structural_type": "float",
+          "default": 200.0,
+          "description": "The learning rate for t-SNE is usually in the range [10.0, 1000.0]. If the learning rate is too high, the data may look like a 'ball' with any point approximately equidistant from its nearest neighbours. If the learning rate is too low, most points may look compressed in a dense cloud with few outliers. If the cost function gets stuck in a bad local minimum increasing the learning rate may help."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "n_iter",
+        "init_args": {
+          "semantic_types": [
+            "n_iter"
+          ],
+          "_structural_type": "int",
+          "default": 1000,
+          "description": "Maximum number of iterations for the optimization. Should be at least 250."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "n_iter_without_progress",
+        "init_args": {
+          "semantic_types": [
+            "n_iter_without_progress"
+          ],
+          "_structural_type": "int",
+          "default": 300,
+          "description": "Maximum number of iterations without progress before we abort the optimization, used after 250 initial iterations with early exaggeration. Note that progress is only checked every 50 iterations so this value is rounded to the next multiple of 50.  .. versionadded:: 0.17    parameter *n_iter_without_progress* to control stopping criteria."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "min_grad_norm",
+        "init_args": {
+          "semantic_types": [
+            "min_grad_norm"
+          ],
+          "_structural_type": "float",
+          "default": 1e-07,
+          "description": "If the gradient norm is below this threshold, the optimization will be stopped."
+        }
+      },
+      {
+        "name": "metric",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "metric"
+          ],
+          "default": "metric__str",
+          "description": "The metric to use when calculating distance between instances in a feature array. If metric is a string, it must be one of the options allowed by scipy.spatial.distance.pdist for its metric parameter, or a metric listed in pairwise.PAIRWISE_DISTANCE_FUNCTIONS. If metric is \"precomputed\", X is assumed to be a distance matrix. Alternatively, if metric is a callable function, it is called on each pair of instances (rows) and the resulting value recorded. The callable should take two arrays from X as input and return a value indicating the distance between them. The default is \"euclidean\" which is interpreted as squared euclidean distance."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "metric__str",
+            "init_args": {
+              "semantic_types": [
+                "metric"
+              ],
+              "_structural_type": "str",
+              "default": "euclidean"
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "metric__Callable",
+            "init_args": {
+              "semantic_types": [
+                "metric"
+              ],
+              "_structural_type": "Callable"
+            }
+          }
+        ]
+      },
+      {
+        "name": "init",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "init"
+          ],
+          "default": "init__str",
+          "description": "Initialization of embedding. Possible options are 'random', 'pca', and a numpy array of shape (n_samples, n_components). PCA initialization cannot be used with precomputed distances and is usually more globally stable than random initialization."
+        },
+        "hyperparams": [
+          {
+            "type": "Enumeration",
+            "name": "init__str",
+            "init_args": {
+              "semantic_types": [
+                "init"
+              ],
+              "values": [
+                "random",
+                "pca"
+              ],
+              "_structural_type": "str",
+              "default": "random"
+            }
+          },
+          {
+            "name": "init__ndarray",
+            "type": "Hyperparameter",
+            "init_args": {
+              "_structural_type": "ndarray",
+              "semantic_types": [
+                "init"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "verbose",
+        "init_args": {
+          "semantic_types": [
+            "verbose"
+          ],
+          "_structural_type": "int",
+          "default": 0,
+          "description": "Verbosity level."
+        }
+      },
+      {
+        "name": "random_state",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "random_state"
+          ],
+          "default": "random_state__None",
+          "description": "Determines the random number generator. Pass an int for reproducible results across multiple function calls. Note that different initializations might result in different local minima of the cost function. See :term: `Glossary <random_state>`."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "random_state__int",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "random_state__None",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "method",
+        "init_args": {
+          "semantic_types": [
+            "method"
+          ],
+          "_structural_type": "str",
+          "default": "barnes_hut",
+          "description": "By default the gradient calculation algorithm uses Barnes-Hut approximation running in O(NlogN) time. method='exact' will run on the slower, but exact, algorithm in O(N^2) time. The exact algorithm should be used when nearest-neighbor errors need to be better than 3%. However, the exact method cannot scale to millions of examples.  .. versionadded:: 0.17    Approximate optimization *method* via the Barnes-Hut."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "angle",
+        "init_args": {
+          "semantic_types": [
+            "angle"
+          ],
+          "_structural_type": "float",
+          "default": 0.5,
+          "description": "Only used if method='barnes_hut' This is the trade-off between speed and accuracy for Barnes-Hut T-SNE. 'angle' is the angular size (referred to as theta in [3]) of a distant node as measured from a point. If this size is below 'angle' then it is used as a summary node of all points contained within it. This method is not very sensitive to changes in this parameter in the range of 0.2 - 0.8. Angle less than 0.2 has quickly increasing computation time and angle greater 0.8 has quickly increasing error."
+        }
+      },
+      {
+        "name": "n_jobs",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "n_jobs"
+          ],
+          "default": "n_jobs__None",
+          "description": "The number of parallel jobs to run for neighbors search. This parameter has no impact when ``metric=\"precomputed\"`` or (``metric=\"euclidean\"`` and ``method=\"exact\"``). ``None`` means 1 unless in a :obj:`joblib.parallel_backend` context. ``-1`` means using all processors. See :term:`Glossary <n_jobs>` for more details.  .. versionadded:: 0.22"
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "n_jobs__int",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "n_jobs__None",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "square_distances",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "square_distances"
+          ],
+          "default": "square_distances__str",
+          "description": "Whether TSNE should square the distance values. ``'legacy'`` means that distance values are squared only when ``metric=\"euclidean\"``. ``True`` means that distance values are squared for all metrics.  .. versionadded:: 0.24    Added to provide backward compatibility during deprecation of    legacy squaring behavior. .. deprecated:: 0.24    Legacy squaring behavior was deprecated in 0.24. The ``'legacy'``    value will be removed in 1.1 (renaming of 0.26), at which point the    default value will change to ``True``."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "square_distances__bool",
+            "init_args": {
+              "semantic_types": [
+                "square_distances"
+              ],
+              "_structural_type": "bool"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "square_distances__str",
+            "init_args": {
+              "semantic_types": [
+                "square_distances"
+              ],
+              "_structural_type": "str",
+              "default": "legacy"
+            }
+          }
+        ]
+      }
+    ],
+    "Params": [
+      {
+        "name": "embedding_",
+        "type": "array-like of shape (n_samples, n_components)",
+        "description": "Stores the embedding vectors."
+      },
+      {
+        "name": "kl_divergence_",
+        "type": "float",
+        "description": "Kullback-Leibler divergence after optimization."
+      },
+      {
+        "name": "n_iter_",
+        "type": "int",
+        "description": "Number of iterations run."
+      }
+    ]
+  }
+}

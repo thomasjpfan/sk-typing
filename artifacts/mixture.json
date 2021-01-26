@@ -1,0 +1,768 @@
+{
+  "BayesianGaussianMixture": {
+    "name": "sklearn.mixture._bayesian_mixture.BayesianGaussianMixture",
+    "common_name": "BayesianGaussianMixture",
+    "description": "Variational Bayesian estimation of a Gaussian mixture. This class allows to infer an approximate posterior distribution over the parameters of a Gaussian mixture distribution. The effective number of components can be inferred from the data.  This class implements two types of prior for the weights distribution: a finite mixture model with Dirichlet distribution and an infinite mixture model with the Dirichlet Process. In practice Dirichlet Process inference algorithm is approximated and uses a truncated distribution with a fixed maximum number of components (called the Stick-breaking representation). The number of components actually used almost always depends on the data.  .. versionadded:: 0.18  Read more in the :ref:`User Guide <bgmm>`.",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "type": "Hyperparameter",
+        "name": "n_components",
+        "init_args": {
+          "semantic_types": [
+            "n_components"
+          ],
+          "_structural_type": "int",
+          "default": 1,
+          "description": "The number of mixture components. Depending on the data and the value of the `weight_concentration_prior` the model can decide to not use all the components by setting some component `weights_` to values very close to zero. The number of effective components is therefore smaller than n_components."
+        }
+      },
+      {
+        "type": "Enumeration",
+        "name": "covariance_type",
+        "init_args": {
+          "semantic_types": [
+            "covariance_type"
+          ],
+          "values": [
+            "full",
+            "tied",
+            "diag",
+            "spherical"
+          ],
+          "_structural_type": "str",
+          "default": "full",
+          "description": "String describing the type of covariance parameters to use. Must be one of::      'full' (each component has its own general covariance matrix),     'tied' (all components share the same general covariance matrix),     'diag' (each component has its own diagonal covariance matrix),     'spherical' (each component has its own single variance)."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "tol",
+        "init_args": {
+          "semantic_types": [
+            "tol"
+          ],
+          "_structural_type": "float",
+          "default": 0.001,
+          "description": "The convergence threshold. EM iterations will stop when the lower bound average gain on the likelihood (of the training data with respect to the model) is below this threshold."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "reg_covar",
+        "init_args": {
+          "semantic_types": [
+            "reg_covar"
+          ],
+          "_structural_type": "float",
+          "default": 1e-06,
+          "description": "Non-negative regularization added to the diagonal of covariance. Allows to assure that the covariance matrices are all positive."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "max_iter",
+        "init_args": {
+          "semantic_types": [
+            "max_iter"
+          ],
+          "_structural_type": "float",
+          "default": 100,
+          "description": "The number of EM iterations to perform."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "n_init",
+        "init_args": {
+          "semantic_types": [
+            "n_init"
+          ],
+          "_structural_type": "int",
+          "default": 1,
+          "description": "The number of initializations to perform. The result with the highest lower bound value on the likelihood is kept."
+        }
+      },
+      {
+        "type": "Enumeration",
+        "name": "init_params",
+        "init_args": {
+          "semantic_types": [
+            "init_params"
+          ],
+          "values": [
+            "kmeans",
+            "random"
+          ],
+          "_structural_type": "str",
+          "default": "kmeans",
+          "description": "The method used to initialize the weights, the means and the covariances. Must be one of::      'kmeans' : responsibilities are initialized using kmeans.     'random' : responsibilities are initialized randomly."
+        }
+      },
+      {
+        "type": "Enumeration",
+        "name": "weight_concentration_prior_type",
+        "init_args": {
+          "semantic_types": [
+            "weight_concentration_prior_type"
+          ],
+          "values": [
+            "dirichlet_process",
+            "dirichlet_distribution"
+          ],
+          "_structural_type": "str",
+          "default": "dirichlet_process",
+          "description": "String describing the type of the weight concentration prior. Must be one of::      'dirichlet_process' (using the Stick-breaking representation),     'dirichlet_distribution' (can favor more uniform weights)."
+        }
+      },
+      {
+        "name": "weight_concentration_prior",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "weight_concentration_prior"
+          ],
+          "default": "weight_concentration_prior__None",
+          "description": "The dirichlet concentration of each component on the weight distribution (Dirichlet). This is commonly called gamma in the literature. The higher concentration puts more mass in the center and will lead to more components being active, while a lower concentration parameter will lead to more mass at the edge of the mixture weights simplex. The value of the parameter must be greater than 0. If it is None, it's set to ``1. / n_components``."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "weight_concentration_prior__float",
+            "init_args": {
+              "semantic_types": [
+                "weight_concentration_prior"
+              ],
+              "_structural_type": "float"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "weight_concentration_prior__None",
+            "init_args": {
+              "semantic_types": [
+                "weight_concentration_prior"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "mean_precision_prior",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "mean_precision_prior"
+          ],
+          "default": "mean_precision_prior__None",
+          "description": "The precision prior on the mean distribution (Gaussian). Controls the extent of where means can be placed. Larger values concentrate the cluster means around `mean_prior`. The value of the parameter must be greater than 0. If it is None, it is set to 1."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "mean_precision_prior__float",
+            "init_args": {
+              "semantic_types": [
+                "mean_precision_prior"
+              ],
+              "_structural_type": "float"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "mean_precision_prior__None",
+            "init_args": {
+              "semantic_types": [
+                "mean_precision_prior"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "mean_prior",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "mean_prior"
+          ],
+          "default": "mean_prior__None",
+          "description": "The prior on the mean distribution (Gaussian). If it is None, it is set to the mean of X."
+        },
+        "hyperparams": [
+          {
+            "name": "mean_prior__ndarray",
+            "type": "Hyperparameter",
+            "init_args": {
+              "_structural_type": "ndarray",
+              "semantic_types": [
+                "mean_prior"
+              ]
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "mean_prior__None",
+            "init_args": {
+              "semantic_types": [
+                "mean_prior"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "degrees_of_freedom_prior",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "degrees_of_freedom_prior"
+          ],
+          "default": "degrees_of_freedom_prior__None",
+          "description": "The prior of the number of degrees of freedom on the covariance distributions (Wishart). If it is None, it's set to `n_features`."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "degrees_of_freedom_prior__float",
+            "init_args": {
+              "semantic_types": [
+                "degrees_of_freedom_prior"
+              ],
+              "_structural_type": "float"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "degrees_of_freedom_prior__None",
+            "init_args": {
+              "semantic_types": [
+                "degrees_of_freedom_prior"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "covariance_prior",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "covariance_prior"
+          ],
+          "default": "covariance_prior__None",
+          "description": "The prior on the covariance distribution (Wishart). If it is None, the emiprical covariance prior is initialized using the covariance of X. The shape depends on `covariance_type`::          (n_features, n_features) if 'full',         (n_features, n_features) if 'tied',         (n_features)             if 'diag',         float                    if 'spherical'"
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "covariance_prior__float",
+            "init_args": {
+              "semantic_types": [
+                "covariance_prior"
+              ],
+              "_structural_type": "float"
+            }
+          },
+          {
+            "name": "covariance_prior__ndarray",
+            "type": "Hyperparameter",
+            "init_args": {
+              "_structural_type": "ndarray",
+              "semantic_types": [
+                "covariance_prior"
+              ]
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "covariance_prior__None",
+            "init_args": {
+              "semantic_types": [
+                "covariance_prior"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "random_state",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "random_state"
+          ],
+          "default": "random_state__None",
+          "description": "Controls the random seed given to the method chosen to initialize the parameters (see `init_params`). In addition, it controls the generation of random samples from the fitted distribution (see the method `sample`). Pass an int for reproducible output across multiple function calls. See :term:`Glossary <random_state>`."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "random_state__int",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "random_state__None",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "warm_start",
+        "init_args": {
+          "semantic_types": [
+            "warm_start"
+          ],
+          "_structural_type": "bool",
+          "default": "False",
+          "description": "If 'warm_start' is True, the solution of the last fitting is used as initialization for the next call of fit(). This can speed up convergence when fit is called several times on similar problems. See :term:`the Glossary <warm_start>`."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "verbose",
+        "init_args": {
+          "semantic_types": [
+            "verbose"
+          ],
+          "_structural_type": "int",
+          "default": 0,
+          "description": "Enable verbose output. If 1 then it prints the current initialization and each iteration step. If greater than 1 then it prints also the log probability and the time needed for each step."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "verbose_interval",
+        "init_args": {
+          "semantic_types": [
+            "verbose_interval"
+          ],
+          "_structural_type": "int",
+          "default": 10,
+          "description": "Number of iteration done before the next print."
+        }
+      }
+    ],
+    "Params": [
+      {
+        "name": "weights_",
+        "type": "array-like of shape (n_components,)",
+        "description": "The weights of each mixture components."
+      },
+      {
+        "name": "means_",
+        "type": "array-like of shape (n_components, n_features)",
+        "description": "The mean of each mixture component."
+      },
+      {
+        "name": "covariances_",
+        "type": "array-like",
+        "description": "The covariance of each mixture component. The shape depends on `covariance_type`::      (n_components,)                        if 'spherical',     (n_features, n_features)               if 'tied',     (n_components, n_features)             if 'diag',     (n_components, n_features, n_features) if 'full'"
+      },
+      {
+        "name": "precisions_",
+        "type": "array-like",
+        "description": "The precision matrices for each component in the mixture. A precision matrix is the inverse of a covariance matrix. A covariance matrix is symmetric positive definite so the mixture of Gaussian can be equivalently parameterized by the precision matrices. Storing the precision matrices instead of the covariance matrices makes it more efficient to compute the log-likelihood of new samples at test time. The shape depends on ``covariance_type``::      (n_components,)                        if 'spherical',     (n_features, n_features)               if 'tied',     (n_components, n_features)             if 'diag',     (n_components, n_features, n_features) if 'full'"
+      },
+      {
+        "name": "precisions_cholesky_",
+        "type": "array-like",
+        "description": "The cholesky decomposition of the precision matrices of each mixture component. A precision matrix is the inverse of a covariance matrix. A covariance matrix is symmetric positive definite so the mixture of Gaussian can be equivalently parameterized by the precision matrices. Storing the precision matrices instead of the covariance matrices makes it more efficient to compute the log-likelihood of new samples at test time. The shape depends on ``covariance_type``::      (n_components,)                        if 'spherical',     (n_features, n_features)               if 'tied',     (n_components, n_features)             if 'diag',     (n_components, n_features, n_features) if 'full'"
+      },
+      {
+        "name": "converged_",
+        "type": "bool",
+        "description": "True when convergence was reached in fit(), False otherwise."
+      },
+      {
+        "name": "n_iter_",
+        "type": "int",
+        "description": "Number of step used by the best fit of inference to reach the convergence."
+      },
+      {
+        "name": "lower_bound_",
+        "type": "float",
+        "description": "Lower bound value on the likelihood (of the training data with respect to the model) of the best fit of inference."
+      },
+      {
+        "name": "weight_concentration_prior_",
+        "type": "tuple or float",
+        "description": "The dirichlet concentration of each component on the weight distribution (Dirichlet). The type depends on ``weight_concentration_prior_type``::      (float, float) if 'dirichlet_process' (Beta parameters),     float          if 'dirichlet_distribution' (Dirichlet parameters).  The higher concentration puts more mass in the center and will lead to more components being active, while a lower concentration parameter will lead to more mass at the edge of the simplex."
+      },
+      {
+        "name": "weight_concentration_",
+        "type": "array-like of shape (n_components,)",
+        "description": "The dirichlet concentration of each component on the weight distribution (Dirichlet)."
+      },
+      {
+        "name": "mean_precision_prior_",
+        "type": "float",
+        "description": "The precision prior on the mean distribution (Gaussian). Controls the extent of where means can be placed. Larger values concentrate the cluster means around `mean_prior`. If mean_precision_prior is set to None, `mean_precision_prior_` is set to 1."
+      },
+      {
+        "name": "mean_precision_",
+        "type": "array-like of shape (n_components,)",
+        "description": "The precision of each components on the mean distribution (Gaussian)."
+      },
+      {
+        "name": "mean_prior_",
+        "type": "array-like of shape (n_features,)",
+        "description": "The prior on the mean distribution (Gaussian)."
+      },
+      {
+        "name": "degrees_of_freedom_prior_",
+        "type": "float",
+        "description": "The prior of the number of degrees of freedom on the covariance distributions (Wishart)."
+      },
+      {
+        "name": "degrees_of_freedom_",
+        "type": "array-like of shape (n_components,)",
+        "description": "The number of degrees of freedom of each components in the model."
+      },
+      {
+        "name": "covariance_prior_",
+        "type": "float or array-like",
+        "description": "The prior on the covariance distribution (Wishart). The shape depends on `covariance_type`::      (n_features, n_features) if 'full',     (n_features, n_features) if 'tied',     (n_features)             if 'diag',     float                    if 'spherical'"
+      }
+    ]
+  },
+  "GaussianMixture": {
+    "name": "sklearn.mixture._gaussian_mixture.GaussianMixture",
+    "common_name": "GaussianMixture",
+    "description": "Gaussian Mixture. Representation of a Gaussian mixture model probability distribution. This class allows to estimate the parameters of a Gaussian mixture distribution.  Read more in the :ref:`User Guide <gmm>`.  .. versionadded:: 0.18",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "type": "Hyperparameter",
+        "name": "n_components",
+        "init_args": {
+          "semantic_types": [
+            "n_components"
+          ],
+          "_structural_type": "int",
+          "default": 1,
+          "description": "The number of mixture components."
+        }
+      },
+      {
+        "type": "Enumeration",
+        "name": "covariance_type",
+        "init_args": {
+          "semantic_types": [
+            "covariance_type"
+          ],
+          "values": [
+            "full",
+            "tied",
+            "diag",
+            "spherical"
+          ],
+          "_structural_type": "str",
+          "default": "full",
+          "description": "String describing the type of covariance parameters to use. Must be one of:  'full'     each component has its own general covariance matrix 'tied'     all components share the same general covariance matrix 'diag'     each component has its own diagonal covariance matrix 'spherical'     each component has its own single variance"
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "tol",
+        "init_args": {
+          "semantic_types": [
+            "tol"
+          ],
+          "_structural_type": "float",
+          "default": 0.001,
+          "description": "The convergence threshold. EM iterations will stop when the lower bound average gain is below this threshold."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "reg_covar",
+        "init_args": {
+          "semantic_types": [
+            "reg_covar"
+          ],
+          "_structural_type": "float",
+          "default": 1e-06,
+          "description": "Non-negative regularization added to the diagonal of covariance. Allows to assure that the covariance matrices are all positive."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "max_iter",
+        "init_args": {
+          "semantic_types": [
+            "max_iter"
+          ],
+          "_structural_type": "int",
+          "default": 100,
+          "description": "The number of EM iterations to perform."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "n_init",
+        "init_args": {
+          "semantic_types": [
+            "n_init"
+          ],
+          "_structural_type": "int",
+          "default": 1,
+          "description": "The number of initializations to perform. The best results are kept."
+        }
+      },
+      {
+        "type": "Enumeration",
+        "name": "init_params",
+        "init_args": {
+          "semantic_types": [
+            "init_params"
+          ],
+          "values": [
+            "kmeans",
+            "random"
+          ],
+          "_structural_type": "str",
+          "default": "kmeans",
+          "description": "The method used to initialize the weights, the means and the precisions. Must be one of::      'kmeans' : responsibilities are initialized using kmeans.     'random' : responsibilities are initialized randomly."
+        }
+      },
+      {
+        "name": "weights_init",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "weights_init"
+          ],
+          "default": "weights_init__None",
+          "description": "The user-provided initial weights. If it is None, weights are initialized using the `init_params` method."
+        },
+        "hyperparams": [
+          {
+            "name": "weights_init__ndarray",
+            "type": "Hyperparameter",
+            "init_args": {
+              "_structural_type": "ndarray",
+              "semantic_types": [
+                "weights_init"
+              ]
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "weights_init__None",
+            "init_args": {
+              "semantic_types": [
+                "weights_init"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "means_init",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "means_init"
+          ],
+          "default": "means_init__None",
+          "description": "The user-provided initial means, If it is None, means are initialized using the `init_params` method."
+        },
+        "hyperparams": [
+          {
+            "name": "means_init__ndarray",
+            "type": "Hyperparameter",
+            "init_args": {
+              "_structural_type": "ndarray",
+              "semantic_types": [
+                "means_init"
+              ]
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "means_init__None",
+            "init_args": {
+              "semantic_types": [
+                "means_init"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "precisions_init",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "precisions_init"
+          ],
+          "default": "precisions_init__None",
+          "description": "The user-provided initial precisions (inverse of the covariance matrices). If it is None, precisions are initialized using the 'init_params' method. The shape depends on 'covariance_type'::      (n_components,)                        if 'spherical',     (n_features, n_features)               if 'tied',     (n_components, n_features)             if 'diag',     (n_components, n_features, n_features) if 'full'"
+        },
+        "hyperparams": [
+          {
+            "name": "precisions_init__ndarray",
+            "type": "Hyperparameter",
+            "init_args": {
+              "_structural_type": "ndarray",
+              "semantic_types": [
+                "precisions_init"
+              ]
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "precisions_init__None",
+            "init_args": {
+              "semantic_types": [
+                "precisions_init"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "random_state",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "random_state"
+          ],
+          "default": "random_state__None",
+          "description": "Controls the random seed given to the method chosen to initialize the parameters (see `init_params`). In addition, it controls the generation of random samples from the fitted distribution (see the method `sample`). Pass an int for reproducible output across multiple function calls. See :term:`Glossary <random_state>`."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "random_state__int",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "random_state__None",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "warm_start",
+        "init_args": {
+          "semantic_types": [
+            "warm_start"
+          ],
+          "_structural_type": "bool",
+          "default": "False",
+          "description": "If 'warm_start' is True, the solution of the last fitting is used as initialization for the next call of fit(). This can speed up convergence when fit is called several times on similar problems. In that case, 'n_init' is ignored and only a single initialization occurs upon the first call. See :term:`the Glossary <warm_start>`."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "verbose",
+        "init_args": {
+          "semantic_types": [
+            "verbose"
+          ],
+          "_structural_type": "int",
+          "default": 0,
+          "description": "Enable verbose output. If 1 then it prints the current initialization and each iteration step. If greater than 1 then it prints also the log probability and the time needed for each step."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "verbose_interval",
+        "init_args": {
+          "semantic_types": [
+            "verbose_interval"
+          ],
+          "_structural_type": "int",
+          "default": 10,
+          "description": "Number of iteration done before the next print."
+        }
+      }
+    ],
+    "Params": [
+      {
+        "name": "weights_",
+        "type": "array-like of shape (n_components,)",
+        "description": "The weights of each mixture components."
+      },
+      {
+        "name": "means_",
+        "type": "array-like of shape (n_components, n_features)",
+        "description": "The mean of each mixture component."
+      },
+      {
+        "name": "covariances_",
+        "type": "array-like",
+        "description": "The covariance of each mixture component. The shape depends on `covariance_type`::      (n_components,)                        if 'spherical',     (n_features, n_features)               if 'tied',     (n_components, n_features)             if 'diag',     (n_components, n_features, n_features) if 'full'"
+      },
+      {
+        "name": "precisions_",
+        "type": "array-like",
+        "description": "The precision matrices for each component in the mixture. A precision matrix is the inverse of a covariance matrix. A covariance matrix is symmetric positive definite so the mixture of Gaussian can be equivalently parameterized by the precision matrices. Storing the precision matrices instead of the covariance matrices makes it more efficient to compute the log-likelihood of new samples at test time. The shape depends on `covariance_type`::      (n_components,)                        if 'spherical',     (n_features, n_features)               if 'tied',     (n_components, n_features)             if 'diag',     (n_components, n_features, n_features) if 'full'"
+      },
+      {
+        "name": "precisions_cholesky_",
+        "type": "array-like",
+        "description": "The cholesky decomposition of the precision matrices of each mixture component. A precision matrix is the inverse of a covariance matrix. A covariance matrix is symmetric positive definite so the mixture of Gaussian can be equivalently parameterized by the precision matrices. Storing the precision matrices instead of the covariance matrices makes it more efficient to compute the log-likelihood of new samples at test time. The shape depends on `covariance_type`::      (n_components,)                        if 'spherical',     (n_features, n_features)               if 'tied',     (n_components, n_features)             if 'diag',     (n_components, n_features, n_features) if 'full'"
+      },
+      {
+        "name": "converged_",
+        "type": "bool",
+        "description": "True when convergence was reached in fit(), False otherwise."
+      },
+      {
+        "name": "n_iter_",
+        "type": "int",
+        "description": "Number of step used by the best fit of EM to reach the convergence."
+      },
+      {
+        "name": "lower_bound_",
+        "type": "float",
+        "description": "Lower bound value on the log-likelihood (of the training data with respect to the model) of the best fit of EM."
+      }
+    ]
+  }
+}
