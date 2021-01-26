@@ -1,0 +1,250 @@
+{
+  "OneVsOneClassifier": {
+    "name": "sklearn.multiclass.OneVsOneClassifier",
+    "common_name": "OneVsOneClassifier",
+    "description": "One-vs-one multiclass strategy This strategy consists in fitting one classifier per class pair. At prediction time, the class which received the most votes is selected. Since it requires to fit `n_classes * (n_classes - 1) / 2` classifiers, this method is usually slower than one-vs-the-rest, due to its O(n_classes^2) complexity. However, this method may be advantageous for algorithms such as kernel algorithms which don't scale well with `n_samples`. This is because each individual learning problem only involves a small subset of the data whereas, with one-vs-the-rest, the complete dataset is used `n_classes` times.  Read more in the :ref:`User Guide <ovo_classification>`.",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "name": "n_jobs",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "n_jobs"
+          ],
+          "default": "n_jobs__None",
+          "description": "The number of jobs to use for the computation: the `n_classes * ( n_classes - 1) / 2` OVO problems are computed in parallel.  ``None`` means 1 unless in a :obj:`joblib.parallel_backend` context. ``-1`` means using all processors. See :term:`Glossary <n_jobs>` for more details."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "n_jobs__int",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "n_jobs__None",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      }
+    ],
+    "Params": [
+      {
+        "name": "estimators_",
+        "type": "list of ``n_classes * (n_classes - 1) / 2`` estimators",
+        "description": "Estimators used for predictions."
+      },
+      {
+        "name": "classes_",
+        "type": "numpy array of shape [n_classes]",
+        "description": "Array containing labels."
+      },
+      {
+        "name": "n_classes_",
+        "type": "int",
+        "description": "Number of classes"
+      },
+      {
+        "name": "pairwise_indices_",
+        "type": "list, length = ``len(estimators_)``, or ``None``",
+        "description": "Indices of samples used when training the estimators. ``None`` when ``estimator``'s `pairwise` tag is False.  .. deprecated:: 0.24      The _pairwise attribute is deprecated in 0.24. From 1.1     (renaming of 0.25) and onward, `pairwise_indices_` will use the     pairwise estimator tag instead."
+      }
+    ]
+  },
+  "OneVsRestClassifier": {
+    "name": "sklearn.multiclass.OneVsRestClassifier",
+    "common_name": "OneVsRestClassifier",
+    "description": "One-vs-the-rest (OvR) multiclass strategy. Also known as one-vs-all, this strategy consists in fitting one classifier per class. For each classifier, the class is fitted against all the other classes. In addition to its computational efficiency (only `n_classes` classifiers are needed), one advantage of this approach is its interpretability. Since each class is represented by one and one classifier only, it is possible to gain knowledge about the class by inspecting its corresponding classifier. This is the most commonly used strategy for multiclass classification and is a fair default choice.  OneVsRestClassifier can also be used for multilabel classification. To use this feature, provide an indicator matrix for the target `y` when calling `.fit`. In other words, the target labels should be formatted as a 2D binary (0/1) matrix, where [i, j] == 1 indicates the presence of label j in sample i. This estimator uses the binary relevance method to perform multilabel classification, which involves training one binary classifier independently for each label.  Read more in the :ref:`User Guide <ovr_classification>`.",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "name": "n_jobs",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "n_jobs"
+          ],
+          "default": "n_jobs__None",
+          "description": "The number of jobs to use for the computation: the `n_classes` one-vs-rest problems are computed in parallel.  ``None`` means 1 unless in a :obj:`joblib.parallel_backend` context. ``-1`` means using all processors. See :term:`Glossary <n_jobs>` for more details.  .. versionchanged:: v0.20    `n_jobs` default changed from 1 to None"
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "n_jobs__int",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "n_jobs__None",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      }
+    ],
+    "Params": [
+      {
+        "name": "estimators_",
+        "type": "list of `n_classes` estimators",
+        "description": "Estimators used for predictions."
+      },
+      {
+        "name": "coef_",
+        "type": "ndarray of shape (1, n_features) or (n_classes, n_features)",
+        "description": "Coefficient of the features in the decision function. This attribute exists only if the ``estimators_`` defines ``coef_``.  .. deprecated:: 0.24     This attribute is deprecated in 0.24 and will     be removed in 1.1 (renaming of 0.26). If you use this attribute     in :class:`~sklearn.feature_selection.RFE` or     :class:`~sklearn.feature_selection.SelectFromModel`,     you may pass a callable to the `importance_getter`     parameter that extracts feature the importances     from `estimators_`."
+      },
+      {
+        "name": "intercept_",
+        "type": "ndarray of shape (1, 1) or (n_classes, 1)",
+        "description": "If ``y`` is binary, the shape is ``(1, 1)`` else ``(n_classes, 1)`` This attribute exists only if the ``estimators_`` defines ``intercept_``.  .. deprecated:: 0.24     This attribute is deprecated in 0.24 and will     be removed in 1.1 (renaming of 0.26). If you use this attribute     in :class:`~sklearn.feature_selection.RFE` or     :class:`~sklearn.feature_selection.SelectFromModel`,     you may pass a callable to the `importance_getter`     parameter that extracts feature the importances     from `estimators_`."
+      },
+      {
+        "name": "classes_",
+        "type": "array, shape = [`n_classes`]",
+        "description": "Class labels."
+      },
+      {
+        "name": "n_classes_",
+        "type": "int",
+        "description": "Number of classes."
+      },
+      {
+        "name": "label_binarizer_",
+        "type": "LabelBinarizer object",
+        "description": "Object used to transform multiclass labels to binary labels and vice-versa."
+      },
+      {
+        "name": "multilabel_",
+        "type": "boolean",
+        "description": "Whether a OneVsRestClassifier is a multilabel classifier."
+      }
+    ]
+  },
+  "OutputCodeClassifier": {
+    "name": "sklearn.multiclass.OutputCodeClassifier",
+    "common_name": "OutputCodeClassifier",
+    "description": "(Error-Correcting) Output-Code multiclass strategy Output-code based strategies consist in representing each class with a binary code (an array of 0s and 1s). At fitting time, one binary classifier per bit in the code book is fitted.  At prediction time, the classifiers are used to project new points in the class space and the class closest to the points is chosen. The main advantage of these strategies is that the number of classifiers used can be controlled by the user, either for compressing the model (0 < code_size < 1) or for making the model more robust to errors (code_size > 1). See the documentation for more details.  Read more in the :ref:`User Guide <ecoc>`.",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "type": "Hyperparameter",
+        "name": "code_size",
+        "init_args": {
+          "semantic_types": [
+            "code_size"
+          ],
+          "_structural_type": "float",
+          "default": 1.5,
+          "description": "Percentage of the number of classes to be used to create the code book. A number between 0 and 1 will require fewer classifiers than one-vs-the-rest. A number greater than 1 will require more classifiers than one-vs-the-rest."
+        }
+      },
+      {
+        "name": "random_state",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "random_state"
+          ],
+          "default": "random_state__None",
+          "description": "The generator used to initialize the codebook. Pass an int for reproducible output across multiple function calls. See :term:`Glossary <random_state>`."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "random_state__int",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "random_state__None",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "n_jobs",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "n_jobs"
+          ],
+          "default": "n_jobs__None",
+          "description": "The number of jobs to use for the computation: the multiclass problems are computed in parallel.  ``None`` means 1 unless in a :obj:`joblib.parallel_backend` context. ``-1`` means using all processors. See :term:`Glossary <n_jobs>` for more details."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "n_jobs__int",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "n_jobs__None",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      }
+    ],
+    "Params": [
+      {
+        "name": "estimators_",
+        "type": "list of `int(n_classes * code_size)` estimators",
+        "description": "Estimators used for predictions."
+      },
+      {
+        "name": "classes_",
+        "type": "numpy array of shape [n_classes]",
+        "description": "Array containing labels."
+      },
+      {
+        "name": "code_book_",
+        "type": "numpy array of shape [n_classes, code_size]",
+        "description": "Binary array containing the code of each class."
+      }
+    ]
+  }
+}
