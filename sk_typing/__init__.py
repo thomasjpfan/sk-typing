@@ -32,6 +32,7 @@ _MODULES = [
     "mixture",
     "model_selection",
     "multiclass",
+    "multioutput",
 ]
 
 for modules in _MODULES:
