@@ -1,0 +1,374 @@
+{
+  "ClassifierChain": {
+    "name": "sklearn.multioutput.ClassifierChain",
+    "common_name": "ClassifierChain",
+    "description": "A multi-label model that arranges binary classifiers into a chain. Each model makes a prediction in the order specified by the chain using all of the available features provided to the model plus the predictions of models that are earlier in the chain.  Read more in the :ref:`User Guide <classifierchain>`.  .. versionadded:: 0.19",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "name": "order",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "order"
+          ],
+          "default": "order__None",
+          "description": "If None, the order will be determined by the order of columns in the label matrix Y.::      order = [0, 1, 2, ..., Y.shape[1] - 1]  The order of the chain can be explicitly set by providing a list of integers. For example, for a chain of length 5.::      order = [1, 3, 2, 4, 0]  means that the first model in the chain will make predictions for column 1 in the Y matrix, the second model will make predictions for column 3, etc.  If order is 'random' a random ordering will be used."
+        },
+        "hyperparams": [
+          {
+            "type": "Constant",
+            "name": "order__str",
+            "init_args": {
+              "semantic_types": [
+                "order"
+              ],
+              "_structural_type": "str"
+            }
+          },
+          {
+            "name": "order__ndarray",
+            "type": "Hyperparameter",
+            "init_args": {
+              "_structural_type": "ndarray",
+              "semantic_types": [
+                "order"
+              ]
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "order__None",
+            "init_args": {
+              "semantic_types": [
+                "order"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "cv",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "cv"
+          ],
+          "default": "cv__None",
+          "description": "Determines whether to use cross validated predictions or true labels for the results of previous estimators in the chain. Possible inputs for cv are:  - None, to use true labels when fitting, - integer, to specify the number of folds in a (Stratified)KFold, - :term:`CV splitter`, - An iterable yielding (train, test) splits as arrays of indices."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "cv__int",
+            "init_args": {
+              "semantic_types": [
+                "cv"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "cv__None",
+            "init_args": {
+              "semantic_types": [
+                "cv"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "random_state",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "random_state"
+          ],
+          "default": "random_state__None",
+          "description": "If ``order='random'``, determines random number generation for the chain order. In addition, it controls the random seed given at each `base_estimator` at each chaining iteration. Thus, it is only used when `base_estimator` exposes a `random_state`. Pass an int for reproducible output across multiple function calls. See :term:`Glossary <random_state>`."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "random_state__int",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "random_state__None",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      }
+    ],
+    "Params": [
+      {
+        "name": "classes_",
+        "type": "list",
+        "description": "A list of arrays of length ``len(estimators_)`` containing the class labels for each estimator in the chain."
+      },
+      {
+        "name": "estimators_",
+        "type": "list",
+        "description": "A list of clones of base_estimator."
+      },
+      {
+        "name": "order_",
+        "type": "list",
+        "description": "The order of labels in the classifier chain."
+      }
+    ]
+  },
+  "MultiOutputClassifier": {
+    "name": "sklearn.multioutput.MultiOutputClassifier",
+    "common_name": "MultiOutputClassifier",
+    "description": "Multi target classification This strategy consists of fitting one classifier per target. This is a simple strategy for extending classifiers that do not natively support multi-target classification",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "name": "n_jobs",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "n_jobs"
+          ],
+          "default": "n_jobs__None",
+          "description": "The number of jobs to run in parallel. :meth:`fit`, :meth:`predict` and :meth:`partial_fit` (if supported by the passed estimator) will be parallelized for each target.  When individual estimators are fast to train or predict, using ``n_jobs > 1`` can result in slower performance due to the parallelism overhead.  ``None`` means 1 unless in a :obj:`joblib.parallel_backend` context. ``-1`` means using all available processes / threads. See :term:`Glossary <n_jobs>` for more details.  .. versionchanged:: 0.20    `n_jobs` default changed from 1 to None"
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "n_jobs__int",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "n_jobs__None",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      }
+    ],
+    "Params": [
+      {
+        "name": "classes_",
+        "type": "ndarray of shape (n_classes,)",
+        "description": "Class labels."
+      },
+      {
+        "name": "estimators_",
+        "type": "list of ``n_output`` estimators",
+        "description": "Estimators used for predictions."
+      }
+    ]
+  },
+  "MultiOutputRegressor": {
+    "name": "sklearn.multioutput.MultiOutputRegressor",
+    "common_name": "MultiOutputRegressor",
+    "description": "Multi target regression This strategy consists of fitting one regressor per target. This is a simple strategy for extending regressors that do not natively support multi-target regression.  .. versionadded:: 0.18",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "name": "n_jobs",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "n_jobs"
+          ],
+          "default": "n_jobs__None",
+          "description": "The number of jobs to run in parallel. :meth:`fit`, :meth:`predict` and :meth:`partial_fit` (if supported by the passed estimator) will be parallelized for each target.  When individual estimators are fast to train or predict, using ``n_jobs > 1`` can result in slower performance due to the parallelism overhead.  ``None`` means 1 unless in a :obj:`joblib.parallel_backend` context. ``-1`` means using all available processes / threads. See :term:`Glossary <n_jobs>` for more details.  .. versionchanged:: 0.20    `n_jobs` default changed from 1 to None"
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "n_jobs__int",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "n_jobs__None",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      }
+    ],
+    "Params": [
+      {
+        "name": "estimators_",
+        "type": "list of ``n_output`` estimators",
+        "description": "Estimators used for predictions."
+      }
+    ]
+  },
+  "RegressorChain": {
+    "name": "sklearn.multioutput.RegressorChain",
+    "common_name": "RegressorChain",
+    "description": "A multi-label model that arranges regressions into a chain. Each model makes a prediction in the order specified by the chain using all of the available features provided to the model plus the predictions of models that are earlier in the chain.  Read more in the :ref:`User Guide <regressorchain>`.  .. versionadded:: 0.20",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "name": "order",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "order"
+          ],
+          "default": "order__None",
+          "description": "If None, the order will be determined by the order of columns in the label matrix Y.::      order = [0, 1, 2, ..., Y.shape[1] - 1]  The order of the chain can be explicitly set by providing a list of integers. For example, for a chain of length 5.::      order = [1, 3, 2, 4, 0]  means that the first model in the chain will make predictions for column 1 in the Y matrix, the second model will make predictions for column 3, etc.  If order is 'random' a random ordering will be used."
+        },
+        "hyperparams": [
+          {
+            "name": "order__ndarray",
+            "type": "Hyperparameter",
+            "init_args": {
+              "_structural_type": "ndarray",
+              "semantic_types": [
+                "order"
+              ]
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "order__str",
+            "init_args": {
+              "semantic_types": [
+                "order"
+              ],
+              "_structural_type": "str"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "order__None",
+            "init_args": {
+              "semantic_types": [
+                "order"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "cv",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "cv"
+          ],
+          "default": "cv__None",
+          "description": "Determines whether to use cross validated predictions or true labels for the results of previous estimators in the chain. Possible inputs for cv are:  - None, to use true labels when fitting, - integer, to specify the number of folds in a (Stratified)KFold, - :term:`CV splitter`, - An iterable yielding (train, test) splits as arrays of indices."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "cv__int",
+            "init_args": {
+              "semantic_types": [
+                "cv"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "cv__None",
+            "init_args": {
+              "semantic_types": [
+                "cv"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "random_state",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "random_state"
+          ],
+          "default": "random_state__None",
+          "description": "If ``order='random'``, determines random number generation for the chain order. In addition, it controls the random seed given at each `base_estimator` at each chaining iteration. Thus, it is only used when `base_estimator` exposes a `random_state`. Pass an int for reproducible output across multiple function calls. See :term:`Glossary <random_state>`."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "random_state__int",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "random_state__None",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      }
+    ],
+    "Params": [
+      {
+        "name": "estimators_",
+        "type": "list",
+        "description": "A list of clones of base_estimator."
+      },
+      {
+        "name": "order_",
+        "type": "list",
+        "description": "The order of labels in the classifier chain."
+      }
+    ]
+  }
+}
