@@ -27,6 +27,7 @@ _MODULES = [
     "isotonic",
     "kernel_approximation",
     "kernel_ridge",
+    "linear_model",
 ]
 
 for modules in _MODULES:
