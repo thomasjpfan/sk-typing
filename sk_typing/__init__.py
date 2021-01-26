@@ -36,6 +36,7 @@ _MODULES = [
     "naive_bayes",
     "neighbors",
     "neural_network",
+    "pipeline",
 ]
 
 for modules in _MODULES:
