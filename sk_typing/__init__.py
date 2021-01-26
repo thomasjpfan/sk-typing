@@ -29,6 +29,7 @@ _MODULES = [
     "kernel_ridge",
     "linear_model",
     "manifold",
+    "mixture",
 ]
 
 for modules in _MODULES:
