@@ -1,0 +1,449 @@
+{
+  "LabelPropagation": {
+    "name": "sklearn.semi_supervised._label_propagation.LabelPropagation",
+    "common_name": "LabelPropagation",
+    "description": "Label Propagation classifier Read more in the :ref:`User Guide <label_propagation>`.",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "name": "kernel",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "kernel"
+          ],
+          "default": "kernel__str",
+          "description": "String identifier for kernel function to use or the kernel function itself. Only 'rbf' and 'knn' strings are valid inputs. The function passed should take two inputs, each of shape (n_samples, n_features), and return a (n_samples, n_samples) shaped weight matrix."
+        },
+        "hyperparams": [
+          {
+            "type": "Enumeration",
+            "name": "kernel__str",
+            "init_args": {
+              "semantic_types": [
+                "kernel"
+              ],
+              "values": [
+                "knn",
+                "rbf"
+              ],
+              "_structural_type": "str",
+              "default": "rbf"
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "kernel__Callable",
+            "init_args": {
+              "semantic_types": [
+                "kernel"
+              ],
+              "_structural_type": "Callable"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "gamma",
+        "init_args": {
+          "semantic_types": [
+            "gamma"
+          ],
+          "_structural_type": "float",
+          "default": 20,
+          "description": "Parameter for rbf kernel."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "n_neighbors",
+        "init_args": {
+          "semantic_types": [
+            "n_neighbors"
+          ],
+          "_structural_type": "int",
+          "default": 7,
+          "description": "Parameter for knn kernel which need to be strictly positive."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "max_iter",
+        "init_args": {
+          "semantic_types": [
+            "max_iter"
+          ],
+          "_structural_type": "int",
+          "default": 1000,
+          "description": "Change maximum number of iterations allowed."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "tol",
+        "init_args": {
+          "semantic_types": [
+            "tol"
+          ],
+          "_structural_type": "float",
+          "default": 0.001,
+          "description": "Convergence tolerance: threshold to consider the system at steady state."
+        }
+      },
+      {
+        "name": "n_jobs",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "n_jobs"
+          ],
+          "default": "n_jobs__None",
+          "description": "The number of parallel jobs to run. ``None`` means 1 unless in a :obj:`joblib.parallel_backend` context. ``-1`` means using all processors. See :term:`Glossary <n_jobs>` for more details."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "n_jobs__int",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "n_jobs__None",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      }
+    ],
+    "Params": [
+      {
+        "name": "X_",
+        "type": "ndarray of shape (n_samples, n_features)",
+        "description": "Input array."
+      },
+      {
+        "name": "classes_",
+        "type": "ndarray of shape (n_classes,)",
+        "description": "The distinct labels used in classifying instances."
+      },
+      {
+        "name": "label_distributions_",
+        "type": "ndarray of shape (n_samples, n_classes)",
+        "description": "Categorical distribution for each item."
+      },
+      {
+        "name": "transduction_",
+        "type": "ndarray of shape (n_samples)",
+        "description": "Label assigned to each item via the transduction."
+      },
+      {
+        "name": "n_iter_",
+        "type": "int",
+        "description": "Number of iterations run."
+      }
+    ]
+  },
+  "LabelSpreading": {
+    "name": "sklearn.semi_supervised._label_propagation.LabelSpreading",
+    "common_name": "LabelSpreading",
+    "description": "LabelSpreading model for semi-supervised learning This model is similar to the basic Label Propagation algorithm, but uses affinity matrix based on the normalized graph Laplacian and soft clamping across the labels.  Read more in the :ref:`User Guide <label_propagation>`.",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "name": "kernel",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "kernel"
+          ],
+          "default": "kernel__str",
+          "description": "String identifier for kernel function to use or the kernel function itself. Only 'rbf' and 'knn' strings are valid inputs. The function passed should take two inputs, each of shape (n_samples, n_features), and return a (n_samples, n_samples) shaped weight matrix."
+        },
+        "hyperparams": [
+          {
+            "type": "Enumeration",
+            "name": "kernel__str",
+            "init_args": {
+              "semantic_types": [
+                "kernel"
+              ],
+              "values": [
+                "knn",
+                "rbf"
+              ],
+              "_structural_type": "str",
+              "default": "rbf"
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "kernel__Callable",
+            "init_args": {
+              "semantic_types": [
+                "kernel"
+              ],
+              "_structural_type": "Callable"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "gamma",
+        "init_args": {
+          "semantic_types": [
+            "gamma"
+          ],
+          "_structural_type": "float",
+          "default": 20,
+          "description": "Parameter for rbf kernel."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "n_neighbors",
+        "init_args": {
+          "semantic_types": [
+            "n_neighbors"
+          ],
+          "_structural_type": "int",
+          "default": 7,
+          "description": "Parameter for knn kernel which is a strictly positive integer."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "alpha",
+        "init_args": {
+          "semantic_types": [
+            "alpha"
+          ],
+          "_structural_type": "float",
+          "default": 0.2,
+          "description": "Clamping factor. A value in (0, 1) that specifies the relative amount that an instance should adopt the information from its neighbors as opposed to its initial label. alpha=0 means keeping the initial label information; alpha=1 means replacing all initial information."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "max_iter",
+        "init_args": {
+          "semantic_types": [
+            "max_iter"
+          ],
+          "_structural_type": "int",
+          "default": 30,
+          "description": "Maximum number of iterations allowed."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "tol",
+        "init_args": {
+          "semantic_types": [
+            "tol"
+          ],
+          "_structural_type": "float",
+          "default": 0.001,
+          "description": "Convergence tolerance: threshold to consider the system at steady state."
+        }
+      },
+      {
+        "name": "n_jobs",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "n_jobs"
+          ],
+          "default": "n_jobs__None",
+          "description": "The number of parallel jobs to run. ``None`` means 1 unless in a :obj:`joblib.parallel_backend` context. ``-1`` means using all processors. See :term:`Glossary <n_jobs>` for more details."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "n_jobs__int",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "n_jobs__None",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      }
+    ],
+    "Params": [
+      {
+        "name": "X_",
+        "type": "ndarray of shape (n_samples, n_features)",
+        "description": "Input array."
+      },
+      {
+        "name": "classes_",
+        "type": "ndarray of shape (n_classes,)",
+        "description": "The distinct labels used in classifying instances."
+      },
+      {
+        "name": "label_distributions_",
+        "type": "ndarray of shape (n_samples, n_classes)",
+        "description": "Categorical distribution for each item."
+      },
+      {
+        "name": "transduction_",
+        "type": "ndarray of shape (n_samples,)",
+        "description": "Label assigned to each item via the transduction."
+      },
+      {
+        "name": "n_iter_",
+        "type": "int",
+        "description": "Number of iterations run."
+      }
+    ]
+  },
+  "SelfTrainingClassifier": {
+    "name": "sklearn.semi_supervised._self_training.SelfTrainingClassifier",
+    "common_name": "SelfTrainingClassifier",
+    "description": "Self-training classifier. This class allows a given supervised classifier to function as a semi-supervised classifier, allowing it to learn from unlabeled data. It does this by iteratively predicting pseudo-labels for the unlabeled data and adding them to the training set.  The classifier will continue iterating until either max_iter is reached, or no pseudo-labels were added to the training set in the previous iteration.  Read more in the :ref:`User Guide <self_training>`.",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "type": "Hyperparameter",
+        "name": "threshold",
+        "init_args": {
+          "semantic_types": [
+            "threshold"
+          ],
+          "_structural_type": "float",
+          "default": 0.75,
+          "description": "The decision threshold for use with `criterion='threshold'`. Should be in [0, 1). When using the 'threshold' criterion, a :ref:`well calibrated classifier <calibration>` should be used."
+        }
+      },
+      {
+        "type": "Enumeration",
+        "name": "criterion",
+        "init_args": {
+          "semantic_types": [
+            "criterion"
+          ],
+          "values": [
+            "threshold",
+            "k_best"
+          ],
+          "_structural_type": "str",
+          "default": "threshold",
+          "description": "The selection criterion used to select which labels to add to the training set. If 'threshold', pseudo-labels with prediction probabilities above `threshold` are added to the dataset. If 'k_best', the `k_best` pseudo-labels with highest prediction probabilities are added to the dataset. When using the 'threshold' criterion, a :ref:`well calibrated classifier <calibration>` should be used."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "k_best",
+        "init_args": {
+          "semantic_types": [
+            "k_best"
+          ],
+          "_structural_type": "int",
+          "default": 10,
+          "description": "The amount of samples to add in each iteration. Only used when `criterion` is k_best'."
+        }
+      },
+      {
+        "name": "max_iter",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "max_iter"
+          ],
+          "default": "max_iter__int",
+          "description": "Maximum number of iterations allowed. Should be greater than or equal to 0. If it is ``None``, the classifier will continue to predict labels until no new pseudo-labels are added, or all unlabeled samples have been labeled."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "max_iter__int",
+            "init_args": {
+              "semantic_types": [
+                "max_iter"
+              ],
+              "_structural_type": "int",
+              "default": 10
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "max_iter__None",
+            "init_args": {
+              "semantic_types": [
+                "max_iter"
+              ],
+              "_structural_type": "None"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "verbose",
+        "init_args": {
+          "semantic_types": [
+            "verbose"
+          ],
+          "_structural_type": "bool",
+          "default": "False"
+        }
+      }
+    ],
+    "Params": [
+      {
+        "name": "base_estimator_",
+        "type": "estimator object",
+        "description": "The fitted estimator."
+      },
+      {
+        "name": "classes_",
+        "type": "ndarray or list of ndarray of shape (n_classes,)",
+        "description": "Class labels for each output. (Taken from the trained ``base_estimator_``)."
+      },
+      {
+        "name": "transduction_",
+        "type": "ndarray of shape (n_samples,)",
+        "description": "The labels used for the final fit of the classifier, including pseudo-labels added during fit."
+      },
+      {
+        "name": "labeled_iter_",
+        "type": "ndarray of shape (n_samples,)",
+        "description": "The iteration in which each sample was labeled. When a sample has iteration 0, the sample was already labeled in the original dataset. When a sample has iteration -1, the sample was not labeled in any iteration."
+      },
+      {
+        "name": "n_iter_",
+        "type": "int",
+        "description": "The number of rounds of self-training, that is the number of times the base estimator is fitted on relabeled variants of the training set."
+      },
+      {
+        "name": "termination_condition_",
+        "type": "{'max_iter', 'no_change', 'all_labeled'}",
+        "description": "The reason that fitting was stopped.  - 'max_iter': `n_iter_` reached `max_iter`. - 'no_change': no new labels were predicted. - 'all_labeled': all unlabeled samples were labeled before `max_iter`   was reached."
+      }
+    ]
+  }
+}
