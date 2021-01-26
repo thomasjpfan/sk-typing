@@ -26,7 +26,7 @@ class IsomapAnnotation:
         path_method: Literal["auto", "FW", "D"] = "auto",
         neighbors_algorithm: Literal["auto", "brute", "kd_tree", "ball_tree"] = "auto",
         n_jobs: Optional[int] = None,
-        metric: Union[int, Callable] = "minkowski",
+        metric: Union[str, Callable] = "minkowski",
         p: int = 2,
         metric_params: Optional[dict] = None,
     ):

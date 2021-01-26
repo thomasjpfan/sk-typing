@@ -331,7 +331,7 @@ class LogisticRegressionAnnotation:
         tol: float = 0.0001,
         C: float = 1.0,
         fit_intercept: bool = True,
-        intercept_scaling: bool = 1,
+        intercept_scaling: bool = True,
         class_weight: Union[dict, Literal["balanced"]] = None,
         random_state: RandomStateType = None,
         solver: Literal["newton-cg", "lbfgs", "liblinear", "sag", "saga"] = "lbfgs",
