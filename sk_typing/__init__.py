@@ -35,6 +35,7 @@ _MODULES = [
     "multioutput",
     "naive_bayes",
     "neighbors",
+    "neural_network",
 ]
 
 for modules in _MODULES:

@@ -8,7 +8,6 @@ from sk_typing import get_init_annotations
 from sk_typing import _ALL_ANNOTATIONS
 
 MODULES_TO_IGNORE = {
-    "neural_network",
     "pipeline",
     "preprocessing",
     "random_projection",
