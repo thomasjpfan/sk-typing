@@ -28,6 +28,7 @@ _MODULES = [
     "kernel_approximation",
     "kernel_ridge",
     "linear_model",
+    "manifold",
 ]
 
 for modules in _MODULES:
