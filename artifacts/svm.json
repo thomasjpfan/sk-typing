@@ -1,0 +1,1731 @@
+{
+  "LinearSVC": {
+    "name": "sklearn.svm._classes.LinearSVC",
+    "common_name": "LinearSVC",
+    "description": "Linear Support Vector Classification. Similar to SVC with parameter kernel='linear', but implemented in terms of liblinear rather than libsvm, so it has more flexibility in the choice of penalties and loss functions and should scale better to large numbers of samples.  This class supports both dense and sparse input and the multiclass support is handled according to a one-vs-the-rest scheme.  Read more in the :ref:`User Guide <svm_classification>`.",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "type": "Enumeration",
+        "name": "penalty",
+        "init_args": {
+          "semantic_types": [
+            "penalty"
+          ],
+          "values": [
+            "l1",
+            "l2"
+          ],
+          "_structural_type": "str",
+          "default": "l2",
+          "description": "Specifies the norm used in the penalization. The 'l2' penalty is the standard used in SVC. The 'l1' leads to ``coef_`` vectors that are sparse."
+        }
+      },
+      {
+        "type": "Enumeration",
+        "name": "loss",
+        "init_args": {
+          "semantic_types": [
+            "loss"
+          ],
+          "values": [
+            "hinge",
+            "squared_hinge"
+          ],
+          "_structural_type": "str",
+          "default": "squared_hinge",
+          "description": "Specifies the loss function. 'hinge' is the standard SVM loss (used e.g. by the SVC class) while 'squared_hinge' is the square of the hinge loss. The combination of ``penalty='l1'`` and ``loss='hinge'`` is not supported."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "dual",
+        "init_args": {
+          "semantic_types": [
+            "dual"
+          ],
+          "_structural_type": "bool",
+          "default": "True",
+          "description": "Select the algorithm to either solve the dual or primal optimization problem. Prefer dual=False when n_samples > n_features."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "tol",
+        "init_args": {
+          "semantic_types": [
+            "tol"
+          ],
+          "_structural_type": "float",
+          "default": 0.0001,
+          "description": "Tolerance for stopping criteria."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "C",
+        "init_args": {
+          "semantic_types": [
+            "C"
+          ],
+          "_structural_type": "float",
+          "default": 1.0,
+          "description": "Regularization parameter. The strength of the regularization is inversely proportional to C. Must be strictly positive."
+        }
+      },
+      {
+        "type": "Enumeration",
+        "name": "multi_class",
+        "init_args": {
+          "semantic_types": [
+            "multi_class"
+          ],
+          "values": [
+            "ovr",
+            "crammer_singer"
+          ],
+          "_structural_type": "str",
+          "default": "ovr",
+          "description": "Determines the multi-class strategy if `y` contains more than two classes. ``\"ovr\"`` trains n_classes one-vs-rest classifiers, while ``\"crammer_singer\"`` optimizes a joint objective over all classes. While `crammer_singer` is interesting from a theoretical perspective as it is consistent, it is seldom used in practice as it rarely leads to better accuracy and is more expensive to compute. If ``\"crammer_singer\"`` is chosen, the options loss, penalty and dual will be ignored."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "fit_intercept",
+        "init_args": {
+          "semantic_types": [
+            "fit_intercept"
+          ],
+          "_structural_type": "bool",
+          "default": "True",
+          "description": "Whether to calculate the intercept for this model. If set to false, no intercept will be used in calculations (i.e. data is expected to be already centered)."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "intercept_scaling",
+        "init_args": {
+          "semantic_types": [
+            "intercept_scaling"
+          ],
+          "_structural_type": "float",
+          "default": 1,
+          "description": "When self.fit_intercept is True, instance vector x becomes ``[x, self.intercept_scaling]``, i.e. a \"synthetic\" feature with constant value equals to intercept_scaling is appended to the instance vector. The intercept becomes intercept_scaling * synthetic feature weight Note! the synthetic feature weight is subject to l1/l2 regularization as all other features. To lessen the effect of regularization on synthetic feature weight (and therefore on the intercept) intercept_scaling has to be increased."
+        }
+      },
+      {
+        "name": "class_weight",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "class_weight"
+          ],
+          "default": "class_weight__None",
+          "description": "Set the parameter C of class i to ``class_weight[i]*C`` for SVC. If not given, all classes are supposed to have weight one. The \"balanced\" mode uses the values of y to automatically adjust weights inversely proportional to class frequencies in the input data as ``n_samples / (n_classes * np.bincount(y))``."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "class_weight__dict",
+            "init_args": {
+              "semantic_types": [
+                "class_weight"
+              ],
+              "_structural_type": "dict"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "class_weight__str",
+            "init_args": {
+              "semantic_types": [
+                "class_weight"
+              ],
+              "_structural_type": "str"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "class_weight__None",
+            "init_args": {
+              "semantic_types": [
+                "class_weight"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "verbose",
+        "init_args": {
+          "semantic_types": [
+            "verbose"
+          ],
+          "_structural_type": "int",
+          "default": 0,
+          "description": "Enable verbose output. Note that this setting takes advantage of a per-process runtime setting in liblinear that, if enabled, may not work properly in a multithreaded context."
+        }
+      },
+      {
+        "name": "random_state",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "random_state"
+          ],
+          "default": "random_state__None",
+          "description": "Controls the pseudo random number generation for shuffling the data for the dual coordinate descent (if ``dual=True``). When ``dual=False`` the underlying implementation of :class:`LinearSVC` is not random and ``random_state`` has no effect on the results. Pass an int for reproducible output across multiple function calls. See :term:`Glossary <random_state>`."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "random_state__int",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "random_state__None",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "max_iter",
+        "init_args": {
+          "semantic_types": [
+            "max_iter"
+          ],
+          "_structural_type": "int",
+          "default": 1000,
+          "description": "The maximum number of iterations to be run."
+        }
+      }
+    ],
+    "Params": [
+      {
+        "name": "coef_",
+        "type": "ndarray of shape (1, n_features) if n_classes == 2             else (n_classes, n_features)",
+        "description": "Weights assigned to the features (coefficients in the primal problem). This is only available in the case of a linear kernel.  ``coef_`` is a readonly property derived from ``raw_coef_`` that follows the internal memory layout of liblinear."
+      },
+      {
+        "name": "intercept_",
+        "type": "ndarray of shape (1,) if n_classes == 2 else (n_classes,)",
+        "description": "Constants in decision function."
+      },
+      {
+        "name": "classes_",
+        "type": "ndarray of shape (n_classes,)",
+        "description": "The unique classes labels."
+      },
+      {
+        "name": "n_iter_",
+        "type": "int",
+        "description": "Maximum number of iterations run across all classes."
+      }
+    ]
+  },
+  "LinearSVR": {
+    "name": "sklearn.svm._classes.LinearSVR",
+    "common_name": "LinearSVR",
+    "description": "Linear Support Vector Regression. Similar to SVR with parameter kernel='linear', but implemented in terms of liblinear rather than libsvm, so it has more flexibility in the choice of penalties and loss functions and should scale better to large numbers of samples.  This class supports both dense and sparse input.  Read more in the :ref:`User Guide <svm_regression>`.  .. versionadded:: 0.16",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "type": "Hyperparameter",
+        "name": "epsilon",
+        "init_args": {
+          "semantic_types": [
+            "epsilon"
+          ],
+          "_structural_type": "float",
+          "default": 0.0,
+          "description": "Epsilon parameter in the epsilon-insensitive loss function. Note that the value of this parameter depends on the scale of the target variable y. If unsure, set ``epsilon=0``."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "tol",
+        "init_args": {
+          "semantic_types": [
+            "tol"
+          ],
+          "_structural_type": "float",
+          "default": 0.0001,
+          "description": "Tolerance for stopping criteria."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "C",
+        "init_args": {
+          "semantic_types": [
+            "C"
+          ],
+          "_structural_type": "float",
+          "default": 1.0,
+          "description": "Regularization parameter. The strength of the regularization is inversely proportional to C. Must be strictly positive."
+        }
+      },
+      {
+        "type": "Enumeration",
+        "name": "loss",
+        "init_args": {
+          "semantic_types": [
+            "loss"
+          ],
+          "values": [
+            "epsilon_insensitive",
+            "squared_epsilon_insensitive"
+          ],
+          "_structural_type": "str",
+          "default": "epsilon_insensitive",
+          "description": "Specifies the loss function. The epsilon-insensitive loss (standard SVR) is the L1 loss, while the squared epsilon-insensitive loss ('squared_epsilon_insensitive') is the L2 loss."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "fit_intercept",
+        "init_args": {
+          "semantic_types": [
+            "fit_intercept"
+          ],
+          "_structural_type": "bool",
+          "default": "True",
+          "description": "Whether to calculate the intercept for this model. If set to false, no intercept will be used in calculations (i.e. data is expected to be already centered)."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "intercept_scaling",
+        "init_args": {
+          "semantic_types": [
+            "intercept_scaling"
+          ],
+          "_structural_type": "float",
+          "default": 1.0,
+          "description": "When self.fit_intercept is True, instance vector x becomes [x, self.intercept_scaling], i.e. a \"synthetic\" feature with constant value equals to intercept_scaling is appended to the instance vector. The intercept becomes intercept_scaling * synthetic feature weight Note! the synthetic feature weight is subject to l1/l2 regularization as all other features. To lessen the effect of regularization on synthetic feature weight (and therefore on the intercept) intercept_scaling has to be increased."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "dual",
+        "init_args": {
+          "semantic_types": [
+            "dual"
+          ],
+          "_structural_type": "bool",
+          "default": "True",
+          "description": "Select the algorithm to either solve the dual or primal optimization problem. Prefer dual=False when n_samples > n_features."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "verbose",
+        "init_args": {
+          "semantic_types": [
+            "verbose"
+          ],
+          "_structural_type": "int",
+          "default": 0,
+          "description": "Enable verbose output. Note that this setting takes advantage of a per-process runtime setting in liblinear that, if enabled, may not work properly in a multithreaded context."
+        }
+      },
+      {
+        "name": "random_state",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "random_state"
+          ],
+          "default": "random_state__None",
+          "description": "Controls the pseudo random number generation for shuffling the data. Pass an int for reproducible output across multiple function calls. See :term:`Glossary <random_state>`."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "random_state__int",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "random_state__None",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "max_iter",
+        "init_args": {
+          "semantic_types": [
+            "max_iter"
+          ],
+          "_structural_type": "int",
+          "default": 1000,
+          "description": "The maximum number of iterations to be run."
+        }
+      }
+    ],
+    "Params": [
+      {
+        "name": "coef_",
+        "type": "ndarray of shape (n_features) if n_classes == 2             else (n_classes, n_features)",
+        "description": "Weights assigned to the features (coefficients in the primal problem). This is only available in the case of a linear kernel.  `coef_` is a readonly property derived from `raw_coef_` that follows the internal memory layout of liblinear."
+      },
+      {
+        "name": "intercept_",
+        "type": "ndarray of shape (1) if n_classes == 2 else (n_classes)",
+        "description": "Constants in decision function."
+      },
+      {
+        "name": "n_iter_",
+        "type": "int",
+        "description": "Maximum number of iterations run across all classes."
+      }
+    ]
+  },
+  "NuSVC": {
+    "name": "sklearn.svm._classes.NuSVC",
+    "common_name": "NuSVC",
+    "description": "Nu-Support Vector Classification. Similar to SVC but uses a parameter to control the number of support vectors.  The implementation is based on libsvm.  Read more in the :ref:`User Guide <svm_classification>`.",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "type": "Hyperparameter",
+        "name": "nu",
+        "init_args": {
+          "semantic_types": [
+            "nu"
+          ],
+          "_structural_type": "float",
+          "default": 0.5,
+          "description": "An upper bound on the fraction of margin errors (see :ref:`User Guide <nu_svc>`) and a lower bound of the fraction of support vectors. Should be in the interval (0, 1]."
+        }
+      },
+      {
+        "type": "Enumeration",
+        "name": "kernel",
+        "init_args": {
+          "semantic_types": [
+            "kernel"
+          ],
+          "values": [
+            "linear",
+            "poly",
+            "rbf",
+            "sigmoid",
+            "precomputed"
+          ],
+          "_structural_type": "str",
+          "default": "rbf",
+          "description": "Specifies the kernel type to be used in the algorithm. It must be one of 'linear', 'poly', 'rbf', 'sigmoid', 'precomputed' or a callable. If none is given, 'rbf' will be used. If a callable is given it is used to precompute the kernel matrix."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "degree",
+        "init_args": {
+          "semantic_types": [
+            "degree"
+          ],
+          "_structural_type": "int",
+          "default": 3,
+          "description": "Degree of the polynomial kernel function ('poly'). Ignored by all other kernels."
+        }
+      },
+      {
+        "type": "Enumeration",
+        "name": "gamma",
+        "init_args": {
+          "semantic_types": [
+            "gamma"
+          ],
+          "values": [
+            "scale",
+            "auto"
+          ],
+          "_structural_type": "str",
+          "default": "scale",
+          "description": "Kernel coefficient for 'rbf', 'poly' and 'sigmoid'.  - if ``gamma='scale'`` (default) is passed then it uses   1 / (n_features * X.var()) as value of gamma, - if 'auto', uses 1 / n_features.  .. versionchanged:: 0.22    The default value of ``gamma`` changed from 'auto' to 'scale'."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "coef0",
+        "init_args": {
+          "semantic_types": [
+            "coef0"
+          ],
+          "_structural_type": "float",
+          "default": 0.0,
+          "description": "Independent term in kernel function. It is only significant in 'poly' and 'sigmoid'."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "shrinking",
+        "init_args": {
+          "semantic_types": [
+            "shrinking"
+          ],
+          "_structural_type": "bool",
+          "default": "True",
+          "description": "Whether to use the shrinking heuristic. See the :ref:`User Guide <shrinking_svm>`."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "probability",
+        "init_args": {
+          "semantic_types": [
+            "probability"
+          ],
+          "_structural_type": "bool",
+          "default": "False",
+          "description": "Whether to enable probability estimates. This must be enabled prior to calling `fit`, will slow down that method as it internally uses 5-fold cross-validation, and `predict_proba` may be inconsistent with `predict`. Read more in the :ref:`User Guide <scores_probabilities>`."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "tol",
+        "init_args": {
+          "semantic_types": [
+            "tol"
+          ],
+          "_structural_type": "float",
+          "default": 0.001,
+          "description": "Tolerance for stopping criterion."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "cache_size",
+        "init_args": {
+          "semantic_types": [
+            "cache_size"
+          ],
+          "_structural_type": "float",
+          "default": 200,
+          "description": "Specify the size of the kernel cache (in MB)."
+        }
+      },
+      {
+        "name": "class_weight",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "class_weight"
+          ],
+          "default": "class_weight__None",
+          "description": "Set the parameter C of class i to class_weight[i]*C for SVC. If not given, all classes are supposed to have weight one. The \"balanced\" mode uses the values of y to automatically adjust weights inversely proportional to class frequencies as ``n_samples / (n_classes * np.bincount(y))``"
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "class_weight__dict",
+            "init_args": {
+              "semantic_types": [
+                "class_weight"
+              ],
+              "_structural_type": "dict"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "class_weight__str",
+            "init_args": {
+              "semantic_types": [
+                "class_weight"
+              ],
+              "_structural_type": "str"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "class_weight__None",
+            "init_args": {
+              "semantic_types": [
+                "class_weight"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "verbose",
+        "init_args": {
+          "semantic_types": [
+            "verbose"
+          ],
+          "_structural_type": "bool",
+          "default": "False",
+          "description": "Enable verbose output. Note that this setting takes advantage of a per-process runtime setting in libsvm that, if enabled, may not work properly in a multithreaded context."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "max_iter",
+        "init_args": {
+          "semantic_types": [
+            "max_iter"
+          ],
+          "_structural_type": "int",
+          "default": -1,
+          "description": "Hard limit on iterations within solver, or -1 for no limit."
+        }
+      },
+      {
+        "type": "Enumeration",
+        "name": "decision_function_shape",
+        "init_args": {
+          "semantic_types": [
+            "decision_function_shape"
+          ],
+          "values": [
+            "ovo",
+            "ovr"
+          ],
+          "_structural_type": "str",
+          "default": "ovr",
+          "description": "Whether to return a one-vs-rest ('ovr') decision function of shape (n_samples, n_classes) as all other classifiers, or the original one-vs-one ('ovo') decision function of libsvm which has shape (n_samples, n_classes * (n_classes - 1) / 2). However, one-vs-one ('ovo') is always used as multi-class strategy. The parameter is ignored for binary classification.  .. versionchanged:: 0.19     decision_function_shape is 'ovr' by default.  .. versionadded:: 0.17    *decision_function_shape='ovr'* is recommended.  .. versionchanged:: 0.17    Deprecated *decision_function_shape='ovo' and None*."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "break_ties",
+        "init_args": {
+          "semantic_types": [
+            "break_ties"
+          ],
+          "_structural_type": "bool",
+          "default": "False",
+          "description": "If true, ``decision_function_shape='ovr'``, and number of classes > 2, :term:`predict` will break ties according to the confidence values of :term:`decision_function`; otherwise the first class among the tied classes is returned. Please note that breaking ties comes at a relatively high computational cost compared to a simple predict.  .. versionadded:: 0.22"
+        }
+      },
+      {
+        "name": "random_state",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "random_state"
+          ],
+          "default": "random_state__None",
+          "description": "Controls the pseudo random number generation for shuffling the data for probability estimates. Ignored when `probability` is False. Pass an int for reproducible output across multiple function calls. See :term:`Glossary <random_state>`."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "random_state__int",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "random_state__None",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      }
+    ],
+    "Params": [
+      {
+        "name": "class_weight_",
+        "type": "ndarray of shape (n_classes,)",
+        "description": "Multipliers of parameter C of each class. Computed based on the ``class_weight`` parameter."
+      },
+      {
+        "name": "classes_",
+        "type": "ndarray of shape (n_classes,)",
+        "description": "The unique classes labels."
+      },
+      {
+        "name": "coef_",
+        "type": "ndarray of shape (n_classes * (n_classes -1) / 2, n_features)",
+        "description": "Weights assigned to the features (coefficients in the primal problem). This is only available in the case of a linear kernel.  `coef_` is readonly property derived from `dual_coef_` and `support_vectors_`."
+      },
+      {
+        "name": "dual_coef_",
+        "type": "ndarray of shape (n_classes - 1, n_SV)",
+        "description": "Dual coefficients of the support vector in the decision function (see :ref:`sgd_mathematical_formulation`), multiplied by their targets. For multiclass, coefficient for all 1-vs-1 classifiers. The layout of the coefficients in the multiclass case is somewhat non-trivial. See the :ref:`multi-class section of the User Guide <svm_multi_class>` for details."
+      },
+      {
+        "name": "fit_status_",
+        "type": "int",
+        "description": "0 if correctly fitted, 1 if the algorithm did not converge."
+      },
+      {
+        "name": "intercept_",
+        "type": "ndarray of shape (n_classes * (n_classes - 1) / 2,)",
+        "description": "Constants in decision function."
+      },
+      {
+        "name": "support_",
+        "type": "ndarray of shape (n_SV,)",
+        "description": "Indices of support vectors."
+      },
+      {
+        "name": "support_vectors_",
+        "type": "ndarray of shape (n_SV, n_features)",
+        "description": "Support vectors."
+      },
+      {
+        "name": "n_support_",
+        "type": "ndarray of shape (n_classes,), dtype=int32",
+        "description": "Number of support vectors for each class."
+      },
+      {
+        "name": "fit_status_",
+        "type": "int",
+        "description": "0 if correctly fitted, 1 if the algorithm did not converge."
+      },
+      {
+        "name": "probA_",
+        "type": "ndarray of shape (n_classes * (n_classes - 1) / 2,)",
+        "description": ""
+      },
+      {
+        "name": "probB_",
+        "type": "ndarray of shape (n_classes * (n_classes - 1) / 2,)",
+        "description": "If `probability=True`, it corresponds to the parameters learned in Platt scaling to produce probability estimates from decision values. If `probability=False`, it's an empty array. Platt scaling uses the logistic function ``1 / (1 + exp(decision_value * probA_ + probB_))`` where ``probA_`` and ``probB_`` are learned from the dataset [2]_. For more information on the multiclass case and training procedure see section 8 of [1]_."
+      },
+      {
+        "name": "shape_fit_",
+        "type": "tuple of int of shape (n_dimensions_of_X,)",
+        "description": "Array dimensions of training vector ``X``."
+      }
+    ]
+  },
+  "NuSVR": {
+    "name": "sklearn.svm._classes.NuSVR",
+    "common_name": "NuSVR",
+    "description": "Nu Support Vector Regression. Similar to NuSVC, for regression, uses a parameter nu to control the number of support vectors. However, unlike NuSVC, where nu replaces C, here nu replaces the parameter epsilon of epsilon-SVR.  The implementation is based on libsvm.  Read more in the :ref:`User Guide <svm_regression>`.",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "type": "Hyperparameter",
+        "name": "nu",
+        "init_args": {
+          "semantic_types": [
+            "nu"
+          ],
+          "_structural_type": "float",
+          "default": 0.5,
+          "description": "An upper bound on the fraction of training errors and a lower bound of the fraction of support vectors. Should be in the interval (0, 1].  By default 0.5 will be taken."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "C",
+        "init_args": {
+          "semantic_types": [
+            "C"
+          ],
+          "_structural_type": "float",
+          "default": 1.0,
+          "description": "Penalty parameter C of the error term."
+        }
+      },
+      {
+        "type": "Enumeration",
+        "name": "kernel",
+        "init_args": {
+          "semantic_types": [
+            "kernel"
+          ],
+          "values": [
+            "linear",
+            "poly",
+            "rbf",
+            "sigmoid",
+            "precomputed"
+          ],
+          "_structural_type": "str",
+          "default": "rbf",
+          "description": "Specifies the kernel type to be used in the algorithm. It must be one of 'linear', 'poly', 'rbf', 'sigmoid', 'precomputed' or a callable. If none is given, 'rbf' will be used. If a callable is given it is used to precompute the kernel matrix."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "degree",
+        "init_args": {
+          "semantic_types": [
+            "degree"
+          ],
+          "_structural_type": "int",
+          "default": 3,
+          "description": "Degree of the polynomial kernel function ('poly'). Ignored by all other kernels."
+        }
+      },
+      {
+        "name": "gamma",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "gamma"
+          ],
+          "default": "gamma__str",
+          "description": "Kernel coefficient for 'rbf', 'poly' and 'sigmoid'.  - if ``gamma='scale'`` (default) is passed then it uses   1 / (n_features * X.var()) as value of gamma, - if 'auto', uses 1 / n_features.  .. versionchanged:: 0.22    The default value of ``gamma`` changed from 'auto' to 'scale'."
+        },
+        "hyperparams": [
+          {
+            "type": "Enumeration",
+            "name": "gamma__str",
+            "init_args": {
+              "semantic_types": [
+                "gamma"
+              ],
+              "values": [
+                "scale",
+                "auto"
+              ],
+              "_structural_type": "str",
+              "default": "scale"
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "gamma__float",
+            "init_args": {
+              "semantic_types": [
+                "gamma"
+              ],
+              "_structural_type": "float"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "coef0",
+        "init_args": {
+          "semantic_types": [
+            "coef0"
+          ],
+          "_structural_type": "float",
+          "default": 0.0,
+          "description": "Independent term in kernel function. It is only significant in 'poly' and 'sigmoid'."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "shrinking",
+        "init_args": {
+          "semantic_types": [
+            "shrinking"
+          ],
+          "_structural_type": "bool",
+          "default": "True",
+          "description": "Whether to use the shrinking heuristic. See the :ref:`User Guide <shrinking_svm>`."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "tol",
+        "init_args": {
+          "semantic_types": [
+            "tol"
+          ],
+          "_structural_type": "float",
+          "default": 0.001,
+          "description": "Tolerance for stopping criterion."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "cache_size",
+        "init_args": {
+          "semantic_types": [
+            "cache_size"
+          ],
+          "_structural_type": "float",
+          "default": 200,
+          "description": "Specify the size of the kernel cache (in MB)."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "verbose",
+        "init_args": {
+          "semantic_types": [
+            "verbose"
+          ],
+          "_structural_type": "bool",
+          "default": "False",
+          "description": "Enable verbose output. Note that this setting takes advantage of a per-process runtime setting in libsvm that, if enabled, may not work properly in a multithreaded context."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "max_iter",
+        "init_args": {
+          "semantic_types": [
+            "max_iter"
+          ],
+          "_structural_type": "int",
+          "default": -1,
+          "description": "Hard limit on iterations within solver, or -1 for no limit."
+        }
+      }
+    ],
+    "Params": [
+      {
+        "name": "class_weight_",
+        "type": "ndarray of shape (n_classes,)",
+        "description": "Multipliers of parameter C for each class. Computed based on the ``class_weight`` parameter."
+      },
+      {
+        "name": "coef_",
+        "type": "ndarray of shape (1, n_features)",
+        "description": "Weights assigned to the features (coefficients in the primal problem). This is only available in the case of a linear kernel.  `coef_` is readonly property derived from `dual_coef_` and `support_vectors_`."
+      },
+      {
+        "name": "dual_coef_",
+        "type": "ndarray of shape (1, n_SV)",
+        "description": "Coefficients of the support vector in the decision function."
+      },
+      {
+        "name": "fit_status_",
+        "type": "int",
+        "description": "0 if correctly fitted, 1 otherwise (will raise warning)"
+      },
+      {
+        "name": "intercept_",
+        "type": "ndarray of shape (1,)",
+        "description": "Constants in decision function."
+      },
+      {
+        "name": "n_support_",
+        "type": "ndarray of shape (n_classes,), dtype=int32",
+        "description": "Number of support vectors for each class."
+      },
+      {
+        "name": "shape_fit_",
+        "type": "tuple of int of shape (n_dimensions_of_X,)",
+        "description": "Array dimensions of training vector ``X``."
+      },
+      {
+        "name": "support_",
+        "type": "ndarray of shape (n_SV,)",
+        "description": "Indices of support vectors."
+      },
+      {
+        "name": "support_vectors_",
+        "type": "ndarray of shape (n_SV, n_features)",
+        "description": "Support vectors."
+      }
+    ]
+  },
+  "OneClassSVM": {
+    "name": "sklearn.svm._classes.OneClassSVM",
+    "common_name": "OneClassSVM",
+    "description": "Unsupervised Outlier Detection. Estimate the support of a high-dimensional distribution.  The implementation is based on libsvm.  Read more in the :ref:`User Guide <outlier_detection>`.",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "type": "Enumeration",
+        "name": "kernel",
+        "init_args": {
+          "semantic_types": [
+            "kernel"
+          ],
+          "values": [
+            "linear",
+            "poly",
+            "rbf",
+            "sigmoid",
+            "precomputed"
+          ],
+          "_structural_type": "str",
+          "default": "rbf",
+          "description": "Specifies the kernel type to be used in the algorithm. It must be one of 'linear', 'poly', 'rbf', 'sigmoid', 'precomputed' or a callable. If none is given, 'rbf' will be used. If a callable is given it is used to precompute the kernel matrix."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "degree",
+        "init_args": {
+          "semantic_types": [
+            "degree"
+          ],
+          "_structural_type": "int",
+          "default": 3,
+          "description": "Degree of the polynomial kernel function ('poly'). Ignored by all other kernels."
+        }
+      },
+      {
+        "name": "gamma",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "gamma"
+          ],
+          "default": "gamma__str",
+          "description": "Kernel coefficient for 'rbf', 'poly' and 'sigmoid'.  - if ``gamma='scale'`` (default) is passed then it uses   1 / (n_features * X.var()) as value of gamma, - if 'auto', uses 1 / n_features.  .. versionchanged:: 0.22    The default value of ``gamma`` changed from 'auto' to 'scale'."
+        },
+        "hyperparams": [
+          {
+            "type": "Enumeration",
+            "name": "gamma__str",
+            "init_args": {
+              "semantic_types": [
+                "gamma"
+              ],
+              "values": [
+                "scale",
+                "auto"
+              ],
+              "_structural_type": "str",
+              "default": "scale"
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "gamma__float",
+            "init_args": {
+              "semantic_types": [
+                "gamma"
+              ],
+              "_structural_type": "float"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "coef0",
+        "init_args": {
+          "semantic_types": [
+            "coef0"
+          ],
+          "_structural_type": "float",
+          "default": 0.0,
+          "description": "Independent term in kernel function. It is only significant in 'poly' and 'sigmoid'."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "tol",
+        "init_args": {
+          "semantic_types": [
+            "tol"
+          ],
+          "_structural_type": "float",
+          "default": 0.001,
+          "description": "Tolerance for stopping criterion."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "nu",
+        "init_args": {
+          "semantic_types": [
+            "nu"
+          ],
+          "_structural_type": "float",
+          "default": 0.5,
+          "description": "An upper bound on the fraction of training errors and a lower bound of the fraction of support vectors. Should be in the interval (0, 1]. By default 0.5 will be taken."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "shrinking",
+        "init_args": {
+          "semantic_types": [
+            "shrinking"
+          ],
+          "_structural_type": "bool",
+          "default": "True",
+          "description": "Whether to use the shrinking heuristic. See the :ref:`User Guide <shrinking_svm>`."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "cache_size",
+        "init_args": {
+          "semantic_types": [
+            "cache_size"
+          ],
+          "_structural_type": "float",
+          "default": 200,
+          "description": "Specify the size of the kernel cache (in MB)."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "verbose",
+        "init_args": {
+          "semantic_types": [
+            "verbose"
+          ],
+          "_structural_type": "bool",
+          "default": "False",
+          "description": "Enable verbose output. Note that this setting takes advantage of a per-process runtime setting in libsvm that, if enabled, may not work properly in a multithreaded context."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "max_iter",
+        "init_args": {
+          "semantic_types": [
+            "max_iter"
+          ],
+          "_structural_type": "int",
+          "default": -1,
+          "description": "Hard limit on iterations within solver, or -1 for no limit."
+        }
+      }
+    ],
+    "Params": [
+      {
+        "name": "class_weight_",
+        "type": "ndarray of shape (n_classes,)",
+        "description": "Multipliers of parameter C for each class. Computed based on the ``class_weight`` parameter."
+      },
+      {
+        "name": "coef_",
+        "type": "ndarray of shape (1, n_features)",
+        "description": "Weights assigned to the features (coefficients in the primal problem). This is only available in the case of a linear kernel.  `coef_` is readonly property derived from `dual_coef_` and `support_vectors_`."
+      },
+      {
+        "name": "dual_coef_",
+        "type": "ndarray of shape (1, n_SV)",
+        "description": "Coefficients of the support vectors in the decision function."
+      },
+      {
+        "name": "fit_status_",
+        "type": "int",
+        "description": "0 if correctly fitted, 1 otherwise (will raise warning)"
+      },
+      {
+        "name": "intercept_",
+        "type": "ndarray of shape (1,)",
+        "description": "Constant in the decision function."
+      },
+      {
+        "name": "n_support_",
+        "type": "ndarray of shape (n_classes,), dtype=int32",
+        "description": "Number of support vectors for each class."
+      },
+      {
+        "name": "offset_",
+        "type": "float",
+        "description": "Offset used to define the decision function from the raw scores. We have the relation: decision_function = score_samples - `offset_`. The offset is the opposite of `intercept_` and is provided for consistency with other outlier detection algorithms.  .. versionadded:: 0.20"
+      },
+      {
+        "name": "shape_fit_",
+        "type": "tuple of int of shape (n_dimensions_of_X,)",
+        "description": "Array dimensions of training vector ``X``."
+      },
+      {
+        "name": "support_",
+        "type": "ndarray of shape (n_SV,)",
+        "description": "Indices of support vectors."
+      },
+      {
+        "name": "support_vectors_",
+        "type": "ndarray of shape (n_SV, n_features)",
+        "description": "Support vectors."
+      }
+    ]
+  },
+  "SVC": {
+    "name": "sklearn.svm._classes.SVC",
+    "common_name": "SVC",
+    "description": "C-Support Vector Classification. The implementation is based on libsvm. The fit time scales at least quadratically with the number of samples and may be impractical beyond tens of thousands of samples. For large datasets consider using :class:`~sklearn.svm.LinearSVC` or :class:`~sklearn.linear_model.SGDClassifier` instead, possibly after a :class:`~sklearn.kernel_approximation.Nystroem` transformer.  The multiclass support is handled according to a one-vs-one scheme.  For details on the precise mathematical formulation of the provided kernel functions and how `gamma`, `coef0` and `degree` affect each other, see the corresponding section in the narrative documentation: :ref:`svm_kernels`.  Read more in the :ref:`User Guide <svm_classification>`.",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "type": "Hyperparameter",
+        "name": "C",
+        "init_args": {
+          "semantic_types": [
+            "C"
+          ],
+          "_structural_type": "float",
+          "default": 1.0,
+          "description": "Regularization parameter. The strength of the regularization is inversely proportional to C. Must be strictly positive. The penalty is a squared l2 penalty."
+        }
+      },
+      {
+        "type": "Enumeration",
+        "name": "kernel",
+        "init_args": {
+          "semantic_types": [
+            "kernel"
+          ],
+          "values": [
+            "linear",
+            "poly",
+            "rbf",
+            "sigmoid",
+            "precomputed"
+          ],
+          "_structural_type": "str",
+          "default": "rbf",
+          "description": "Specifies the kernel type to be used in the algorithm. It must be one of 'linear', 'poly', 'rbf', 'sigmoid', 'precomputed' or a callable. If none is given, 'rbf' will be used. If a callable is given it is used to pre-compute the kernel matrix from data matrices; that matrix should be an array of shape ``(n_samples, n_samples)``."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "degree",
+        "init_args": {
+          "semantic_types": [
+            "degree"
+          ],
+          "_structural_type": "int",
+          "default": 3,
+          "description": "Degree of the polynomial kernel function ('poly'). Ignored by all other kernels."
+        }
+      },
+      {
+        "name": "gamma",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "gamma"
+          ],
+          "default": "gamma__str",
+          "description": "Kernel coefficient for 'rbf', 'poly' and 'sigmoid'.  - if ``gamma='scale'`` (default) is passed then it uses   1 / (n_features * X.var()) as value of gamma, - if 'auto', uses 1 / n_features.  .. versionchanged:: 0.22    The default value of ``gamma`` changed from 'auto' to 'scale'."
+        },
+        "hyperparams": [
+          {
+            "type": "Enumeration",
+            "name": "gamma__str",
+            "init_args": {
+              "semantic_types": [
+                "gamma"
+              ],
+              "values": [
+                "scale",
+                "auto"
+              ],
+              "_structural_type": "str",
+              "default": "scale"
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "gamma__float",
+            "init_args": {
+              "semantic_types": [
+                "gamma"
+              ],
+              "_structural_type": "float"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "coef0",
+        "init_args": {
+          "semantic_types": [
+            "coef0"
+          ],
+          "_structural_type": "float",
+          "default": 0.0,
+          "description": "Independent term in kernel function. It is only significant in 'poly' and 'sigmoid'."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "shrinking",
+        "init_args": {
+          "semantic_types": [
+            "shrinking"
+          ],
+          "_structural_type": "bool",
+          "default": "True",
+          "description": "Whether to use the shrinking heuristic. See the :ref:`User Guide <shrinking_svm>`."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "probability",
+        "init_args": {
+          "semantic_types": [
+            "probability"
+          ],
+          "_structural_type": "bool",
+          "default": "False",
+          "description": "Whether to enable probability estimates. This must be enabled prior to calling `fit`, will slow down that method as it internally uses 5-fold cross-validation, and `predict_proba` may be inconsistent with `predict`. Read more in the :ref:`User Guide <scores_probabilities>`."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "tol",
+        "init_args": {
+          "semantic_types": [
+            "tol"
+          ],
+          "_structural_type": "float",
+          "default": 0.001,
+          "description": "Tolerance for stopping criterion."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "cache_size",
+        "init_args": {
+          "semantic_types": [
+            "cache_size"
+          ],
+          "_structural_type": "float",
+          "default": 200,
+          "description": "Specify the size of the kernel cache (in MB)."
+        }
+      },
+      {
+        "name": "class_weight",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "class_weight"
+          ],
+          "default": "class_weight__None",
+          "description": "Set the parameter C of class i to class_weight[i]*C for SVC. If not given, all classes are supposed to have weight one. The \"balanced\" mode uses the values of y to automatically adjust weights inversely proportional to class frequencies in the input data as ``n_samples / (n_classes * np.bincount(y))``"
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "class_weight__dict",
+            "init_args": {
+              "semantic_types": [
+                "class_weight"
+              ],
+              "_structural_type": "dict"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "class_weight__str",
+            "init_args": {
+              "semantic_types": [
+                "class_weight"
+              ],
+              "_structural_type": "str"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "class_weight__None",
+            "init_args": {
+              "semantic_types": [
+                "class_weight"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "verbose",
+        "init_args": {
+          "semantic_types": [
+            "verbose"
+          ],
+          "_structural_type": "bool",
+          "default": "False",
+          "description": "Enable verbose output. Note that this setting takes advantage of a per-process runtime setting in libsvm that, if enabled, may not work properly in a multithreaded context."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "max_iter",
+        "init_args": {
+          "semantic_types": [
+            "max_iter"
+          ],
+          "_structural_type": "int",
+          "default": -1,
+          "description": "Hard limit on iterations within solver, or -1 for no limit."
+        }
+      },
+      {
+        "type": "Enumeration",
+        "name": "decision_function_shape",
+        "init_args": {
+          "semantic_types": [
+            "decision_function_shape"
+          ],
+          "values": [
+            "ovo",
+            "ovr"
+          ],
+          "_structural_type": "str",
+          "default": "ovr",
+          "description": "Whether to return a one-vs-rest ('ovr') decision function of shape (n_samples, n_classes) as all other classifiers, or the original one-vs-one ('ovo') decision function of libsvm which has shape (n_samples, n_classes * (n_classes - 1) / 2). However, one-vs-one ('ovo') is always used as multi-class strategy. The parameter is ignored for binary classification.  .. versionchanged:: 0.19     decision_function_shape is 'ovr' by default.  .. versionadded:: 0.17    *decision_function_shape='ovr'* is recommended.  .. versionchanged:: 0.17    Deprecated *decision_function_shape='ovo' and None*."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "break_ties",
+        "init_args": {
+          "semantic_types": [
+            "break_ties"
+          ],
+          "_structural_type": "bool",
+          "default": "False",
+          "description": "If true, ``decision_function_shape='ovr'``, and number of classes > 2, :term:`predict` will break ties according to the confidence values of :term:`decision_function`; otherwise the first class among the tied classes is returned. Please note that breaking ties comes at a relatively high computational cost compared to a simple predict.  .. versionadded:: 0.22"
+        }
+      },
+      {
+        "name": "random_state",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "random_state"
+          ],
+          "default": "random_state__None",
+          "description": "Controls the pseudo random number generation for shuffling the data for probability estimates. Ignored when `probability` is False. Pass an int for reproducible output across multiple function calls. See :term:`Glossary <random_state>`."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "random_state__int",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "random_state__None",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      }
+    ],
+    "Params": [
+      {
+        "name": "class_weight_",
+        "type": "ndarray of shape (n_classes,)",
+        "description": "Multipliers of parameter C for each class. Computed based on the ``class_weight`` parameter."
+      },
+      {
+        "name": "classes_",
+        "type": "ndarray of shape (n_classes,)",
+        "description": "The classes labels."
+      },
+      {
+        "name": "coef_",
+        "type": "ndarray of shape (n_classes * (n_classes - 1) / 2, n_features)",
+        "description": "Weights assigned to the features (coefficients in the primal problem). This is only available in the case of a linear kernel.  `coef_` is a readonly property derived from `dual_coef_` and `support_vectors_`."
+      },
+      {
+        "name": "dual_coef_",
+        "type": "ndarray of shape (n_classes -1, n_SV)",
+        "description": "Dual coefficients of the support vector in the decision function (see :ref:`sgd_mathematical_formulation`), multiplied by their targets. For multiclass, coefficient for all 1-vs-1 classifiers. The layout of the coefficients in the multiclass case is somewhat non-trivial. See the :ref:`multi-class section of the User Guide <svm_multi_class>` for details."
+      },
+      {
+        "name": "fit_status_",
+        "type": "int",
+        "description": "0 if correctly fitted, 1 otherwise (will raise warning)"
+      },
+      {
+        "name": "intercept_",
+        "type": "ndarray of shape (n_classes * (n_classes - 1) / 2,)",
+        "description": "Constants in decision function."
+      },
+      {
+        "name": "support_",
+        "type": "ndarray of shape (n_SV)",
+        "description": "Indices of support vectors."
+      },
+      {
+        "name": "support_vectors_",
+        "type": "ndarray of shape (n_SV, n_features)",
+        "description": "Support vectors."
+      },
+      {
+        "name": "n_support_",
+        "type": "ndarray of shape (n_classes,), dtype=int32",
+        "description": "Number of support vectors for each class."
+      },
+      {
+        "name": "probA_",
+        "type": "ndarray of shape (n_classes * (n_classes - 1) / 2)",
+        "description": ""
+      },
+      {
+        "name": "probB_",
+        "type": "ndarray of shape (n_classes * (n_classes - 1) / 2)",
+        "description": "If `probability=True`, it corresponds to the parameters learned in Platt scaling to produce probability estimates from decision values. If `probability=False`, it's an empty array. Platt scaling uses the logistic function ``1 / (1 + exp(decision_value * probA_ + probB_))`` where ``probA_`` and ``probB_`` are learned from the dataset [2]_. For more information on the multiclass case and training procedure see section 8 of [1]_."
+      },
+      {
+        "name": "shape_fit_",
+        "type": "tuple of int of shape (n_dimensions_of_X,)",
+        "description": "Array dimensions of training vector ``X``."
+      }
+    ]
+  },
+  "SVR": {
+    "name": "sklearn.svm._classes.SVR",
+    "common_name": "SVR",
+    "description": "Epsilon-Support Vector Regression. The free parameters in the model are C and epsilon.  The implementation is based on libsvm. The fit time complexity is more than quadratic with the number of samples which makes it hard to scale to datasets with more than a couple of 10000 samples. For large datasets consider using :class:`~sklearn.svm.LinearSVR` or :class:`~sklearn.linear_model.SGDRegressor` instead, possibly after a :class:`~sklearn.kernel_approximation.Nystroem` transformer.  Read more in the :ref:`User Guide <svm_regression>`.",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "type": "Enumeration",
+        "name": "kernel",
+        "init_args": {
+          "semantic_types": [
+            "kernel"
+          ],
+          "values": [
+            "linear",
+            "poly",
+            "rbf",
+            "sigmoid",
+            "precomputed"
+          ],
+          "_structural_type": "str",
+          "default": "rbf",
+          "description": "Specifies the kernel type to be used in the algorithm. It must be one of 'linear', 'poly', 'rbf', 'sigmoid', 'precomputed' or a callable. If none is given, 'rbf' will be used. If a callable is given it is used to precompute the kernel matrix."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "degree",
+        "init_args": {
+          "semantic_types": [
+            "degree"
+          ],
+          "_structural_type": "int",
+          "default": 3,
+          "description": "Degree of the polynomial kernel function ('poly'). Ignored by all other kernels."
+        }
+      },
+      {
+        "name": "gamma",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "gamma"
+          ],
+          "default": "gamma__str",
+          "description": "Kernel coefficient for 'rbf', 'poly' and 'sigmoid'.  - if ``gamma='scale'`` (default) is passed then it uses   1 / (n_features * X.var()) as value of gamma, - if 'auto', uses 1 / n_features.  .. versionchanged:: 0.22    The default value of ``gamma`` changed from 'auto' to 'scale'."
+        },
+        "hyperparams": [
+          {
+            "type": "Enumeration",
+            "name": "gamma__str",
+            "init_args": {
+              "semantic_types": [
+                "gamma"
+              ],
+              "values": [
+                "scale",
+                "auto"
+              ],
+              "_structural_type": "str",
+              "default": "scale"
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "gamma__float",
+            "init_args": {
+              "semantic_types": [
+                "gamma"
+              ],
+              "_structural_type": "float"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "coef0",
+        "init_args": {
+          "semantic_types": [
+            "coef0"
+          ],
+          "_structural_type": "float",
+          "default": 0.0,
+          "description": "Independent term in kernel function. It is only significant in 'poly' and 'sigmoid'."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "tol",
+        "init_args": {
+          "semantic_types": [
+            "tol"
+          ],
+          "_structural_type": "float",
+          "default": 0.001,
+          "description": "Tolerance for stopping criterion."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "C",
+        "init_args": {
+          "semantic_types": [
+            "C"
+          ],
+          "_structural_type": "float",
+          "default": 1.0,
+          "description": "Regularization parameter. The strength of the regularization is inversely proportional to C. Must be strictly positive. The penalty is a squared l2 penalty."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "epsilon",
+        "init_args": {
+          "semantic_types": [
+            "epsilon"
+          ],
+          "_structural_type": "float",
+          "default": 0.1,
+          "description": "Epsilon in the epsilon-SVR model. It specifies the epsilon-tube within which no penalty is associated in the training loss function with points predicted within a distance epsilon from the actual value."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "shrinking",
+        "init_args": {
+          "semantic_types": [
+            "shrinking"
+          ],
+          "_structural_type": "bool",
+          "default": "True",
+          "description": "Whether to use the shrinking heuristic. See the :ref:`User Guide <shrinking_svm>`."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "cache_size",
+        "init_args": {
+          "semantic_types": [
+            "cache_size"
+          ],
+          "_structural_type": "float",
+          "default": 200,
+          "description": "Specify the size of the kernel cache (in MB)."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "verbose",
+        "init_args": {
+          "semantic_types": [
+            "verbose"
+          ],
+          "_structural_type": "bool",
+          "default": "False",
+          "description": "Enable verbose output. Note that this setting takes advantage of a per-process runtime setting in libsvm that, if enabled, may not work properly in a multithreaded context."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "max_iter",
+        "init_args": {
+          "semantic_types": [
+            "max_iter"
+          ],
+          "_structural_type": "int",
+          "default": -1,
+          "description": "Hard limit on iterations within solver, or -1 for no limit."
+        }
+      }
+    ],
+    "Params": [
+      {
+        "name": "class_weight_",
+        "type": "ndarray of shape (n_classes,)",
+        "description": "Multipliers of parameter C for each class. Computed based on the ``class_weight`` parameter."
+      },
+      {
+        "name": "coef_",
+        "type": "ndarray of shape (1, n_features)",
+        "description": "Weights assigned to the features (coefficients in the primal problem). This is only available in the case of a linear kernel.  `coef_` is readonly property derived from `dual_coef_` and `support_vectors_`."
+      },
+      {
+        "name": "dual_coef_",
+        "type": "ndarray of shape (1, n_SV)",
+        "description": "Coefficients of the support vector in the decision function."
+      },
+      {
+        "name": "fit_status_",
+        "type": "int",
+        "description": "0 if correctly fitted, 1 otherwise (will raise warning)"
+      },
+      {
+        "name": "intercept_",
+        "type": "ndarray of shape (1,)",
+        "description": "Constants in decision function."
+      },
+      {
+        "name": "n_support_",
+        "type": "ndarray of shape (n_classes,), dtype=int32",
+        "description": "Number of support vectors for each class."
+      },
+      {
+        "name": "shape_fit_",
+        "type": "tuple of int of shape (n_dimensions_of_X,)",
+        "description": "Array dimensions of training vector ``X``."
+      },
+      {
+        "name": "support_",
+        "type": "ndarray of shape (n_SV,)",
+        "description": "Indices of support vectors."
+      },
+      {
+        "name": "support_vectors_",
+        "type": "ndarray of shape (n_SV, n_features)",
+        "description": "Support vectors."
+      }
+    ]
+  }
+}
