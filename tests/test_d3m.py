@@ -19,8 +19,6 @@ from sk_typing.convert import get_d3m_representation
 
 ALL_ESTIMATORS = all_estimators()
 MODULES_TO_IGNORE = {
-    "preprocessing",
-    "random_projection",
     "semi_supervised",
     "svm",
     "tree",

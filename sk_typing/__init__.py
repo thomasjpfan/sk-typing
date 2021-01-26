@@ -38,6 +38,7 @@ _MODULES = [
     "neural_network",
     "pipeline",
     "preprocessing",
+    "random_projection",
 ]
 
 for modules in _MODULES:
