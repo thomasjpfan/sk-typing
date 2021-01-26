@@ -1,0 +1,933 @@
+{
+  "BernoulliRBM": {
+    "name": "sklearn.neural_network._rbm.BernoulliRBM",
+    "common_name": "BernoulliRBM",
+    "description": "Bernoulli Restricted Boltzmann Machine (RBM). A Restricted Boltzmann Machine with binary visible units and binary hidden units. Parameters are estimated using Stochastic Maximum Likelihood (SML), also known as Persistent Contrastive Divergence (PCD) [2].  The time complexity of this implementation is ``O(d ** 2)`` assuming d ~ n_features ~ n_components.  Read more in the :ref:`User Guide <rbm>`.",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "type": "Hyperparameter",
+        "name": "n_components",
+        "init_args": {
+          "semantic_types": [
+            "n_components"
+          ],
+          "_structural_type": "int",
+          "default": 256,
+          "description": "Number of binary hidden units."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "learning_rate",
+        "init_args": {
+          "semantic_types": [
+            "learning_rate"
+          ],
+          "_structural_type": "float",
+          "default": 0.1,
+          "description": "The learning rate for weight updates. It is *highly* recommended to tune this hyper-parameter. Reasonable values are in the 10**[0., -3.] range."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "batch_size",
+        "init_args": {
+          "semantic_types": [
+            "batch_size"
+          ],
+          "_structural_type": "int",
+          "default": 10,
+          "description": "Number of examples per minibatch."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "n_iter",
+        "init_args": {
+          "semantic_types": [
+            "n_iter"
+          ],
+          "_structural_type": "int",
+          "default": 10,
+          "description": "Number of iterations/sweeps over the training dataset to perform during training."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "verbose",
+        "init_args": {
+          "semantic_types": [
+            "verbose"
+          ],
+          "_structural_type": "int",
+          "default": 0,
+          "description": "The verbosity level. The default, zero, means silent mode."
+        }
+      },
+      {
+        "name": "random_state",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "random_state"
+          ],
+          "default": "random_state__None",
+          "description": "Determines random number generation for:  - Gibbs sampling from visible and hidden layers.  - Initializing components, sampling from layers during fit.  - Corrupting the data when scoring samples.  Pass an int for reproducible results across multiple function calls. See :term:`Glossary <random_state>`."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "random_state__int",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "random_state__None",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      }
+    ],
+    "Params": [
+      {
+        "name": "intercept_hidden_",
+        "type": "array-like of shape (n_components,)",
+        "description": "Biases of the hidden units."
+      },
+      {
+        "name": "intercept_visible_",
+        "type": "array-like of shape (n_features,)",
+        "description": "Biases of the visible units."
+      },
+      {
+        "name": "components_",
+        "type": "array-like of shape (n_components, n_features)",
+        "description": "Weight matrix, where n_features in the number of visible units and n_components is the number of hidden units."
+      },
+      {
+        "name": "h_samples_",
+        "type": "array-like of shape (batch_size, n_components)",
+        "description": "Hidden Activation sampled from the model distribution, where batch_size in the number of examples per minibatch and n_components is the number of hidden units."
+      }
+    ]
+  },
+  "MLPClassifier": {
+    "name": "sklearn.neural_network._multilayer_perceptron.MLPClassifier",
+    "common_name": "MLPClassifier",
+    "description": "Multi-layer Perceptron classifier. This model optimizes the log-loss function using LBFGS or stochastic gradient descent.  .. versionadded:: 0.18",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "type": "Hyperparameter",
+        "name": "hidden_layer_sizes",
+        "init_args": {
+          "semantic_types": [
+            "hidden_layer_sizes"
+          ],
+          "_structural_type": "tuple",
+          "default": "&esc(100,)",
+          "description": "The ith element represents the number of neurons in the ith hidden layer."
+        }
+      },
+      {
+        "type": "Enumeration",
+        "name": "activation",
+        "init_args": {
+          "semantic_types": [
+            "activation"
+          ],
+          "values": [
+            "identity",
+            "logistic",
+            "tanh",
+            "relu"
+          ],
+          "_structural_type": "str",
+          "default": "relu",
+          "description": "Activation function for the hidden layer.  - 'identity', no-op activation, useful to implement linear bottleneck,   returns f(x) = x  - 'logistic', the logistic sigmoid function,   returns f(x) = 1 / (1 + exp(-x)).  - 'tanh', the hyperbolic tan function,   returns f(x) = tanh(x).  - 'relu', the rectified linear unit function,   returns f(x) = max(0, x)"
+        }
+      },
+      {
+        "type": "Enumeration",
+        "name": "solver",
+        "init_args": {
+          "semantic_types": [
+            "solver"
+          ],
+          "values": [
+            "lbfgs",
+            "sgd",
+            "adam"
+          ],
+          "_structural_type": "str",
+          "default": "adam",
+          "description": "The solver for weight optimization.  - 'lbfgs' is an optimizer in the family of quasi-Newton methods.  - 'sgd' refers to stochastic gradient descent.  - 'adam' refers to a stochastic gradient-based optimizer proposed   by Kingma, Diederik, and Jimmy Ba  Note: The default solver 'adam' works pretty well on relatively large datasets (with thousands of training samples or more) in terms of both training time and validation score. For small datasets, however, 'lbfgs' can converge faster and perform better."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "alpha",
+        "init_args": {
+          "semantic_types": [
+            "alpha"
+          ],
+          "_structural_type": "float",
+          "default": 0.0001,
+          "description": "L2 penalty (regularization term) parameter."
+        }
+      },
+      {
+        "name": "batch_size",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "batch_size"
+          ],
+          "default": "batch_size__str",
+          "description": "Size of minibatches for stochastic optimizers. If the solver is 'lbfgs', the classifier will not use minibatch. When set to \"auto\", `batch_size=min(200, n_samples)`"
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "batch_size__int",
+            "init_args": {
+              "semantic_types": [
+                "batch_size"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "batch_size__str",
+            "init_args": {
+              "semantic_types": [
+                "batch_size"
+              ],
+              "_structural_type": "str",
+              "default": "auto"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Enumeration",
+        "name": "learning_rate",
+        "init_args": {
+          "semantic_types": [
+            "learning_rate"
+          ],
+          "values": [
+            "constant",
+            "invscaling",
+            "adaptive"
+          ],
+          "_structural_type": "str",
+          "default": "constant",
+          "description": "Learning rate schedule for weight updates.  - 'constant' is a constant learning rate given by   'learning_rate_init'.  - 'invscaling' gradually decreases the learning rate at each   time step 't' using an inverse scaling exponent of 'power_t'.   effective_learning_rate = learning_rate_init / pow(t, power_t)  - 'adaptive' keeps the learning rate constant to   'learning_rate_init' as long as training loss keeps decreasing.   Each time two consecutive epochs fail to decrease training loss by at   least tol, or fail to increase validation score by at least tol if   'early_stopping' is on, the current learning rate is divided by 5.  Only used when ``solver='sgd'``."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "learning_rate_init",
+        "init_args": {
+          "semantic_types": [
+            "learning_rate_init"
+          ],
+          "_structural_type": "float",
+          "default": 0.001,
+          "description": "The initial learning rate used. It controls the step-size in updating the weights. Only used when solver='sgd' or 'adam'."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "power_t",
+        "init_args": {
+          "semantic_types": [
+            "power_t"
+          ],
+          "_structural_type": "float",
+          "default": 0.5,
+          "description": "The exponent for inverse scaling learning rate. It is used in updating effective learning rate when the learning_rate is set to 'invscaling'. Only used when solver='sgd'."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "max_iter",
+        "init_args": {
+          "semantic_types": [
+            "max_iter"
+          ],
+          "_structural_type": "int",
+          "default": 200,
+          "description": "Maximum number of iterations. The solver iterates until convergence (determined by 'tol') or this number of iterations. For stochastic solvers ('sgd', 'adam'), note that this determines the number of epochs (how many times each data point will be used), not the number of gradient steps."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "shuffle",
+        "init_args": {
+          "semantic_types": [
+            "shuffle"
+          ],
+          "_structural_type": "bool",
+          "default": "True",
+          "description": "Whether to shuffle samples in each iteration. Only used when solver='sgd' or 'adam'."
+        }
+      },
+      {
+        "name": "random_state",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "random_state"
+          ],
+          "default": "random_state__None",
+          "description": "Determines random number generation for weights and bias initialization, train-test split if early stopping is used, and batch sampling when solver='sgd' or 'adam'. Pass an int for reproducible results across multiple function calls. See :term:`Glossary <random_state>`."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "random_state__int",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "random_state__None",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "tol",
+        "init_args": {
+          "semantic_types": [
+            "tol"
+          ],
+          "_structural_type": "float",
+          "default": 0.0001,
+          "description": "Tolerance for the optimization. When the loss or score is not improving by at least ``tol`` for ``n_iter_no_change`` consecutive iterations, unless ``learning_rate`` is set to 'adaptive', convergence is considered to be reached and training stops."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "verbose",
+        "init_args": {
+          "semantic_types": [
+            "verbose"
+          ],
+          "_structural_type": "bool",
+          "default": "False",
+          "description": "Whether to print progress messages to stdout."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "warm_start",
+        "init_args": {
+          "semantic_types": [
+            "warm_start"
+          ],
+          "_structural_type": "bool",
+          "default": "False",
+          "description": "When set to True, reuse the solution of the previous call to fit as initialization, otherwise, just erase the previous solution. See :term:`the Glossary <warm_start>`."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "momentum",
+        "init_args": {
+          "semantic_types": [
+            "momentum"
+          ],
+          "_structural_type": "float",
+          "default": 0.9,
+          "description": "Momentum for gradient descent update. Should be between 0 and 1. Only used when solver='sgd'."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "nesterovs_momentum",
+        "init_args": {
+          "semantic_types": [
+            "nesterovs_momentum"
+          ],
+          "_structural_type": "bool",
+          "default": "True",
+          "description": "Whether to use Nesterov's momentum. Only used when solver='sgd' and momentum > 0."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "early_stopping",
+        "init_args": {
+          "semantic_types": [
+            "early_stopping"
+          ],
+          "_structural_type": "bool",
+          "default": "False",
+          "description": "Whether to use early stopping to terminate training when validation score is not improving. If set to true, it will automatically set aside 10% of training data as validation and terminate training when validation score is not improving by at least tol for ``n_iter_no_change`` consecutive epochs. The split is stratified, except in a multilabel setting. Only effective when solver='sgd' or 'adam'"
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "validation_fraction",
+        "init_args": {
+          "semantic_types": [
+            "validation_fraction"
+          ],
+          "_structural_type": "float",
+          "default": 0.1,
+          "description": "The proportion of training data to set aside as validation set for early stopping. Must be between 0 and 1. Only used if early_stopping is True"
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "beta_1",
+        "init_args": {
+          "semantic_types": [
+            "beta_1"
+          ],
+          "_structural_type": "float",
+          "default": 0.9,
+          "description": "Exponential decay rate for estimates of first moment vector in adam, should be in [0, 1). Only used when solver='adam'"
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "beta_2",
+        "init_args": {
+          "semantic_types": [
+            "beta_2"
+          ],
+          "_structural_type": "float",
+          "default": 0.999,
+          "description": "Exponential decay rate for estimates of second moment vector in adam, should be in [0, 1). Only used when solver='adam'"
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "epsilon",
+        "init_args": {
+          "semantic_types": [
+            "epsilon"
+          ],
+          "_structural_type": "float",
+          "default": 1e-08,
+          "description": "Value for numerical stability in adam. Only used when solver='adam'"
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "n_iter_no_change",
+        "init_args": {
+          "semantic_types": [
+            "n_iter_no_change"
+          ],
+          "_structural_type": "int",
+          "default": 10,
+          "description": "Maximum number of epochs to not meet ``tol`` improvement. Only effective when solver='sgd' or 'adam'  .. versionadded:: 0.20"
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "max_fun",
+        "init_args": {
+          "semantic_types": [
+            "max_fun"
+          ],
+          "_structural_type": "int",
+          "default": 15000,
+          "description": "Only used when solver='lbfgs'. Maximum number of loss function calls. The solver iterates until convergence (determined by 'tol'), number of iterations reaches max_iter, or this number of loss function calls. Note that number of loss function calls will be greater than or equal to the number of iterations for the `MLPClassifier`.  .. versionadded:: 0.22"
+        }
+      }
+    ],
+    "Params": [
+      {
+        "name": "classes_",
+        "type": "ndarray or list of ndarray of shape (n_classes,)",
+        "description": "Class labels for each output."
+      },
+      {
+        "name": "loss_",
+        "type": "float",
+        "description": "The current loss computed with the loss function."
+      },
+      {
+        "name": "best_loss_",
+        "type": "float",
+        "description": "The minimum loss reached by the solver throughout fitting."
+      },
+      {
+        "name": "loss_curve_",
+        "type": "list of shape (`n_iter_`,)",
+        "description": "The ith element in the list represents the loss at the ith iteration."
+      },
+      {
+        "name": "t_",
+        "type": "int",
+        "description": "The number of training samples seen by the solver during fitting."
+      },
+      {
+        "name": "coefs_",
+        "type": "list of shape (n_layers - 1,)",
+        "description": "The ith element in the list represents the weight matrix corresponding to layer i."
+      },
+      {
+        "name": "intercepts_",
+        "type": "list of shape (n_layers - 1,)",
+        "description": "The ith element in the list represents the bias vector corresponding to layer i + 1."
+      },
+      {
+        "name": "n_iter_",
+        "type": "int",
+        "description": "The number of iterations the solver has ran."
+      },
+      {
+        "name": "n_layers_",
+        "type": "int",
+        "description": "Number of layers."
+      },
+      {
+        "name": "n_outputs_",
+        "type": "int",
+        "description": "Number of outputs."
+      },
+      {
+        "name": "out_activation_",
+        "type": "str",
+        "description": "Name of the output activation function."
+      }
+    ]
+  },
+  "MLPRegressor": {
+    "name": "sklearn.neural_network._multilayer_perceptron.MLPRegressor",
+    "common_name": "MLPRegressor",
+    "description": "Multi-layer Perceptron regressor. This model optimizes the squared-loss using LBFGS or stochastic gradient descent.  .. versionadded:: 0.18",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "type": "Hyperparameter",
+        "name": "hidden_layer_sizes",
+        "init_args": {
+          "semantic_types": [
+            "hidden_layer_sizes"
+          ],
+          "_structural_type": "tuple",
+          "default": "&esc(100,)",
+          "description": "The ith element represents the number of neurons in the ith hidden layer."
+        }
+      },
+      {
+        "type": "Enumeration",
+        "name": "activation",
+        "init_args": {
+          "semantic_types": [
+            "activation"
+          ],
+          "values": [
+            "identity",
+            "logistic",
+            "tanh",
+            "relu"
+          ],
+          "_structural_type": "str",
+          "default": "relu",
+          "description": "Activation function for the hidden layer.  - 'identity', no-op activation, useful to implement linear bottleneck,   returns f(x) = x  - 'logistic', the logistic sigmoid function,   returns f(x) = 1 / (1 + exp(-x)).  - 'tanh', the hyperbolic tan function,   returns f(x) = tanh(x).  - 'relu', the rectified linear unit function,   returns f(x) = max(0, x)"
+        }
+      },
+      {
+        "type": "Enumeration",
+        "name": "solver",
+        "init_args": {
+          "semantic_types": [
+            "solver"
+          ],
+          "values": [
+            "lbfgs",
+            "sgd",
+            "adam"
+          ],
+          "_structural_type": "str",
+          "default": "adam",
+          "description": "The solver for weight optimization.  - 'lbfgs' is an optimizer in the family of quasi-Newton methods.  - 'sgd' refers to stochastic gradient descent.  - 'adam' refers to a stochastic gradient-based optimizer proposed by   Kingma, Diederik, and Jimmy Ba  Note: The default solver 'adam' works pretty well on relatively large datasets (with thousands of training samples or more) in terms of both training time and validation score. For small datasets, however, 'lbfgs' can converge faster and perform better."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "alpha",
+        "init_args": {
+          "semantic_types": [
+            "alpha"
+          ],
+          "_structural_type": "float",
+          "default": 0.0001,
+          "description": "L2 penalty (regularization term) parameter."
+        }
+      },
+      {
+        "name": "batch_size",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "batch_size"
+          ],
+          "default": "batch_size__str",
+          "description": "Size of minibatches for stochastic optimizers. If the solver is 'lbfgs', the classifier will not use minibatch. When set to \"auto\", `batch_size=min(200, n_samples)`"
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "batch_size__int",
+            "init_args": {
+              "semantic_types": [
+                "batch_size"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "batch_size__str",
+            "init_args": {
+              "semantic_types": [
+                "batch_size"
+              ],
+              "_structural_type": "str",
+              "default": "auto"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Enumeration",
+        "name": "learning_rate",
+        "init_args": {
+          "semantic_types": [
+            "learning_rate"
+          ],
+          "values": [
+            "constant",
+            "invscaling",
+            "adaptive"
+          ],
+          "_structural_type": "str",
+          "default": "constant",
+          "description": "Learning rate schedule for weight updates.  - 'constant' is a constant learning rate given by   'learning_rate_init'.  - 'invscaling' gradually decreases the learning rate ``learning_rate_``   at each time step 't' using an inverse scaling exponent of 'power_t'.   effective_learning_rate = learning_rate_init / pow(t, power_t)  - 'adaptive' keeps the learning rate constant to   'learning_rate_init' as long as training loss keeps decreasing.   Each time two consecutive epochs fail to decrease training loss by at   least tol, or fail to increase validation score by at least tol if   'early_stopping' is on, the current learning rate is divided by 5.  Only used when solver='sgd'."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "learning_rate_init",
+        "init_args": {
+          "semantic_types": [
+            "learning_rate_init"
+          ],
+          "_structural_type": "float",
+          "default": 0.001,
+          "description": "The initial learning rate used. It controls the step-size in updating the weights. Only used when solver='sgd' or 'adam'."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "power_t",
+        "init_args": {
+          "semantic_types": [
+            "power_t"
+          ],
+          "_structural_type": "float",
+          "default": 0.5,
+          "description": "The exponent for inverse scaling learning rate. It is used in updating effective learning rate when the learning_rate is set to 'invscaling'. Only used when solver='sgd'."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "max_iter",
+        "init_args": {
+          "semantic_types": [
+            "max_iter"
+          ],
+          "_structural_type": "int",
+          "default": 200,
+          "description": "Maximum number of iterations. The solver iterates until convergence (determined by 'tol') or this number of iterations. For stochastic solvers ('sgd', 'adam'), note that this determines the number of epochs (how many times each data point will be used), not the number of gradient steps."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "shuffle",
+        "init_args": {
+          "semantic_types": [
+            "shuffle"
+          ],
+          "_structural_type": "bool",
+          "default": "True",
+          "description": "Whether to shuffle samples in each iteration. Only used when solver='sgd' or 'adam'."
+        }
+      },
+      {
+        "name": "random_state",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "random_state"
+          ],
+          "default": "random_state__None",
+          "description": "Determines random number generation for weights and bias initialization, train-test split if early stopping is used, and batch sampling when solver='sgd' or 'adam'. Pass an int for reproducible results across multiple function calls. See :term:`Glossary <random_state>`."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "random_state__int",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "random_state__None",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "tol",
+        "init_args": {
+          "semantic_types": [
+            "tol"
+          ],
+          "_structural_type": "float",
+          "default": 0.0001,
+          "description": "Tolerance for the optimization. When the loss or score is not improving by at least ``tol`` for ``n_iter_no_change`` consecutive iterations, unless ``learning_rate`` is set to 'adaptive', convergence is considered to be reached and training stops."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "verbose",
+        "init_args": {
+          "semantic_types": [
+            "verbose"
+          ],
+          "_structural_type": "bool",
+          "default": "False",
+          "description": "Whether to print progress messages to stdout."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "warm_start",
+        "init_args": {
+          "semantic_types": [
+            "warm_start"
+          ],
+          "_structural_type": "bool",
+          "default": "False",
+          "description": "When set to True, reuse the solution of the previous call to fit as initialization, otherwise, just erase the previous solution. See :term:`the Glossary <warm_start>`."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "momentum",
+        "init_args": {
+          "semantic_types": [
+            "momentum"
+          ],
+          "_structural_type": "float",
+          "default": 0.9,
+          "description": "Momentum for gradient descent update.  Should be between 0 and 1. Only used when solver='sgd'."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "nesterovs_momentum",
+        "init_args": {
+          "semantic_types": [
+            "nesterovs_momentum"
+          ],
+          "_structural_type": "bool",
+          "default": "True",
+          "description": "Whether to use Nesterov's momentum. Only used when solver='sgd' and momentum > 0."
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "early_stopping",
+        "init_args": {
+          "semantic_types": [
+            "early_stopping"
+          ],
+          "_structural_type": "bool",
+          "default": "False",
+          "description": "Whether to use early stopping to terminate training when validation score is not improving. If set to true, it will automatically set aside 10% of training data as validation and terminate training when validation score is not improving by at least ``tol`` for ``n_iter_no_change`` consecutive epochs. Only effective when solver='sgd' or 'adam'"
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "validation_fraction",
+        "init_args": {
+          "semantic_types": [
+            "validation_fraction"
+          ],
+          "_structural_type": "float",
+          "default": 0.1,
+          "description": "The proportion of training data to set aside as validation set for early stopping. Must be between 0 and 1. Only used if early_stopping is True"
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "beta_1",
+        "init_args": {
+          "semantic_types": [
+            "beta_1"
+          ],
+          "_structural_type": "float",
+          "default": 0.9,
+          "description": "Exponential decay rate for estimates of first moment vector in adam, should be in [0, 1). Only used when solver='adam'"
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "beta_2",
+        "init_args": {
+          "semantic_types": [
+            "beta_2"
+          ],
+          "_structural_type": "float",
+          "default": 0.999,
+          "description": "Exponential decay rate for estimates of second moment vector in adam, should be in [0, 1). Only used when solver='adam'"
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "epsilon",
+        "init_args": {
+          "semantic_types": [
+            "epsilon"
+          ],
+          "_structural_type": "float",
+          "default": 1e-08,
+          "description": "Value for numerical stability in adam. Only used when solver='adam'"
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "n_iter_no_change",
+        "init_args": {
+          "semantic_types": [
+            "n_iter_no_change"
+          ],
+          "_structural_type": "int",
+          "default": 10,
+          "description": "Maximum number of epochs to not meet ``tol`` improvement. Only effective when solver='sgd' or 'adam'  .. versionadded:: 0.20"
+        }
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "max_fun",
+        "init_args": {
+          "semantic_types": [
+            "max_fun"
+          ],
+          "_structural_type": "int",
+          "default": 15000,
+          "description": "Only used when solver='lbfgs'. Maximum number of function calls. The solver iterates until convergence (determined by 'tol'), number of iterations reaches max_iter, or this number of function calls. Note that number of function calls will be greater than or equal to the number of iterations for the MLPRegressor.  .. versionadded:: 0.22"
+        }
+      }
+    ],
+    "Params": [
+      {
+        "name": "loss_",
+        "type": "float",
+        "description": "The current loss computed with the loss function."
+      },
+      {
+        "name": "best_loss_",
+        "type": "float",
+        "description": "The minimum loss reached by the solver throughout fitting."
+      },
+      {
+        "name": "loss_curve_",
+        "type": "list of shape (`n_iter_`,)",
+        "description": "The ith element in the list represents the loss at the ith iteration."
+      },
+      {
+        "name": "t_",
+        "type": "int",
+        "description": "The number of training samples seen by the solver during fitting."
+      },
+      {
+        "name": "coefs_",
+        "type": "list of shape (n_layers - 1,)",
+        "description": "The ith element in the list represents the weight matrix corresponding to layer i."
+      },
+      {
+        "name": "intercepts_",
+        "type": "list of shape (n_layers - 1,)",
+        "description": "The ith element in the list represents the bias vector corresponding to layer i + 1."
+      },
+      {
+        "name": "n_iter_",
+        "type": "int",
+        "description": "The number of iterations the solver has ran."
+      },
+      {
+        "name": "n_layers_",
+        "type": "int",
+        "description": "Number of layers."
+      },
+      {
+        "name": "n_outputs_",
+        "type": "int",
+        "description": "Number of outputs."
+      },
+      {
+        "name": "out_activation_",
+        "type": "str",
+        "description": "Name of the output activation function."
+      },
+      {
+        "name": "loss_curve_",
+        "type": "list of shape (n_iters,)",
+        "description": "Loss value evaluated at the end of each training step."
+      },
+      {
+        "name": "t_",
+        "type": "int",
+        "description": "Mathematically equals `n_iters * X.shape[0]`, it means `time_step` and it is used by optimizer's learning rate scheduler."
+      }
+    ]
+  }
+}
