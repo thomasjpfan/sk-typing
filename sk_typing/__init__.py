@@ -33,6 +33,7 @@ _MODULES = [
     "model_selection",
     "multiclass",
     "multioutput",
+    "naive_bayes",
 ]
 
 for modules in _MODULES:
