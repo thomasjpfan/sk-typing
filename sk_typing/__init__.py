@@ -30,6 +30,7 @@ _MODULES = [
     "linear_model",
     "manifold",
     "mixture",
+    "model_selection",
 ]
 
 for modules in _MODULES:
