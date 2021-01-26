@@ -39,6 +39,7 @@ _MODULES = [
     "pipeline",
     "preprocessing",
     "random_projection",
+    "semi_supervised",
 ]
 
 for modules in _MODULES:
