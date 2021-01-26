@@ -1,0 +1,1585 @@
+{
+  "DecisionTreeClassifier": {
+    "name": "sklearn.tree._classes.DecisionTreeClassifier",
+    "common_name": "DecisionTreeClassifier",
+    "description": "A decision tree classifier. Read more in the :ref:`User Guide <tree>`.",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "type": "Enumeration",
+        "name": "criterion",
+        "init_args": {
+          "semantic_types": [
+            "criterion"
+          ],
+          "values": [
+            "gini",
+            "entropy"
+          ],
+          "_structural_type": "str",
+          "default": "gini",
+          "description": "The function to measure the quality of a split. Supported criteria are \"gini\" for the Gini impurity and \"entropy\" for the information gain."
+        }
+      },
+      {
+        "type": "Enumeration",
+        "name": "splitter",
+        "init_args": {
+          "semantic_types": [
+            "splitter"
+          ],
+          "values": [
+            "best",
+            "random"
+          ],
+          "_structural_type": "str",
+          "default": "best",
+          "description": "The strategy used to choose the split at each node. Supported strategies are \"best\" to choose the best split and \"random\" to choose the best random split."
+        }
+      },
+      {
+        "name": "max_depth",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "max_depth"
+          ],
+          "default": "max_depth__None",
+          "description": "The maximum depth of the tree. If None, then nodes are expanded until all leaves are pure or until all leaves contain less than min_samples_split samples."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "max_depth__int",
+            "init_args": {
+              "semantic_types": [
+                "max_depth"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "max_depth__None",
+            "init_args": {
+              "semantic_types": [
+                "max_depth"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "min_samples_split",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "min_samples_split"
+          ],
+          "default": "min_samples_split__int",
+          "description": "The minimum number of samples required to split an internal node:  - If int, then consider `min_samples_split` as the minimum number. - If float, then `min_samples_split` is a fraction and   `ceil(min_samples_split * n_samples)` are the minimum   number of samples for each split.  .. versionchanged:: 0.18    Added float values for fractions."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "min_samples_split__int",
+            "init_args": {
+              "semantic_types": [
+                "min_samples_split"
+              ],
+              "_structural_type": "int",
+              "default": 2
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "min_samples_split__float",
+            "init_args": {
+              "semantic_types": [
+                "min_samples_split"
+              ],
+              "_structural_type": "float"
+            }
+          }
+        ]
+      },
+      {
+        "name": "min_samples_leaf",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "min_samples_leaf"
+          ],
+          "default": "min_samples_leaf__int",
+          "description": "The minimum number of samples required to be at a leaf node. A split point at any depth will only be considered if it leaves at least ``min_samples_leaf`` training samples in each of the left and right branches.  This may have the effect of smoothing the model, especially in regression.  - If int, then consider `min_samples_leaf` as the minimum number. - If float, then `min_samples_leaf` is a fraction and   `ceil(min_samples_leaf * n_samples)` are the minimum   number of samples for each node.  .. versionchanged:: 0.18    Added float values for fractions."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "min_samples_leaf__int",
+            "init_args": {
+              "semantic_types": [
+                "min_samples_leaf"
+              ],
+              "_structural_type": "int",
+              "default": 1
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "min_samples_leaf__float",
+            "init_args": {
+              "semantic_types": [
+                "min_samples_leaf"
+              ],
+              "_structural_type": "float"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "min_weight_fraction_leaf",
+        "init_args": {
+          "semantic_types": [
+            "min_weight_fraction_leaf"
+          ],
+          "_structural_type": "float",
+          "default": 0.0,
+          "description": "The minimum weighted fraction of the sum total of weights (of all the input samples) required to be at a leaf node. Samples have equal weight when sample_weight is not provided."
+        }
+      },
+      {
+        "name": "max_features",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "max_features"
+          ],
+          "default": "None",
+          "description": "The number of features to consider when looking for the best split:      - If int, then consider `max_features` features at each split.     - If float, then `max_features` is a fraction and       `int(max_features * n_features)` features are considered at each       split.     - If \"auto\", then `max_features=sqrt(n_features)`.     - If \"sqrt\", then `max_features=sqrt(n_features)`.     - If \"log2\", then `max_features=log2(n_features)`.     - If None, then `max_features=n_features`.  Note: the search for a split does not stop until at least one valid partition of the node samples is found, even if it requires to effectively inspect more than ``max_features`` features."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "max_features__int",
+            "init_args": {
+              "semantic_types": [
+                "max_features"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "max_features__float",
+            "init_args": {
+              "semantic_types": [
+                "max_features"
+              ],
+              "_structural_type": "float"
+            }
+          },
+          {
+            "type": "Enumeration",
+            "name": "max_features__str",
+            "init_args": {
+              "semantic_types": [
+                "max_features"
+              ],
+              "values": [
+                "auto",
+                "sqrt",
+                "log2"
+              ],
+              "_structural_type": "str"
+            }
+          }
+        ]
+      },
+      {
+        "name": "random_state",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "random_state"
+          ],
+          "default": "random_state__None",
+          "description": "Controls the randomness of the estimator. The features are always randomly permuted at each split, even if ``splitter`` is set to ``\"best\"``. When ``max_features < n_features``, the algorithm will select ``max_features`` at random at each split before finding the best split among them. But the best found split may vary across different runs, even if ``max_features=n_features``. That is the case, if the improvement of the criterion is identical for several splits and one split has to be selected at random. To obtain a deterministic behaviour during fitting, ``random_state`` has to be fixed to an integer. See :term:`Glossary <random_state>` for details."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "random_state__int",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "random_state__None",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "max_leaf_nodes",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "max_leaf_nodes"
+          ],
+          "default": "max_leaf_nodes__None",
+          "description": "Grow a tree with ``max_leaf_nodes`` in best-first fashion. Best nodes are defined as relative reduction in impurity. If None then unlimited number of leaf nodes."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "max_leaf_nodes__int",
+            "init_args": {
+              "semantic_types": [
+                "max_leaf_nodes"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "max_leaf_nodes__None",
+            "init_args": {
+              "semantic_types": [
+                "max_leaf_nodes"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "min_impurity_decrease",
+        "init_args": {
+          "semantic_types": [
+            "min_impurity_decrease"
+          ],
+          "_structural_type": "float",
+          "default": 0.0,
+          "description": "A node will be split if this split induces a decrease of the impurity greater than or equal to this value.  The weighted impurity decrease equation is the following::      N_t / N * (impurity - N_t_R / N_t * right_impurity                         - N_t_L / N_t * left_impurity)  where ``N`` is the total number of samples, ``N_t`` is the number of samples at the current node, ``N_t_L`` is the number of samples in the left child, and ``N_t_R`` is the number of samples in the right child.  ``N``, ``N_t``, ``N_t_R`` and ``N_t_L`` all refer to the weighted sum, if ``sample_weight`` is passed.  .. versionadded:: 0.19"
+        }
+      },
+      {
+        "name": "min_impurity_split",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "min_impurity_split"
+          ],
+          "default": "min_impurity_split__None",
+          "description": "Threshold for early stopping in tree growth. A node will split if its impurity is above the threshold, otherwise it is a leaf.  .. deprecated:: 0.19    ``min_impurity_split`` has been deprecated in favor of    ``min_impurity_decrease`` in 0.19. The default value of    ``min_impurity_split`` has changed from 1e-7 to 0 in 0.23 and it    will be removed in 1.0 (renaming of 0.25).    Use ``min_impurity_decrease`` instead."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "min_impurity_split__float",
+            "init_args": {
+              "semantic_types": [
+                "min_impurity_split"
+              ],
+              "_structural_type": "float"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "min_impurity_split__None",
+            "init_args": {
+              "semantic_types": [
+                "min_impurity_split"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "class_weight",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "class_weight"
+          ],
+          "default": "class_weight__None",
+          "description": "Weights associated with classes in the form ``{class_label: weight}``. If None, all classes are supposed to have weight one. For multi-output problems, a list of dicts can be provided in the same order as the columns of y.  Note that for multioutput (including multilabel) weights should be defined for each class of every column in its own dict. For example, for four-class multilabel classification weights should be [{0: 1, 1: 1}, {0: 1, 1: 5}, {0: 1, 1: 1}, {0: 1, 1: 1}] instead of [{1:1}, {2:5}, {3:1}, {4:1}].  The \"balanced\" mode uses the values of y to automatically adjust weights inversely proportional to class frequencies in the input data as ``n_samples / (n_classes * np.bincount(y))``  For multi-output, the weights of each column of y will be multiplied.  Note that these weights will be multiplied with sample_weight (passed through the fit method) if sample_weight is specified."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "class_weight__dict",
+            "init_args": {
+              "semantic_types": [
+                "class_weight"
+              ],
+              "_structural_type": "dict"
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "class_weight__list",
+            "init_args": {
+              "semantic_types": [
+                "class_weight"
+              ],
+              "_structural_type": "list"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "class_weight__str",
+            "init_args": {
+              "semantic_types": [
+                "class_weight"
+              ],
+              "_structural_type": "str"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "class_weight__None",
+            "init_args": {
+              "semantic_types": [
+                "class_weight"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "ccp_alpha",
+        "init_args": {
+          "semantic_types": [
+            "ccp_alpha"
+          ],
+          "_structural_type": "float",
+          "default": 0.0,
+          "description": "Complexity parameter used for Minimal Cost-Complexity Pruning. The subtree with the largest cost complexity that is smaller than ``ccp_alpha`` will be chosen. By default, no pruning is performed. See :ref:`minimal_cost_complexity_pruning` for details.  .. versionadded:: 0.22"
+        }
+      }
+    ],
+    "Params": [
+      {
+        "name": "classes_",
+        "type": "ndarray of shape (n_classes,) or list of ndarray",
+        "description": "The classes labels (single output problem), or a list of arrays of class labels (multi-output problem)."
+      },
+      {
+        "name": "feature_importances_",
+        "type": "ndarray of shape (n_features,)",
+        "description": "The impurity-based feature importances. The higher, the more important the feature. The importance of a feature is computed as the (normalized) total reduction of the criterion brought by that feature.  It is also known as the Gini importance [4]_.  Warning: impurity-based feature importances can be misleading for high cardinality features (many unique values). See :func:`sklearn.inspection.permutation_importance` as an alternative."
+      },
+      {
+        "name": "max_features_",
+        "type": "int",
+        "description": "The inferred value of max_features."
+      },
+      {
+        "name": "n_classes_",
+        "type": "int or list of int",
+        "description": "The number of classes (for single output problems), or a list containing the number of classes for each output (for multi-output problems)."
+      },
+      {
+        "name": "n_features_",
+        "type": "int",
+        "description": "The number of features when ``fit`` is performed."
+      },
+      {
+        "name": "n_outputs_",
+        "type": "int",
+        "description": "The number of outputs when ``fit`` is performed."
+      },
+      {
+        "name": "tree_",
+        "type": "Tree instance",
+        "description": "The underlying Tree object. Please refer to ``help(sklearn.tree._tree.Tree)`` for attributes of Tree object and :ref:`sphx_glr_auto_examples_tree_plot_unveil_tree_structure.py` for basic usage of these attributes."
+      }
+    ]
+  },
+  "DecisionTreeRegressor": {
+    "name": "sklearn.tree._classes.DecisionTreeRegressor",
+    "common_name": "DecisionTreeRegressor",
+    "description": "A decision tree regressor. Read more in the :ref:`User Guide <tree>`.",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "type": "Enumeration",
+        "name": "criterion",
+        "init_args": {
+          "semantic_types": [
+            "criterion"
+          ],
+          "values": [
+            "mse",
+            "friedman_mse",
+            "mae",
+            "poisson"
+          ],
+          "_structural_type": "str",
+          "default": "mse",
+          "description": "The function to measure the quality of a split. Supported criteria are \"mse\" for the mean squared error, which is equal to variance reduction as feature selection criterion and minimizes the L2 loss using the mean of each terminal node, \"friedman_mse\", which uses mean squared error with Friedman's improvement score for potential splits, \"mae\" for the mean absolute error, which minimizes the L1 loss using the median of each terminal node, and \"poisson\" which uses reduction in Poisson deviance to find splits.  .. versionadded:: 0.18    Mean Absolute Error (MAE) criterion.  .. versionadded:: 0.24     Poisson deviance criterion."
+        }
+      },
+      {
+        "type": "Enumeration",
+        "name": "splitter",
+        "init_args": {
+          "semantic_types": [
+            "splitter"
+          ],
+          "values": [
+            "best",
+            "random"
+          ],
+          "_structural_type": "str",
+          "default": "best",
+          "description": "The strategy used to choose the split at each node. Supported strategies are \"best\" to choose the best split and \"random\" to choose the best random split."
+        }
+      },
+      {
+        "name": "max_depth",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "max_depth"
+          ],
+          "default": "max_depth__None",
+          "description": "The maximum depth of the tree. If None, then nodes are expanded until all leaves are pure or until all leaves contain less than min_samples_split samples."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "max_depth__int",
+            "init_args": {
+              "semantic_types": [
+                "max_depth"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "max_depth__None",
+            "init_args": {
+              "semantic_types": [
+                "max_depth"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "min_samples_split",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "min_samples_split"
+          ],
+          "default": "min_samples_split__int",
+          "description": "The minimum number of samples required to split an internal node:  - If int, then consider `min_samples_split` as the minimum number. - If float, then `min_samples_split` is a fraction and   `ceil(min_samples_split * n_samples)` are the minimum   number of samples for each split.  .. versionchanged:: 0.18    Added float values for fractions."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "min_samples_split__int",
+            "init_args": {
+              "semantic_types": [
+                "min_samples_split"
+              ],
+              "_structural_type": "int",
+              "default": 2
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "min_samples_split__float",
+            "init_args": {
+              "semantic_types": [
+                "min_samples_split"
+              ],
+              "_structural_type": "float"
+            }
+          }
+        ]
+      },
+      {
+        "name": "min_samples_leaf",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "min_samples_leaf"
+          ],
+          "default": "min_samples_leaf__int",
+          "description": "The minimum number of samples required to be at a leaf node. A split point at any depth will only be considered if it leaves at least ``min_samples_leaf`` training samples in each of the left and right branches.  This may have the effect of smoothing the model, especially in regression.  - If int, then consider `min_samples_leaf` as the minimum number. - If float, then `min_samples_leaf` is a fraction and   `ceil(min_samples_leaf * n_samples)` are the minimum   number of samples for each node.  .. versionchanged:: 0.18    Added float values for fractions."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "min_samples_leaf__int",
+            "init_args": {
+              "semantic_types": [
+                "min_samples_leaf"
+              ],
+              "_structural_type": "int",
+              "default": 1
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "min_samples_leaf__float",
+            "init_args": {
+              "semantic_types": [
+                "min_samples_leaf"
+              ],
+              "_structural_type": "float"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "min_weight_fraction_leaf",
+        "init_args": {
+          "semantic_types": [
+            "min_weight_fraction_leaf"
+          ],
+          "_structural_type": "float",
+          "default": 0.0,
+          "description": "The minimum weighted fraction of the sum total of weights (of all the input samples) required to be at a leaf node. Samples have equal weight when sample_weight is not provided."
+        }
+      },
+      {
+        "name": "max_features",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "max_features"
+          ],
+          "default": "max_features__None",
+          "description": "The number of features to consider when looking for the best split:  - If int, then consider `max_features` features at each split. - If float, then `max_features` is a fraction and   `int(max_features * n_features)` features are considered at each   split. - If \"auto\", then `max_features=n_features`. - If \"sqrt\", then `max_features=sqrt(n_features)`. - If \"log2\", then `max_features=log2(n_features)`. - If None, then `max_features=n_features`.  Note: the search for a split does not stop until at least one valid partition of the node samples is found, even if it requires to effectively inspect more than ``max_features`` features."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "max_features__int",
+            "init_args": {
+              "semantic_types": [
+                "max_features"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "max_features__float",
+            "init_args": {
+              "semantic_types": [
+                "max_features"
+              ],
+              "_structural_type": "float"
+            }
+          },
+          {
+            "type": "Enumeration",
+            "name": "max_features__str",
+            "init_args": {
+              "semantic_types": [
+                "max_features"
+              ],
+              "values": [
+                "auto",
+                "sqrt",
+                "log2"
+              ],
+              "_structural_type": "str"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "max_features__None",
+            "init_args": {
+              "semantic_types": [
+                "max_features"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "random_state",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "random_state"
+          ],
+          "default": "random_state__None",
+          "description": "Controls the randomness of the estimator. The features are always randomly permuted at each split, even if ``splitter`` is set to ``\"best\"``. When ``max_features < n_features``, the algorithm will select ``max_features`` at random at each split before finding the best split among them. But the best found split may vary across different runs, even if ``max_features=n_features``. That is the case, if the improvement of the criterion is identical for several splits and one split has to be selected at random. To obtain a deterministic behaviour during fitting, ``random_state`` has to be fixed to an integer. See :term:`Glossary <random_state>` for details."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "random_state__int",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "random_state__None",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "max_leaf_nodes",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "max_leaf_nodes"
+          ],
+          "default": "max_leaf_nodes__None",
+          "description": "Grow a tree with ``max_leaf_nodes`` in best-first fashion. Best nodes are defined as relative reduction in impurity. If None then unlimited number of leaf nodes."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "max_leaf_nodes__int",
+            "init_args": {
+              "semantic_types": [
+                "max_leaf_nodes"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "max_leaf_nodes__None",
+            "init_args": {
+              "semantic_types": [
+                "max_leaf_nodes"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "min_impurity_decrease",
+        "init_args": {
+          "semantic_types": [
+            "min_impurity_decrease"
+          ],
+          "_structural_type": "float",
+          "default": 0.0,
+          "description": "A node will be split if this split induces a decrease of the impurity greater than or equal to this value.  The weighted impurity decrease equation is the following::      N_t / N * (impurity - N_t_R / N_t * right_impurity                         - N_t_L / N_t * left_impurity)  where ``N`` is the total number of samples, ``N_t`` is the number of samples at the current node, ``N_t_L`` is the number of samples in the left child, and ``N_t_R`` is the number of samples in the right child.  ``N``, ``N_t``, ``N_t_R`` and ``N_t_L`` all refer to the weighted sum, if ``sample_weight`` is passed.  .. versionadded:: 0.19"
+        }
+      },
+      {
+        "name": "min_impurity_split",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "min_impurity_split"
+          ],
+          "default": "min_impurity_split__None",
+          "description": "Threshold for early stopping in tree growth. A node will split if its impurity is above the threshold, otherwise it is a leaf.  .. deprecated:: 0.19    ``min_impurity_split`` has been deprecated in favor of    ``min_impurity_decrease`` in 0.19. The default value of    ``min_impurity_split`` has changed from 1e-7 to 0 in 0.23 and it    will be removed in 1.0 (renaming of 0.25).    Use ``min_impurity_decrease`` instead."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "min_impurity_split__float",
+            "init_args": {
+              "semantic_types": [
+                "min_impurity_split"
+              ],
+              "_structural_type": "float"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "min_impurity_split__None",
+            "init_args": {
+              "semantic_types": [
+                "min_impurity_split"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "ccp_alpha",
+        "init_args": {
+          "semantic_types": [
+            "ccp_alpha"
+          ],
+          "_structural_type": "float",
+          "default": 0.0,
+          "description": "Complexity parameter used for Minimal Cost-Complexity Pruning. The subtree with the largest cost complexity that is smaller than ``ccp_alpha`` will be chosen. By default, no pruning is performed. See :ref:`minimal_cost_complexity_pruning` for details.  .. versionadded:: 0.22"
+        }
+      }
+    ],
+    "Params": [
+      {
+        "name": "feature_importances_",
+        "type": "ndarray of shape (n_features,)",
+        "description": "The feature importances. The higher, the more important the feature. The importance of a feature is computed as the (normalized) total reduction of the criterion brought by that feature. It is also known as the Gini importance [4]_.  Warning: impurity-based feature importances can be misleading for high cardinality features (many unique values). See :func:`sklearn.inspection.permutation_importance` as an alternative."
+      },
+      {
+        "name": "max_features_",
+        "type": "int",
+        "description": "The inferred value of max_features."
+      },
+      {
+        "name": "n_features_",
+        "type": "int",
+        "description": "The number of features when ``fit`` is performed."
+      },
+      {
+        "name": "n_outputs_",
+        "type": "int",
+        "description": "The number of outputs when ``fit`` is performed."
+      },
+      {
+        "name": "tree_",
+        "type": "Tree instance",
+        "description": "The underlying Tree object. Please refer to ``help(sklearn.tree._tree.Tree)`` for attributes of Tree object and :ref:`sphx_glr_auto_examples_tree_plot_unveil_tree_structure.py` for basic usage of these attributes."
+      }
+    ]
+  },
+  "ExtraTreeClassifier": {
+    "name": "sklearn.tree._classes.ExtraTreeClassifier",
+    "common_name": "ExtraTreeClassifier",
+    "description": "An extremely randomized tree classifier. Extra-trees differ from classic decision trees in the way they are built. When looking for the best split to separate the samples of a node into two groups, random splits are drawn for each of the `max_features` randomly selected features and the best split among those is chosen. When `max_features` is set 1, this amounts to building a totally random decision tree.  Warning: Extra-trees should only be used within ensemble methods.  Read more in the :ref:`User Guide <tree>`.",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "type": "Enumeration",
+        "name": "criterion",
+        "init_args": {
+          "semantic_types": [
+            "criterion"
+          ],
+          "values": [
+            "gini",
+            "entropy"
+          ],
+          "_structural_type": "str",
+          "default": "gini",
+          "description": "The function to measure the quality of a split. Supported criteria are \"gini\" for the Gini impurity and \"entropy\" for the information gain."
+        }
+      },
+      {
+        "type": "Enumeration",
+        "name": "splitter",
+        "init_args": {
+          "semantic_types": [
+            "splitter"
+          ],
+          "values": [
+            "random",
+            "best"
+          ],
+          "_structural_type": "str",
+          "default": "random",
+          "description": "The strategy used to choose the split at each node. Supported strategies are \"best\" to choose the best split and \"random\" to choose the best random split."
+        }
+      },
+      {
+        "name": "max_depth",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "max_depth"
+          ],
+          "default": "max_depth__None",
+          "description": "The maximum depth of the tree. If None, then nodes are expanded until all leaves are pure or until all leaves contain less than min_samples_split samples."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "max_depth__int",
+            "init_args": {
+              "semantic_types": [
+                "max_depth"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "max_depth__None",
+            "init_args": {
+              "semantic_types": [
+                "max_depth"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "min_samples_split",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "min_samples_split"
+          ],
+          "default": "min_samples_split__int",
+          "description": "The minimum number of samples required to split an internal node:  - If int, then consider `min_samples_split` as the minimum number. - If float, then `min_samples_split` is a fraction and   `ceil(min_samples_split * n_samples)` are the minimum   number of samples for each split.  .. versionchanged:: 0.18    Added float values for fractions."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "min_samples_split__int",
+            "init_args": {
+              "semantic_types": [
+                "min_samples_split"
+              ],
+              "_structural_type": "int",
+              "default": 2
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "min_samples_split__float",
+            "init_args": {
+              "semantic_types": [
+                "min_samples_split"
+              ],
+              "_structural_type": "float"
+            }
+          }
+        ]
+      },
+      {
+        "name": "min_samples_leaf",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "min_samples_leaf"
+          ],
+          "default": "min_samples_leaf__int",
+          "description": "The minimum number of samples required to be at a leaf node. A split point at any depth will only be considered if it leaves at least ``min_samples_leaf`` training samples in each of the left and right branches.  This may have the effect of smoothing the model, especially in regression.  - If int, then consider `min_samples_leaf` as the minimum number. - If float, then `min_samples_leaf` is a fraction and   `ceil(min_samples_leaf * n_samples)` are the minimum   number of samples for each node.  .. versionchanged:: 0.18    Added float values for fractions."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "min_samples_leaf__int",
+            "init_args": {
+              "semantic_types": [
+                "min_samples_leaf"
+              ],
+              "_structural_type": "int",
+              "default": 1
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "min_samples_leaf__float",
+            "init_args": {
+              "semantic_types": [
+                "min_samples_leaf"
+              ],
+              "_structural_type": "float"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "min_weight_fraction_leaf",
+        "init_args": {
+          "semantic_types": [
+            "min_weight_fraction_leaf"
+          ],
+          "_structural_type": "float",
+          "default": 0.0,
+          "description": "The minimum weighted fraction of the sum total of weights (of all the input samples) required to be at a leaf node. Samples have equal weight when sample_weight is not provided."
+        }
+      },
+      {
+        "name": "max_features",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "max_features"
+          ],
+          "default": "max_features__str",
+          "description": "The number of features to consider when looking for the best split:      - If int, then consider `max_features` features at each split.     - If float, then `max_features` is a fraction and       `int(max_features * n_features)` features are considered at each       split.     - If \"auto\", then `max_features=sqrt(n_features)`.     - If \"sqrt\", then `max_features=sqrt(n_features)`.     - If \"log2\", then `max_features=log2(n_features)`.     - If None, then `max_features=n_features`.  Note: the search for a split does not stop until at least one valid partition of the node samples is found, even if it requires to effectively inspect more than ``max_features`` features."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "max_features__int",
+            "init_args": {
+              "semantic_types": [
+                "max_features"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "max_features__float",
+            "init_args": {
+              "semantic_types": [
+                "max_features"
+              ],
+              "_structural_type": "float"
+            }
+          },
+          {
+            "type": "Enumeration",
+            "name": "max_features__str",
+            "init_args": {
+              "semantic_types": [
+                "max_features"
+              ],
+              "values": [
+                "auto",
+                "sqrt",
+                "log2"
+              ],
+              "_structural_type": "str",
+              "default": "auto"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "max_features__None",
+            "init_args": {
+              "semantic_types": [
+                "max_features"
+              ],
+              "_structural_type": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "random_state",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "random_state"
+          ],
+          "default": "random_state__None",
+          "description": "Used to pick randomly the `max_features` used at each split. See :term:`Glossary <random_state>` for details."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "random_state__int",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "random_state__None",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "max_leaf_nodes",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "max_leaf_nodes"
+          ],
+          "default": "max_leaf_nodes__None",
+          "description": "Grow a tree with ``max_leaf_nodes`` in best-first fashion. Best nodes are defined as relative reduction in impurity. If None then unlimited number of leaf nodes."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "max_leaf_nodes__int",
+            "init_args": {
+              "semantic_types": [
+                "max_leaf_nodes"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "max_leaf_nodes__None",
+            "init_args": {
+              "semantic_types": [
+                "max_leaf_nodes"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "min_impurity_decrease",
+        "init_args": {
+          "semantic_types": [
+            "min_impurity_decrease"
+          ],
+          "_structural_type": "float",
+          "default": 0.0,
+          "description": "A node will be split if this split induces a decrease of the impurity greater than or equal to this value.  The weighted impurity decrease equation is the following::      N_t / N * (impurity - N_t_R / N_t * right_impurity                         - N_t_L / N_t * left_impurity)  where ``N`` is the total number of samples, ``N_t`` is the number of samples at the current node, ``N_t_L`` is the number of samples in the left child, and ``N_t_R`` is the number of samples in the right child.  ``N``, ``N_t``, ``N_t_R`` and ``N_t_L`` all refer to the weighted sum, if ``sample_weight`` is passed.  .. versionadded:: 0.19"
+        }
+      },
+      {
+        "name": "min_impurity_split",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "min_impurity_split"
+          ],
+          "default": "min_impurity_split__None",
+          "description": "Threshold for early stopping in tree growth. A node will split if its impurity is above the threshold, otherwise it is a leaf.  .. deprecated:: 0.19    ``min_impurity_split`` has been deprecated in favor of    ``min_impurity_decrease`` in 0.19. The default value of    ``min_impurity_split`` has changed from 1e-7 to 0 in 0.23 and it    will be removed in 1.0 (renaming of 0.25).    Use ``min_impurity_decrease`` instead."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "min_impurity_split__float",
+            "init_args": {
+              "semantic_types": [
+                "min_impurity_split"
+              ],
+              "_structural_type": "float"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "min_impurity_split__None",
+            "init_args": {
+              "semantic_types": [
+                "min_impurity_split"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "class_weight",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "class_weight"
+          ],
+          "default": "class_weight__None",
+          "description": "Weights associated with classes in the form ``{class_label: weight}``. If None, all classes are supposed to have weight one. For multi-output problems, a list of dicts can be provided in the same order as the columns of y.  Note that for multioutput (including multilabel) weights should be defined for each class of every column in its own dict. For example, for four-class multilabel classification weights should be [{0: 1, 1: 1}, {0: 1, 1: 5}, {0: 1, 1: 1}, {0: 1, 1: 1}] instead of [{1:1}, {2:5}, {3:1}, {4:1}].  The \"balanced\" mode uses the values of y to automatically adjust weights inversely proportional to class frequencies in the input data as ``n_samples / (n_classes * np.bincount(y))``  For multi-output, the weights of each column of y will be multiplied.  Note that these weights will be multiplied with sample_weight (passed through the fit method) if sample_weight is specified."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "class_weight__dict",
+            "init_args": {
+              "semantic_types": [
+                "class_weight"
+              ],
+              "_structural_type": "dict"
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "class_weight__list",
+            "init_args": {
+              "semantic_types": [
+                "class_weight"
+              ],
+              "_structural_type": "list"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "class_weight__str",
+            "init_args": {
+              "semantic_types": [
+                "class_weight"
+              ],
+              "_structural_type": "str"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "class_weight__None",
+            "init_args": {
+              "semantic_types": [
+                "class_weight"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "ccp_alpha",
+        "init_args": {
+          "semantic_types": [
+            "ccp_alpha"
+          ],
+          "_structural_type": "float",
+          "default": 0.0,
+          "description": "Complexity parameter used for Minimal Cost-Complexity Pruning. The subtree with the largest cost complexity that is smaller than ``ccp_alpha`` will be chosen. By default, no pruning is performed. See :ref:`minimal_cost_complexity_pruning` for details.  .. versionadded:: 0.22"
+        }
+      }
+    ],
+    "Params": [
+      {
+        "name": "classes_",
+        "type": "ndarray of shape (n_classes,) or list of ndarray",
+        "description": "The classes labels (single output problem), or a list of arrays of class labels (multi-output problem)."
+      },
+      {
+        "name": "max_features_",
+        "type": "int",
+        "description": "The inferred value of max_features."
+      },
+      {
+        "name": "n_classes_",
+        "type": "int or list of int",
+        "description": "The number of classes (for single output problems), or a list containing the number of classes for each output (for multi-output problems)."
+      },
+      {
+        "name": "feature_importances_",
+        "type": "ndarray of shape (n_features,)",
+        "description": "The impurity-based feature importances. The higher, the more important the feature. The importance of a feature is computed as the (normalized) total reduction of the criterion brought by that feature.  It is also known as the Gini importance.  Warning: impurity-based feature importances can be misleading for high cardinality features (many unique values). See :func:`sklearn.inspection.permutation_importance` as an alternative."
+      },
+      {
+        "name": "n_features_",
+        "type": "int",
+        "description": "The number of features when ``fit`` is performed."
+      },
+      {
+        "name": "n_outputs_",
+        "type": "int",
+        "description": "The number of outputs when ``fit`` is performed."
+      },
+      {
+        "name": "tree_",
+        "type": "Tree instance",
+        "description": "The underlying Tree object. Please refer to ``help(sklearn.tree._tree.Tree)`` for attributes of Tree object and :ref:`sphx_glr_auto_examples_tree_plot_unveil_tree_structure.py` for basic usage of these attributes."
+      }
+    ]
+  },
+  "ExtraTreeRegressor": {
+    "name": "sklearn.tree._classes.ExtraTreeRegressor",
+    "common_name": "ExtraTreeRegressor",
+    "description": "An extremely randomized tree regressor. Extra-trees differ from classic decision trees in the way they are built. When looking for the best split to separate the samples of a node into two groups, random splits are drawn for each of the `max_features` randomly selected features and the best split among those is chosen. When `max_features` is set 1, this amounts to building a totally random decision tree.  Warning: Extra-trees should only be used within ensemble methods.  Read more in the :ref:`User Guide <tree>`.",
+    "sklearn_version": "0.24.0",
+    "Hyperparams": [
+      {
+        "type": "Enumeration",
+        "name": "criterion",
+        "init_args": {
+          "semantic_types": [
+            "criterion"
+          ],
+          "values": [
+            "mse",
+            "friedman_mse"
+          ],
+          "_structural_type": "str",
+          "default": "mse",
+          "description": "The function to measure the quality of a split. Supported criteria are \"mse\" for the mean squared error, which is equal to variance reduction as feature selection criterion and \"mae\" for the mean absolute error.  .. versionadded:: 0.18    Mean Absolute Error (MAE) criterion.  .. versionadded:: 0.24     Poisson deviance criterion."
+        }
+      },
+      {
+        "type": "Enumeration",
+        "name": "splitter",
+        "init_args": {
+          "semantic_types": [
+            "splitter"
+          ],
+          "values": [
+            "random",
+            "best"
+          ],
+          "_structural_type": "str",
+          "default": "random",
+          "description": "The strategy used to choose the split at each node. Supported strategies are \"best\" to choose the best split and \"random\" to choose the best random split."
+        }
+      },
+      {
+        "name": "max_depth",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "max_depth"
+          ],
+          "default": "max_depth__None",
+          "description": "The maximum depth of the tree. If None, then nodes are expanded until all leaves are pure or until all leaves contain less than min_samples_split samples."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "max_depth__int",
+            "init_args": {
+              "semantic_types": [
+                "max_depth"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "max_depth__None",
+            "init_args": {
+              "semantic_types": [
+                "max_depth"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "min_samples_split",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "min_samples_split"
+          ],
+          "default": "min_samples_split__int",
+          "description": "The minimum number of samples required to split an internal node:  - If int, then consider `min_samples_split` as the minimum number. - If float, then `min_samples_split` is a fraction and   `ceil(min_samples_split * n_samples)` are the minimum   number of samples for each split.  .. versionchanged:: 0.18    Added float values for fractions."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "min_samples_split__int",
+            "init_args": {
+              "semantic_types": [
+                "min_samples_split"
+              ],
+              "_structural_type": "int",
+              "default": 2
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "min_samples_split__float",
+            "init_args": {
+              "semantic_types": [
+                "min_samples_split"
+              ],
+              "_structural_type": "float"
+            }
+          }
+        ]
+      },
+      {
+        "name": "min_samples_leaf",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "min_samples_leaf"
+          ],
+          "default": "min_samples_leaf__int",
+          "description": "The minimum number of samples required to be at a leaf node. A split point at any depth will only be considered if it leaves at least ``min_samples_leaf`` training samples in each of the left and right branches.  This may have the effect of smoothing the model, especially in regression.  - If int, then consider `min_samples_leaf` as the minimum number. - If float, then `min_samples_leaf` is a fraction and   `ceil(min_samples_leaf * n_samples)` are the minimum   number of samples for each node.  .. versionchanged:: 0.18    Added float values for fractions."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "min_samples_leaf__int",
+            "init_args": {
+              "semantic_types": [
+                "min_samples_leaf"
+              ],
+              "_structural_type": "int",
+              "default": 1
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "min_samples_leaf__float",
+            "init_args": {
+              "semantic_types": [
+                "min_samples_leaf"
+              ],
+              "_structural_type": "float"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "min_weight_fraction_leaf",
+        "init_args": {
+          "semantic_types": [
+            "min_weight_fraction_leaf"
+          ],
+          "_structural_type": "float",
+          "default": 0.0,
+          "description": "The minimum weighted fraction of the sum total of weights (of all the input samples) required to be at a leaf node. Samples have equal weight when sample_weight is not provided."
+        }
+      },
+      {
+        "name": "max_features",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "max_features"
+          ],
+          "default": "max_features__str",
+          "description": "The number of features to consider when looking for the best split:  - If int, then consider `max_features` features at each split. - If float, then `max_features` is a fraction and   `int(max_features * n_features)` features are considered at each   split. - If \"auto\", then `max_features=n_features`. - If \"sqrt\", then `max_features=sqrt(n_features)`. - If \"log2\", then `max_features=log2(n_features)`. - If None, then `max_features=n_features`.  Note: the search for a split does not stop until at least one valid partition of the node samples is found, even if it requires to effectively inspect more than ``max_features`` features."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "max_features__int",
+            "init_args": {
+              "semantic_types": [
+                "max_features"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Hyperparameter",
+            "name": "max_features__float",
+            "init_args": {
+              "semantic_types": [
+                "max_features"
+              ],
+              "_structural_type": "float"
+            }
+          },
+          {
+            "type": "Enumeration",
+            "name": "max_features__str",
+            "init_args": {
+              "semantic_types": [
+                "max_features"
+              ],
+              "values": [
+                "auto",
+                "sqrt",
+                "log2"
+              ],
+              "_structural_type": "str",
+              "default": "auto"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "max_features__None",
+            "init_args": {
+              "semantic_types": [
+                "max_features"
+              ],
+              "_structural_type": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "random_state",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "random_state"
+          ],
+          "default": "random_state__None",
+          "description": "Used to pick randomly the `max_features` used at each split. See :term:`Glossary <random_state>` for details."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "random_state__int",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "random_state__None",
+            "init_args": {
+              "semantic_types": [
+                "random_state"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "min_impurity_decrease",
+        "init_args": {
+          "semantic_types": [
+            "min_impurity_decrease"
+          ],
+          "_structural_type": "float",
+          "default": 0.0,
+          "description": "A node will be split if this split induces a decrease of the impurity greater than or equal to this value.  The weighted impurity decrease equation is the following::      N_t / N * (impurity - N_t_R / N_t * right_impurity                         - N_t_L / N_t * left_impurity)  where ``N`` is the total number of samples, ``N_t`` is the number of samples at the current node, ``N_t_L`` is the number of samples in the left child, and ``N_t_R`` is the number of samples in the right child.  ``N``, ``N_t``, ``N_t_R`` and ``N_t_L`` all refer to the weighted sum, if ``sample_weight`` is passed.  .. versionadded:: 0.19"
+        }
+      },
+      {
+        "name": "min_impurity_split",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "min_impurity_split"
+          ],
+          "default": "min_impurity_split__None",
+          "description": "Threshold for early stopping in tree growth. A node will split if its impurity is above the threshold, otherwise it is a leaf.  .. deprecated:: 0.19    ``min_impurity_split`` has been deprecated in favor of    ``min_impurity_decrease`` in 0.19. The default value of    ``min_impurity_split`` has changed from 1e-7 to 0 in 0.23 and it    will be removed in 1.0 (renaming of 0.25).    Use ``min_impurity_decrease`` instead."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "min_impurity_split__float",
+            "init_args": {
+              "semantic_types": [
+                "min_impurity_split"
+              ],
+              "_structural_type": "float"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "min_impurity_split__None",
+            "init_args": {
+              "semantic_types": [
+                "min_impurity_split"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "name": "max_leaf_nodes",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "max_leaf_nodes"
+          ],
+          "default": "max_leaf_nodes__None",
+          "description": "Grow a tree with ``max_leaf_nodes`` in best-first fashion. Best nodes are defined as relative reduction in impurity. If None then unlimited number of leaf nodes."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "max_leaf_nodes__int",
+            "init_args": {
+              "semantic_types": [
+                "max_leaf_nodes"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "max_leaf_nodes__None",
+            "init_args": {
+              "semantic_types": [
+                "max_leaf_nodes"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "ccp_alpha",
+        "init_args": {
+          "semantic_types": [
+            "ccp_alpha"
+          ],
+          "_structural_type": "float",
+          "default": 0.0,
+          "description": "Complexity parameter used for Minimal Cost-Complexity Pruning. The subtree with the largest cost complexity that is smaller than ``ccp_alpha`` will be chosen. By default, no pruning is performed. See :ref:`minimal_cost_complexity_pruning` for details.  .. versionadded:: 0.22"
+        }
+      }
+    ],
+    "Params": [
+      {
+        "name": "max_features_",
+        "type": "int",
+        "description": "The inferred value of max_features."
+      },
+      {
+        "name": "n_features_",
+        "type": "int",
+        "description": "The number of features when ``fit`` is performed."
+      },
+      {
+        "name": "feature_importances_",
+        "type": "ndarray of shape (n_features,)",
+        "description": "Return impurity-based feature importances (the higher, the more important the feature).  Warning: impurity-based feature importances can be misleading for high cardinality features (many unique values). See :func:`sklearn.inspection.permutation_importance` as an alternative."
+      },
+      {
+        "name": "n_outputs_",
+        "type": "int",
+        "description": "The number of outputs when ``fit`` is performed."
+      },
+      {
+        "name": "tree_",
+        "type": "Tree instance",
+        "description": "The underlying Tree object. Please refer to ``help(sklearn.tree._tree.Tree)`` for attributes of Tree object and :ref:`sphx_glr_auto_examples_tree_plot_unveil_tree_structure.py` for basic usage of these attributes."
+      }
+    ]
+  }
+}
