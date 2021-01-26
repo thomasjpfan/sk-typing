@@ -40,6 +40,7 @@ _MODULES = [
     "preprocessing",
     "random_projection",
     "semi_supervised",
+    "svm",
 ]
 
 for modules in _MODULES:
