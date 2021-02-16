@@ -3,53 +3,15 @@ from typing import Optional
 from typing import Union
 from typing import Callable
 
-from ._typing import EstimatorType
-from ._typing import Literal
-from ._typing import RandomStateType
-from ._typing import ArrayLike
-from ._typing import CVType
-from ._typing import NDArray
-
-from sklearn.linear_model import TheilSenRegressor
-from sklearn.linear_model import RANSACRegressor
-from sklearn.linear_model import RidgeClassifierCV
-from sklearn.linear_model import OrthogonalMatchingPursuit
-from sklearn.linear_model import LarsCV
-from sklearn.linear_model import MultiTaskElasticNet
-from sklearn.linear_model import MultiTaskLasso
-from sklearn.linear_model import Ridge
-from sklearn.linear_model import RidgeClassifier
-from sklearn.linear_model import LassoLarsIC
-from sklearn.linear_model import LassoLarsCV
-from sklearn.linear_model import ElasticNetCV
-from sklearn.linear_model import SGDRegressor
-from sklearn.linear_model import TweedieRegressor
-from sklearn.linear_model import LinearRegression
-from sklearn.linear_model import MultiTaskElasticNetCV
-from sklearn.linear_model import SGDClassifier
-from sklearn.linear_model import BayesianRidge
-from sklearn.linear_model import LassoLars
-from sklearn.linear_model import HuberRegressor
-from sklearn.linear_model import ElasticNet
-from sklearn.linear_model import ARDRegression
-from sklearn.linear_model import GammaRegressor
-from sklearn.linear_model import Lars
-from sklearn.linear_model import Lasso
-from sklearn.linear_model import PassiveAggressiveRegressor
-from sklearn.linear_model import LogisticRegression
-from sklearn.linear_model import MultiTaskLassoCV
-from sklearn.linear_model import PassiveAggressiveClassifier
-from sklearn.linear_model import LogisticRegressionCV
-from sklearn.linear_model import PoissonRegressor
-from sklearn.linear_model import LassoCV
-from sklearn.linear_model import RidgeCV
-from sklearn.linear_model import Perceptron
-from sklearn.linear_model import OrthogonalMatchingPursuitCV
+from .typing import EstimatorType
+from .typing import Literal
+from .typing import RandomStateType
+from .typing import ArrayLike
+from .typing import CVType
+from .typing import NDArray
 
 
-class ARDRegressionAnnotation:
-    __estimator__ = ARDRegression
-
+class ARDRegression:
     def __init__(
         self,
         n_iter: int = 300,
@@ -65,12 +27,10 @@ class ARDRegressionAnnotation:
         copy_X: bool = True,
         verbose: bool = False,
     ):
-        pass
+        ...
 
 
-class BayesianRidgeAnnotation:
-    __estimator__ = BayesianRidge
-
+class BayesianRidge:
     def __init__(
         self,
         n_iter: int = 300,
@@ -87,12 +47,10 @@ class BayesianRidgeAnnotation:
         copy_X: bool = True,
         verbose: bool = False,
     ):
-        pass
+        ...
 
 
-class ElasticNetAnnotation:
-    __estimator__ = ElasticNet
-
+class ElasticNet:
     def __init__(
         self,
         alpha: float = 1.0,
@@ -108,12 +66,10 @@ class ElasticNetAnnotation:
         random_state: RandomStateType = None,
         selection: Literal["cyclic", "random"] = "cyclic",
     ):
-        pass
+        ...
 
 
-class ElasticNetCVAnnotation:
-    __estimator__ = ElasticNetCV
-
+class ElasticNetCV:
     def __init__(
         self,
         l1_ratio: Union[float, list] = 0.5,
@@ -133,12 +89,10 @@ class ElasticNetCVAnnotation:
         random_state: RandomStateType = None,
         selection: Literal["cyclic", "random"] = "cyclic",
     ):
-        pass
+        ...
 
 
-class GammaRegressorAnnotation:
-    __estimator__ = GammaRegressor
-
+class GammaRegressor:
     def __init__(
         self,
         alpha: float = 1.0,
@@ -148,12 +102,10 @@ class GammaRegressorAnnotation:
         warm_start: bool = False,
         verbose: int = 0,
     ):
-        pass
+        ...
 
 
-class HuberRegressorAnnotation:
-    __estimator__ = HuberRegressor
-
+class HuberRegressor:
     def __init__(
         self,
         epsilon: float = 1.35,
@@ -163,12 +115,10 @@ class HuberRegressorAnnotation:
         fit_intercept: bool = True,
         tol: float = 1e-05,
     ):
-        pass
+        ...
 
 
-class LarsAnnotation:
-    __estimator__ = Lars
-
+class Lars:
     def __init__(
         self,
         fit_intercept: bool = True,
@@ -182,12 +132,10 @@ class LarsAnnotation:
         jitter: Optional[int] = None,
         random_state: RandomStateType = None,
     ):
-        pass
+        ...
 
 
-class LarsCVAnnotation:
-    __estimator__ = LarsCV
-
+class LarsCV:
     def __init__(
         self,
         fit_intercept: bool = True,
@@ -201,12 +149,10 @@ class LarsCVAnnotation:
         eps: float = 2.220446049250313e-16,
         copy_X: bool = True,
     ):
-        pass
+        ...
 
 
-class LassoAnnotation:
-    __estimator__ = Lasso
-
+class Lasso:
     def __init__(
         self,
         alpha: float = 1.0,
@@ -221,12 +167,10 @@ class LassoAnnotation:
         random_state: RandomStateType = None,
         selection: Literal["cyclic", "random"] = "cyclic",
     ):
-        pass
+        ...
 
 
-class LassoCVAnnotation:
-    __estimator__ = LassoCV
-
+class LassoCV:
     def __init__(
         self,
         eps: float = 0.001,
@@ -245,12 +189,10 @@ class LassoCVAnnotation:
         random_state: RandomStateType = None,
         selection: Literal["cyclic", "random"] = "cyclic",
     ):
-        pass
+        ...
 
 
-class LassoLarsAnnotation:
-    __estimator__ = LassoLars
-
+class LassoLars:
     def __init__(
         self,
         alpha: float = 1.0,
@@ -266,12 +208,10 @@ class LassoLarsAnnotation:
         jitter: Optional[float] = None,
         random_state: RandomStateType = None,
     ):
-        pass
+        ...
 
 
-class LassoLarsCVAnnotation:
-    __estimator__ = LassoLarsCV
-
+class LassoLarsCV:
     def __init__(
         self,
         fit_intercept: bool = True,
@@ -286,12 +226,10 @@ class LassoLarsCVAnnotation:
         copy_X: bool = True,
         positive: bool = False,
     ):
-        pass
+        ...
 
 
-class LassoLarsICAnnotation:
-    __estimator__ = LassoLarsIC
-
+class LassoLarsIC:
     def __init__(
         self,
         criterion: Literal["bic", "aic"] = "aic",
@@ -304,12 +242,10 @@ class LassoLarsICAnnotation:
         copy_X: bool = True,
         positive: bool = False,
     ):
-        pass
+        ...
 
 
-class LinearRegressionAnnotation:
-    __estimator__ = LinearRegression
-
+class LinearRegression:
     def __init__(
         self,
         fit_intercept: bool = True,
@@ -318,12 +254,10 @@ class LinearRegressionAnnotation:
         n_jobs: Optional[int] = None,
         positive: bool = False,
     ):
-        pass
+        ...
 
 
-class LogisticRegressionAnnotation:
-    __estimator__ = LogisticRegression
-
+class LogisticRegression:
     def __init__(
         self,
         penalty: Literal["l1", "l2", "elasticnet", "none"] = "l2",
@@ -342,12 +276,10 @@ class LogisticRegressionAnnotation:
         n_jobs: Optional[int] = None,
         l1_ratio: Optional[float] = None,
     ):
-        pass
+        ...
 
 
-class LogisticRegressionCVAnnotation:
-    __estimator__ = LogisticRegressionCV
-
+class LogisticRegressionCV:
     def __init__(
         self,
         Cs: Union[int, list] = 10,
@@ -368,12 +300,10 @@ class LogisticRegressionCVAnnotation:
         random_state: RandomStateType = None,
         l1_ratios: Optional[list] = None,
     ):
-        pass
+        ...
 
 
-class MultiTaskElasticNetAnnotation:
-    __estimator__ = MultiTaskElasticNet
-
+class MultiTaskElasticNet:
     def __init__(
         self,
         alpha: float = 1.0,
@@ -387,12 +317,10 @@ class MultiTaskElasticNetAnnotation:
         random_state: RandomStateType = None,
         selection: Literal["cyclic", "random"] = "cyclic",
     ):
-        pass
+        ...
 
 
-class MultiTaskElasticNetCVAnnotation:
-    __estimator__ = MultiTaskElasticNetCV
-
+class MultiTaskElasticNetCV:
     def __init__(
         self,
         l1_ratio: Union[float, list] = 0.5,
@@ -410,12 +338,10 @@ class MultiTaskElasticNetCVAnnotation:
         random_state: RandomStateType = None,
         selection: Literal["cyclic", "random"] = "cyclic",
     ):
-        pass
+        ...
 
 
-class MultiTaskLassoAnnotation:
-    __estimator__ = MultiTaskLasso
-
+class MultiTaskLasso:
     def __init__(
         self,
         alpha: float = 1.0,
@@ -428,12 +354,10 @@ class MultiTaskLassoAnnotation:
         random_state: RandomStateType = None,
         selection: Literal["cyclic", "random"] = "cyclic",
     ):
-        pass
+        ...
 
 
-class MultiTaskLassoCVAnnotation:
-    __estimator__ = MultiTaskLassoCV
-
+class MultiTaskLassoCV:
     def __init__(
         self,
         eps: float = 0.001,
@@ -450,12 +374,10 @@ class MultiTaskLassoCVAnnotation:
         random_state: RandomStateType = None,
         selection: Literal["cyclic", "random"] = "cyclic",
     ):
-        pass
+        ...
 
 
-class OrthogonalMatchingPursuitAnnotation:
-    __estimator__ = OrthogonalMatchingPursuit
-
+class OrthogonalMatchingPursuit:
     def __init__(
         self,
         n_nonzero_coefs: Optional[int] = None,
@@ -464,12 +386,10 @@ class OrthogonalMatchingPursuitAnnotation:
         normalize: bool = True,
         precompute: Union[Literal["auto"], bool] = "auto",
     ):
-        pass
+        ...
 
 
-class OrthogonalMatchingPursuitCVAnnotation:
-    __estimator__ = OrthogonalMatchingPursuitCV
-
+class OrthogonalMatchingPursuitCV:
     def __init__(
         self,
         copy: bool = True,
@@ -480,12 +400,10 @@ class OrthogonalMatchingPursuitCVAnnotation:
         n_jobs: int = None,
         verbose: Union[bool, int] = False,
     ):
-        pass
+        ...
 
 
-class PassiveAggressiveClassifierAnnotation:
-    __estimator__ = PassiveAggressiveClassifier
-
+class PassiveAggressiveClassifier:
     def __init__(
         self,
         C: float = 1.0,
@@ -504,12 +422,10 @@ class PassiveAggressiveClassifierAnnotation:
         class_weight: Union[dict, Literal["balanced"], None] = None,
         average: Union[bool, int] = False,
     ):
-        pass
+        ...
 
 
-class PassiveAggressiveRegressorAnnotation:
-    __estimator__ = PassiveAggressiveRegressor
-
+class PassiveAggressiveRegressor:
     def __init__(
         self,
         C: float = 1.0,
@@ -527,12 +443,10 @@ class PassiveAggressiveRegressorAnnotation:
         warm_start: bool = False,
         average: Union[bool, int] = False,
     ):
-        pass
+        ...
 
 
-class PerceptronAnnotation:
-    __estimator__ = Perceptron
-
+class Perceptron:
     def __init__(
         self,
         penalty: Optional[Literal["l2", "l1", "elasticnet"]] = None,
@@ -552,12 +466,10 @@ class PerceptronAnnotation:
         class_weight: Union[dict, Literal["balanced"], None] = None,
         warm_start: bool = False,
     ):
-        pass
+        ...
 
 
-class PoissonRegressorAnnotation:
-    __estimator__ = PoissonRegressor
-
+class PoissonRegressor:
     def __init__(
         self,
         alpha: float = 1.0,
@@ -567,12 +479,10 @@ class PoissonRegressorAnnotation:
         warm_start: bool = False,
         verbose: int = 0,
     ):
-        pass
+        ...
 
 
-class RANSACRegressorAnnotation:
-    __estimator__ = RANSACRegressor
-
+class RANSACRegressor:
     def __init__(
         self,
         base_estimator: Optional[EstimatorType] = None,
@@ -590,12 +500,10 @@ class RANSACRegressorAnnotation:
         ] = "absolute_loss",
         random_state: RandomStateType = None,
     ):
-        pass
+        ...
 
 
-class RidgeAnnotation:
-    __estimator__ = Ridge
-
+class Ridge:
     def __init__(
         self,
         alpha: Union[float, NDArray] = 1.0,
@@ -609,12 +517,10 @@ class RidgeAnnotation:
         ] = "auto",
         random_state: RandomStateType = None,
     ):
-        pass
+        ...
 
 
-class RidgeCVAnnotation:
-    __estimator__ = RidgeCV
-
+class RidgeCV:
     def __init__(
         self,
         alphas: tuple = (0.1, 1.0, 10.0),
@@ -626,12 +532,10 @@ class RidgeCVAnnotation:
         store_cv_values: bool = False,
         alpha_per_target: bool = False,
     ):
-        pass
+        ...
 
 
-class RidgeClassifierAnnotation:
-    __estimator__ = RidgeClassifier
-
+class RidgeClassifier:
     def __init__(
         self,
         alpha: float = 1.0,
@@ -646,12 +550,10 @@ class RidgeClassifierAnnotation:
         ] = "auto",
         random_state: RandomStateType = None,
     ):
-        pass
+        ...
 
 
-class RidgeClassifierCVAnnotation:
-    __estimator__ = RidgeClassifierCV
-
+class RidgeClassifierCV:
     def __init__(
         self,
         alphas: tuple = (0.1, 1.0, 10.0),
@@ -662,12 +564,10 @@ class RidgeClassifierCVAnnotation:
         class_weight: Union[dict, Literal["balanced"]] = None,
         store_cv_values: bool = False,
     ):
-        pass
+        ...
 
 
-class SGDClassifierAnnotation:
-    __estimator__ = SGDClassifier
-
+class SGDClassifier:
     def __init__(
         self,
         loss: str = "hinge",
@@ -694,12 +594,10 @@ class SGDClassifierAnnotation:
         warm_start: bool = False,
         average: Union[bool, int] = False,
     ):
-        pass
+        ...
 
 
-class SGDRegressorAnnotation:
-    __estimator__ = SGDRegressor
-
+class SGDRegressor:
     def __init__(
         self,
         loss: str = "squared_loss",
@@ -724,12 +622,10 @@ class SGDRegressorAnnotation:
         warm_start: bool = False,
         average: Union[bool, int] = False,
     ):
-        pass
+        ...
 
 
-class TheilSenRegressorAnnotation:
-    __estimator__ = TheilSenRegressor
-
+class TheilSenRegressor:
     def __init__(
         self,
         fit_intercept: bool = True,
@@ -742,12 +638,10 @@ class TheilSenRegressorAnnotation:
         n_jobs: Optional[int] = None,
         verbose: bool = False,
     ):
-        pass
+        ...
 
 
-class TweedieRegressorAnnotation:
-    __estimator__ = TweedieRegressor
-
+class TweedieRegressor:
     def __init__(
         self,
         power: float = 0.0,
@@ -759,4 +653,4 @@ class TweedieRegressorAnnotation:
         warm_start: bool = False,
         verbose: int = 0,
     ):
-        pass
+        ...

@@ -2,37 +2,14 @@ from typing import Optional
 from typing import Union
 from typing import Callable
 
-from sklearn.experimental import enable_hist_gradient_boosting  # noqa
-from sklearn.ensemble import RandomTreesEmbedding
-from sklearn.ensemble import VotingClassifier
-from sklearn.ensemble import AdaBoostRegressor
-from sklearn.ensemble import ExtraTreesRegressor
-from sklearn.ensemble import AdaBoostClassifier
-from sklearn.ensemble import HistGradientBoostingClassifier
-from sklearn.ensemble import ExtraTreesClassifier
-from sklearn.ensemble import BaggingRegressor
-from sklearn.ensemble import GradientBoostingRegressor
-from sklearn.ensemble import IsolationForest
-from sklearn.ensemble import StackingClassifier
-from sklearn.ensemble import BaggingClassifier
-from sklearn.ensemble import GradientBoostingClassifier
-from sklearn.ensemble import VotingRegressor
-from sklearn.ensemble import StackingRegressor
-from sklearn.ensemble import HistGradientBoostingRegressor
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.ensemble import RandomForestRegressor
+from .typing import EstimatorType
+from .typing import Literal
+from .typing import RandomStateType
+from .typing import ArrayLike
+from .typing import CVType
 
 
-from ._typing import EstimatorType
-from ._typing import Literal
-from ._typing import RandomStateType
-from ._typing import ArrayLike
-from ._typing import CVType
-
-
-class AdaBoostClassifierAnnotation:
-    __estimator__ = AdaBoostClassifier
-
+class AdaBoostClassifier:
     def __init__(
         self,
         base_estimator: Optional[EstimatorType] = None,
@@ -41,12 +18,10 @@ class AdaBoostClassifierAnnotation:
         algorithm: Literal["SAMME", "SAMME.R"] = "SAMME.R",
         random_state: RandomStateType = None,
     ):
-        pass
+        ...
 
 
-class AdaBoostRegressorAnnotation:
-    __estimator__ = AdaBoostRegressor
-
+class AdaBoostRegressor:
     def __init__(
         self,
         base_estimator: Optional[EstimatorType] = None,
@@ -55,12 +30,10 @@ class AdaBoostRegressorAnnotation:
         loss: Literal["linear", "square", "exponential"] = "linear",
         random_state: RandomStateType = None,
     ):
-        pass
+        ...
 
 
-class BaggingClassifierAnnotation:
-    __estimator__ = BaggingClassifier
-
+class BaggingClassifier:
     def __init__(
         self,
         base_estimator: Optional[EstimatorType] = None,
@@ -75,12 +48,10 @@ class BaggingClassifierAnnotation:
         random_state: RandomStateType = None,
         verbose: int = 0,
     ):
-        pass
+        ...
 
 
-class BaggingRegressorAnnotation:
-    __estimator__ = BaggingRegressor
-
+class BaggingRegressor:
     def __init__(
         self,
         base_estimator: Optional[EstimatorType] = None,
@@ -95,12 +66,10 @@ class BaggingRegressorAnnotation:
         random_state: RandomStateType = None,
         verbose: int = 0,
     ):
-        pass
+        ...
 
 
-class ExtraTreesClassifierAnnotation:
-    __estimator__ = ExtraTreesClassifier
-
+class ExtraTreesClassifier:
     def __init__(
         self,
         n_estimators: int = 100,
@@ -125,12 +94,10 @@ class ExtraTreesClassifierAnnotation:
         ccp_alpha: float = 0.0,
         max_samples: Union[int, float, None] = None,
     ):
-        pass
+        ...
 
 
-class ExtraTreesRegressorAnnotation:
-    __estimator__ = ExtraTreesRegressor
-
+class ExtraTreesRegressor:
     def __init__(
         self,
         n_estimators: int = 100,
@@ -152,12 +119,10 @@ class ExtraTreesRegressorAnnotation:
         ccp_alpha: float = 0.0,
         max_samples: Union[int, float, None] = None,
     ):
-        pass
+        ...
 
 
-class GradientBoostingClassifierAnnotation:
-    __estimator__ = GradientBoostingClassifier
-
+class GradientBoostingClassifier:
     def __init__(
         self,
         loss: Literal["deviance", "exponential"] = "deviance",
@@ -182,12 +147,10 @@ class GradientBoostingClassifierAnnotation:
         tol: float = 0.0001,
         ccp_alpha: float = 0.0,
     ):
-        pass
+        ...
 
 
-class GradientBoostingRegressorAnnotation:
-    __estimator__ = GradientBoostingRegressor
-
+class GradientBoostingRegressor:
     def __init__(
         self,
         loss: Literal["ls", "lad", "huber", "quantile"] = "ls",
@@ -213,12 +176,10 @@ class GradientBoostingRegressorAnnotation:
         tol: float = 0.0001,
         ccp_alpha: float = 0.0,
     ):
-        pass
+        ...
 
 
-class HistGradientBoostingClassifierAnnotation:
-    __estimator__ = HistGradientBoostingClassifier
-
+class HistGradientBoostingClassifier:
     def __init__(
         self,
         loss: Literal[
@@ -242,12 +203,10 @@ class HistGradientBoostingClassifierAnnotation:
         verbose: int = 0,
         random_state: RandomStateType = None,
     ):
-        pass
+        ...
 
 
-class HistGradientBoostingRegressorAnnotation:
-    __estimator__ = HistGradientBoostingRegressor
-
+class HistGradientBoostingRegressor:
     def __init__(
         self,
         loss: Literal[
@@ -271,12 +230,10 @@ class HistGradientBoostingRegressorAnnotation:
         verbose: int = 0,
         random_state: RandomStateType = None,
     ):
-        pass
+        ...
 
 
-class IsolationForestAnnotation:
-    __estimator__ = IsolationForest
-
+class IsolationForest:
     def __init__(
         self,
         n_estimators: int = 100,
@@ -289,12 +246,10 @@ class IsolationForestAnnotation:
         verbose: int = 0,
         warm_start: bool = False,
     ):
-        pass
+        ...
 
 
-class RandomForestClassifierAnnotation:
-    __estimator__ = RandomForestClassifier
-
+class RandomForestClassifier:
     def __init__(
         self,
         n_estimators: int = 100,
@@ -319,12 +274,10 @@ class RandomForestClassifierAnnotation:
         ccp_alpha: float = 0.0,
         max_samples: Union[int, float, None] = None,
     ):
-        pass
+        ...
 
 
-class RandomForestRegressorAnnotation:
-    __estimator__ = RandomForestRegressor
-
+class RandomForestRegressor:
     def __init__(
         self,
         n_estimators: int = 100,
@@ -346,12 +299,10 @@ class RandomForestRegressorAnnotation:
         ccp_alpha: float = 0.0,
         max_samples: Union[int, float, None] = None,
     ):
-        pass
+        ...
 
 
-class RandomTreesEmbeddingAnnotation:
-    __estimator__ = RandomTreesEmbedding
-
+class RandomTreesEmbedding:
     def __init__(
         self,
         n_estimators: int = 100,
@@ -368,12 +319,10 @@ class RandomTreesEmbeddingAnnotation:
         verbose: int = 0,
         warm_start: bool = False,
     ):
-        pass
+        ...
 
 
-class StackingClassifierAnnotation:
-    __estimator__ = StackingClassifier
-
+class StackingClassifier:
     def __init__(
         self,
         estimators: list,
@@ -386,12 +335,10 @@ class StackingClassifierAnnotation:
         passthrough: bool = False,
         verbose: int = 0,
     ):
-        pass
+        ...
 
 
-class StackingRegressorAnnotation:
-    __estimator__ = StackingRegressor
-
+class StackingRegressor:
     def __init__(
         self,
         estimators: list,
@@ -401,12 +348,10 @@ class StackingRegressorAnnotation:
         passthrough: bool = False,
         verbose: int = 0,
     ):
-        pass
+        ...
 
 
-class VotingClassifierAnnotation:
-    __estimator__ = VotingClassifier
-
+class VotingClassifier:
     def __init__(
         self,
         estimators: list,
@@ -416,12 +361,10 @@ class VotingClassifierAnnotation:
         flatten_transform: bool = True,
         verbose: bool = False,
     ):
-        pass
+        ...
 
 
-class VotingRegressorAnnotation:
-    __estimator__ = VotingRegressor
-
+class VotingRegressor:
     def __init__(
         self,
         estimators: list,
@@ -429,4 +372,4 @@ class VotingRegressorAnnotation:
         n_jobs: Optional[int] = None,
         verbose: bool = False,
     ):
-        pass
+        ...

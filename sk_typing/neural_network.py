@@ -1,16 +1,10 @@
 from typing import Union
 
-from ._typing import Literal
-from ._typing import RandomStateType
-
-from sklearn.neural_network import MLPClassifier
-from sklearn.neural_network import BernoulliRBM
-from sklearn.neural_network import MLPRegressor
+from .typing import Literal
+from .typing import RandomStateType
 
 
-class BernoulliRBMAnnotation:
-    __estimator__ = BernoulliRBM
-
+class BernoulliRBM:
     def __init__(
         self,
         n_components: int = 256,
@@ -20,12 +14,10 @@ class BernoulliRBMAnnotation:
         verbose: int = 0,
         random_state: RandomStateType = None,
     ):
-        pass
+        ...
 
 
-class MLPClassifierAnnotation:
-    __estimator__ = MLPClassifier
-
+class MLPClassifier:
     def __init__(
         self,
         hidden_layer_sizes: tuple = (100,),
@@ -52,12 +44,10 @@ class MLPClassifierAnnotation:
         n_iter_no_change: int = 10,
         max_fun: int = 15000,
     ):
-        pass
+        ...
 
 
-class MLPRegressorAnnotation:
-    __estimator__ = MLPRegressor
-
+class MLPRegressor:
     def __init__(
         self,
         hidden_layer_sizes: tuple = (100,),
@@ -84,4 +74,4 @@ class MLPRegressorAnnotation:
         n_iter_no_change: int = 10,
         max_fun: int = 15000,
     ):
-        pass
+        ...

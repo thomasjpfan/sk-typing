@@ -5,22 +5,13 @@ from typing import Mapping
 from typing import Iterable
 
 import numpy as np
-from sklearn.feature_extraction import FeatureHasher
-from sklearn.feature_extraction.text import TfidfTransformer
-from sklearn.feature_extraction.image import PatchExtractor
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.feature_extraction import DictVectorizer
-from sklearn.feature_extraction.text import HashingVectorizer
-from sklearn.feature_extraction.text import CountVectorizer
 
-from ._typing import Literal
-from ._typing import RandomStateType
-from ._typing import DType
+from .typing import Literal
+from .typing import RandomStateType
+from .typing import DType
 
 
-class CountVectorizerAnnotation:
-    __estimator__ = CountVectorizer
-
+class CountVectorizer:
     def __init__(
         self,
         input: Literal["filename", "file", "content"] = "content",
@@ -41,12 +32,10 @@ class CountVectorizerAnnotation:
         binary: bool = False,
         dtype: DType = np.int64,
     ):
-        pass
+        ...
 
 
-class DictVectorizerAnnotation:
-    __estimator__ = DictVectorizer
-
+class DictVectorizer:
     def __init__(
         self,
         dtype: DType = np.float64,
@@ -54,12 +43,10 @@ class DictVectorizerAnnotation:
         sparse: bool = True,
         sort: bool = True,
     ):
-        pass
+        ...
 
 
-class FeatureHasherAnnotation:
-    __estimator__ = FeatureHasher
-
+class FeatureHasher:
     def __init__(
         self,
         n_features: int = 1048576,
@@ -67,12 +54,10 @@ class FeatureHasherAnnotation:
         dtype: DType = np.float64,
         alternate_sign: bool = True,
     ):
-        pass
+        ...
 
 
-class HashingVectorizerAnnotation:
-    __estimator__ = HashingVectorizer
-
+class HashingVectorizer:
     def __init__(
         self,
         input: Literal["filename", "file", "content"] = "content",
@@ -92,24 +77,20 @@ class HashingVectorizerAnnotation:
         alternate_sign: bool = True,
         dtype: DType = np.float64,
     ):
-        pass
+        ...
 
 
-class PatchExtractorAnnotation:
-    __estimator__ = PatchExtractor
-
+class PatchExtractor:
     def __init__(
         self,
         patch_size: tuple = None,
         max_patches: Union[int, float, None] = None,
         random_state: RandomStateType = None,
     ):
-        pass
+        ...
 
 
-class TfidfTransformerAnnotation:
-    __estimator__ = TfidfTransformer
-
+class TfidfTransformer:
     def __init__(
         self,
         norm: Literal["l1", "l2"] = "l2",
@@ -117,12 +98,10 @@ class TfidfTransformerAnnotation:
         smooth_idf: bool = True,
         sublinear_tf: bool = False,
     ):
-        pass
+        ...
 
 
-class TfidfVectorizerAnnotation:
-    __estimator__ = TfidfVectorizer
-
+class TfidfVectorizer:
     def __init__(
         self,
         input: Literal["filename", "file", "content"] = "content",
@@ -147,4 +126,4 @@ class TfidfVectorizerAnnotation:
         smooth_idf: bool = True,
         sublinear_tf: bool = False,
     ):
-        pass
+        ...

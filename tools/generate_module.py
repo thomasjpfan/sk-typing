@@ -37,7 +37,7 @@ class {class_name}Annotation:
         self,
         {init_params}
     ):
-        pass"""
+        ..."""
 
 
 def _format_param(name, p):
@@ -70,13 +70,13 @@ from typing import Callable
 from typing import Mapping
 from typing import Iterable
 
-from ._typing import EstimatorType
-from ._typing import Literal
-from ._typing import RandomStateType
-from ._typing import ArrayLike
-from ._typing import CVType
-from ._typing import DType
-from ._typing import NDArray
+from .typing import EstimatorType
+from .typing import Literal
+from .typing import RandomStateType
+from .typing import ArrayLike
+from .typing import CVType
+from .typing import DType
+from .typing import NDArray
 
 {all_imports}
 """

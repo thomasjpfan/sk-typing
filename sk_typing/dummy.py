@@ -1,17 +1,12 @@
 from typing import Union
 from typing import Optional
 
-from sklearn.dummy import DummyRegressor
-from sklearn.dummy import DummyClassifier
-
-from ._typing import Literal
-from ._typing import RandomStateType
-from ._typing import ArrayLike
+from .typing import Literal
+from .typing import RandomStateType
+from .typing import ArrayLike
 
 
-class DummyClassifierAnnotation:
-    __estimator__ = DummyClassifier
-
+class DummyClassifier:
     def __init__(
         self,
         strategy: Literal[
@@ -20,16 +15,14 @@ class DummyClassifierAnnotation:
         random_state: RandomStateType = None,
         constant: Union[int, str, ArrayLike, None] = None,
     ):
-        pass
+        ...
 
 
-class DummyRegressorAnnotation:
-    __estimator__ = DummyRegressor
-
+class DummyRegressor:
     def __init__(
         self,
         strategy: Literal["mean", "median", "quantile", "constant"] = "mean",
         constant: Union[int, float, ArrayLike, None] = None,
         quantile: Optional[float] = None,
     ):
-        pass
+        ...

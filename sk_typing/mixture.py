@@ -1,17 +1,12 @@
 from typing import Optional
 from typing import Union
 
-from ._typing import Literal
-from ._typing import RandomStateType
-from ._typing import ArrayLike
-
-from sklearn.mixture import BayesianGaussianMixture
-from sklearn.mixture import GaussianMixture
+from .typing import Literal
+from .typing import RandomStateType
+from .typing import ArrayLike
 
 
-class BayesianGaussianMixtureAnnotation:
-    __estimator__ = BayesianGaussianMixture
-
+class BayesianGaussianMixture:
     def __init__(
         self,
         n_components: int = 1,
@@ -34,12 +29,10 @@ class BayesianGaussianMixtureAnnotation:
         verbose: int = 0,
         verbose_interval: int = 10,
     ):
-        pass
+        ...
 
 
-class GaussianMixtureAnnotation:
-    __estimator__ = GaussianMixture
-
+class GaussianMixture:
     def __init__(
         self,
         n_components: int = 1,
@@ -57,4 +50,4 @@ class GaussianMixtureAnnotation:
         verbose: int = 0,
         verbose_interval: int = 10,
     ):
-        pass
+        ...

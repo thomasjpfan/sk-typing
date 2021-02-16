@@ -67,7 +67,7 @@ def get_annotation_args(annotation, module: str, class_name: str) -> Tuple:
     try:
         original = getattr(sys.modules[module], class_name)
     except (KeyError, AttributeError):
-        pass
+        ...
     else:
         if annotation is original:
             return ()  # This is the original, unparametrized type

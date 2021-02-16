@@ -3,12 +3,7 @@ from typing import Union
 from typing import Callable
 
 
-from sklearn.kernel_ridge import KernelRidge
-
-
-class KernelRidgeAnnotation:
-    __estimator__ = KernelRidge
-
+class KernelRidge:
     def __init__(
         self,
         alpha: float = 1.0,
@@ -18,4 +13,4 @@ class KernelRidgeAnnotation:
         coef0: float = 1,
         kernel_params: Optional[dict] = None,
     ):
-        pass
+        ...

@@ -1,24 +1,13 @@
 from typing import Optional
 from typing import Union
 
-from sklearn.covariance import OAS
-from sklearn.covariance import GraphicalLasso
-from sklearn.covariance import EmpiricalCovariance
-from sklearn.covariance import GraphicalLassoCV
-from sklearn.covariance import MinCovDet
-from sklearn.covariance import ShrunkCovariance
-from sklearn.covariance import LedoitWolf
-from sklearn.covariance import EllipticEnvelope
-
-from ._typing import RandomStateType
-from ._typing import ArrayLike
-from ._typing import CVType
-from ._typing import Literal
+from .typing import RandomStateType
+from .typing import ArrayLike
+from .typing import CVType
+from .typing import Literal
 
 
-class EllipticEnvelopeAnnotation:
-    __estimator__ = EllipticEnvelope
-
+class EllipticEnvelope:
     def __init__(
         self,
         store_precision: bool = True,
@@ -27,19 +16,15 @@ class EllipticEnvelopeAnnotation:
         contamination: float = 0.1,
         random_state: RandomStateType = None,
     ):
-        pass
+        ...
 
 
-class EmpiricalCovarianceAnnotation:
-    __estimator__ = EmpiricalCovariance
-
+class EmpiricalCovariance:
     def __init__(self, store_precision: bool = True, assume_centered: bool = False):
-        pass
+        ...
 
 
-class GraphicalLassoAnnotation:
-    __estimator__ = GraphicalLasso
-
+class GraphicalLasso:
     def __init__(
         self,
         alpha: float = 0.01,
@@ -50,12 +35,10 @@ class GraphicalLassoAnnotation:
         verbose: bool = False,
         assume_centered: bool = False,
     ):
-        pass
+        ...
 
 
-class GraphicalLassoCVAnnotation:
-    __estimator__ = GraphicalLassoCV
-
+class GraphicalLassoCV:
     def __init__(
         self,
         alphas: Union[int, ArrayLike] = 4,
@@ -69,24 +52,20 @@ class GraphicalLassoCVAnnotation:
         verbose: bool = False,
         assume_centered: bool = False,
     ):
-        pass
+        ...
 
 
-class LedoitWolfAnnotation:
-    __estimator__ = LedoitWolf
-
+class LedoitWolf:
     def __init__(
         self,
         store_precision: bool = True,
         assume_centered: bool = False,
         block_size: int = 1000,
     ):
-        pass
+        ...
 
 
-class MinCovDetAnnotation:
-    __estimator__ = MinCovDet
-
+class MinCovDet:
     def __init__(
         self,
         store_precision: bool = True,
@@ -94,23 +73,19 @@ class MinCovDetAnnotation:
         support_fraction: Optional[float] = None,
         random_state: RandomStateType = None,
     ):
-        pass
+        ...
 
 
-class OASAnnotation:
-    __estimator__ = OAS
-
+class OAS:
     def __init__(self, store_precision: bool = True, assume_centered: bool = False):
-        pass
+        ...
 
 
-class ShrunkCovarianceAnnotation:
-    __estimator__ = ShrunkCovariance
-
+class ShrunkCovariance:
     def __init__(
         self,
         store_precision: bool = True,
         assume_centered: bool = False,
         shrinkage: float = 0.1,
     ):
-        pass
+        ...

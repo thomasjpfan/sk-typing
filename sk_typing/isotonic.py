@@ -2,15 +2,10 @@ from typing import Optional
 from typing import Union
 
 
-from ._typing import Literal
+from .typing import Literal
 
 
-from sklearn.isotonic import IsotonicRegression
-
-
-class IsotonicRegressionAnnotation:
-    __estimator__ = IsotonicRegression
-
+class IsotonicRegression:
     def __init__(
         self,
         y_min: Optional[float] = None,
@@ -18,4 +13,4 @@ class IsotonicRegressionAnnotation:
         increasing: Union[Literal["auto"], bool] = True,
         out_of_bounds: Literal["nan", "clip", "raise"] = "nan",
     ):
-        pass
+        ...

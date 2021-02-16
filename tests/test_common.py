@@ -4,7 +4,7 @@ import pytest
 from sklearn.utils import all_estimators
 from numpy.testing import assert_allclose
 
-from sk_typing import get_init_annotations
+from sk_typing import get_metadata
 from sk_typing import _ALL_ANNOTATIONS
 
 ESTIMATORS_TO_CHECK = [est for _, est in all_estimators()]
@@ -16,7 +16,7 @@ def test_init_annotations(Estimator):
     # check annotation are consistent with the values in `__init__`
     # check docstring parameters for basic types
 
-    init_annotations = get_init_annotations(Estimator)
+    init_annotations = get_metadata(Estimator)["init"]
     init_parameters = signature(Estimator).parameters
 
     assert set(init_annotations) == set(init_parameters)
@@ -29,7 +29,7 @@ def test_init_annotations(Estimator):
 @pytest.mark.parametrize("Estimator", ESTIMATORS_TO_CHECK, ids=lambda est: est.__name__)
 def test_annotation_object(Estimator):
     """Check annotation objects."""
-    annotation_obj = _ALL_ANNOTATIONS[Estimator]
+    annotation_obj = _ALL_ANNOTATIONS[Estimator.__name__]
     obj_params = signature(annotation_obj).parameters
     init_params = signature(Estimator).parameters
 

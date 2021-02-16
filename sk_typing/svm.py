@@ -1,20 +1,10 @@
 from typing import Union
 
-from ._typing import Literal
-from ._typing import RandomStateType
-
-from sklearn.svm import NuSVC
-from sklearn.svm import SVR
-from sklearn.svm import LinearSVC
-from sklearn.svm import SVC
-from sklearn.svm import OneClassSVM
-from sklearn.svm import NuSVR
-from sklearn.svm import LinearSVR
+from .typing import Literal
+from .typing import RandomStateType
 
 
-class LinearSVCAnnotation:
-    __estimator__ = LinearSVC
-
+class LinearSVC:
     def __init__(
         self,
         penalty: Literal["l1", "l2"] = "l2",
@@ -30,12 +20,10 @@ class LinearSVCAnnotation:
         random_state: RandomStateType = None,
         max_iter: int = 1000,
     ):
-        pass
+        ...
 
 
-class LinearSVRAnnotation:
-    __estimator__ = LinearSVR
-
+class LinearSVR:
     def __init__(
         self,
         epsilon: float = 0.0,
@@ -51,12 +39,10 @@ class LinearSVRAnnotation:
         random_state: RandomStateType = None,
         max_iter: int = 1000,
     ):
-        pass
+        ...
 
 
-class NuSVCAnnotation:
-    __estimator__ = NuSVC
-
+class NuSVC:
     def __init__(
         self,
         nu: float = 0.5,
@@ -75,12 +61,10 @@ class NuSVCAnnotation:
         break_ties: bool = False,
         random_state: RandomStateType = None,
     ):
-        pass
+        ...
 
 
-class NuSVRAnnotation:
-    __estimator__ = NuSVR
-
+class NuSVR:
     def __init__(
         self,
         nu: float = 0.5,
@@ -95,12 +79,10 @@ class NuSVRAnnotation:
         verbose: bool = False,
         max_iter: int = -1,
     ):
-        pass
+        ...
 
 
-class OneClassSVMAnnotation:
-    __estimator__ = OneClassSVM
-
+class OneClassSVM:
     def __init__(
         self,
         kernel: Literal["linear", "poly", "rbf", "sigmoid", "precomputed"] = "rbf",
@@ -114,12 +96,10 @@ class OneClassSVMAnnotation:
         verbose: bool = False,
         max_iter: int = -1,
     ):
-        pass
+        ...
 
 
-class SVCAnnotation:
-    __estimator__ = SVC
-
+class SVC:
     def __init__(
         self,
         C: float = 1.0,
@@ -138,12 +118,10 @@ class SVCAnnotation:
         break_ties: bool = False,
         random_state: RandomStateType = None,
     ):
-        pass
+        ...
 
 
-class SVRAnnotation:
-    __estimator__ = SVR
-
+class SVR:
     def __init__(
         self,
         kernel: Literal["linear", "poly", "rbf", "sigmoid", "precomputed"] = "rbf",
@@ -158,4 +136,4 @@ class SVRAnnotation:
         verbose: bool = False,
         max_iter: int = -1,
     ):
-        pass
+        ...

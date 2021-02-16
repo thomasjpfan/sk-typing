@@ -3,29 +3,14 @@ from typing import Optional
 from collections.abc import Callable
 import numpy as np
 
-from sklearn.cluster import AffinityPropagation
-from sklearn.cluster import AgglomerativeClustering
-from sklearn.cluster import SpectralBiclustering
-from sklearn.cluster import KMeans
-from sklearn.cluster import FeatureAgglomeration
-from sklearn.cluster import OPTICS
-from sklearn.cluster import DBSCAN
-from sklearn.cluster import MeanShift
-from sklearn.cluster import MiniBatchKMeans
-from sklearn.cluster import Birch
-from sklearn.cluster import SpectralCoclustering
-from sklearn.cluster import SpectralClustering
-
-from ._typing import ArrayLike
-from ._typing import RandomStateType
-from ._typing import MemoryType
-from ._typing import EstimatorType
-from ._typing import Literal
+from .typing import ArrayLike
+from .typing import RandomStateType
+from .typing import MemoryType
+from .typing import EstimatorType
+from .typing import Literal
 
 
-class AffinityPropagationAnnotation:
-    __estimator__ = AffinityPropagation
-
+class AffinityPropagation:
     def __init__(
         self,
         damping: float = 0.5,
@@ -37,12 +22,10 @@ class AffinityPropagationAnnotation:
         verbose: bool = False,
         random_state: Union[RandomStateType, Literal["warn"]] = "warn",
     ):
-        pass
+        ...
 
 
-class AgglomerativeClusteringAnnotation:
-    __estimator__ = AgglomerativeClustering
-
+class AgglomerativeClustering:
     def __init__(
         self,
         n_clusters: Optional[int] = 2,
@@ -54,12 +37,10 @@ class AgglomerativeClusteringAnnotation:
         distance_threshold: float = None,
         compute_distances: bool = False,
     ):
-        pass
+        ...
 
 
-class BirchAnnotation:
-    __estimator__ = Birch
-
+class Birch:
     def __init__(
         self,
         threshold: float = 0.5,
@@ -68,12 +49,10 @@ class BirchAnnotation:
         compute_labels: bool = True,
         copy: bool = True,
     ):
-        pass
+        ...
 
 
-class DBSCANAnnotation:
-    __estimator__ = DBSCAN
-
+class DBSCAN:
     def __init__(
         self,
         eps: float = 0.5,
@@ -85,12 +64,10 @@ class DBSCANAnnotation:
         p: Optional[float] = None,
         n_jobs: Optional[int] = None,
     ):
-        pass
+        ...
 
 
-class FeatureAgglomerationAnnotation:
-    __estimator__ = FeatureAgglomeration
-
+class FeatureAgglomeration:
     def __init__(
         self,
         n_clusters: int = 2,
@@ -103,12 +80,10 @@ class FeatureAgglomerationAnnotation:
         distance_threshold: Optional[float] = None,
         compute_distances: bool = False,
     ):
-        pass
+        ...
 
 
-class KMeansAnnotation:
-    __estimator__ = KMeans
-
+class KMeans:
     def __init__(
         self,
         n_clusters: int = 8,
@@ -123,12 +98,10 @@ class KMeansAnnotation:
         n_jobs: Union[int, None, Literal["deprecated"]] = "deprecated",
         algorithm: Literal["auto", "full", "elkan"] = "auto",
     ):
-        pass
+        ...
 
 
-class MeanShiftAnnotation:
-    __estimator__ = MeanShift
-
+class MeanShift:
     def __init__(
         self,
         bandwidth: Optional[None] = None,
@@ -139,12 +112,10 @@ class MeanShiftAnnotation:
         n_jobs: Optional[int] = None,
         max_iter: int = 300,
     ):
-        pass
+        ...
 
 
-class MiniBatchKMeansAnnotation:
-    __estimator__ = MiniBatchKMeans
-
+class MiniBatchKMeans:
     def __init__(
         self,
         n_clusters: int = 8,
@@ -160,12 +131,10 @@ class MiniBatchKMeansAnnotation:
         n_init: int = 3,
         reassignment_ratio: float = 0.01,
     ):
-        pass
+        ...
 
 
-class OPTICSAnnotation:
-    __estimator__ = OPTICS
-
+class OPTICS:
     def __init__(
         self,
         min_samples: Union[int, float] = 5,
@@ -182,12 +151,10 @@ class OPTICSAnnotation:
         leaf_size: int = 30,
         n_jobs: Optional[int] = None,
     ):
-        pass
+        ...
 
 
-class SpectralBiclusteringAnnotation:
-    __estimator__ = SpectralBiclustering
-
+class SpectralBiclustering:
     def __init__(
         self,
         n_clusters: Union[int, tuple] = 3,
@@ -202,12 +169,10 @@ class SpectralBiclusteringAnnotation:
         n_jobs: Union[int, None, Literal["deprecated"]] = "deprecated",
         random_state: RandomStateType = None,
     ):
-        pass
+        ...
 
 
-class SpectralClusteringAnnotation:
-    __estimator__ = SpectralClustering
-
+class SpectralClustering:
     def __init__(
         self,
         n_clusters: int = 8,
@@ -234,12 +199,10 @@ class SpectralClusteringAnnotation:
         n_jobs: Optional[int] = None,
         verbose: bool = False,
     ):
-        pass
+        ...
 
 
-class SpectralCoclusteringAnnotation:
-    __estimator__ = SpectralCoclustering
-
+class SpectralCoclustering:
     def __init__(
         self,
         n_clusters: int = 3,
@@ -251,4 +214,4 @@ class SpectralCoclusteringAnnotation:
         n_jobs: Union[int, None, Literal["deprecated"]] = "deprecated",
         random_state: RandomStateType = None,
     ):
-        pass
+        ...

@@ -2,17 +2,11 @@ from typing import Optional
 from typing import Union
 from typing import Callable
 
-from ._typing import EstimatorType
-from ._typing import Literal
-
-from sklearn.semi_supervised import LabelPropagation
-from sklearn.semi_supervised import LabelSpreading
-from sklearn.semi_supervised import SelfTrainingClassifier
+from .typing import EstimatorType
+from .typing import Literal
 
 
-class LabelPropagationAnnotation:
-    __estimator__ = LabelPropagation
-
+class LabelPropagation:
     def __init__(
         self,
         kernel: Union[Literal["knn", "rbf"], Callable] = "rbf",
@@ -22,12 +16,10 @@ class LabelPropagationAnnotation:
         tol: float = 0.001,
         n_jobs: Optional[int] = None,
     ):
-        pass
+        ...
 
 
-class LabelSpreadingAnnotation:
-    __estimator__ = LabelSpreading
-
+class LabelSpreading:
     def __init__(
         self,
         kernel: Union[Literal["knn", "rbf"], Callable] = "rbf",
@@ -38,12 +30,10 @@ class LabelSpreadingAnnotation:
         tol: float = 0.001,
         n_jobs: Optional[int] = None,
     ):
-        pass
+        ...
 
 
-class SelfTrainingClassifierAnnotation:
-    __estimator__ = SelfTrainingClassifier
-
+class SelfTrainingClassifier:
     def __init__(
         self,
         base_estimator: EstimatorType,
@@ -53,4 +43,4 @@ class SelfTrainingClassifierAnnotation:
         max_iter: Optional[int] = 10,
         verbose: bool = False,
     ):
-        pass
+        ...

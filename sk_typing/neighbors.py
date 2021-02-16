@@ -2,25 +2,11 @@ from typing import Optional
 from typing import Union
 from typing import Callable
 
-from ._typing import Literal
-from ._typing import RandomStateType
-
-from sklearn.neighbors import NeighborhoodComponentsAnalysis
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.neighbors import NearestCentroid
-from sklearn.neighbors import KNeighborsTransformer
-from sklearn.neighbors import LocalOutlierFactor
-from sklearn.neighbors import RadiusNeighborsTransformer
-from sklearn.neighbors import RadiusNeighborsClassifier
-from sklearn.neighbors import NearestNeighbors
-from sklearn.neighbors import KNeighborsRegressor
-from sklearn.neighbors import KernelDensity
-from sklearn.neighbors import RadiusNeighborsRegressor
+from .typing import Literal
+from .typing import RandomStateType
 
 
-class KNeighborsClassifierAnnotation:
-    __estimator__ = KNeighborsClassifier
-
+class KNeighborsClassifier:
     def __init__(
         self,
         n_neighbors: int = 5,
@@ -33,12 +19,10 @@ class KNeighborsClassifierAnnotation:
         n_jobs: Optional[int] = None,
         **kwargs: dict
     ):
-        pass
+        ...
 
 
-class KNeighborsRegressorAnnotation:
-    __estimator__ = KNeighborsRegressor
-
+class KNeighborsRegressor:
     def __init__(
         self,
         n_neighbors: int = 5,
@@ -51,12 +35,10 @@ class KNeighborsRegressorAnnotation:
         n_jobs: Optional[int] = None,
         **kwargs: dict
     ):
-        pass
+        ...
 
 
-class KNeighborsTransformerAnnotation:
-    __estimator__ = KNeighborsTransformer
-
+class KNeighborsTransformer:
     def __init__(
         self,
         mode: Literal["distance", "connectivity"] = "distance",
@@ -68,12 +50,10 @@ class KNeighborsTransformerAnnotation:
         metric_params: Optional[dict] = None,
         n_jobs: int = 1,
     ):
-        pass
+        ...
 
 
-class KernelDensityAnnotation:
-    __estimator__ = KernelDensity
-
+class KernelDensity:
     def __init__(
         self,
         bandwidth: float = 1.0,
@@ -88,12 +68,10 @@ class KernelDensityAnnotation:
         leaf_size: int = 40,
         metric_params: Optional[dict] = None,
     ):
-        pass
+        ...
 
 
-class LocalOutlierFactorAnnotation:
-    __estimator__ = LocalOutlierFactor
-
+class LocalOutlierFactor:
     def __init__(
         self,
         n_neighbors: int = 20,
@@ -106,23 +84,19 @@ class LocalOutlierFactorAnnotation:
         novelty: bool = False,
         n_jobs: Optional[int] = None,
     ):
-        pass
+        ...
 
 
-class NearestCentroidAnnotation:
-    __estimator__ = NearestCentroid
-
+class NearestCentroid:
     def __init__(
         self,
         metric: Union[str, Callable] = "euclidean",
         shrink_threshold: Optional[float] = None,
     ):
-        pass
+        ...
 
 
-class NearestNeighborsAnnotation:
-    __estimator__ = NearestNeighbors
-
+class NearestNeighbors:
     def __init__(
         self,
         n_neighbors: int = 5,
@@ -134,12 +108,10 @@ class NearestNeighborsAnnotation:
         metric_params: Optional[dict] = None,
         n_jobs: Optional[int] = None,
     ):
-        pass
+        ...
 
 
-class NeighborhoodComponentsAnalysisAnnotation:
-    __estimator__ = NeighborhoodComponentsAnalysis
-
+class NeighborhoodComponentsAnalysis:
     def __init__(
         self,
         n_components: Optional[int] = None,
@@ -151,12 +123,10 @@ class NeighborhoodComponentsAnalysisAnnotation:
         verbose: int = 0,
         random_state: RandomStateType = None,
     ):
-        pass
+        ...
 
 
-class RadiusNeighborsClassifierAnnotation:
-    __estimator__ = RadiusNeighborsClassifier
-
+class RadiusNeighborsClassifier:
     def __init__(
         self,
         radius: float = 1.0,
@@ -170,12 +140,10 @@ class RadiusNeighborsClassifierAnnotation:
         n_jobs: Optional[int] = None,
         **kwargs: dict
     ):
-        pass
+        ...
 
 
-class RadiusNeighborsRegressorAnnotation:
-    __estimator__ = RadiusNeighborsRegressor
-
+class RadiusNeighborsRegressor:
     def __init__(
         self,
         radius: float = 1.0,
@@ -188,12 +156,10 @@ class RadiusNeighborsRegressorAnnotation:
         n_jobs: Optional[int] = None,
         **kwargs: dict
     ):
-        pass
+        ...
 
 
-class RadiusNeighborsTransformerAnnotation:
-    __estimator__ = RadiusNeighborsTransformer
-
+class RadiusNeighborsTransformer:
     def __init__(
         self,
         mode: Literal["distance", "connectivity"] = "distance",
@@ -205,4 +171,4 @@ class RadiusNeighborsTransformerAnnotation:
         metric_params: Optional[dict] = None,
         n_jobs: Optional[int] = 1,
     ):
-        pass
+        ...

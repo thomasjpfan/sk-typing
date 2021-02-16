@@ -1,17 +1,12 @@
 from typing import Union
 from typing import Optional
 
-from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
-from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
-
-from ._typing import Literal
-from ._typing import ArrayLike
-from ._typing import EstimatorType
+from .typing import Literal
+from .typing import ArrayLike
+from .typing import EstimatorType
 
 
-class LinearDiscriminantAnalysisAnnotation:
-    __estimator__ = LinearDiscriminantAnalysis
-
+class LinearDiscriminantAnalysis:
     def __init__(
         self,
         solver: Literal["svd", "lsqr", "eigen"] = "svd",
@@ -22,12 +17,10 @@ class LinearDiscriminantAnalysisAnnotation:
         tol: float = 0.0001,
         covariance_estimator: Optional[EstimatorType] = None,
     ):
-        pass
+        ...
 
 
-class QuadraticDiscriminantAnalysisAnnotation:
-    __estimator__ = QuadraticDiscriminantAnalysis
-
+class QuadraticDiscriminantAnalysis:
     def __init__(
         self,
         priors: Optional[ArrayLike] = None,
@@ -35,4 +28,4 @@ class QuadraticDiscriminantAnalysisAnnotation:
         store_covariance: bool = False,
         tol: float = 0.0001,
     ):
-        pass
+        ...

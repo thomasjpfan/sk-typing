@@ -2,18 +2,13 @@ from typing import Optional
 from typing import Union
 from typing import Callable
 
-from ._typing import KernelType
-from ._typing import Literal
-from ._typing import RandomStateType
-from ._typing import NDArray
-
-from sklearn.gaussian_process import GaussianProcessRegressor
-from sklearn.gaussian_process import GaussianProcessClassifier
+from .typing import KernelType
+from .typing import Literal
+from .typing import RandomStateType
+from .typing import NDArray
 
 
-class GaussianProcessClassifierAnnotation:
-    __estimator__ = GaussianProcessClassifier
-
+class GaussianProcessClassifier:
     def __init__(
         self,
         kernel: Optional[KernelType] = None,
@@ -26,12 +21,10 @@ class GaussianProcessClassifierAnnotation:
         multi_class: Literal["one_vs_rest", "one_vs_one"] = "one_vs_rest",
         n_jobs: Optional[int] = None,
     ):
-        pass
+        ...
 
 
-class GaussianProcessRegressorAnnotation:
-    __estimator__ = GaussianProcessRegressor
-
+class GaussianProcessRegressor:
     def __init__(
         self,
         kernel: Optional[KernelType] = None,
@@ -42,4 +35,4 @@ class GaussianProcessRegressorAnnotation:
         copy_X_train: bool = True,
         random_state: RandomStateType = None,
     ):
-        pass
+        ...

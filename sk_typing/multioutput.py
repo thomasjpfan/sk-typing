@@ -1,21 +1,14 @@
 from typing import Optional
 from typing import Union
 
-from ._typing import EstimatorType
-from ._typing import Literal
-from ._typing import RandomStateType
-from ._typing import ArrayLike
-from ._typing import CVType
-
-from sklearn.multioutput import MultiOutputRegressor
-from sklearn.multioutput import MultiOutputClassifier
-from sklearn.multioutput import ClassifierChain
-from sklearn.multioutput import RegressorChain
+from .typing import EstimatorType
+from .typing import Literal
+from .typing import RandomStateType
+from .typing import ArrayLike
+from .typing import CVType
 
 
-class ClassifierChainAnnotation:
-    __estimator__ = ClassifierChain
-
+class ClassifierChain:
     def __init__(
         self,
         base_estimator: EstimatorType,
@@ -23,26 +16,20 @@ class ClassifierChainAnnotation:
         cv: CVType = None,
         random_state: RandomStateType = None,
     ):
-        pass
+        ...
 
 
-class MultiOutputClassifierAnnotation:
-    __estimator__ = MultiOutputClassifier
-
+class MultiOutputClassifier:
     def __init__(self, estimator: EstimatorType, n_jobs: Optional[int] = None):
-        pass
+        ...
 
 
-class MultiOutputRegressorAnnotation:
-    __estimator__ = MultiOutputRegressor
-
+class MultiOutputRegressor:
     def __init__(self, estimator: EstimatorType, n_jobs: Optional[int] = None):
-        pass
+        ...
 
 
-class RegressorChainAnnotation:
-    __estimator__ = RegressorChain
-
+class RegressorChain:
     def __init__(
         self,
         base_estimator: EstimatorType,
@@ -50,4 +37,4 @@ class RegressorChainAnnotation:
         cv: CVType = None,
         random_state: RandomStateType = None,
     ):
-        pass
+        ...

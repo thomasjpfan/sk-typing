@@ -1,30 +1,20 @@
 from typing import Optional
 
-from ._typing import EstimatorType
-from ._typing import RandomStateType
-
-from sklearn.multiclass import OneVsRestClassifier
-from sklearn.multiclass import OneVsOneClassifier
-from sklearn.multiclass import OutputCodeClassifier
+from .typing import EstimatorType
+from .typing import RandomStateType
 
 
-class OneVsOneClassifierAnnotation:
-    __estimator__ = OneVsOneClassifier
-
+class OneVsOneClassifier:
     def __init__(self, estimator: EstimatorType, n_jobs: Optional[int] = None):
-        pass
+        ...
 
 
-class OneVsRestClassifierAnnotation:
-    __estimator__ = OneVsRestClassifier
-
+class OneVsRestClassifier:
     def __init__(self, estimator: EstimatorType, n_jobs: Optional[int] = None):
-        pass
+        ...
 
 
-class OutputCodeClassifierAnnotation:
-    __estimator__ = OutputCodeClassifier
-
+class OutputCodeClassifier:
     def __init__(
         self,
         estimator: EstimatorType,
@@ -32,4 +22,4 @@ class OutputCodeClassifierAnnotation:
         random_state: RandomStateType = None,
         n_jobs: Optional[int] = None,
     ):
-        pass
+        ...

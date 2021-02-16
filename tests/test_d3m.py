@@ -9,9 +9,9 @@ from sk_typing.convert.d3m import _get_output_for_estimator
 
 from typing_extensions import Literal
 
-from sk_typing._typing import ArrayLike
-from sk_typing._typing import NDArray
-from sk_typing._typing import EstimatorType
+from sk_typing.typing import ArrayLike
+from sk_typing.typing import NDArray
+from sk_typing.typing import EstimatorType
 
 
 from sk_typing.convert import get_d3m_representation

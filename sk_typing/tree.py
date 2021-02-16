@@ -1,18 +1,11 @@
 from typing import Optional
 from typing import Union
 
-from ._typing import Literal
-from ._typing import RandomStateType
-
-from sklearn.tree import ExtraTreeClassifier
-from sklearn.tree import DecisionTreeRegressor
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.tree import ExtraTreeRegressor
+from .typing import Literal
+from .typing import RandomStateType
 
 
-class DecisionTreeClassifierAnnotation:
-    __estimator__ = DecisionTreeClassifier
-
+class DecisionTreeClassifier:
     def __init__(
         self,
         criterion: Literal["gini", "entropy"] = "gini",
@@ -29,12 +22,10 @@ class DecisionTreeClassifierAnnotation:
         class_weight: Union[dict, list, Literal["balanced"], None] = None,
         ccp_alpha: float = 0.0,
     ):
-        pass
+        ...
 
 
-class DecisionTreeRegressorAnnotation:
-    __estimator__ = DecisionTreeRegressor
-
+class DecisionTreeRegressor:
     def __init__(
         self,
         criterion: Literal["mse", "friedman_mse", "mae", "poisson"] = "mse",
@@ -50,12 +41,10 @@ class DecisionTreeRegressorAnnotation:
         min_impurity_split: Optional[float] = None,
         ccp_alpha: float = 0.0,
     ):
-        pass
+        ...
 
 
-class ExtraTreeClassifierAnnotation:
-    __estimator__ = ExtraTreeClassifier
-
+class ExtraTreeClassifier:
     def __init__(
         self,
         criterion: Literal["gini", "entropy"] = "gini",
@@ -72,12 +61,10 @@ class ExtraTreeClassifierAnnotation:
         class_weight: Union[dict, list, Literal["balanced"], None] = None,
         ccp_alpha: float = 0.0,
     ):
-        pass
+        ...
 
 
-class ExtraTreeRegressorAnnotation:
-    __estimator__ = ExtraTreeRegressor
-
+class ExtraTreeRegressor:
     def __init__(
         self,
         criterion: Literal["mse", "friedman_mse", "mse"] = "mse",
@@ -93,4 +80,4 @@ class ExtraTreeRegressorAnnotation:
         max_leaf_nodes: Optional[int] = None,
         ccp_alpha: float = 0.0,
     ):
-        pass
+        ...

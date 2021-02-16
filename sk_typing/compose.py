@@ -1,16 +1,12 @@
 from typing import Union
 from typing import Optional
 from collections.abc import Callable
-from sklearn.compose import ColumnTransformer
-from sklearn.compose import TransformedTargetRegressor
 
-from ._typing import EstimatorType
-from ._typing import Literal
+from .typing import EstimatorType
+from .typing import Literal
 
 
-class ColumnTransformerAnnotation:
-    __estimator__ = ColumnTransformer
-
+class ColumnTransformer:
     def __init__(
         self,
         transformers: list,
@@ -20,12 +16,10 @@ class ColumnTransformerAnnotation:
         transformer_weights: Optional[dict] = None,
         verbose: bool = False,
     ):
-        pass
+        ...
 
 
-class TransformedTargetRegressorAnnotation:
-    __estimator__ = TransformedTargetRegressor
-
+class TransformedTargetRegressor:
     def __init__(
         self,
         regressor: Optional[EstimatorType] = None,
@@ -34,4 +28,4 @@ class TransformedTargetRegressorAnnotation:
         inverse_func: Callable = None,
         check_inverse: bool = True,
     ):
-        pass
+        ...

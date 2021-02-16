@@ -3,21 +3,13 @@ from typing import Optional
 from typing import Union
 from typing import Callable
 
-from ._typing import EstimatorType
-from ._typing import Literal
-from ._typing import RandomStateType
-from ._typing import CVType
-
-from sklearn.experimental import enable_halving_search_cv  # noqa
-from sklearn.model_selection import RandomizedSearchCV
-from sklearn.model_selection import HalvingGridSearchCV
-from sklearn.model_selection import GridSearchCV
-from sklearn.model_selection import HalvingRandomSearchCV
+from .typing import EstimatorType
+from .typing import Literal
+from .typing import RandomStateType
+from .typing import CVType
 
 
-class GridSearchCVAnnotation:
-    __estimator__ = GridSearchCV
-
+class GridSearchCV:
     def __init__(
         self,
         estimator: EstimatorType,
@@ -31,12 +23,10 @@ class GridSearchCVAnnotation:
         error_score: Union[Literal["raise"], float] = np.nan,
         return_train_score: bool = False,
     ):
-        pass
+        ...
 
 
-class HalvingGridSearchCVAnnotation:
-    __estimator__ = HalvingGridSearchCV
-
+class HalvingGridSearchCV:
     def __init__(
         self,
         estimator: EstimatorType,
@@ -55,12 +45,10 @@ class HalvingGridSearchCVAnnotation:
         n_jobs: Optional[int] = None,
         verbose: int = 0,
     ):
-        pass
+        ...
 
 
-class HalvingRandomSearchCVAnnotation:
-    __estimator__ = HalvingRandomSearchCV
-
+class HalvingRandomSearchCV:
     def __init__(
         self,
         estimator: EstimatorType,
@@ -80,12 +68,10 @@ class HalvingRandomSearchCVAnnotation:
         n_jobs: Optional[int] = None,
         verbose: int = 0,
     ):
-        pass
+        ...
 
 
-class RandomizedSearchCVAnnotation:
-    __estimator__ = RandomizedSearchCV
-
+class RandomizedSearchCV:
     def __init__(
         self,
         estimator: EstimatorType,
@@ -101,4 +87,4 @@ class RandomizedSearchCVAnnotation:
         error_score: Union[Literal["raise"], float] = np.nan,
         return_train_score: bool = False,
     ):
-        pass
+        ...

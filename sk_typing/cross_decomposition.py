@@ -1,14 +1,7 @@
-from sklearn.cross_decomposition import PLSCanonical
-from sklearn.cross_decomposition import PLSRegression
-from sklearn.cross_decomposition import PLSSVD
-from sklearn.cross_decomposition import CCA
-
-from ._typing import Literal
+from .typing import Literal
 
 
-class CCAAnnotation:
-    __estimator__ = CCA
-
+class CCA:
     def __init__(
         self,
         n_components: int = 2,
@@ -17,12 +10,10 @@ class CCAAnnotation:
         tol: float = 1e-06,
         copy: bool = True,
     ):
-        pass
+        ...
 
 
-class PLSCanonicalAnnotation:
-    __estimator__ = PLSCanonical
-
+class PLSCanonical:
     def __init__(
         self,
         n_components: int = 2,
@@ -32,12 +23,10 @@ class PLSCanonicalAnnotation:
         tol: float = 1e-06,
         copy: bool = True,
     ):
-        pass
+        ...
 
 
-class PLSRegressionAnnotation:
-    __estimator__ = PLSRegression
-
+class PLSRegression:
     def __init__(
         self,
         n_components: int = 2,
@@ -46,11 +35,9 @@ class PLSRegressionAnnotation:
         tol: float = 1e-06,
         copy: bool = True,
     ):
-        pass
+        ...
 
 
-class PLSSVDAnnotation:
-    __estimator__ = PLSSVD
-
+class PLSSVD:
     def __init__(self, n_components: int = 2, scale: bool = True, copy: bool = True):
-        pass
+        ...

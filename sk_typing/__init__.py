@@ -1,12 +1,5 @@
 from importlib import import_module
-from inspect import getmembers
-
-from ._typing import ArrayLike
-from ._typing import NDArray
-from ._typing import EstimatorType
-from ._typing import CVType
-from ._typing import RandomStateType
-from ._typing import MemoryType
+from inspect import getmembers, isclass
 
 _ALL_ANNOTATIONS = {}
 
@@ -46,23 +39,15 @@ _MODULES = [
 
 for modules in _MODULES:
     mod = import_module(f".{modules}", package="sk_typing")
-    for _, member in getmembers(mod):
-        if not hasattr(member, "__estimator__"):
-            continue
-        _ALL_ANNOTATIONS[member.__estimator__] = member
+    for name, member in getmembers(mod, isclass):
+        _ALL_ANNOTATIONS[name] = member
 
 __all__ = [
-    "get_init_annotations",
-    "ArrayLike",
-    "NDArray",
-    "EstimatorType",
-    "CVType",
-    "RandomStateType",
-    "MemoryType",
+    "get_metadata",
 ]
 
 
-def get_init_annotations(Estimator):
+def get_metadata(Estimator):
     """Get init annotations for estimator.
 
     Parameters
@@ -71,9 +56,9 @@ def get_init_annotations(Estimator):
 
     Returns
     -------
-    annotation: dict
+    metadata: dict
     """
     try:
-        return _ALL_ANNOTATIONS[Estimator].__init__.__annotations__
+        return {"init": _ALL_ANNOTATIONS[Estimator.__name__].__init__.__annotations__}
     except KeyError:
         raise ValueError(f"Type annotations was not defined for {Estimator}")

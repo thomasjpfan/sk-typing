@@ -2,39 +2,24 @@ from typing import Optional
 from typing import Union
 from typing import Callable
 
-from sklearn.feature_selection import SelectFromModel
-from sklearn.feature_selection import SelectKBest
-from sklearn.feature_selection import SelectPercentile
-from sklearn.feature_selection import VarianceThreshold
-from sklearn.feature_selection import RFE
-from sklearn.feature_selection import RFECV
-from sklearn.feature_selection import SequentialFeatureSelector
-from sklearn.feature_selection import SelectFwe
-from sklearn.feature_selection import GenericUnivariateSelect
-from sklearn.feature_selection import SelectFpr
-from sklearn.feature_selection import SelectFdr
 from sklearn.feature_selection import f_classif
 
-from ._typing import EstimatorType
-from ._typing import Literal
-from ._typing import CVType
+from .typing import EstimatorType
+from .typing import Literal
+from .typing import CVType
 
 
-class GenericUnivariateSelectAnnotation:
-    __estimator__ = GenericUnivariateSelect
-
+class GenericUnivariateSelect:
     def __init__(
         self,
         score_func: Callable = f_classif,
         mode: Literal["percentile", "k_best", "fpr", "fdr", "fwe"] = "percentile",
         param: Union[float, int] = 1e-05,
     ):
-        pass
+        ...
 
 
-class RFEAnnotation:
-    __estimator__ = RFE
-
+class RFE:
     def __init__(
         self,
         estimator: EstimatorType,
@@ -43,12 +28,10 @@ class RFEAnnotation:
         verbose: int = 0,
         importance_getter: Union[str, Callable] = "auto",
     ):
-        pass
+        ...
 
 
-class RFECVAnnotation:
-    __estimator__ = RFECV
-
+class RFECV:
     def __init__(
         self,
         estimator: EstimatorType,
@@ -60,26 +43,20 @@ class RFECVAnnotation:
         n_jobs: Union[int, None] = None,
         importance_getter: Union[str, Callable] = "auto",
     ):
-        pass
+        ...
 
 
-class SelectFdrAnnotation:
-    __estimator__ = SelectFdr
-
+class SelectFdr:
     def __init__(self, score_func: Callable = f_classif, alpha: float = 0.05):
-        pass
+        ...
 
 
-class SelectFprAnnotation:
-    __estimator__ = SelectFpr
-
+class SelectFpr:
     def __init__(self, score_func: Callable = f_classif, alpha: float = 0.05):
-        pass
+        ...
 
 
-class SelectFromModelAnnotation:
-    __estimator__ = SelectFromModel
-
+class SelectFromModel:
     def __init__(
         self,
         estimator: EstimatorType,
@@ -89,35 +66,27 @@ class SelectFromModelAnnotation:
         max_features: Optional[None] = None,
         importance_getter: Union[str, Callable] = "auto",
     ):
-        pass
+        ...
 
 
-class SelectFweAnnotation:
-    __estimator__ = SelectFwe
-
+class SelectFwe:
     def __init__(self, score_func: Callable = f_classif, alpha: float = 0.05):
-        pass
+        ...
 
 
-class SelectKBestAnnotation:
-    __estimator__ = SelectKBest
-
+class SelectKBest:
     def __init__(
         self, score_func: Callable = f_classif, k: Union[Literal["all"], int] = 10
     ):
-        pass
+        ...
 
 
-class SelectPercentileAnnotation:
-    __estimator__ = SelectPercentile
-
+class SelectPercentile:
     def __init__(self, score_func: Callable = f_classif, percentile: int = 10):
-        pass
+        ...
 
 
-class SequentialFeatureSelectorAnnotation:
-    __estimator__ = SequentialFeatureSelector
-
+class SequentialFeatureSelector:
     def __init__(
         self,
         estimator: EstimatorType,
@@ -127,11 +96,9 @@ class SequentialFeatureSelectorAnnotation:
         cv: CVType = 5,
         n_jobs: Optional[int] = None,
     ):
-        pass
+        ...
 
 
-class VarianceThresholdAnnotation:
-    __estimator__ = VarianceThreshold
-
+class VarianceThreshold:
     def __init__(self, threshold: float = 0.0):
-        pass
+        ...

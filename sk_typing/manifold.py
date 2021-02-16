@@ -2,20 +2,12 @@ from typing import Optional
 from typing import Union
 from typing import Callable
 
-from ._typing import Literal
-from ._typing import RandomStateType
-from ._typing import NDArray
-
-from sklearn.manifold import TSNE
-from sklearn.manifold import MDS
-from sklearn.manifold import LocallyLinearEmbedding
-from sklearn.manifold import Isomap
-from sklearn.manifold import SpectralEmbedding
+from .typing import Literal
+from .typing import RandomStateType
+from .typing import NDArray
 
 
-class IsomapAnnotation:
-    __estimator__ = Isomap
-
+class Isomap:
     def __init__(
         self,
         n_neighbors: int = 5,
@@ -30,12 +22,10 @@ class IsomapAnnotation:
         p: int = 2,
         metric_params: Optional[dict] = None,
     ):
-        pass
+        ...
 
 
-class LocallyLinearEmbeddingAnnotation:
-    __estimator__ = LocallyLinearEmbedding
-
+class LocallyLinearEmbedding:
     def __init__(
         self,
         n_neighbors: int = 5,
@@ -51,12 +41,10 @@ class LocallyLinearEmbeddingAnnotation:
         random_state: RandomStateType = None,
         n_jobs: Optional[int] = None,
     ):
-        pass
+        ...
 
 
-class MDSAnnotation:
-    __estimator__ = MDS
-
+class MDS:
     def __init__(
         self,
         n_components: int = 2,
@@ -69,12 +57,10 @@ class MDSAnnotation:
         random_state: RandomStateType = None,
         dissimilarity: Literal["euclidean", "precomputed"] = "euclidean",
     ):
-        pass
+        ...
 
 
-class SpectralEmbeddingAnnotation:
-    __estimator__ = SpectralEmbedding
-
+class SpectralEmbedding:
     def __init__(
         self,
         n_components: int = 2,
@@ -87,12 +73,10 @@ class SpectralEmbeddingAnnotation:
         n_neighbors: Optional[int] = None,
         n_jobs: Optional[int] = None,
     ):
-        pass
+        ...
 
 
-class TSNEAnnotation:
-    __estimator__ = TSNE
-
+class TSNE:
     def __init__(
         self,
         n_components: int = 2,
@@ -111,4 +95,4 @@ class TSNEAnnotation:
         n_jobs: Optional[int] = None,
         square_distances: Union[bool, Literal["legacy"]] = "legacy",
     ):
-        pass
+        ...

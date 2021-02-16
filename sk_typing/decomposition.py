@@ -2,28 +2,12 @@ from typing import Optional
 from typing import Union
 from collections.abc import Callable
 
-from sklearn.decomposition import IncrementalPCA
-from sklearn.decomposition import KernelPCA
-from sklearn.decomposition import PCA
-from sklearn.decomposition import SparsePCA
-from sklearn.decomposition import FactorAnalysis
-from sklearn.decomposition import DictionaryLearning
-from sklearn.decomposition import TruncatedSVD
-from sklearn.decomposition import FastICA
-from sklearn.decomposition import MiniBatchSparsePCA
-from sklearn.decomposition import LatentDirichletAllocation
-from sklearn.decomposition import NMF
-from sklearn.decomposition import MiniBatchDictionaryLearning
-from sklearn.decomposition import SparseCoder
-
-from ._typing import NDArray
-from ._typing import RandomStateType
-from ._typing import Literal
+from .typing import NDArray
+from .typing import RandomStateType
+from .typing import Literal
 
 
-class DictionaryLearningAnnotation:
-    __estimator__ = DictionaryLearning
-
+class DictionaryLearning:
     def __init__(
         self,
         n_components: Optional[int] = None,
@@ -46,12 +30,10 @@ class DictionaryLearningAnnotation:
         positive_dict: bool = False,
         transform_max_iter: int = 1000,
     ):
-        pass
+        ...
 
 
-class FactorAnalysisAnnotation:
-    __estimator__ = FactorAnalysis
-
+class FactorAnalysis:
     def __init__(
         self,
         n_components: Optional[int] = None,
@@ -64,12 +46,10 @@ class FactorAnalysisAnnotation:
         rotation: Literal["varimax", "quartimax"] = None,
         random_state: RandomStateType = 0,
     ):
-        pass
+        ...
 
 
-class FastICAAnnotation:
-    __estimator__ = FastICA
-
+class FastICA:
     def __init__(
         self,
         n_components: Optional[int] = None,
@@ -82,12 +62,10 @@ class FastICAAnnotation:
         w_init: Optional[NDArray] = None,
         random_state: RandomStateType = None,
     ):
-        pass
+        ...
 
 
-class IncrementalPCAAnnotation:
-    __estimator__ = IncrementalPCA
-
+class IncrementalPCA:
     def __init__(
         self,
         n_components: Optional[int] = None,
@@ -95,12 +73,10 @@ class IncrementalPCAAnnotation:
         copy: bool = True,
         batch_size: Optional[int] = None,
     ):
-        pass
+        ...
 
 
-class KernelPCAAnnotation:
-    __estimator__ = KernelPCA
-
+class KernelPCA:
     def __init__(
         self,
         n_components: Optional[None] = None,
@@ -121,12 +97,10 @@ class KernelPCAAnnotation:
         copy_X: bool = True,
         n_jobs: Optional[int] = None,
     ):
-        pass
+        ...
 
 
-class LatentDirichletAllocationAnnotation:
-    __estimator__ = LatentDirichletAllocation
-
+class LatentDirichletAllocation:
     def __init__(
         self,
         n_components: int = 10,
@@ -146,12 +120,10 @@ class LatentDirichletAllocationAnnotation:
         verbose: int = 0,
         random_state: RandomStateType = None,
     ):
-        pass
+        ...
 
 
-class MiniBatchDictionaryLearningAnnotation:
-    __estimator__ = MiniBatchDictionaryLearning
-
+class MiniBatchDictionaryLearning:
     def __init__(
         self,
         n_components: Optional[None] = None,
@@ -174,12 +146,10 @@ class MiniBatchDictionaryLearningAnnotation:
         positive_dict: bool = False,
         transform_max_iter: int = 1000,
     ):
-        pass
+        ...
 
 
-class MiniBatchSparsePCAAnnotation:
-    __estimator__ = MiniBatchSparsePCA
-
+class MiniBatchSparsePCA:
     def __init__(
         self,
         n_components: Optional[int] = None,
@@ -194,12 +164,10 @@ class MiniBatchSparsePCAAnnotation:
         method: Literal["lars", "cd"] = "lars",
         random_state: RandomStateType = None,
     ):
-        pass
+        ...
 
 
-class NMFAnnotation:
-    __estimator__ = NMF
-
+class NMF:
     def __init__(
         self,
         n_components: Optional[int] = None,
@@ -219,12 +187,10 @@ class NMFAnnotation:
         shuffle: bool = False,
         regularization: Literal["both", "components", "transformation", None] = "both",
     ):
-        pass
+        ...
 
 
-class PCAAnnotation:
-    __estimator__ = PCA
-
+class PCA:
     def __init__(
         self,
         n_components: Union[int, float, None, Literal["mle"]] = None,
@@ -235,12 +201,10 @@ class PCAAnnotation:
         iterated_power: Union[int, Literal["auto"]] = "auto",
         random_state: RandomStateType = None,
     ):
-        pass
+        ...
 
 
-class SparseCoderAnnotation:
-    __estimator__ = SparseCoder
-
+class SparseCoder:
     def __init__(
         self,
         dictionary: NDArray,
@@ -254,12 +218,10 @@ class SparseCoderAnnotation:
         positive_code: bool = False,
         transform_max_iter: int = 1000,
     ):
-        pass
+        ...
 
 
-class SparsePCAAnnotation:
-    __estimator__ = SparsePCA
-
+class SparsePCA:
     def __init__(
         self,
         n_components: Optional[int] = None,
@@ -274,12 +236,10 @@ class SparsePCAAnnotation:
         verbose: Union[int, bool] = False,
         random_state: RandomStateType = None,
     ):
-        pass
+        ...
 
 
-class TruncatedSVDAnnotation:
-    __estimator__ = TruncatedSVD
-
+class TruncatedSVD:
     def __init__(
         self,
         n_components: int = 2,
@@ -288,4 +248,4 @@ class TruncatedSVDAnnotation:
         random_state: RandomStateType = None,
         tol: float = 0.0,
     ):
-        pass
+        ...

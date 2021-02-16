@@ -7,14 +7,14 @@ from sklearn.utils import all_estimators
 from numpydoc.docscrape import ClassDoc
 import sklearn
 
-from .. import get_init_annotations
+from .. import get_metadata
 from ._d3m import get_d3m_representation
 
 __all__ = ["get_output_for_module"]
 
 
 def _get_output_for_estimator(name, estimator):
-    annotations = get_init_annotations(estimator)
+    annotations = get_metadata(estimator)["init"]
     init_params = inspect.signature(estimator).parameters
 
     class_doc = ClassDoc(estimator)
