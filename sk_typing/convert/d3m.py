@@ -14,7 +14,9 @@ __all__ = ["get_output_for_module"]
 
 
 def _get_output_for_estimator(name, estimator):
-    annotations = get_metadata(estimator)["init"]
+    metadata = get_metadata(estimator.__name__)
+    annotations = metadata["parameters"]
+    # attribute_annot = metadata["attribute"]
     init_params = inspect.signature(estimator).parameters
 
     class_doc = ClassDoc(estimator)

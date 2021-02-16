@@ -47,18 +47,23 @@ __all__ = [
 ]
 
 
-def get_metadata(Estimator):
+def get_metadata(estimator_name):
     """Get init annotations for estimator.
 
     Parameters
     ----------
-    Estimator : estimator class
+    estimator_name : str
+        Name of estimator
 
     Returns
     -------
     metadata: dict
     """
+    annotations = _ALL_ANNOTATIONS[estimator_name]
     try:
-        return {"init": _ALL_ANNOTATIONS[Estimator.__name__].__init__.__annotations__}
+        return {
+            "parameters": annotations.__init__.__annotations__,
+            "attributes": annotations.__annotations__,
+        }
     except KeyError:
-        raise ValueError(f"Type annotations was not defined for {Estimator}")
+        raise ValueError(f"Type annotations was not defined for {estimator_name}")
