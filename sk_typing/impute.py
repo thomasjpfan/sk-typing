@@ -5,7 +5,6 @@ from typing import Callable
 from .typing import EstimatorType
 from .typing import Literal
 from .typing import RandomStateType
-from .typing import ArrayLike
 
 import numpy as np
 
@@ -26,8 +25,8 @@ class IterativeImputer:
             "ascending", "descending", "roman", "arabic", "random"
         ] = "ascending",
         skip_complete: bool = False,
-        min_value: Union[float, ArrayLike] = -np.inf,
-        max_value: Union[float, ArrayLike] = np.inf,
+        min_value: Optional[float] = None,
+        max_value: Optional[float] = None,
         verbose: int = 0,
         random_state: RandomStateType = None,
         add_indicator: bool = False,

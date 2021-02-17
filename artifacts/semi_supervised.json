@@ -3,7 +3,7 @@
     "name": "sklearn.semi_supervised._label_propagation.LabelPropagation",
     "common_name": "LabelPropagation",
     "description": "Label Propagation classifier Read more in the :ref:`User Guide <label_propagation>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "name": "kernel",
@@ -13,7 +13,7 @@
             "kernel"
           ],
           "default": "kernel__str",
-          "description": "String identifier for kernel function to use or the kernel function itself. Only 'rbf' and 'knn' strings are valid inputs. The function passed should take two inputs, each of shape (n_samples, n_features), and return a (n_samples, n_samples) shaped weight matrix."
+          "description": "String identifier for kernel function to use or the kernel function itself. Only 'rbf' and 'knn' strings are valid inputs. The function passed should take two inputs, each of shape [n_samples, n_features], and return a [n_samples, n_samples] shaped weight matrix."
         },
         "hyperparams": [
           {
@@ -52,7 +52,7 @@
           ],
           "_structural_type": "float",
           "default": 20,
-          "description": "Parameter for rbf kernel."
+          "description": "Parameter for rbf kernel"
         }
       },
       {
@@ -64,7 +64,7 @@
           ],
           "_structural_type": "int",
           "default": 7,
-          "description": "Parameter for knn kernel which need to be strictly positive."
+          "description": "Parameter for knn kernel"
         }
       },
       {
@@ -76,7 +76,7 @@
           ],
           "_structural_type": "int",
           "default": 1000,
-          "description": "Change maximum number of iterations allowed."
+          "description": "Change maximum number of iterations allowed"
         }
       },
       {
@@ -88,7 +88,7 @@
           ],
           "_structural_type": "float",
           "default": 0.001,
-          "description": "Convergence tolerance: threshold to consider the system at steady state."
+          "description": "Convergence tolerance: threshold to consider the system at steady state"
         }
       },
       {
@@ -125,14 +125,13 @@
           }
         ]
       }
-    ],
-    "Params": []
+    ]
   },
   "LabelSpreading": {
     "name": "sklearn.semi_supervised._label_propagation.LabelSpreading",
     "common_name": "LabelSpreading",
     "description": "LabelSpreading model for semi-supervised learning This model is similar to the basic Label Propagation algorithm, but uses affinity matrix based on the normalized graph Laplacian and soft clamping across the labels.  Read more in the :ref:`User Guide <label_propagation>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "name": "kernel",
@@ -142,7 +141,7 @@
             "kernel"
           ],
           "default": "kernel__str",
-          "description": "String identifier for kernel function to use or the kernel function itself. Only 'rbf' and 'knn' strings are valid inputs. The function passed should take two inputs, each of shape (n_samples, n_features), and return a (n_samples, n_samples) shaped weight matrix."
+          "description": "String identifier for kernel function to use or the kernel function itself. Only 'rbf' and 'knn' strings are valid inputs. The function passed should take two inputs, each of shape [n_samples, n_features], and return a [n_samples, n_samples] shaped weight matrix"
         },
         "hyperparams": [
           {
@@ -181,7 +180,7 @@
           ],
           "_structural_type": "float",
           "default": 20,
-          "description": "Parameter for rbf kernel."
+          "description": "parameter for rbf kernel"
         }
       },
       {
@@ -193,7 +192,7 @@
           ],
           "_structural_type": "int",
           "default": 7,
-          "description": "Parameter for knn kernel which is a strictly positive integer."
+          "description": "parameter for knn kernel"
         }
       },
       {
@@ -217,7 +216,7 @@
           ],
           "_structural_type": "int",
           "default": 30,
-          "description": "Maximum number of iterations allowed."
+          "description": "maximum number of iterations allowed"
         }
       },
       {
@@ -229,7 +228,7 @@
           ],
           "_structural_type": "float",
           "default": 0.001,
-          "description": "Convergence tolerance: threshold to consider the system at steady state."
+          "description": "Convergence tolerance: threshold to consider the system at steady state"
         }
       },
       {
@@ -266,101 +265,6 @@
           }
         ]
       }
-    ],
-    "Params": []
-  },
-  "SelfTrainingClassifier": {
-    "name": "sklearn.semi_supervised._self_training.SelfTrainingClassifier",
-    "common_name": "SelfTrainingClassifier",
-    "description": "Self-training classifier. This class allows a given supervised classifier to function as a semi-supervised classifier, allowing it to learn from unlabeled data. It does this by iteratively predicting pseudo-labels for the unlabeled data and adding them to the training set.  The classifier will continue iterating until either max_iter is reached, or no pseudo-labels were added to the training set in the previous iteration.  Read more in the :ref:`User Guide <self_training>`.",
-    "sklearn_version": "0.24.0",
-    "Hyperparams": [
-      {
-        "type": "Hyperparameter",
-        "name": "threshold",
-        "init_args": {
-          "semantic_types": [
-            "threshold"
-          ],
-          "_structural_type": "float",
-          "default": 0.75,
-          "description": "The decision threshold for use with `criterion='threshold'`. Should be in [0, 1). When using the 'threshold' criterion, a :ref:`well calibrated classifier <calibration>` should be used."
-        }
-      },
-      {
-        "type": "Enumeration",
-        "name": "criterion",
-        "init_args": {
-          "semantic_types": [
-            "criterion"
-          ],
-          "values": [
-            "threshold",
-            "k_best"
-          ],
-          "_structural_type": "str",
-          "default": "threshold",
-          "description": "The selection criterion used to select which labels to add to the training set. If 'threshold', pseudo-labels with prediction probabilities above `threshold` are added to the dataset. If 'k_best', the `k_best` pseudo-labels with highest prediction probabilities are added to the dataset. When using the 'threshold' criterion, a :ref:`well calibrated classifier <calibration>` should be used."
-        }
-      },
-      {
-        "type": "Hyperparameter",
-        "name": "k_best",
-        "init_args": {
-          "semantic_types": [
-            "k_best"
-          ],
-          "_structural_type": "int",
-          "default": 10,
-          "description": "The amount of samples to add in each iteration. Only used when `criterion` is k_best'."
-        }
-      },
-      {
-        "name": "max_iter",
-        "type": "Union",
-        "init_args": {
-          "semantic_types": [
-            "max_iter"
-          ],
-          "default": "max_iter__int",
-          "description": "Maximum number of iterations allowed. Should be greater than or equal to 0. If it is ``None``, the classifier will continue to predict labels until no new pseudo-labels are added, or all unlabeled samples have been labeled."
-        },
-        "hyperparams": [
-          {
-            "type": "Hyperparameter",
-            "name": "max_iter__int",
-            "init_args": {
-              "semantic_types": [
-                "max_iter"
-              ],
-              "_structural_type": "int",
-              "default": 10
-            }
-          },
-          {
-            "type": "Constant",
-            "name": "max_iter__None",
-            "init_args": {
-              "semantic_types": [
-                "max_iter"
-              ],
-              "_structural_type": "None"
-            }
-          }
-        ]
-      },
-      {
-        "type": "Hyperparameter",
-        "name": "verbose",
-        "init_args": {
-          "semantic_types": [
-            "verbose"
-          ],
-          "_structural_type": "bool",
-          "default": "False"
-        }
-      }
-    ],
-    "Params": []
+    ]
   }
 }

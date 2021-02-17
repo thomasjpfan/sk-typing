@@ -122,10 +122,11 @@ class KMeans:
         n_init: int = 10,
         max_iter: int = 300,
         tol: float = 0.0001,
-        precompute_distances: Union[Literal["auto", "deprecated"], bool] = "deprecated",
+        precompute_distances: Union[Literal["auto", "deprecated"], bool] = "auto",
         verbose: int = 0,
         random_state: RandomStateType = None,
         copy_x: bool = True,
+        n_jobs: Optional[int] = None,
         algorithm: Literal["auto", "full", "elkan"] = "auto",
     ):
         ...
@@ -216,7 +217,7 @@ class SpectralBiclustering:
         mini_batch: bool = False,
         init: Union[Literal["k-means++", "random"], np.ndarray] = "k-means++",
         n_init: int = 10,
-        n_jobs: Union[int, None, Literal["deprecated"]] = "deprecated",
+        n_jobs: Union[int, None, Literal["deprecated"]] = None,
         random_state: RandomStateType = None,
     ):
         ...
@@ -268,7 +269,7 @@ class SpectralCoclustering:
         mini_batch: bool = False,
         init: Union[Literal["k-means++", "random"], np.ndarray] = "k-means++",
         n_init: int = 10,
-        n_jobs: Union[int, None, Literal["deprecated"]] = "deprecated",
+        n_jobs: Union[int, None, Literal["deprecated"]] = None,
         random_state: RandomStateType = None,
     ):
         ...

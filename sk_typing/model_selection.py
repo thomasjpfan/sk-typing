@@ -20,53 +20,9 @@ class GridSearchCV:
         cv: CVType = None,
         verbose: int = 0,
         pre_dispatch: str = "2*n_jobs",
+        iid: Union[bool, Literal["deprecated"]] = "deprecated",
         error_score: Union[Literal["raise"], float] = np.nan,
         return_train_score: bool = False,
-    ):
-        ...
-
-
-class HalvingGridSearchCV:
-    def __init__(
-        self,
-        estimator: EstimatorType,
-        param_grid: Union[dict, list],
-        factor: Union[int, float] = 3,
-        resource: str = "n_samples",
-        max_resources: Union[Literal["auto"], int] = "auto",
-        min_resources: Union[Literal["exhaust", "smallest"], int] = "exhaust",
-        aggressive_elimination: bool = False,
-        cv: CVType = 5,
-        scoring: Union[str, Callable, None] = None,
-        refit: bool = True,
-        error_score: Union[Literal["raise"], float] = np.nan,
-        return_train_score: bool = True,
-        random_state: RandomStateType = None,
-        n_jobs: Optional[int] = None,
-        verbose: int = 0,
-    ):
-        ...
-
-
-class HalvingRandomSearchCV:
-    def __init__(
-        self,
-        estimator: EstimatorType,
-        param_distributions: dict,
-        n_candidates: Union[Literal["exhaust"], int] = "exhaust",
-        factor: Union[int, float] = 3,
-        resource: str = "n_samples",
-        max_resources: Union[Literal["auto"], int] = "auto",
-        min_resources: Union[Literal["exhaust", "smallest"], int] = "smallest",
-        aggressive_elimination: bool = False,
-        cv: CVType = 5,
-        scoring: Union[str, Callable, None] = None,
-        refit: bool = True,
-        error_score: Union[Literal["raise"], float] = np.nan,
-        return_train_score: bool = True,
-        random_state: RandomStateType = None,
-        n_jobs: Optional[int] = None,
-        verbose: int = 0,
     ):
         ...
 
@@ -83,6 +39,7 @@ class RandomizedSearchCV:
         cv: CVType = None,
         verbose: int = 0,
         pre_dispatch: str = "2*n_jobs",
+        iid: Union[bool, Literal["deprecated"]] = "deprecated",
         random_state: RandomStateType = None,
         error_score: Union[Literal["raise"], float] = np.nan,
         return_train_score: bool = False,

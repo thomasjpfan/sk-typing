@@ -1,7 +1,18 @@
+import numpy as np
 from .typing import Literal
 
 
 class CCA:
+    x_weights_: np.ndarray
+    y_weights_: np.ndarray
+    x_loadings_: np.ndarray
+    y_loadings_: np.ndarray
+    x_scores_: np.ndarray
+    y_scores_: np.ndarray
+    x_rotations_: np.ndarray
+    y_rotations_: np.ndarray
+    n_iter_: list
+
     def __init__(
         self,
         n_components: int = 2,
@@ -14,6 +25,16 @@ class CCA:
 
 
 class PLSCanonical:
+    x_weights_: np.ndarray
+    y_weights_: np.ndarray
+    x_loadings_: np.ndarray
+    y_loadings_: np.ndarray
+    x_scores_: np.ndarray
+    y_scores_: np.ndarray
+    x_rotations_: np.ndarray
+    y_rotations_: np.ndarray
+    n_iter_: list
+
     def __init__(
         self,
         n_components: int = 2,
@@ -27,6 +48,17 @@ class PLSCanonical:
 
 
 class PLSRegression:
+    x_weights_: np.ndarray
+    y_weights_: np.ndarray
+    x_loadings_: np.ndarray
+    y_loadings_: np.ndarray
+    x_scores_: np.ndarray
+    y_scores_: np.ndarray
+    x_rotations_: np.ndarray
+    y_rotations_: np.ndarray
+    coef_: np.ndarray
+    n_iter_: list
+
     def __init__(
         self,
         n_components: int = 2,
@@ -39,5 +71,10 @@ class PLSRegression:
 
 
 class PLSSVD:
+    x_weights_: np.ndarray
+    y_weights_: np.ndarray
+    x_scores_: np.ndarray
+    y_scores_: list
+
     def __init__(self, n_components: int = 2, scale: bool = True, copy: bool = True):
         ...

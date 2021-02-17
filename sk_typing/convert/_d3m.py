@@ -194,6 +194,8 @@ def convert_attribute_to_d3m(name, annotation, description=""):
         output["type"] = annotation_meta.class_name
     elif annotation == np.ndarray:
         output["type"] = "ndarray"
+    elif annotation == np.random.RandomState:
+        output["type"] = "numpy.random.RandomState"
     elif annotation_meta.class_name == "None":
         output["type"] = "None"
     elif annotation_meta.class_name in {"Union", "List"}:

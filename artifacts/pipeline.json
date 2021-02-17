@@ -3,7 +3,7 @@
     "name": "sklearn.pipeline.FeatureUnion",
     "common_name": "FeatureUnion",
     "description": "Concatenates results of multiple transformer objects. This estimator applies a list of transformer objects in parallel to the input data, then concatenates the results. This is useful to combine several feature extraction mechanisms into a single transformer.  Parameters of the transformers may be set using its name and the parameter name separated by a '__'. A transformer may be replaced entirely by setting the parameter with its name to another transformer, or removed by setting to 'drop'.  Read more in the :ref:`User Guide <feature_union>`.  .. versionadded:: 0.13",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "name": "n_jobs",
@@ -13,7 +13,7 @@
             "n_jobs"
           ],
           "default": "n_jobs__None",
-          "description": "Number of jobs to run in parallel. ``None`` means 1 unless in a :obj:`joblib.parallel_backend` context. ``-1`` means using all processors. See :term:`Glossary <n_jobs>` for more details.  .. versionchanged:: v0.20    `n_jobs` default changed from 1 to None"
+          "description": "Number of jobs to run in parallel. ``None`` means 1 unless in a :obj:`joblib.parallel_backend` context. ``-1`` means using all processors. See :term:`Glossary <n_jobs>` for more details."
         },
         "hyperparams": [
           {
@@ -47,7 +47,7 @@
             "transformer_weights"
           ],
           "default": "transformer_weights__None",
-          "description": "Multiplicative weights for features per transformer. Keys are transformer names, values the weights. Raises ValueError if key not present in ``transformer_list``."
+          "description": "Multiplicative weights for features per transformer. Keys are transformer names, values the weights."
         },
         "hyperparams": [
           {
@@ -85,14 +85,13 @@
           "description": "If True, the time elapsed while fitting each transformer will be printed as it is completed."
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "Pipeline": {
     "name": "sklearn.pipeline.Pipeline",
     "common_name": "Pipeline",
     "description": "Pipeline of transforms with a final estimator. Sequentially apply a list of transforms and a final estimator. Intermediate steps of the pipeline must be 'transforms', that is, they must implement fit and transform methods. The final estimator only needs to implement fit. The transformers in the pipeline can be cached using ``memory`` argument.  The purpose of the pipeline is to assemble several steps that can be cross-validated together while setting different parameters. For this, it enables setting parameters of the various steps using their names and the parameter name separated by a '__', as in the example below. A step's estimator may be replaced entirely by setting the parameter with its name to another estimator, or a transformer removed by setting it to 'passthrough' or ``None``.  Read more in the :ref:`User Guide <pipeline>`.  .. versionadded:: 0.5",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "name": "memory",
@@ -140,7 +139,6 @@
           "description": "If True, the time elapsed while fitting each step will be printed as it is completed."
         }
       }
-    ],
-    "Params": []
+    ]
   }
 }

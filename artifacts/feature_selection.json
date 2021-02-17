@@ -3,7 +3,7 @@
     "name": "sklearn.feature_selection._univariate_selection.GenericUnivariateSelect",
     "common_name": "GenericUnivariateSelect",
     "description": "Univariate feature selector with configurable strategy. Read more in the :ref:`User Guide <univariate_feature_selection>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Enumeration",
@@ -58,14 +58,13 @@
           }
         ]
       }
-    ],
-    "Params": []
+    ]
   },
   "RFE": {
     "name": "sklearn.feature_selection._rfe.RFE",
     "common_name": "RFE",
-    "description": "Feature ranking with recursive feature elimination. Given an external estimator that assigns weights to features (e.g., the coefficients of a linear model), the goal of recursive feature elimination (RFE) is to select features by recursively considering smaller and smaller sets of features. First, the estimator is trained on the initial set of features and the importance of each feature is obtained either through any specific attribute or callable. Then, the least important features are pruned from current set of features. That procedure is recursively repeated on the pruned set until the desired number of features to select is eventually reached.  Read more in the :ref:`User Guide <rfe>`.",
-    "sklearn_version": "0.24.0",
+    "description": "Feature ranking with recursive feature elimination. Given an external estimator that assigns weights to features (e.g., the coefficients of a linear model), the goal of recursive feature elimination (RFE) is to select features by recursively considering smaller and smaller sets of features. First, the estimator is trained on the initial set of features and the importance of each feature is obtained either through a ``coef_`` attribute or through a ``feature_importances_`` attribute. Then, the least important features are pruned from current set of features. That procedure is recursively repeated on the pruned set until the desired number of features to select is eventually reached.  Read more in the :ref:`User Guide <rfe>`.",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "name": "n_features_to_select",
@@ -75,7 +74,7 @@
             "n_features_to_select"
           ],
           "default": "n_features_to_select__None",
-          "description": "The number of features to select. If `None`, half of the features are selected. If integer, the parameter is the absolute number of features to select. If float between 0 and 1, it is the fraction of features to select.  .. versionchanged:: 0.24    Added float values for fractions."
+          "description": "The number of features to select. If `None`, half of the features are selected."
         },
         "hyperparams": [
           {
@@ -156,49 +155,14 @@
           "default": 0,
           "description": "Controls verbosity of output."
         }
-      },
-      {
-        "name": "importance_getter",
-        "type": "Union",
-        "init_args": {
-          "semantic_types": [
-            "importance_getter"
-          ],
-          "default": "importance_getter__str",
-          "description": "If 'auto', uses the feature importance either through a `coef_` or `feature_importances_` attributes of estimator.  Also accepts a string that specifies an attribute name/path for extracting feature importance (implemented with `attrgetter`). For example, give `regressor_.coef_` in case of :class:`~sklearn.compose.TransformedTargetRegressor`  or `named_steps.clf.feature_importances_` in case of class:`~sklearn.pipeline.Pipeline` with its last step named `clf`.  If `callable`, overrides the default feature importance getter. The callable is passed with the fitted estimator and it should return importance for each feature.  .. versionadded:: 0.24"
-        },
-        "hyperparams": [
-          {
-            "type": "Hyperparameter",
-            "name": "importance_getter__str",
-            "init_args": {
-              "semantic_types": [
-                "importance_getter"
-              ],
-              "_structural_type": "str",
-              "default": "auto"
-            }
-          },
-          {
-            "type": "Hyperparameter",
-            "name": "importance_getter__Callable",
-            "init_args": {
-              "semantic_types": [
-                "importance_getter"
-              ],
-              "_structural_type": "Callable"
-            }
-          }
-        ]
       }
-    ],
-    "Params": []
+    ]
   },
   "RFECV": {
     "name": "sklearn.feature_selection._rfe.RFECV",
     "common_name": "RFECV",
     "description": "Feature ranking with recursive feature elimination and cross-validated selection of the best number of features. See glossary entry for :term:`cross-validation estimator`.  Read more in the :ref:`User Guide <rfe>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "name": "step",
@@ -243,7 +207,7 @@
           ],
           "_structural_type": "int",
           "default": 1,
-          "description": "The minimum number of features to be selected. This number of features will always be scored, even if the difference between the original feature count and ``min_features_to_select`` isn't divisible by ``step``.  .. versionadded:: 0.20"
+          "description": "The minimum number of features to be selected. This number of features will always be scored, even if the difference between the original feature count and ``min_features_to_select`` isn't divisible by ``step``."
         }
       },
       {
@@ -254,7 +218,7 @@
             "cv"
           ],
           "default": "cv__None",
-          "description": "Determines the cross-validation splitting strategy. Possible inputs for cv are:  - None, to use the default 5-fold cross-validation, - integer, to specify the number of folds. - :term:`CV splitter`, - An iterable yielding (train, test) splits as arrays of indices.  For integer/None inputs, if ``y`` is binary or multiclass, :class:`~sklearn.model_selection.StratifiedKFold` is used. If the estimator is a classifier or if ``y`` is neither binary nor multiclass, :class:`~sklearn.model_selection.KFold` is used.  Refer :ref:`User Guide <cross_validation>` for the various cross-validation strategies that can be used here.  .. versionchanged:: 0.22     ``cv`` default value of None changed from 3-fold to 5-fold."
+          "description": "Determines the cross-validation splitting strategy. Possible inputs for cv are:  - None, to use the default 5-fold cross-validation, - integer, to specify the number of folds. - :term:`CV splitter`, - An iterable yielding (train, test) splits as arrays of indices.  For integer/None inputs, if ``y`` is binary or multiclass, :class:`sklearn.model_selection.StratifiedKFold` is used. If the estimator is a classifier or if ``y`` is neither binary nor multiclass, :class:`sklearn.model_selection.KFold` is used.  Refer :ref:`User Guide <cross_validation>` for the various cross-validation strategies that can be used here.  .. versionchanged:: 0.22     ``cv`` default value of None changed from 3-fold to 5-fold."
         },
         "hyperparams": [
           {
@@ -344,7 +308,7 @@
             "n_jobs"
           ],
           "default": "n_jobs__None",
-          "description": "Number of cores to run in parallel while fitting across folds. ``None`` means 1 unless in a :obj:`joblib.parallel_backend` context. ``-1`` means using all processors. See :term:`Glossary <n_jobs>` for more details.  .. versionadded:: 0.18"
+          "description": "Number of cores to run in parallel while fitting across folds. ``None`` means 1 unless in a :obj:`joblib.parallel_backend` context. ``-1`` means using all processors. See :term:`Glossary <n_jobs>` for more details."
         },
         "hyperparams": [
           {
@@ -369,49 +333,14 @@
             }
           }
         ]
-      },
-      {
-        "name": "importance_getter",
-        "type": "Union",
-        "init_args": {
-          "semantic_types": [
-            "importance_getter"
-          ],
-          "default": "importance_getter__str",
-          "description": "If 'auto', uses the feature importance either through a `coef_` or `feature_importances_` attributes of estimator.  Also accepts a string that specifies an attribute name/path for extracting feature importance. For example, give `regressor_.coef_` in case of :class:`~sklearn.compose.TransformedTargetRegressor`  or `named_steps.clf.feature_importances_` in case of :class:`~sklearn.pipeline.Pipeline` with its last step named `clf`.  If `callable`, overrides the default feature importance getter. The callable is passed with the fitted estimator and it should return importance for each feature.  .. versionadded:: 0.24"
-        },
-        "hyperparams": [
-          {
-            "type": "Hyperparameter",
-            "name": "importance_getter__str",
-            "init_args": {
-              "semantic_types": [
-                "importance_getter"
-              ],
-              "_structural_type": "str",
-              "default": "auto"
-            }
-          },
-          {
-            "type": "Hyperparameter",
-            "name": "importance_getter__Callable",
-            "init_args": {
-              "semantic_types": [
-                "importance_getter"
-              ],
-              "_structural_type": "Callable"
-            }
-          }
-        ]
       }
-    ],
-    "Params": []
+    ]
   },
   "SelectFdr": {
     "name": "sklearn.feature_selection._univariate_selection.SelectFdr",
     "common_name": "SelectFdr",
     "description": "Filter: Select the p-values for an estimated false discovery rate This uses the Benjamini-Hochberg procedure. ``alpha`` is an upper bound on the expected false discovery rate.  Read more in the :ref:`User Guide <univariate_feature_selection>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -425,14 +354,13 @@
           "description": "The highest uncorrected p-value for features to keep."
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "SelectFpr": {
     "name": "sklearn.feature_selection._univariate_selection.SelectFpr",
     "common_name": "SelectFpr",
     "description": "Filter: Select the pvalues below alpha based on a FPR test. FPR test stands for False Positive Rate test. It controls the total amount of false detections.  Read more in the :ref:`User Guide <univariate_feature_selection>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -446,14 +374,13 @@
           "description": "The highest p-value for features to be kept."
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "SelectFromModel": {
     "name": "sklearn.feature_selection._from_model.SelectFromModel",
     "common_name": "SelectFromModel",
-    "description": "Meta-transformer for selecting features based on importance weights. .. versionadded:: 0.17  Read more in the :ref:`User Guide <select_from_model>`.",
-    "sklearn_version": "0.24.0",
+    "description": "Meta-transformer for selecting features based on importance weights. .. versionadded:: 0.17",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "name": "threshold",
@@ -554,51 +481,16 @@
           ],
           "_structural_type": "None",
           "default": "None",
-          "description": "The maximum number of features to select. To only select based on ``max_features``, set ``threshold=-np.inf``.  .. versionadded:: 0.20"
+          "description": "The maximum number of features selected scoring above ``threshold``. To disable ``threshold`` and only select based on ``max_features``, set ``threshold=-np.inf``.  .. versionadded:: 0.20"
         }
-      },
-      {
-        "name": "importance_getter",
-        "type": "Union",
-        "init_args": {
-          "semantic_types": [
-            "importance_getter"
-          ],
-          "default": "importance_getter__str",
-          "description": "If 'auto', uses the feature importance either through a ``coef_`` attribute or ``feature_importances_`` attribute of estimator.  Also accepts a string that specifies an attribute name/path for extracting feature importance (implemented with `attrgetter`). For example, give `regressor_.coef_` in case of :class:`~sklearn.compose.TransformedTargetRegressor`  or `named_steps.clf.feature_importances_` in case of :class:`~sklearn.pipeline.Pipeline` with its last step named `clf`.  If `callable`, overrides the default feature importance getter. The callable is passed with the fitted estimator and it should return importance for each feature.  .. versionadded:: 0.24"
-        },
-        "hyperparams": [
-          {
-            "type": "Hyperparameter",
-            "name": "importance_getter__str",
-            "init_args": {
-              "semantic_types": [
-                "importance_getter"
-              ],
-              "_structural_type": "str",
-              "default": "auto"
-            }
-          },
-          {
-            "type": "Hyperparameter",
-            "name": "importance_getter__Callable",
-            "init_args": {
-              "semantic_types": [
-                "importance_getter"
-              ],
-              "_structural_type": "Callable"
-            }
-          }
-        ]
       }
-    ],
-    "Params": []
+    ]
   },
   "SelectFwe": {
     "name": "sklearn.feature_selection._univariate_selection.SelectFwe",
     "common_name": "SelectFwe",
     "description": "Filter: Select the p-values corresponding to Family-wise error rate Read more in the :ref:`User Guide <univariate_feature_selection>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -612,14 +504,13 @@
           "description": "The highest uncorrected p-value for features to keep."
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "SelectKBest": {
     "name": "sklearn.feature_selection._univariate_selection.SelectKBest",
     "common_name": "SelectKBest",
     "description": "Select features according to the k highest scores. Read more in the :ref:`User Guide <univariate_feature_selection>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "name": "k",
@@ -655,14 +546,13 @@
           }
         ]
       }
-    ],
-    "Params": []
+    ]
   },
   "SelectPercentile": {
     "name": "sklearn.feature_selection._univariate_selection.SelectPercentile",
     "common_name": "SelectPercentile",
     "description": "Select features according to a percentile of the highest scores. Read more in the :ref:`User Guide <univariate_feature_selection>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -676,224 +566,13 @@
           "description": "Percent of features to keep."
         }
       }
-    ],
-    "Params": []
-  },
-  "SequentialFeatureSelector": {
-    "name": "sklearn.feature_selection._sequential.SequentialFeatureSelector",
-    "common_name": "SequentialFeatureSelector",
-    "description": "Transformer that performs Sequential Feature Selection. This Sequential Feature Selector adds (forward selection) or removes (backward selection) features to form a feature subset in a greedy fashion. At each stage, this estimator chooses the best feature to add or remove based on the cross-validation score of an estimator.  Read more in the :ref:`User Guide <sequential_feature_selection>`.  .. versionadded:: 0.24",
-    "sklearn_version": "0.24.0",
-    "Hyperparams": [
-      {
-        "name": "n_features_to_select",
-        "type": "Union",
-        "init_args": {
-          "semantic_types": [
-            "n_features_to_select"
-          ],
-          "default": "n_features_to_select__None",
-          "description": "The number of features to select. If `None`, half of the features are selected. If integer, the parameter is the absolute number of features to select. If float between 0 and 1, it is the fraction of features to select."
-        },
-        "hyperparams": [
-          {
-            "type": "Hyperparameter",
-            "name": "n_features_to_select__int",
-            "init_args": {
-              "semantic_types": [
-                "n_features_to_select"
-              ],
-              "_structural_type": "int"
-            }
-          },
-          {
-            "type": "Hyperparameter",
-            "name": "n_features_to_select__float",
-            "init_args": {
-              "semantic_types": [
-                "n_features_to_select"
-              ],
-              "_structural_type": "float"
-            }
-          },
-          {
-            "type": "Constant",
-            "name": "n_features_to_select__None",
-            "init_args": {
-              "semantic_types": [
-                "n_features_to_select"
-              ],
-              "_structural_type": "None",
-              "default": "None"
-            }
-          }
-        ]
-      },
-      {
-        "type": "Enumeration",
-        "name": "direction",
-        "init_args": {
-          "semantic_types": [
-            "direction"
-          ],
-          "values": [
-            "forward",
-            "backward"
-          ],
-          "_structural_type": "str",
-          "default": "forward"
-        }
-      },
-      {
-        "name": "scoring",
-        "type": "Union",
-        "init_args": {
-          "semantic_types": [
-            "scoring"
-          ],
-          "default": "scoring__None",
-          "description": "A single str (see :ref:`scoring_parameter`) or a callable (see :ref:`scoring`) to evaluate the predictions on the test set.  NOTE that when using custom scorers, each scorer should return a single value. Metric functions returning a list/array of values can be wrapped into multiple scorers that return one value each.  If None, the estimator's score method is used."
-        },
-        "hyperparams": [
-          {
-            "type": "Hyperparameter",
-            "name": "scoring__str",
-            "init_args": {
-              "semantic_types": [
-                "scoring"
-              ],
-              "_structural_type": "str"
-            }
-          },
-          {
-            "type": "Hyperparameter",
-            "name": "scoring__Callable",
-            "init_args": {
-              "semantic_types": [
-                "scoring"
-              ],
-              "_structural_type": "Callable"
-            }
-          },
-          {
-            "type": "Hyperparameter",
-            "name": "scoring__list",
-            "init_args": {
-              "semantic_types": [
-                "scoring"
-              ],
-              "_structural_type": "list"
-            }
-          },
-          {
-            "type": "Hyperparameter",
-            "name": "scoring__tuple",
-            "init_args": {
-              "semantic_types": [
-                "scoring"
-              ],
-              "_structural_type": "tuple"
-            }
-          },
-          {
-            "type": "Hyperparameter",
-            "name": "scoring__dict",
-            "init_args": {
-              "semantic_types": [
-                "scoring"
-              ],
-              "_structural_type": "dict"
-            }
-          },
-          {
-            "type": "Constant",
-            "name": "scoring__None",
-            "init_args": {
-              "semantic_types": [
-                "scoring"
-              ],
-              "_structural_type": "None",
-              "default": "None"
-            }
-          }
-        ]
-      },
-      {
-        "name": "cv",
-        "type": "Union",
-        "init_args": {
-          "semantic_types": [
-            "cv"
-          ],
-          "default": "cv__int",
-          "description": "Determines the cross-validation splitting strategy. Possible inputs for cv are:  - None, to use the default 5-fold cross validation, - integer, to specify the number of folds in a `(Stratified)KFold`, - :term:`CV splitter`, - An iterable yielding (train, test) splits as arrays of indices.  For integer/None inputs, if the estimator is a classifier and ``y`` is either binary or multiclass, :class:`StratifiedKFold` is used. In all other cases, :class:`KFold` is used.  Refer :ref:`User Guide <cross_validation>` for the various cross-validation strategies that can be used here."
-        },
-        "hyperparams": [
-          {
-            "type": "Hyperparameter",
-            "name": "cv__int",
-            "init_args": {
-              "semantic_types": [
-                "cv"
-              ],
-              "_structural_type": "int",
-              "default": 5
-            }
-          },
-          {
-            "type": "Constant",
-            "name": "cv__None",
-            "init_args": {
-              "semantic_types": [
-                "cv"
-              ],
-              "_structural_type": "None"
-            }
-          }
-        ]
-      },
-      {
-        "name": "n_jobs",
-        "type": "Union",
-        "init_args": {
-          "semantic_types": [
-            "n_jobs"
-          ],
-          "default": "n_jobs__None",
-          "description": "Number of jobs to run in parallel. When evaluating a new feature to add or remove, the cross-validation procedure is parallel over the folds. ``None`` means 1 unless in a :obj:`joblib.parallel_backend` context. ``-1`` means using all processors. See :term:`Glossary <n_jobs>` for more details."
-        },
-        "hyperparams": [
-          {
-            "type": "Hyperparameter",
-            "name": "n_jobs__int",
-            "init_args": {
-              "semantic_types": [
-                "n_jobs"
-              ],
-              "_structural_type": "int"
-            }
-          },
-          {
-            "type": "Constant",
-            "name": "n_jobs__None",
-            "init_args": {
-              "semantic_types": [
-                "n_jobs"
-              ],
-              "_structural_type": "None",
-              "default": "None"
-            }
-          }
-        ]
-      }
-    ],
-    "Params": []
+    ]
   },
   "VarianceThreshold": {
     "name": "sklearn.feature_selection._variance_threshold.VarianceThreshold",
     "common_name": "VarianceThreshold",
     "description": "Feature selector that removes all low-variance features. This feature selection algorithm looks only at the features (X), not the desired outputs (y), and can thus be used for unsupervised learning.  Read more in the :ref:`User Guide <variance_threshold>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -907,7 +586,6 @@
           "description": "Features with a training-set variance lower than this threshold will be removed. The default is to keep all features with non-zero variance, i.e. remove the features that have the same value in all samples."
         }
       }
-    ],
-    "Params": []
+    ]
   }
 }

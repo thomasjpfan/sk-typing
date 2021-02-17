@@ -10,8 +10,8 @@ class DummyClassifier:
     def __init__(
         self,
         strategy: Literal[
-            "stratified", "most_frequent", "prior", "uniform", "constant"
-        ] = "prior",
+            "stratified", "most_frequent", "prior", "uniform", "constant", "warn"
+        ] = "warn",
         random_state: RandomStateType = None,
         constant: Union[int, str, ArrayLike, None] = None,
     ):

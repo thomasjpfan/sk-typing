@@ -2,8 +2,8 @@
   "IsotonicRegression": {
     "name": "sklearn.isotonic.IsotonicRegression",
     "common_name": "IsotonicRegression",
-    "description": "Isotonic regression model. Read more in the :ref:`User Guide <isotonic>`.  .. versionadded:: 0.13",
-    "sklearn_version": "0.24.0",
+    "description": "Isotonic regression model. The isotonic regression optimization problem is defined by::      min sum w_i (y[i] - y_[i]) ** 2      subject to y_[i] <= y_[j] whenever X[i] <= X[j]     and min(y_) = y_min, max(y_) = y_max  where:     - ``y[i]`` are inputs (real numbers)     - ``y_[i]`` are fitted     - ``X`` specifies the order.       If ``X`` is non-decreasing then ``y_`` is non-decreasing.     - ``w[i]`` are optional strictly positive weights (default to 1.0)  Read more in the :ref:`User Guide <isotonic>`.  .. versionadded:: 0.13",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "name": "y_min",
@@ -13,7 +13,7 @@
             "y_min"
           ],
           "default": "y_min__None",
-          "description": "Lower bound on the lowest predicted value (the minimum value may still be higher). If not set, defaults to -inf."
+          "description": "If not None, set the lowest value of the fit to y_min."
         },
         "hyperparams": [
           {
@@ -47,7 +47,7 @@
             "y_max"
           ],
           "default": "y_max__None",
-          "description": "Upper bound on the highest predicted value (the maximum may still be lower). If not set, defaults to +inf."
+          "description": "If not None, set the highest value of the fit to y_max."
         },
         "hyperparams": [
           {
@@ -81,7 +81,7 @@
             "increasing"
           ],
           "default": "increasing__bool",
-          "description": "Determines whether the predictions should be constrained to increase or decrease with `X`. 'auto' will decide based on the Spearman correlation estimate's sign."
+          "description": "If boolean, whether or not to fit the isotonic regression with y increasing or decreasing.  The string value \"auto\" determines whether y should increase or decrease based on the Spearman correlation estimate's sign."
         },
         "hyperparams": [
           {
@@ -121,10 +121,9 @@
           ],
           "_structural_type": "str",
           "default": "nan",
-          "description": "Handles how `X` values outside of the training domain are handled during prediction.  - 'nan', predictions will be NaN. - 'clip', predictions will be set to the value corresponding to   the nearest train interval endpoint. - 'raise', a `ValueError` is raised."
+          "description": "The ``out_of_bounds`` parameter handles how x-values outside of the training domain are handled.  When set to \"nan\", predicted y-values will be NaN.  When set to \"clip\", predicted y-values will be set to the value corresponding to the nearest train interval endpoint. When set to \"raise\", allow ``interp1d`` to throw ValueError."
         }
       }
-    ],
-    "Params": []
+    ]
   }
 }

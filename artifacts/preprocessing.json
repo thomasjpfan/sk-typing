@@ -2,8 +2,8 @@
   "Binarizer": {
     "name": "sklearn.preprocessing._data.Binarizer",
     "common_name": "Binarizer",
-    "description": "Binarize data (set feature values to 0 or 1) according to a threshold. Values greater than the threshold map to 1, while values less than or equal to the threshold map to 0. With the default threshold of 0, only positive values map to 1.  Binarization is a common operation on text count data where the analyst can decide to only consider the presence or absence of a feature rather than a quantified number of occurrences for instance.  It can also be used as a pre-processing step for estimators that consider boolean random variables (e.g. modelled using the Bernoulli distribution in a Bayesian setting).  Read more in the :ref:`User Guide <preprocessing_binarization>`.",
-    "sklearn_version": "0.24.0",
+    "description": "Binarize data (set feature values to 0 or 1) according to a threshold Values greater than the threshold map to 1, while values less than or equal to the threshold map to 0. With the default threshold of 0, only positive values map to 1.  Binarization is a common operation on text count data where the analyst can decide to only consider the presence or absence of a feature rather than a quantified number of occurrences for instance.  It can also be used as a pre-processing step for estimators that consider boolean random variables (e.g. modelled using the Bernoulli distribution in a Bayesian setting).  Read more in the :ref:`User Guide <preprocessing_binarization>`.",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -29,14 +29,13 @@
           "description": "set to False to perform inplace binarization and avoid a copy (if the input is already a numpy array or a scipy.sparse CSR matrix)."
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "FunctionTransformer": {
     "name": "sklearn.preprocessing._function_transformer.FunctionTransformer",
     "common_name": "FunctionTransformer",
     "description": "Constructs a transformer from an arbitrary callable. A FunctionTransformer forwards its X (and optionally y) arguments to a user-defined function or function object and returns the result of this function. This is useful for stateless transformations such as taking the log of frequencies, doing custom scaling, etc.  Note: If a lambda is used as the function, then the resulting transformer will not be pickleable.  .. versionadded:: 0.17  Read more in the :ref:`User Guide <function_transformer>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "name": "func",
@@ -150,7 +149,7 @@
             "kw_args"
           ],
           "default": "kw_args__None",
-          "description": "Dictionary of additional keyword arguments to pass to func.  .. versionadded:: 0.18"
+          "description": "Dictionary of additional keyword arguments to pass to func."
         },
         "hyperparams": [
           {
@@ -184,7 +183,7 @@
             "inv_kw_args"
           ],
           "default": "inv_kw_args__None",
-          "description": "Dictionary of additional keyword arguments to pass to inverse_func.  .. versionadded:: 0.18"
+          "description": "Dictionary of additional keyword arguments to pass to inverse_func."
         },
         "hyperparams": [
           {
@@ -210,14 +209,13 @@
           }
         ]
       }
-    ],
-    "Params": []
+    ]
   },
   "KBinsDiscretizer": {
     "name": "sklearn.preprocessing._discretization.KBinsDiscretizer",
     "common_name": "KBinsDiscretizer",
-    "description": "Bin continuous data into intervals. Read more in the :ref:`User Guide <preprocessing_discretization>`.  .. versionadded:: 0.20",
-    "sklearn_version": "0.24.0",
+    "description": "Bin continuous data into intervals. Read more in the :ref:`User Guide <preprocessing_discretization>`.",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "name": "n_bins",
@@ -286,47 +284,21 @@
           "default": "quantile",
           "description": "Strategy used to define the widths of the bins.  uniform     All bins in each feature have identical widths. quantile     All bins in each feature have the same number of points. kmeans     Values in each bin have the same nearest center of a 1D k-means     cluster."
         }
-      },
-      {
-        "name": "dtype",
-        "type": "Union",
-        "init_args": {
-          "semantic_types": [
-            "dtype"
-          ],
-          "default": "dtype__None",
-          "description": "The desired data-type for the output. If None, output dtype is consistent with input dtype. Only np.float32 and np.float64 are supported.  .. versionadded:: 0.24"
-        },
-        "hyperparams": [
-          {
-            "type": "Constant",
-            "name": "dtype__None",
-            "init_args": {
-              "semantic_types": [
-                "dtype"
-              ],
-              "_structural_type": "None",
-              "default": "None"
-            }
-          }
-        ]
       }
-    ],
-    "Params": []
+    ]
   },
   "KernelCenterer": {
     "name": "sklearn.preprocessing._data.KernelCenterer",
     "common_name": "KernelCenterer",
-    "description": "Center a kernel matrix. Let K(x, z) be a kernel defined by phi(x)^T phi(z), where phi is a function mapping x to a Hilbert space. KernelCenterer centers (i.e., normalize to have zero mean) the data without explicitly computing phi(x). It is equivalent to centering phi(x) with sklearn.preprocessing.StandardScaler(with_std=False).  Read more in the :ref:`User Guide <kernel_centering>`.",
-    "sklearn_version": "0.24.0",
-    "Hyperparams": [],
-    "Params": []
+    "description": "Center a kernel matrix Let K(x, z) be a kernel defined by phi(x)^T phi(z), where phi is a function mapping x to a Hilbert space. KernelCenterer centers (i.e., normalize to have zero mean) the data without explicitly computing phi(x). It is equivalent to centering phi(x) with sklearn.preprocessing.StandardScaler(with_std=False).  Read more in the :ref:`User Guide <kernel_centering>`.",
+    "sklearn_version": "0.22.2.post1",
+    "Hyperparams": []
   },
   "LabelBinarizer": {
     "name": "sklearn.preprocessing._label.LabelBinarizer",
     "common_name": "LabelBinarizer",
-    "description": "Binarize labels in a one-vs-all fashion. Several regression and binary classification algorithms are available in scikit-learn. A simple way to extend these algorithms to the multi-class classification case is to use the so-called one-vs-all scheme.  At learning time, this simply consists in learning one regressor or binary classifier per class. In doing so, one needs to convert multi-class labels to binary labels (belong or does not belong to the class). LabelBinarizer makes this process easy with the transform method.  At prediction time, one assigns the class for which the corresponding model gave the greatest confidence. LabelBinarizer makes this easy with the inverse_transform method.  Read more in the :ref:`User Guide <preprocessing_targets>`.",
-    "sklearn_version": "0.24.0",
+    "description": "Binarize labels in a one-vs-all fashion Several regression and binary classification algorithms are available in scikit-learn. A simple way to extend these algorithms to the multi-class classification case is to use the so-called one-vs-all scheme.  At learning time, this simply consists in learning one regressor or binary classifier per class. In doing so, one needs to convert multi-class labels to binary labels (belong or does not belong to the class). LabelBinarizer makes this process easy with the transform method.  At prediction time, one assigns the class for which the corresponding model gave the greatest confidence. LabelBinarizer makes this easy with the inverse_transform method.  Read more in the :ref:`User Guide <preprocessing_targets>`.",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -364,22 +336,20 @@
           "description": "True if the returned array from transform is desired to be in sparse CSR format."
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "LabelEncoder": {
     "name": "sklearn.preprocessing._label.LabelEncoder",
     "common_name": "LabelEncoder",
     "description": "Encode target labels with value between 0 and n_classes-1. This transformer should be used to encode target values, *i.e.* `y`, and not the input `X`.  Read more in the :ref:`User Guide <preprocessing_targets>`.  .. versionadded:: 0.12",
-    "sklearn_version": "0.24.0",
-    "Hyperparams": [],
-    "Params": []
+    "sklearn_version": "0.22.2.post1",
+    "Hyperparams": []
   },
   "MaxAbsScaler": {
     "name": "sklearn.preprocessing._data.MaxAbsScaler",
     "common_name": "MaxAbsScaler",
     "description": "Scale each feature by its maximum absolute value. This estimator scales and translates each feature individually such that the maximal absolute value of each feature in the training set will be 1.0. It does not shift/center the data, and thus does not destroy any sparsity.  This scaler can also be applied to sparse CSR or CSC matrices.  .. versionadded:: 0.17",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -393,14 +363,13 @@
           "description": "Set to False to perform inplace scaling and avoid a copy (if the input is already a numpy array)."
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "MinMaxScaler": {
     "name": "sklearn.preprocessing._data.MinMaxScaler",
     "common_name": "MinMaxScaler",
-    "description": "Transform features by scaling each feature to a given range. This estimator scales and translates each feature individually such that it is in the given range on the training set, e.g. between zero and one.  The transformation is given by::      X_std = (X - X.min(axis=0)) / (X.max(axis=0) - X.min(axis=0))     X_scaled = X_std * (max - min) + min  where min, max = feature_range.  This transformation is often used as an alternative to zero mean, unit variance scaling.  Read more in the :ref:`User Guide <preprocessing_scaler>`.",
-    "sklearn_version": "0.24.0",
+    "description": "Transform features by scaling each feature to a given range. This estimator scales and translates each feature individually such that it is in the given range on the training set, e.g. between zero and one.  The transformation is given by::      X_std = (X - X.min(axis=0)) / (X.max(axis=0) - X.min(axis=0))     X_scaled = X_std * (max - min) + min  where min, max = feature_range.  The transformation is calculated as::      X_scaled = scale * X + min - X.min(axis=0) * scale     where scale = (max - min) / (X.max(axis=0) - X.min(axis=0))  This transformation is often used as an alternative to zero mean, unit variance scaling.  Read more in the :ref:`User Guide <preprocessing_scaler>`.",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -425,26 +394,14 @@
           "default": "True",
           "description": "Set to False to perform inplace row normalization and avoid a copy (if the input is already a numpy array)."
         }
-      },
-      {
-        "type": "Hyperparameter",
-        "name": "clip",
-        "init_args": {
-          "semantic_types": [
-            "clip"
-          ],
-          "_structural_type": "bool",
-          "default": "False"
-        }
       }
-    ],
-    "Params": []
+    ]
   },
   "MultiLabelBinarizer": {
     "name": "sklearn.preprocessing._label.MultiLabelBinarizer",
     "common_name": "MultiLabelBinarizer",
-    "description": "Transform between iterable of iterables and a multilabel format. Although a list of sets or tuples is a very intuitive format for multilabel data, it is unwieldy to process. This transformer converts between this intuitive format and the supported multilabel format: a (samples x classes) binary matrix indicating the presence of a class label.",
-    "sklearn_version": "0.24.0",
+    "description": "Transform between iterable of iterables and a multilabel format Although a list of sets or tuples is a very intuitive format for multilabel data, it is unwieldy to process. This transformer converts between this intuitive format and the supported multilabel format: a (samples x classes) binary matrix indicating the presence of a class label.",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "name": "classes",
@@ -489,17 +446,16 @@
           ],
           "_structural_type": "bool",
           "default": "False",
-          "description": "Set to True if output binary array is desired in CSR sparse format."
+          "description": "Set to true if output binary array is desired in CSR sparse format"
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "Normalizer": {
     "name": "sklearn.preprocessing._data.Normalizer",
     "common_name": "Normalizer",
-    "description": "Normalize samples individually to unit norm. Each sample (i.e. each row of the data matrix) with at least one non zero component is rescaled independently of other samples so that its norm (l1, l2 or inf) equals one.  This transformer is able to work both with dense numpy arrays and scipy.sparse matrix (use CSR format if you want to avoid the burden of a copy / conversion).  Scaling inputs to unit norms is a common operation for text classification or clustering for instance. For instance the dot product of two l2-normalized TF-IDF vectors is the cosine similarity of the vectors and is the base similarity metric for the Vector Space Model commonly used by the Information Retrieval community.  Read more in the :ref:`User Guide <preprocessing_normalization>`.",
-    "sklearn_version": "0.24.0",
+    "description": "Normalize samples individually to unit norm. Each sample (i.e. each row of the data matrix) with at least one non zero component is rescaled independently of other samples so that its norm (l1 or l2) equals one.  This transformer is able to work both with dense numpy arrays and scipy.sparse matrix (use CSR format if you want to avoid the burden of a copy / conversion).  Scaling inputs to unit norms is a common operation for text classification or clustering for instance. For instance the dot product of two l2-normalized TF-IDF vectors is the cosine similarity of the vectors and is the base similarity metric for the Vector Space Model commonly used by the Information Retrieval community.  Read more in the :ref:`User Guide <preprocessing_normalization>`.",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Enumeration",
@@ -515,7 +471,7 @@
           ],
           "_structural_type": "str",
           "default": "l2",
-          "description": "The norm to use to normalize each non zero sample. If norm='max' is used, values will be rescaled by the maximum of the absolute values."
+          "description": "The norm to use to normalize each non zero sample."
         }
       },
       {
@@ -530,14 +486,13 @@
           "description": "set to False to perform inplace row normalization and avoid a copy (if the input is already a numpy array or a scipy.sparse CSR matrix)."
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "OneHotEncoder": {
     "name": "sklearn.preprocessing._encoders.OneHotEncoder",
     "common_name": "OneHotEncoder",
     "description": "Encode categorical features as a one-hot numeric array. The input to this transformer should be an array-like of integers or strings, denoting the values taken on by categorical (discrete) features. The features are encoded using a one-hot (aka 'one-of-K' or 'dummy') encoding scheme. This creates a binary column for each category and returns a sparse matrix or dense array (depending on the ``sparse`` parameter)  By default, the encoder derives the categories based on the unique values in each feature. Alternatively, you can also specify the `categories` manually.  This encoding is needed for feeding categorical data to many scikit-learn estimators, notably linear models and SVMs with the standard kernels.  Note: a one-hot encoding of y labels should use a LabelBinarizer instead.  Read more in the :ref:`User Guide <preprocessing_categorical_features>`.  .. versionchanged:: 0.20",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "name": "categories",
@@ -547,7 +502,7 @@
             "categories"
           ],
           "default": "categories__str",
-          "description": "Categories (unique values) per feature:  - 'auto' : Determine categories automatically from the training data. - list : ``categories[i]`` holds the categories expected in the ith   column. The passed categories should not mix strings and numeric   values within a single feature, and should be sorted in case of   numeric values.  The used categories can be found in the ``categories_`` attribute.  .. versionadded:: 0.20"
+          "description": "Categories (unique values) per feature:  - 'auto' : Determine categories automatically from the training data. - list : ``categories[i]`` holds the categories expected in the ith   column. The passed categories should not mix strings and numeric   values within a single feature, and should be sorted in case of   numeric values.  The used categories can be found in the ``categories_`` attribute."
         },
         "hyperparams": [
           {
@@ -581,7 +536,7 @@
             "drop"
           ],
           "default": "drop__None",
-          "description": "Specifies a methodology to use to drop one of the categories per feature. This is useful in situations where perfectly collinear features cause problems, such as when feeding the resulting data into a neural network or an unregularized regression.  However, dropping one category breaks the symmetry of the original representation and can therefore induce a bias in downstream models, for instance for penalized linear classification or regression models.  - None : retain all features (the default). - 'first' : drop the first category in each feature. If only one   category is present, the feature will be dropped entirely. - 'if_binary' : drop the first category in each feature with two   categories. Features with 1 or more than 2 categories are   left intact. - array : ``drop[i]`` is the category in feature ``X[:, i]`` that   should be dropped.  .. versionchanged:: 0.23    Added option 'if_binary'."
+          "description": "Specifies a methodology to use to drop one of the categories per feature. This is useful in situations where perfectly collinear features cause problems, such as when feeding the resulting data into a neural network or an unregularized regression.  - None : retain all features (the default). - 'first' : drop the first category in each feature. If only one   category is present, the feature will be dropped entirely. - array : ``drop[i]`` is the category in feature ``X[:, i]`` that   should be dropped."
         },
         "hyperparams": [
           {
@@ -649,14 +604,13 @@
           "description": "Whether to raise an error or ignore if an unknown categorical feature is present during transform (default is to raise). When this parameter is set to 'ignore' and an unknown category is encountered during transform, the resulting one-hot encoded columns for this feature will be all zeros. In the inverse transform, an unknown category will be denoted as None."
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "OrdinalEncoder": {
     "name": "sklearn.preprocessing._encoders.OrdinalEncoder",
     "common_name": "OrdinalEncoder",
-    "description": "Encode categorical features as an integer array. The input to this transformer should be an array-like of integers or strings, denoting the values taken on by categorical (discrete) features. The features are converted to ordinal integers. This results in a single column of integers (0 to n_categories - 1) per feature.  Read more in the :ref:`User Guide <preprocessing_categorical_features>`.  .. versionadded:: 0.20",
-    "sklearn_version": "0.24.0",
+    "description": "Encode categorical features as an integer array. The input to this transformer should be an array-like of integers or strings, denoting the values taken on by categorical (discrete) features. The features are converted to ordinal integers. This results in a single column of integers (0 to n_categories - 1) per feature.  Read more in the :ref:`User Guide <preprocessing_categorical_features>`.  .. versionchanged:: 0.20.1",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "name": "categories",
@@ -691,75 +645,14 @@
             }
           }
         ]
-      },
-      {
-        "type": "Enumeration",
-        "name": "handle_unknown",
-        "init_args": {
-          "semantic_types": [
-            "handle_unknown"
-          ],
-          "values": [
-            "error",
-            "ignore"
-          ],
-          "_structural_type": "str",
-          "default": "error",
-          "description": "When set to 'error' an error will be raised in case an unknown categorical feature is present during transform. When set to 'use_encoded_value', the encoded value of unknown categories will be set to the value given for the parameter `unknown_value`. In :meth:`inverse_transform`, an unknown category will be denoted as None.  .. versionadded:: 0.24"
-        }
-      },
-      {
-        "name": "unknown_value",
-        "type": "Union",
-        "init_args": {
-          "semantic_types": [
-            "unknown_value"
-          ],
-          "default": "unknown_value__None",
-          "description": "When the parameter handle_unknown is set to 'use_encoded_value', this parameter is required and will set the encoded value of unknown categories. It has to be distinct from the values used to encode any of the categories in `fit`. If set to np.nan, the `dtype` parameter must be a float dtype.  .. versionadded:: 0.24"
-        },
-        "hyperparams": [
-          {
-            "type": "Hyperparameter",
-            "name": "unknown_value__int",
-            "init_args": {
-              "semantic_types": [
-                "unknown_value"
-              ],
-              "_structural_type": "int"
-            }
-          },
-          {
-            "type": "Hyperparameter",
-            "name": "unknown_value__float",
-            "init_args": {
-              "semantic_types": [
-                "unknown_value"
-              ],
-              "_structural_type": "float"
-            }
-          },
-          {
-            "type": "Constant",
-            "name": "unknown_value__None",
-            "init_args": {
-              "semantic_types": [
-                "unknown_value"
-              ],
-              "_structural_type": "None",
-              "default": "None"
-            }
-          }
-        ]
       }
-    ],
-    "Params": []
+    ]
   },
   "PolynomialFeatures": {
     "name": "sklearn.preprocessing._data.PolynomialFeatures",
     "common_name": "PolynomialFeatures",
     "description": "Generate polynomial and interaction features. Generate a new feature matrix consisting of all polynomial combinations of the features with degree less than or equal to the specified degree. For example, if an input sample is two dimensional and of the form [a, b], the degree-2 polynomial features are [1, a, b, a^2, ab, b^2].",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -770,7 +663,7 @@
           ],
           "_structural_type": "int",
           "default": 2,
-          "description": "The degree of the polynomial features."
+          "description": "The degree of the polynomial features. Default = 2."
         }
       },
       {
@@ -813,14 +706,13 @@
           "description": "Order of output array in the dense case. 'F' order is faster to compute, but may slow down subsequent estimators.  .. versionadded:: 0.21"
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "PowerTransformer": {
     "name": "sklearn.preprocessing._data.PowerTransformer",
     "common_name": "PowerTransformer",
     "description": "Apply a power transform featurewise to make data more Gaussian-like. Power transforms are a family of parametric, monotonic transformations that are applied to make data more Gaussian-like. This is useful for modeling issues related to heteroscedasticity (non-constant variance), or other situations where normality is desired.  Currently, PowerTransformer supports the Box-Cox transform and the Yeo-Johnson transform. The optimal parameter for stabilizing variance and minimizing skewness is estimated through maximum likelihood.  Box-Cox requires input data to be strictly positive, while Yeo-Johnson supports both positive or negative data.  By default, zero-mean, unit-variance normalization is applied to the transformed data.  Read more in the :ref:`User Guide <preprocessing_transformer>`.  .. versionadded:: 0.20",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Enumeration",
@@ -862,14 +754,13 @@
           "description": "Set to False to perform inplace computation during transformation."
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "QuantileTransformer": {
     "name": "sklearn.preprocessing._data.QuantileTransformer",
     "common_name": "QuantileTransformer",
     "description": "Transform features using quantiles information. This method transforms the features to follow a uniform or a normal distribution. Therefore, for a given feature, this transformation tends to spread out the most frequent values. It also reduces the impact of (marginal) outliers: this is therefore a robust preprocessing scheme.  The transformation is applied on each feature independently. First an estimate of the cumulative distribution function of a feature is used to map the original values to a uniform distribution. The obtained values are then mapped to the desired output distribution using the associated quantile function. Features values of new/unseen data that fall below or above the fitted range will be mapped to the bounds of the output distribution. Note that this transform is non-linear. It may distort linear correlations between variables measured at the same scale but renders variables measured at different scales more directly comparable.  Read more in the :ref:`User Guide <preprocessing_transformer>`.  .. versionadded:: 0.19",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -931,7 +822,7 @@
             "random_state"
           ],
           "default": "random_state__None",
-          "description": "Determines random number generation for subsampling and smoothing noise. Please see ``subsample`` for more details. Pass an int for reproducible results across multiple function calls. See :term:`Glossary <random_state>`"
+          "description": "If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by np.random. Note that this is used by subsampling and smoothing noise."
         },
         "hyperparams": [
           {
@@ -969,14 +860,13 @@
           "description": "Set to False to perform inplace transformation and avoid a copy (if the input is already a numpy array)."
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "RobustScaler": {
     "name": "sklearn.preprocessing._data.RobustScaler",
     "common_name": "RobustScaler",
     "description": "Scale features using statistics that are robust to outliers. This Scaler removes the median and scales the data according to the quantile range (defaults to IQR: Interquartile Range). The IQR is the range between the 1st quartile (25th quantile) and the 3rd quartile (75th quantile).  Centering and scaling happen independently on each feature by computing the relevant statistics on the samples in the training set. Median and interquartile range are then stored to be used on later data using the ``transform`` method.  Standardization of a dataset is a common requirement for many machine learning estimators. Typically this is done by removing the mean and scaling to unit variance. However, outliers can often influence the sample mean / variance in a negative way. In such cases, the median and the interquartile range often give better results.  .. versionadded:: 0.17  Read more in the :ref:`User Guide <preprocessing_scaler>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -1011,7 +901,7 @@
           ],
           "_structural_type": "tuple",
           "default": "&esc(25.0, 75.0)",
-          "description": "Quantile range used to calculate ``scale_``.  .. versionadded:: 0.18"
+          "description": "Default: (25.0, 75.0) = (1st quantile, 3rd quantile) = IQR Quantile range used to calculate ``scale_``.  .. versionadded:: 0.18"
         }
       },
       {
@@ -1025,27 +915,14 @@
           "default": "True",
           "description": "If False, try to avoid a copy and do inplace scaling instead. This is not guaranteed to always work inplace; e.g. if the data is not a NumPy array or scipy.sparse CSR matrix, a copy may still be returned."
         }
-      },
-      {
-        "type": "Hyperparameter",
-        "name": "unit_variance",
-        "init_args": {
-          "semantic_types": [
-            "unit_variance"
-          ],
-          "_structural_type": "bool",
-          "default": "False",
-          "description": "If True, scale data so that normally distributed features have a variance of 1. In general, if the difference between the x-values of ``q_max`` and ``q_min`` for a standard normal distribution is greater than 1, the dataset will be scaled down. If less than 1, the dataset will be scaled up.  .. versionadded:: 0.24"
-        }
       }
-    ],
-    "Params": []
+    ]
   },
   "StandardScaler": {
     "name": "sklearn.preprocessing._data.StandardScaler",
     "common_name": "StandardScaler",
     "description": "Standardize features by removing the mean and scaling to unit variance The standard score of a sample `x` is calculated as:      z = (x - u) / s  where `u` is the mean of the training samples or zero if `with_mean=False`, and `s` is the standard deviation of the training samples or one if `with_std=False`.  Centering and scaling happen independently on each feature by computing the relevant statistics on the samples in the training set. Mean and standard deviation are then stored to be used on later data using :meth:`transform`.  Standardization of a dataset is a common requirement for many machine learning estimators: they might behave badly if the individual features do not more or less look like standard normally distributed data (e.g. Gaussian with 0 mean and unit variance).  For instance many elements used in the objective function of a learning algorithm (such as the RBF kernel of Support Vector Machines or the L1 and L2 regularizers of linear models) assume that all features are centered around 0 and have variance in the same order. If a feature has a variance that is orders of magnitude larger that others, it might dominate the objective function and make the estimator unable to learn from other features correctly as expected.  This scaler can also be applied to sparse CSR or CSC matrices by passing `with_mean=False` to avoid breaking the sparsity structure of the data.  Read more in the :ref:`User Guide <preprocessing_scaler>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -1083,7 +960,6 @@
           "description": "If True, scale the data to unit variance (or equivalently, unit standard deviation)."
         }
       }
-    ],
-    "Params": []
+    ]
   }
 }

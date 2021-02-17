@@ -94,6 +94,5 @@ class TSNE:
         method: str = "barnes_hut",
         angle: float = 0.5,
         n_jobs: Optional[int] = None,
-        square_distances: Union[bool, Literal["legacy"]] = "legacy",
     ):
         ...

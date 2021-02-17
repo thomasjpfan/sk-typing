@@ -228,6 +228,7 @@ def test_convert_hyperparam_to_d3m_base_estimator():
         (List[int], "List[int]"),
         (Union[int, float], "Union[int, float]"),
         (EstimatorType, "sklearn.base.BaseEstimator"),
+        (np.random.RandomState, "numpy.random.RandomState"),
     ],
 )
 def test_convert_attribute_to_d3m(annotation, expected_type):

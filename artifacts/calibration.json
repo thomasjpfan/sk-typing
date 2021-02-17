@@ -77,18 +77,6 @@
           }
         ]
       }
-    ],
-    "Params": [
-      {
-        "name": "classes_",
-        "description": "The class labels.",
-        "type": "ndarray"
-      },
-      {
-        "name": "calibrated_classifiers_",
-        "description": "The list of calibrated classifiers, one for each crossvalidation fold, which has been fitted on all but the validation fold and calibrated on the validation fold.",
-        "type": "list"
-      }
     ]
   }
 }

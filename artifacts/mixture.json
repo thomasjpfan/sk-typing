@@ -3,7 +3,7 @@
     "name": "sklearn.mixture._bayesian_mixture.BayesianGaussianMixture",
     "common_name": "BayesianGaussianMixture",
     "description": "Variational Bayesian estimation of a Gaussian mixture. This class allows to infer an approximate posterior distribution over the parameters of a Gaussian mixture distribution. The effective number of components can be inferred from the data.  This class implements two types of prior for the weights distribution: a finite mixture model with Dirichlet distribution and an infinite mixture model with the Dirichlet Process. In practice Dirichlet Process inference algorithm is approximated and uses a truncated distribution with a fixed maximum number of components (called the Stick-breaking representation). The number of components actually used almost always depends on the data.  .. versionadded:: 0.18  Read more in the :ref:`User Guide <bgmm>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -303,7 +303,7 @@
             "random_state"
           ],
           "default": "random_state__None",
-          "description": "Controls the random seed given to the method chosen to initialize the parameters (see `init_params`). In addition, it controls the generation of random samples from the fitted distribution (see the method `sample`). Pass an int for reproducible output across multiple function calls. See :term:`Glossary <random_state>`."
+          "description": "If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by `np.random`."
         },
         "hyperparams": [
           {
@@ -365,14 +365,13 @@
           "description": "Number of iteration done before the next print."
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "GaussianMixture": {
     "name": "sklearn.mixture._gaussian_mixture.GaussianMixture",
     "common_name": "GaussianMixture",
     "description": "Gaussian Mixture. Representation of a Gaussian mixture model probability distribution. This class allows to estimate the parameters of a Gaussian mixture distribution.  Read more in the :ref:`User Guide <gmm>`.  .. versionadded:: 0.18",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -476,7 +475,7 @@
             "weights_init"
           ],
           "default": "weights_init__None",
-          "description": "The user-provided initial weights. If it is None, weights are initialized using the `init_params` method."
+          "description": "The user-provided initial weights, defaults to None. If it None, weights are initialized using the `init_params` method."
         },
         "hyperparams": [
           {
@@ -510,7 +509,7 @@
             "means_init"
           ],
           "default": "means_init__None",
-          "description": "The user-provided initial means, If it is None, means are initialized using the `init_params` method."
+          "description": "The user-provided initial means, defaults to None, If it None, means are initialized using the `init_params` method."
         },
         "hyperparams": [
           {
@@ -544,7 +543,7 @@
             "precisions_init"
           ],
           "default": "precisions_init__None",
-          "description": "The user-provided initial precisions (inverse of the covariance matrices). If it is None, precisions are initialized using the 'init_params' method. The shape depends on 'covariance_type'::      (n_components,)                        if 'spherical',     (n_features, n_features)               if 'tied',     (n_components, n_features)             if 'diag',     (n_components, n_features, n_features) if 'full'"
+          "description": "The user-provided initial precisions (inverse of the covariance matrices), defaults to None. If it None, precisions are initialized using the 'init_params' method. The shape depends on 'covariance_type'::      (n_components,)                        if 'spherical',     (n_features, n_features)               if 'tied',     (n_components, n_features)             if 'diag',     (n_components, n_features, n_features) if 'full'"
         },
         "hyperparams": [
           {
@@ -578,7 +577,7 @@
             "random_state"
           ],
           "default": "random_state__None",
-          "description": "Controls the random seed given to the method chosen to initialize the parameters (see `init_params`). In addition, it controls the generation of random samples from the fitted distribution (see the method `sample`). Pass an int for reproducible output across multiple function calls. See :term:`Glossary <random_state>`."
+          "description": "If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by `np.random`."
         },
         "hyperparams": [
           {
@@ -640,7 +639,6 @@
           "description": "Number of iteration done before the next print."
         }
       }
-    ],
-    "Params": []
+    ]
   }
 }

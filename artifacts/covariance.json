@@ -109,8 +109,7 @@
           }
         ]
       }
-    ],
-    "Params": []
+    ]
   },
   "EmpiricalCovariance": {
     "name": "sklearn.covariance._empirical_covariance.EmpiricalCovariance",
@@ -142,8 +141,7 @@
           "description": "If True, data are not centered before computation. Useful when working with data whose mean is almost, but not exactly zero. If False (default), data are centered before computation."
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "GraphicalLasso": {
     "name": "sklearn.covariance._graph_lasso.GraphicalLasso",
@@ -239,8 +237,7 @@
           "description": "If True, data are not centered before computation. Useful when working with data whose mean is almost, but not exactly zero. If False, data are centered before computation."
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "GraphicalLassoCV": {
     "name": "sklearn.covariance._graph_lasso.GraphicalLassoCV",
@@ -438,8 +435,7 @@
           "description": "If True, data are not centered before computation. Useful when working with data whose mean is almost, but not exactly zero. If False, data are centered before computation."
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "LedoitWolf": {
     "name": "sklearn.covariance._shrunk_covariance.LedoitWolf",
@@ -483,8 +479,7 @@
           "description": "Size of the blocks into which the covariance matrix will be split during its Ledoit-Wolf estimation. This is purely a memory optimization and does not affect results."
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "MinCovDet": {
     "name": "sklearn.covariance._robust_covariance.MinCovDet",
@@ -584,8 +579,7 @@
           }
         ]
       }
-    ],
-    "Params": []
+    ]
   },
   "OAS": {
     "name": "sklearn.covariance._shrunk_covariance.OAS",
@@ -617,8 +611,7 @@
           "description": "If True, data will not be centered before computation. Useful when working with data whose mean is almost, but not exactly zero. If False (default), data will be centered before computation."
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "ShrunkCovariance": {
     "name": "sklearn.covariance._shrunk_covariance.ShrunkCovariance",
@@ -662,7 +655,6 @@
           "description": "Coefficient in the convex combination used for the computation of the shrunk estimate."
         }
       }
-    ],
-    "Params": []
+    ]
   }
 }

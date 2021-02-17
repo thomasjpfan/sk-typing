@@ -2,8 +2,8 @@
   "DictionaryLearning": {
     "name": "sklearn.decomposition._dict_learning.DictionaryLearning",
     "common_name": "DictionaryLearning",
-    "description": "Dictionary learning Finds a dictionary (a set of atoms) that can best be used to represent data using a sparse code.  Solves the optimization problem::      (U^*,V^*) = argmin 0.5 || X - U V ||_2^2 + alpha * || U ||_1                 (U,V)                 with || V_k ||_2 = 1 for all  0 <= k < n_components  Read more in the :ref:`User Guide <DictionaryLearning>`.",
-    "sklearn_version": "0.24.0",
+    "description": "Dictionary learning Finds a dictionary (a set of atoms) that can best be used to represent data using a sparse code.  Solves the optimization problem::      (U^*,V^*) = argmin 0.5 || Y - U V ||_2^2 + alpha * || U ||_1                 (U,V)                 with || V_k ||_2 = 1 for all  0 <= k < n_components  Read more in the :ref:`User Guide <DictionaryLearning>`.",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "name": "n_components",
@@ -13,7 +13,7 @@
             "n_components"
           ],
           "default": "n_components__None",
-          "description": "Number of dictionary elements to extract."
+          "description": "number of dictionary elements to extract"
         },
         "hyperparams": [
           {
@@ -48,7 +48,7 @@
           ],
           "_structural_type": "float",
           "default": 1,
-          "description": "Sparsity controlling parameter."
+          "description": "sparsity controlling parameter"
         }
       },
       {
@@ -60,7 +60,7 @@
           ],
           "_structural_type": "int",
           "default": 1000,
-          "description": "Maximum number of iterations to perform."
+          "description": "maximum number of iterations to perform"
         }
       },
       {
@@ -72,7 +72,7 @@
           ],
           "_structural_type": "float",
           "default": 1e-08,
-          "description": "Tolerance for numerical error."
+          "description": "tolerance for numerical error"
         }
       },
       {
@@ -88,7 +88,7 @@
           ],
           "_structural_type": "str",
           "default": "lars",
-          "description": "* `'lars'`: uses the least angle regression method to solve the lasso    problem (`linear_model.lars_path`); * `'cd'`: uses the coordinate descent method to compute the   Lasso solution (`linear_model.Lasso`). Lars will be faster if   the estimated components are sparse.  .. versionadded:: 0.17    *cd* coordinate descent method to improve speed."
+          "description": "lars: uses the least angle regression method to solve the lasso problem (linear_model.lars_path) cd: uses the coordinate descent method to compute the Lasso solution (linear_model.Lasso). Lars will be faster if the estimated components are sparse.  .. versionadded:: 0.17    *cd* coordinate descent method to improve speed."
         }
       },
       {
@@ -107,7 +107,7 @@
           ],
           "_structural_type": "str",
           "default": "omp",
-          "description": "Algorithm used to transform the data:  - `'lars'`: uses the least angle regression method   (`linear_model.lars_path`); - `'lasso_lars'`: uses Lars to compute the Lasso solution. - `'lasso_cd'`: uses the coordinate descent method to compute the   Lasso solution (`linear_model.Lasso`). `'lasso_lars'` will be faster   if the estimated components are sparse. - `'omp'`: uses orthogonal matching pursuit to estimate the sparse   solution. - `'threshold'`: squashes to zero all coefficients less than alpha from   the projection ``dictionary * X'``.  .. versionadded:: 0.17    *lasso_cd* coordinate descent method to improve speed."
+          "description": "Algorithm used to transform the data lars: uses the least angle regression method (linear_model.lars_path) lasso_lars: uses Lars to compute the Lasso solution lasso_cd: uses the coordinate descent method to compute the Lasso solution (linear_model.Lasso). lasso_lars will be faster if the estimated components are sparse. omp: uses orthogonal matching pursuit to estimate the sparse solution threshold: squashes to zero all coefficients less than alpha from the projection ``dictionary * X'``  .. versionadded:: 0.17    *lasso_cd* coordinate descent method to improve speed."
         }
       },
       {
@@ -118,7 +118,7 @@
             "transform_n_nonzero_coefs"
           ],
           "default": "transform_n_nonzero_coefs__None",
-          "description": "Number of nonzero coefficients to target in each column of the solution. This is only used by `algorithm='lars'` and `algorithm='omp'` and is overridden by `alpha` in the `omp` case. If `None`, then `transform_n_nonzero_coefs=int(n_features / 10)`."
+          "description": "Number of nonzero coefficients to target in each column of the solution. This is only used by `algorithm='lars'` and `algorithm='omp'` and is overridden by `alpha` in the `omp` case."
         },
         "hyperparams": [
           {
@@ -152,7 +152,7 @@
             "transform_alpha"
           ],
           "default": "transform_alpha__None",
-          "description": "If `algorithm='lasso_lars'` or `algorithm='lasso_cd'`, `alpha` is the penalty applied to the L1 norm. If `algorithm='threshold'`, `alpha` is the absolute value of the threshold below which coefficients will be squashed to zero. If `algorithm='omp'`, `alpha` is the tolerance parameter: the value of the reconstruction error targeted. In this case, it overrides `n_nonzero_coefs`. If `None`, default to 1.0"
+          "description": "If `algorithm='lasso_lars'` or `algorithm='lasso_cd'`, `alpha` is the penalty applied to the L1 norm. If `algorithm='threshold'`, `alpha` is the absolute value of the threshold below which coefficients will be squashed to zero. If `algorithm='omp'`, `alpha` is the tolerance parameter: the value of the reconstruction error targeted. In this case, it overrides `n_nonzero_coefs`."
         },
         "hyperparams": [
           {
@@ -220,9 +220,19 @@
             "code_init"
           ],
           "default": "code_init__None",
-          "description": "Initial value for the code, for warm restart."
+          "description": "initial value for the code, for warm restart"
         },
         "hyperparams": [
+          {
+            "name": "code_init__ndarray",
+            "type": "Hyperparameter",
+            "init_args": {
+              "_structural_type": "ndarray",
+              "semantic_types": [
+                "code_init"
+              ]
+            }
+          },
           {
             "type": "Constant",
             "name": "code_init__None",
@@ -244,9 +254,19 @@
             "dict_init"
           ],
           "default": "dict_init__None",
-          "description": "Initial values for the dictionary, for warm restart."
+          "description": "initial values for the dictionary, for warm restart"
         },
         "hyperparams": [
+          {
+            "name": "dict_init__ndarray",
+            "type": "Hyperparameter",
+            "init_args": {
+              "_structural_type": "ndarray",
+              "semantic_types": [
+                "dict_init"
+              ]
+            }
+          },
           {
             "type": "Constant",
             "name": "dict_init__None",
@@ -292,7 +312,7 @@
             "random_state"
           ],
           "default": "random_state__None",
-          "description": "Used for initializing the dictionary when ``dict_init`` is not specified, randomly shuffling the data when ``shuffle`` is set to ``True``, and updating the dictionary. Pass an int for reproducible results across multiple function calls. See :term:`Glossary <random_state>`."
+          "description": "If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by `np.random`."
         },
         "hyperparams": [
           {
@@ -351,17 +371,16 @@
           ],
           "_structural_type": "int",
           "default": 1000,
-          "description": "Maximum number of iterations to perform if `algorithm='lasso_cd'` or `'lasso_lars'`.  .. versionadded:: 0.22"
+          "description": "Maximum number of iterations to perform if `algorithm='lasso_cd'` or `lasso_lars`.  .. versionadded:: 0.22"
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "FactorAnalysis": {
     "name": "sklearn.decomposition._factor_analysis.FactorAnalysis",
     "common_name": "FactorAnalysis",
-    "description": "Factor Analysis (FA). A simple linear generative model with Gaussian latent variables.  The observations are assumed to be caused by a linear transformation of lower dimensional latent factors and added Gaussian noise. Without loss of generality the factors are distributed according to a Gaussian with zero mean and unit covariance. The noise is also zero mean and has an arbitrary diagonal covariance matrix.  If we would restrict the model further, by assuming that the Gaussian noise is even isotropic (all diagonal entries are the same) we would obtain :class:`PPCA`.  FactorAnalysis performs a maximum likelihood estimate of the so-called `loading` matrix, the transformation of the latent variables to the observed ones, using SVD based approach.  Read more in the :ref:`User Guide <FA>`.  .. versionadded:: 0.13",
-    "sklearn_version": "0.24.0",
+    "description": "Factor Analysis (FA) A simple linear generative model with Gaussian latent variables.  The observations are assumed to be caused by a linear transformation of lower dimensional latent factors and added Gaussian noise. Without loss of generality the factors are distributed according to a Gaussian with zero mean and unit covariance. The noise is also zero mean and has an arbitrary diagonal covariance matrix.  If we would restrict the model further, by assuming that the Gaussian noise is even isotropic (all diagonal entries are the same) we would obtain :class:`PPCA`.  FactorAnalysis performs a maximum likelihood estimate of the so-called `loading` matrix, the transformation of the latent variables to the observed ones, using SVD based approach.  Read more in the :ref:`User Guide <FA>`.  .. versionadded:: 0.13",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "name": "n_components",
@@ -441,9 +460,19 @@
             "noise_variance_init"
           ],
           "default": "noise_variance_init__None",
-          "description": "The initial guess of the noise variance for each feature. If None, it defaults to np.ones(n_features)."
+          "description": "The initial guess of the noise variance for each feature. If None, it defaults to np.ones(n_features)"
         },
         "hyperparams": [
+          {
+            "name": "noise_variance_init__ndarray",
+            "type": "Hyperparameter",
+            "init_args": {
+              "_structural_type": "ndarray",
+              "semantic_types": [
+                "noise_variance_init"
+              ]
+            }
+          },
           {
             "type": "Constant",
             "name": "noise_variance_init__None",
@@ -482,23 +511,7 @@
           ],
           "_structural_type": "int",
           "default": 3,
-          "description": "Number of iterations for the power method. 3 by default. Only used if ``svd_method`` equals 'randomized'."
-        }
-      },
-      {
-        "type": "Enumeration",
-        "name": "rotation",
-        "init_args": {
-          "semantic_types": [
-            "rotation"
-          ],
-          "values": [
-            "varimax",
-            "quartimax"
-          ],
-          "_structural_type": "str",
-          "default": "None",
-          "description": "If not None, apply the indicated rotation. Currently, varimax and quartimax are implemented. See `\"The varimax criterion for analytic rotation in factor analysis\" <https://link.springer.com/article/10.1007%2FBF02289233>`_ H. F. Kaiser, 1958.  .. versionadded:: 0.24"
+          "description": "Number of iterations for the power method. 3 by default. Only used if ``svd_method`` equals 'randomized'"
         }
       },
       {
@@ -509,7 +522,7 @@
             "random_state"
           ],
           "default": "random_state__int",
-          "description": "Only used when ``svd_method`` equals 'randomized'. Pass an int for reproducible results across multiple function calls. See :term:`Glossary <random_state>`."
+          "description": "If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by `np.random`. Only used when ``svd_method`` equals 'randomized'."
         },
         "hyperparams": [
           {
@@ -535,14 +548,13 @@
           }
         ]
       }
-    ],
-    "Params": []
+    ]
   },
   "FastICA": {
     "name": "sklearn.decomposition._fastica.FastICA",
     "common_name": "FastICA",
     "description": "FastICA: a fast algorithm for Independent Component Analysis. Read more in the :ref:`User Guide <ICA>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "name": "n_components",
@@ -552,7 +564,7 @@
             "n_components"
           ],
           "default": "n_components__None",
-          "description": "Number of components to use. If None is passed, all are used."
+          "description": "Number of components to use. If none is passed, all are used."
         },
         "hyperparams": [
           {
@@ -614,7 +626,7 @@
             "fun"
           ],
           "default": "fun__str",
-          "description": "The functional form of the G function used in the approximation to neg-entropy. Could be either 'logcosh', 'exp', or 'cube'. You can also provide your own function. It should return a tuple containing the value of the function, and of its derivative, in the point. Example::      def my_g(x):         return x ** 3, (3 * x ** 2).mean(axis=-1)"
+          "description": "The functional form of the G function used in the approximation to neg-entropy. Could be either 'logcosh', 'exp', or 'cube'. You can also provide your own function. It should return a tuple containing the value of the function, and of its derivative, in the point. Example:  def my_g(x):     return x ** 3, (3 * x ** 2).mean(axis=-1)"
         },
         "hyperparams": [
           {
@@ -715,6 +727,16 @@
         },
         "hyperparams": [
           {
+            "name": "w_init__ndarray",
+            "type": "Hyperparameter",
+            "init_args": {
+              "_structural_type": "ndarray",
+              "semantic_types": [
+                "w_init"
+              ]
+            }
+          },
+          {
             "type": "Constant",
             "name": "w_init__None",
             "init_args": {
@@ -735,7 +757,7 @@
             "random_state"
           ],
           "default": "random_state__None",
-          "description": "Used to initialize ``w_init`` when not specified, with a normal distribution. Pass an int, for reproducible results across multiple function calls. See :term:`Glossary <random_state>`."
+          "description": "If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by `np.random`."
         },
         "hyperparams": [
           {
@@ -761,14 +783,13 @@
           }
         ]
       }
-    ],
-    "Params": []
+    ]
   },
   "IncrementalPCA": {
     "name": "sklearn.decomposition._incremental_pca.IncrementalPCA",
     "common_name": "IncrementalPCA",
     "description": "Incremental principal components analysis (IPCA). Linear dimensionality reduction using Singular Value Decomposition of the data, keeping only the most significant singular vectors to project the data to a lower dimensional space. The input data is centered but not scaled for each feature before applying the SVD.  Depending on the size of the input data, this algorithm can be much more memory efficient than a PCA, and allows sparse input.  This algorithm has constant memory complexity, on the order of ``batch_size * n_features``, enabling use of np.memmap files without loading the entire file into memory. For sparse matrices, the input is converted to dense in batches (in order to be able to subtract the mean) which avoids storing the entire dense matrix at any one time.  The computational overhead of each SVD is ``O(batch_size * n_features ** 2)``, but only 2 * batch_size samples remain in memory at a time. There will be ``n_samples / batch_size`` SVD computations to get the principal components, versus 1 large SVD of complexity ``O(n_samples * n_features ** 2)`` for PCA.  Read more in the :ref:`User Guide <IncrementalPCA>`.  .. versionadded:: 0.16",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "name": "n_components",
@@ -778,7 +799,7 @@
             "n_components"
           ],
           "default": "n_components__None",
-          "description": "Number of components to keep. If ``n_components`` is ``None``, then ``n_components`` is set to ``min(n_samples, n_features)``."
+          "description": "Number of components to keep. If ``n_components `` is ``None``, then ``n_components`` is set to ``min(n_samples, n_features)``."
         },
         "hyperparams": [
           {
@@ -862,14 +883,13 @@
           }
         ]
       }
-    ],
-    "Params": []
+    ]
   },
   "KernelPCA": {
     "name": "sklearn.decomposition._kernel_pca.KernelPCA",
     "common_name": "KernelPCA",
-    "description": "Kernel Principal component analysis (KPCA). Non-linear dimensionality reduction through the use of kernels (see :ref:`metrics`).  Read more in the :ref:`User Guide <kernel_PCA>`.",
-    "sklearn_version": "0.24.0",
+    "description": "Kernel Principal component analysis (KPCA) Non-linear dimensionality reduction through the use of kernels (see :ref:`metrics`).  Read more in the :ref:`User Guide <kernel_PCA>`.",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Constant",
@@ -900,7 +920,7 @@
           ],
           "_structural_type": "str",
           "default": "linear",
-          "description": "Kernel used for PCA."
+          "description": "Kernel. Default=\"linear\"."
         }
       },
       {
@@ -911,7 +931,7 @@
             "gamma"
           ],
           "default": "gamma__None",
-          "description": "Kernel coefficient for rbf, poly and sigmoid kernels. Ignored by other kernels. If ``gamma`` is ``None``, then it is set to ``1/n_features``."
+          "description": "Kernel coefficient for rbf, poly and sigmoid kernels. Ignored by other kernels."
         },
         "hyperparams": [
           {
@@ -1080,7 +1100,7 @@
             "random_state"
           ],
           "default": "random_state__None",
-          "description": "Used when ``eigen_solver`` == 'arpack'. Pass an int for reproducible results across multiple function calls. See :term:`Glossary <random_state>`.  .. versionadded:: 0.18"
+          "description": "If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by `np.random`. Used when ``eigen_solver`` == 'arpack'.  .. versionadded:: 0.18"
         },
         "hyperparams": [
           {
@@ -1152,14 +1172,13 @@
           }
         ]
       }
-    ],
-    "Params": []
+    ]
   },
   "LatentDirichletAllocation": {
     "name": "sklearn.decomposition._lda.LatentDirichletAllocation",
     "common_name": "LatentDirichletAllocation",
     "description": "Latent Dirichlet Allocation with online variational Bayes algorithm .. versionadded:: 0.17  Read more in the :ref:`User Guide <LatentDirichletAllocation>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -1170,7 +1189,7 @@
           ],
           "_structural_type": "int",
           "default": 10,
-          "description": "Number of topics.  .. versionchanged:: 0.19     ``n_topics`` was renamed to ``n_components``"
+          "description": "Number of topics."
         }
       },
       {
@@ -1419,7 +1438,7 @@
             "random_state"
           ],
           "default": "random_state__None",
-          "description": "Pass an int for reproducible results across multiple function calls. See :term:`Glossary <random_state>`."
+          "description": "If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by `np.random`."
         },
         "hyperparams": [
           {
@@ -1445,14 +1464,13 @@
           }
         ]
       }
-    ],
-    "Params": []
+    ]
   },
   "MiniBatchDictionaryLearning": {
     "name": "sklearn.decomposition._dict_learning.MiniBatchDictionaryLearning",
     "common_name": "MiniBatchDictionaryLearning",
-    "description": "Mini-batch dictionary learning Finds a dictionary (a set of atoms) that can best be used to represent data using a sparse code.  Solves the optimization problem::     (U^*,V^*) = argmin 0.5 || X - U V ||_2^2 + alpha * || U ||_1                 (U,V)                 with || V_k ||_2 = 1 for all  0 <= k < n_components  Read more in the :ref:`User Guide <DictionaryLearning>`.",
-    "sklearn_version": "0.24.0",
+    "description": "Mini-batch dictionary learning Finds a dictionary (a set of atoms) that can best be used to represent data using a sparse code.  Solves the optimization problem::     (U^*,V^*) = argmin 0.5 || Y - U V ||_2^2 + alpha * || U ||_1                 (U,V)                 with || V_k ||_2 = 1 for all  0 <= k < n_components  Read more in the :ref:`User Guide <DictionaryLearning>`.",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Constant",
@@ -1463,7 +1481,7 @@
           ],
           "_structural_type": "None",
           "default": "None",
-          "description": "Number of dictionary elements to extract."
+          "description": "number of dictionary elements to extract"
         }
       },
       {
@@ -1475,7 +1493,7 @@
           ],
           "_structural_type": "float",
           "default": 1,
-          "description": "Sparsity controlling parameter."
+          "description": "sparsity controlling parameter"
         }
       },
       {
@@ -1487,7 +1505,7 @@
           ],
           "_structural_type": "int",
           "default": 1000,
-          "description": "Total number of iterations to perform."
+          "description": "total number of iterations to perform"
         }
       },
       {
@@ -1503,7 +1521,7 @@
           ],
           "_structural_type": "str",
           "default": "lars",
-          "description": "The algorithm used:  - `'lars'`: uses the least angle regression method to solve the lasso   problem (`linear_model.lars_path`) - `'cd'`: uses the coordinate descent method to compute the   Lasso solution (`linear_model.Lasso`). Lars will be faster if   the estimated components are sparse."
+          "description": "lars: uses the least angle regression method to solve the lasso problem (linear_model.lars_path) cd: uses the coordinate descent method to compute the Lasso solution (linear_model.Lasso). Lars will be faster if the estimated components are sparse."
         }
       },
       {
@@ -1549,7 +1567,7 @@
           ],
           "_structural_type": "int",
           "default": 3,
-          "description": "Number of samples in each mini-batch."
+          "description": "number of samples in each mini-batch"
         }
       },
       {
@@ -1561,7 +1579,7 @@
           ],
           "_structural_type": "bool",
           "default": "True",
-          "description": "Whether to shuffle the samples before forming batches."
+          "description": "whether to shuffle the samples before forming batches"
         }
       },
       {
@@ -1575,6 +1593,16 @@
           "description": "initial value of the dictionary for warm restart scenarios"
         },
         "hyperparams": [
+          {
+            "name": "dict_init__ndarray",
+            "type": "Hyperparameter",
+            "init_args": {
+              "_structural_type": "ndarray",
+              "semantic_types": [
+                "dict_init"
+              ]
+            }
+          },
           {
             "type": "Constant",
             "name": "dict_init__None",
@@ -1604,7 +1632,7 @@
           ],
           "_structural_type": "str",
           "default": "omp",
-          "description": "Algorithm used to transform the data:  - `'lars'`: uses the least angle regression method   (`linear_model.lars_path`); - `'lasso_lars'`: uses Lars to compute the Lasso solution. - `'lasso_cd'`: uses the coordinate descent method to compute the   Lasso solution (`linear_model.Lasso`). `'lasso_lars'` will be faster   if the estimated components are sparse. - `'omp'`: uses orthogonal matching pursuit to estimate the sparse   solution. - `'threshold'`: squashes to zero all coefficients less than alpha from   the projection ``dictionary * X'``."
+          "description": "Algorithm used to transform the data. lars: uses the least angle regression method (linear_model.lars_path) lasso_lars: uses Lars to compute the Lasso solution lasso_cd: uses the coordinate descent method to compute the Lasso solution (linear_model.Lasso). lasso_lars will be faster if the estimated components are sparse. omp: uses orthogonal matching pursuit to estimate the sparse solution threshold: squashes to zero all coefficients less than alpha from the projection dictionary * X'"
         }
       },
       {
@@ -1615,7 +1643,7 @@
             "transform_n_nonzero_coefs"
           ],
           "default": "transform_n_nonzero_coefs__None",
-          "description": "Number of nonzero coefficients to target in each column of the solution. This is only used by `algorithm='lars'` and `algorithm='omp'` and is overridden by `alpha` in the `omp` case. If `None`, then `transform_n_nonzero_coefs=int(n_features / 10)`."
+          "description": "Number of nonzero coefficients to target in each column of the solution. This is only used by `algorithm='lars'` and `algorithm='omp'` and is overridden by `alpha` in the `omp` case."
         },
         "hyperparams": [
           {
@@ -1649,7 +1677,7 @@
             "transform_alpha"
           ],
           "default": "transform_alpha__None",
-          "description": "If `algorithm='lasso_lars'` or `algorithm='lasso_cd'`, `alpha` is the penalty applied to the L1 norm. If `algorithm='threshold'`, `alpha` is the absolute value of the threshold below which coefficients will be squashed to zero. If `algorithm='omp'`, `alpha` is the tolerance parameter: the value of the reconstruction error targeted. In this case, it overrides `n_nonzero_coefs`. If `None`, default to 1."
+          "description": "If `algorithm='lasso_lars'` or `algorithm='lasso_cd'`, `alpha` is the penalty applied to the L1 norm. If `algorithm='threshold'`, `alpha` is the absolute value of the threshold below which coefficients will be squashed to zero. If `algorithm='omp'`, `alpha` is the tolerance parameter: the value of the reconstruction error targeted. In this case, it overrides `n_nonzero_coefs`."
         },
         "hyperparams": [
           {
@@ -1707,7 +1735,7 @@
             "random_state"
           ],
           "default": "random_state__None",
-          "description": "Used for initializing the dictionary when ``dict_init`` is not specified, randomly shuffling the data when ``shuffle`` is set to ``True``, and updating the dictionary. Pass an int for reproducible results across multiple function calls. See :term:`Glossary <random_state>`."
+          "description": "If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by `np.random`."
         },
         "hyperparams": [
           {
@@ -1766,17 +1794,16 @@
           ],
           "_structural_type": "int",
           "default": 1000,
-          "description": "Maximum number of iterations to perform if `algorithm='lasso_cd'` or `'lasso_lars'`.  .. versionadded:: 0.22"
+          "description": "Maximum number of iterations to perform if `algorithm='lasso_cd'` or `lasso_lars`.  .. versionadded:: 0.22"
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "MiniBatchSparsePCA": {
     "name": "sklearn.decomposition._sparse_pca.MiniBatchSparsePCA",
     "common_name": "MiniBatchSparsePCA",
     "description": "Mini-batch Sparse Principal Components Analysis Finds the set of sparse components that can optimally reconstruct the data.  The amount of sparseness is controllable by the coefficient of the L1 penalty, given by the parameter alpha.  Read more in the :ref:`User Guide <SparsePCA>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "name": "n_components",
@@ -1895,38 +1922,16 @@
         }
       },
       {
+        "type": "Hyperparameter",
         "name": "verbose",
-        "type": "Union",
         "init_args": {
           "semantic_types": [
             "verbose"
           ],
-          "default": "verbose__int",
+          "_structural_type": "int",
+          "default": "False",
           "description": "Controls the verbosity; the higher, the more messages. Defaults to 0."
-        },
-        "hyperparams": [
-          {
-            "type": "Hyperparameter",
-            "name": "verbose__int",
-            "init_args": {
-              "semantic_types": [
-                "verbose"
-              ],
-              "_structural_type": "int",
-              "default": "False"
-            }
-          },
-          {
-            "type": "Hyperparameter",
-            "name": "verbose__bool",
-            "init_args": {
-              "semantic_types": [
-                "verbose"
-              ],
-              "_structural_type": "bool"
-            }
-          }
-        ]
+        }
       },
       {
         "type": "Hyperparameter",
@@ -1998,7 +2003,7 @@
             "random_state"
           ],
           "default": "random_state__None",
-          "description": "Used for random shuffling when ``shuffle`` is set to ``True``, during online dictionary learning. Pass an int for reproducible results across multiple function calls. See :term:`Glossary <random_state>`."
+          "description": "If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by `np.random`."
         },
         "hyperparams": [
           {
@@ -2023,15 +2028,26 @@
             }
           }
         ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "normalize_components",
+        "init_args": {
+          "semantic_types": [
+            "normalize_components"
+          ],
+          "_structural_type": "str",
+          "default": "deprecated",
+          "description": "This parameter does not have any effect. The components are always normalized.  .. versionadded:: 0.20  .. deprecated:: 0.22    ``normalize_components`` is deprecated in 0.22 and will be removed    in 0.24."
+        }
       }
-    ],
-    "Params": []
+    ]
   },
   "NMF": {
     "name": "sklearn.decomposition._nmf.NMF",
     "common_name": "NMF",
-    "description": "Non-Negative Matrix Factorization (NMF). Find two non-negative matrices (W, H) whose product approximates the non- negative matrix X. This factorization can be used for example for dimensionality reduction, source separation or topic extraction.  The objective function is:      .. math::          0.5 * ||X - WH||_{Fro}^2 + alpha * l1_{ratio} * ||vec(W)||_1          + alpha * l1_{ratio} * ||vec(H)||_1          + 0.5 * alpha * (1 - l1_{ratio}) * ||W||_{Fro}^2          + 0.5 * alpha * (1 - l1_{ratio}) * ||H||_{Fro}^2  Where:  :math:`||A||_{Fro}^2 = \\sum_{i,j} A_{ij}^2` (Frobenius norm)  :math:`||vec(A)||_1 = \\sum_{i,j} abs(A_{ij})` (Elementwise L1 norm)  For multiplicative-update ('mu') solver, the Frobenius norm (:math:`0.5 * ||X - WH||_{Fro}^2`) can be changed into another beta-divergence loss, by changing the beta_loss parameter.  The objective function is minimized with an alternating minimization of W and H.  Read more in the :ref:`User Guide <NMF>`.",
-    "sklearn_version": "0.24.0",
+    "description": "Non-Negative Matrix Factorization (NMF) Find two non-negative matrices (W, H) whose product approximates the non- negative matrix X. This factorization can be used for example for dimensionality reduction, source separation or topic extraction.  The objective function is::      0.5 * ||X - WH||_Fro^2     + alpha * l1_ratio * ||vec(W)||_1     + alpha * l1_ratio * ||vec(H)||_1     + 0.5 * alpha * (1 - l1_ratio) * ||W||_Fro^2     + 0.5 * alpha * (1 - l1_ratio) * ||H||_Fro^2  Where::      ||A||_Fro^2 = \\sum_{i,j} A_{ij}^2 (Frobenius norm)     ||vec(A)||_1 = \\sum_{i,j} abs(A_{ij}) (Elementwise L1 norm)  For multiplicative-update ('mu') solver, the Frobenius norm (0.5 * ||X - WH||_Fro^2) can be changed into another beta-divergence loss, by changing the beta_loss parameter.  The objective function is minimized with an alternating minimization of W and H.  Read more in the :ref:`User Guide <NMF>`.",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "name": "n_components",
@@ -2074,7 +2090,7 @@
           "semantic_types": [
             "init"
           ],
-          "default": "init__str",
+          "default": "init__None",
           "description": "Method used to initialize the procedure. Default: None. Valid options:  - None: 'nndsvd' if n_components <= min(n_samples, n_features),     otherwise random.  - 'random': non-negative random matrices, scaled with:     sqrt(X.mean() / n_components)  - 'nndsvd': Nonnegative Double Singular Value Decomposition (NNDSVD)     initialization (better for sparseness)  - 'nndsvda': NNDSVD with zeros filled with the average of X     (better when sparsity is not desired)  - 'nndsvdar': NNDSVD with zeros filled with small random values     (generally faster, less accurate alternative to NNDSVDa     for when sparsity is not desired)  - 'custom': use custom matrices W and H"
         },
         "hyperparams": [
@@ -2093,8 +2109,7 @@
                 "custom",
                 "warn"
               ],
-              "_structural_type": "str",
-              "default": "warn"
+              "_structural_type": "str"
             }
           },
           {
@@ -2104,7 +2119,8 @@
               "semantic_types": [
                 "init"
               ],
-              "_structural_type": "None"
+              "_structural_type": "None",
+              "default": "None"
             }
           }
         ]
@@ -2133,7 +2149,7 @@
             "beta_loss"
           ],
           "default": "beta_loss__str",
-          "description": "Beta divergence to be minimized, measuring the distance between X and the dot product WH. Note that values different from 'frobenius' (or 2) and 'kullback-leibler' (or 1) lead to significantly slower fits. Note that for beta_loss <= 0 (or 'itakura-saito'), the input matrix X cannot contain zeros. Used only in 'mu' solver.  .. versionadded:: 0.19"
+          "description": "String must be in {'frobenius', 'kullback-leibler', 'itakura-saito'}. Beta divergence to be minimized, measuring the distance between X and the dot product WH. Note that values different from 'frobenius' (or 2) and 'kullback-leibler' (or 1) lead to significantly slower fits. Note that for beta_loss <= 0 (or 'itakura-saito'), the input matrix X cannot contain zeros. Used only in 'mu' solver.  .. versionadded:: 0.19"
         },
         "hyperparams": [
           {
@@ -2196,7 +2212,7 @@
             "random_state"
           ],
           "default": "random_state__None",
-          "description": "Used for initialisation (when ``init`` == 'nndsvdar' or 'random'), and in Coordinate Descent. Pass an int for reproducible results across multiple function calls. See :term:`Glossary <random_state>`."
+          "description": "If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by `np.random`."
         },
         "hyperparams": [
           {
@@ -2269,33 +2285,14 @@
           "default": "False",
           "description": "If true, randomize the order of coordinates in the CD solver.  .. versionadded:: 0.17    *shuffle* parameter used in the Coordinate Descent solver."
         }
-      },
-      {
-        "type": "Enumeration",
-        "name": "regularization",
-        "init_args": {
-          "semantic_types": [
-            "regularization"
-          ],
-          "values": [
-            "both",
-            "components",
-            "transformation",
-            null
-          ],
-          "_structural_type": "str",
-          "default": "both",
-          "description": "Select whether the regularization affects the components (H), the transformation (W), both or none of them.  .. versionadded:: 0.24"
-        }
       }
-    ],
-    "Params": []
+    ]
   },
   "PCA": {
     "name": "sklearn.decomposition._pca.PCA",
     "common_name": "PCA",
     "description": "Principal component analysis (PCA). Linear dimensionality reduction using Singular Value Decomposition of the data to project it to a lower dimensional space. The input data is centered but not scaled for each feature before applying the SVD.  It uses the LAPACK implementation of the full SVD or a randomized truncated SVD by the method of Halko et al. 2009, depending on the shape of the input data and the number of components to extract.  It can also use the scipy.sparse.linalg ARPACK implementation of the truncated SVD.  Notice that this class does not support sparse input. See :class:`TruncatedSVD` for an alternative with sparse data.  Read more in the :ref:`User Guide <PCA>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "name": "n_components",
@@ -2402,7 +2399,7 @@
           ],
           "_structural_type": "float",
           "default": 0.0,
-          "description": "Tolerance for singular values computed by svd_solver == 'arpack'. Must be of range [0.0, infinity).  .. versionadded:: 0.18.0"
+          "description": "Tolerance for singular values computed by svd_solver == 'arpack'.  .. versionadded:: 0.18.0"
         }
       },
       {
@@ -2413,7 +2410,7 @@
             "iterated_power"
           ],
           "default": "iterated_power__str",
-          "description": "Number of iterations for the power method computed by svd_solver == 'randomized'. Must be of range [0, infinity).  .. versionadded:: 0.18.0"
+          "description": "Number of iterations for the power method computed by svd_solver == 'randomized'.  .. versionadded:: 0.18.0"
         },
         "hyperparams": [
           {
@@ -2447,7 +2444,7 @@
             "random_state"
           ],
           "default": "random_state__None",
-          "description": "Used when the 'arpack' or 'randomized' solvers are used. Pass an int for reproducible results across multiple function calls. See :term:`Glossary <random_state>`.  .. versionadded:: 0.18.0"
+          "description": "If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by `np.random`. Used when ``svd_solver`` == 'arpack' or 'randomized'.  .. versionadded:: 0.18.0"
         },
         "hyperparams": [
           {
@@ -2473,14 +2470,13 @@
           }
         ]
       }
-    ],
-    "Params": []
+    ]
   },
   "SparseCoder": {
     "name": "sklearn.decomposition._dict_learning.SparseCoder",
     "common_name": "SparseCoder",
     "description": "Sparse coding Finds a sparse representation of data against a fixed, precomputed dictionary.  Each row of the result is the solution to a sparse coding problem. The goal is to find a sparse array `code` such that::      X ~= code * dictionary  Read more in the :ref:`User Guide <SparseCoder>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Enumeration",
@@ -2498,7 +2494,7 @@
           ],
           "_structural_type": "str",
           "default": "omp",
-          "description": "Algorithm used to transform the data:  - `'lars'`: uses the least angle regression method   (`linear_model.lars_path`); - `'lasso_lars'`: uses Lars to compute the Lasso solution; - `'lasso_cd'`: uses the coordinate descent method to compute the   Lasso solution (linear_model.Lasso). `'lasso_lars'` will be faster if   the estimated components are sparse; - `'omp'`: uses orthogonal matching pursuit to estimate the sparse   solution; - `'threshold'`: squashes to zero all coefficients less than alpha from   the projection ``dictionary * X'``."
+          "description": "Algorithm used to transform the data: lars: uses the least angle regression method (linear_model.lars_path) lasso_lars: uses Lars to compute the Lasso solution lasso_cd: uses the coordinate descent method to compute the Lasso solution (linear_model.Lasso). lasso_lars will be faster if the estimated components are sparse. omp: uses orthogonal matching pursuit to estimate the sparse solution threshold: squashes to zero all coefficients less than alpha from the projection ``dictionary * X'``"
         }
       },
       {
@@ -2509,7 +2505,7 @@
             "transform_n_nonzero_coefs"
           ],
           "default": "transform_n_nonzero_coefs__None",
-          "description": "Number of nonzero coefficients to target in each column of the solution. This is only used by `algorithm='lars'` and `algorithm='omp'` and is overridden by `alpha` in the `omp` case. If `None`, then `transform_n_nonzero_coefs=int(n_features / 10)`."
+          "description": "Number of nonzero coefficients to target in each column of the solution. This is only used by `algorithm='lars'` and `algorithm='omp'` and is overridden by `alpha` in the `omp` case."
         },
         "hyperparams": [
           {
@@ -2543,7 +2539,7 @@
             "transform_alpha"
           ],
           "default": "transform_alpha__None",
-          "description": "If `algorithm='lasso_lars'` or `algorithm='lasso_cd'`, `alpha` is the penalty applied to the L1 norm. If `algorithm='threshold'`, `alpha` is the absolute value of the threshold below which coefficients will be squashed to zero. If `algorithm='omp'`, `alpha` is the tolerance parameter: the value of the reconstruction error targeted. In this case, it overrides `n_nonzero_coefs`. If `None`, default to 1."
+          "description": "If `algorithm='lasso_lars'` or `algorithm='lasso_cd'`, `alpha` is the penalty applied to the L1 norm. If `algorithm='threshold'`, `alpha` is the absolute value of the threshold below which coefficients will be squashed to zero. If `algorithm='omp'`, `alpha` is the tolerance parameter: the value of the reconstruction error targeted. In this case, it overrides `n_nonzero_coefs`."
         },
         "hyperparams": [
           {
@@ -2639,14 +2635,13 @@
           "description": "Maximum number of iterations to perform if `algorithm='lasso_cd'` or `lasso_lars`.  .. versionadded:: 0.22"
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "SparsePCA": {
     "name": "sklearn.decomposition._sparse_pca.SparsePCA",
     "common_name": "SparsePCA",
-    "description": "Sparse Principal Components Analysis (SparsePCA). Finds the set of sparse components that can optimally reconstruct the data.  The amount of sparseness is controllable by the coefficient of the L1 penalty, given by the parameter alpha.  Read more in the :ref:`User Guide <SparsePCA>`.",
-    "sklearn_version": "0.24.0",
+    "description": "Sparse Principal Components Analysis (SparsePCA) Finds the set of sparse components that can optimally reconstruct the data.  The amount of sparseness is controllable by the coefficient of the L1 penalty, given by the parameter alpha.  Read more in the :ref:`User Guide <SparsePCA>`.",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "name": "n_components",
@@ -2792,6 +2787,16 @@
         },
         "hyperparams": [
           {
+            "name": "U_init__ndarray",
+            "type": "Hyperparameter",
+            "init_args": {
+              "_structural_type": "ndarray",
+              "semantic_types": [
+                "U_init"
+              ]
+            }
+          },
+          {
             "type": "Constant",
             "name": "U_init__None",
             "init_args": {
@@ -2816,6 +2821,16 @@
         },
         "hyperparams": [
           {
+            "name": "V_init__ndarray",
+            "type": "Hyperparameter",
+            "init_args": {
+              "_structural_type": "ndarray",
+              "semantic_types": [
+                "V_init"
+              ]
+            }
+          },
+          {
             "type": "Constant",
             "name": "V_init__None",
             "init_args": {
@@ -2829,38 +2844,16 @@
         ]
       },
       {
+        "type": "Hyperparameter",
         "name": "verbose",
-        "type": "Union",
         "init_args": {
           "semantic_types": [
             "verbose"
           ],
-          "default": "verbose__int",
+          "_structural_type": "int",
+          "default": "False",
           "description": "Controls the verbosity; the higher, the more messages. Defaults to 0."
-        },
-        "hyperparams": [
-          {
-            "type": "Hyperparameter",
-            "name": "verbose__int",
-            "init_args": {
-              "semantic_types": [
-                "verbose"
-              ],
-              "_structural_type": "int",
-              "default": "False"
-            }
-          },
-          {
-            "type": "Hyperparameter",
-            "name": "verbose__bool",
-            "init_args": {
-              "semantic_types": [
-                "verbose"
-              ],
-              "_structural_type": "bool"
-            }
-          }
-        ]
+        }
       },
       {
         "name": "random_state",
@@ -2870,7 +2863,7 @@
             "random_state"
           ],
           "default": "random_state__None",
-          "description": "Used during dictionary learning. Pass an int for reproducible results across multiple function calls. See :term:`Glossary <random_state>`."
+          "description": "If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by `np.random`."
         },
         "hyperparams": [
           {
@@ -2895,15 +2888,26 @@
             }
           }
         ]
+      },
+      {
+        "type": "Hyperparameter",
+        "name": "normalize_components",
+        "init_args": {
+          "semantic_types": [
+            "normalize_components"
+          ],
+          "_structural_type": "str",
+          "default": "deprecated",
+          "description": "This parameter does not have any effect. The components are always normalized.  .. versionadded:: 0.20  .. deprecated:: 0.22    ``normalize_components`` is deprecated in 0.22 and will be removed    in 0.24."
+        }
       }
-    ],
-    "Params": []
+    ]
   },
   "TruncatedSVD": {
     "name": "sklearn.decomposition._truncated_svd.TruncatedSVD",
     "common_name": "TruncatedSVD",
-    "description": "Dimensionality reduction using truncated SVD (aka LSA). This transformer performs linear dimensionality reduction by means of truncated singular value decomposition (SVD). Contrary to PCA, this estimator does not center the data before computing the singular value decomposition. This means it can work with sparse matrices efficiently.  In particular, truncated SVD works on term count/tf-idf matrices as returned by the vectorizers in :mod:`sklearn.feature_extraction.text`. In that context, it is known as latent semantic analysis (LSA).  This estimator supports two algorithms: a fast randomized SVD solver, and a \"naive\" algorithm that uses ARPACK as an eigensolver on `X * X.T` or `X.T * X`, whichever is more efficient.  Read more in the :ref:`User Guide <LSA>`.",
-    "sklearn_version": "0.24.0",
+    "description": "Dimensionality reduction using truncated SVD (aka LSA). This transformer performs linear dimensionality reduction by means of truncated singular value decomposition (SVD). Contrary to PCA, this estimator does not center the data before computing the singular value decomposition. This means it can work with scipy.sparse matrices efficiently.  In particular, truncated SVD works on term count/tf-idf matrices as returned by the vectorizers in sklearn.feature_extraction.text. In that context, it is known as latent semantic analysis (LSA).  This estimator supports two algorithms: a fast randomized SVD solver, and a \"naive\" algorithm that uses ARPACK as an eigensolver on (X * X.T) or (X.T * X), whichever is more efficient.  Read more in the :ref:`User Guide <LSA>`.",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -2942,7 +2946,7 @@
           ],
           "_structural_type": "int",
           "default": 5,
-          "description": "Number of iterations for randomized SVD solver. Not used by ARPACK. The default is larger than the default in :func:`~sklearn.utils.extmath.randomized_svd` to handle sparse matrices that may have large slowly decaying spectrum."
+          "description": "Number of iterations for randomized SVD solver. Not used by ARPACK. The default is larger than the default in `~sklearn.utils.extmath.randomized_svd` to handle sparse matrices that may have large slowly decaying spectrum."
         }
       },
       {
@@ -2953,7 +2957,7 @@
             "random_state"
           ],
           "default": "random_state__None",
-          "description": "Used during randomized svd. Pass an int for reproducible results across multiple function calls. See :term:`Glossary <random_state>`."
+          "description": "If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by `np.random`."
         },
         "hyperparams": [
           {
@@ -2991,7 +2995,6 @@
           "description": "Tolerance for ARPACK. 0 means machine precision. Ignored by randomized SVD solver."
         }
       }
-    ],
-    "Params": []
+    ]
   }
 }

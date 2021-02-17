@@ -65,8 +65,7 @@
           "description": "Whether the deflation be done on a copy. Let the default value to True unless you don't care about side effects"
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "PLSCanonical": {
     "name": "sklearn.cross_decomposition._pls.PLSCanonical",
@@ -150,8 +149,7 @@
           "description": "Whether the deflation should be done on a copy. Let the default value to True unless you don't care about side effect"
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "PLSRegression": {
     "name": "sklearn.cross_decomposition._pls.PLSRegression",
@@ -219,8 +217,7 @@
           "description": "Whether the deflation should be done on a copy. Let the default value to True unless you don't care about side effect"
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "PLSSVD": {
     "name": "sklearn.cross_decomposition._pls.PLSSVD",
@@ -264,7 +261,6 @@
           "description": "Whether to copy X and Y, or perform in-place computations."
         }
       }
-    ],
-    "Params": []
+    ]
   }
 }

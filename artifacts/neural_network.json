@@ -3,7 +3,7 @@
     "name": "sklearn.neural_network._rbm.BernoulliRBM",
     "common_name": "BernoulliRBM",
     "description": "Bernoulli Restricted Boltzmann Machine (RBM). A Restricted Boltzmann Machine with binary visible units and binary hidden units. Parameters are estimated using Stochastic Maximum Likelihood (SML), also known as Persistent Contrastive Divergence (PCD) [2].  The time complexity of this implementation is ``O(d ** 2)`` assuming d ~ n_features ~ n_components.  Read more in the :ref:`User Guide <rbm>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -73,7 +73,7 @@
             "random_state"
           ],
           "default": "random_state__None",
-          "description": "Determines random number generation for:  - Gibbs sampling from visible and hidden layers.  - Initializing components, sampling from layers during fit.  - Corrupting the data when scoring samples.  Pass an int for reproducible results across multiple function calls. See :term:`Glossary <random_state>`."
+          "description": "A random number generator instance to define the state of the random permutations generator. If an integer is given, it fixes the seed. Defaults to the global numpy random number generator."
         },
         "hyperparams": [
           {
@@ -99,14 +99,13 @@
           }
         ]
       }
-    ],
-    "Params": []
+    ]
   },
   "MLPClassifier": {
     "name": "sklearn.neural_network._multilayer_perceptron.MLPClassifier",
     "common_name": "MLPClassifier",
     "description": "Multi-layer Perceptron classifier. This model optimizes the log-loss function using LBFGS or stochastic gradient descent.  .. versionadded:: 0.18",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -274,7 +273,7 @@
             "random_state"
           ],
           "default": "random_state__None",
-          "description": "Determines random number generation for weights and bias initialization, train-test split if early stopping is used, and batch sampling when solver='sgd' or 'adam'. Pass an int for reproducible results across multiple function calls. See :term:`Glossary <random_state>`."
+          "description": "If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by `np.random`."
         },
         "hyperparams": [
           {
@@ -444,14 +443,13 @@
           "description": "Only used when solver='lbfgs'. Maximum number of loss function calls. The solver iterates until convergence (determined by 'tol'), number of iterations reaches max_iter, or this number of loss function calls. Note that number of loss function calls will be greater than or equal to the number of iterations for the `MLPClassifier`.  .. versionadded:: 0.22"
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "MLPRegressor": {
     "name": "sklearn.neural_network._multilayer_perceptron.MLPRegressor",
     "common_name": "MLPRegressor",
     "description": "Multi-layer Perceptron regressor. This model optimizes the squared-loss using LBFGS or stochastic gradient descent.  .. versionadded:: 0.18",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -619,7 +617,7 @@
             "random_state"
           ],
           "default": "random_state__None",
-          "description": "Determines random number generation for weights and bias initialization, train-test split if early stopping is used, and batch sampling when solver='sgd' or 'adam'. Pass an int for reproducible results across multiple function calls. See :term:`Glossary <random_state>`."
+          "description": "If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by `np.random`."
         },
         "hyperparams": [
           {
@@ -789,7 +787,6 @@
           "description": "Only used when solver='lbfgs'. Maximum number of function calls. The solver iterates until convergence (determined by 'tol'), number of iterations reaches max_iter, or this number of function calls. Note that number of function calls will be greater than or equal to the number of iterations for the MLPRegressor.  .. versionadded:: 0.22"
         }
       }
-    ],
-    "Params": []
+    ]
   }
 }

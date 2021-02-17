@@ -3,7 +3,7 @@
     "name": "sklearn.neighbors._classification.KNeighborsClassifier",
     "common_name": "KNeighborsClassifier",
     "description": "Classifier implementing the k-nearest neighbors vote. Read more in the :ref:`User Guide <classification>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -105,7 +105,7 @@
             "metric"
           ],
           "default": "metric__str",
-          "description": "the distance metric to use for the tree.  The default metric is minkowski, and with p=2 is equivalent to the standard Euclidean metric. See the documentation of :class:`DistanceMetric` for a list of available metrics. If metric is \"precomputed\", X is assumed to be a distance matrix and must be square during fit. X may be a :term:`sparse graph`, in which case only \"nonzero\" elements may be considered neighbors."
+          "description": "the distance metric to use for the tree.  The default metric is minkowski, and with p=2 is equivalent to the standard Euclidean metric. See the documentation of the DistanceMetric class for a list of available metrics. If metric is \"precomputed\", X is assumed to be a distance matrix and must be square during fit. X may be a :term:`Glossary <sparse graph>`, in which case only \"nonzero\" elements may be considered neighbors."
         },
         "hyperparams": [
           {
@@ -199,14 +199,13 @@
           }
         ]
       }
-    ],
-    "Params": []
+    ]
   },
   "KNeighborsRegressor": {
     "name": "sklearn.neighbors._regression.KNeighborsRegressor",
     "common_name": "KNeighborsRegressor",
     "description": "Regression based on k-nearest neighbors. The target is predicted by local interpolation of the targets associated of the nearest neighbors in the training set.  Read more in the :ref:`User Guide <regression>`.  .. versionadded:: 0.9",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -308,7 +307,7 @@
             "metric"
           ],
           "default": "metric__str",
-          "description": "the distance metric to use for the tree.  The default metric is minkowski, and with p=2 is equivalent to the standard Euclidean metric. See the documentation of :class:`DistanceMetric` for a list of available metrics. If metric is \"precomputed\", X is assumed to be a distance matrix and must be square during fit. X may be a :term:`sparse graph`, in which case only \"nonzero\" elements may be considered neighbors."
+          "description": "the distance metric to use for the tree.  The default metric is minkowski, and with p=2 is equivalent to the standard Euclidean metric. See the documentation of the DistanceMetric class for a list of available metrics. If metric is \"precomputed\", X is assumed to be a distance matrix and must be square during fit. X may be a :term:`Glossary <sparse graph>`, in which case only \"nonzero\" elements may be considered neighbors."
         },
         "hyperparams": [
           {
@@ -402,14 +401,13 @@
           }
         ]
       }
-    ],
-    "Params": []
+    ]
   },
   "KNeighborsTransformer": {
     "name": "sklearn.neighbors._graph.KNeighborsTransformer",
     "common_name": "KNeighborsTransformer",
     "description": "Transform X into a (weighted) graph of k nearest neighbors The transformed data is a sparse graph as returned by kneighbors_graph.  Read more in the :ref:`User Guide <neighbors_transformer>`.  .. versionadded:: 0.22",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Enumeration",
@@ -561,14 +559,13 @@
           "description": "The number of parallel jobs to run for neighbors search. If ``-1``, then the number of jobs is set to the number of CPU cores."
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "KernelDensity": {
     "name": "sklearn.neighbors._kde.KernelDensity",
     "common_name": "KernelDensity",
     "description": "Kernel Density Estimation. Read more in the :ref:`User Guide <kernel_density>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -596,7 +593,7 @@
           ],
           "_structural_type": "str",
           "default": "auto",
-          "description": "The tree algorithm to use."
+          "description": "The tree algorithm to use.  Valid options are ['kd_tree'|'ball_tree'|'auto'].  Default is 'auto'."
         }
       },
       {
@@ -616,7 +613,7 @@
           ],
           "_structural_type": "str",
           "default": "gaussian",
-          "description": "The kernel to use."
+          "description": "The kernel to use.  Valid kernels are ['gaussian'|'tophat'|'epanechnikov'|'exponential'|'linear'|'cosine'] Default is 'gaussian'."
         }
       },
       {
@@ -640,7 +637,7 @@
           ],
           "_structural_type": "float",
           "default": 0,
-          "description": "The desired absolute tolerance of the result.  A larger tolerance will generally lead to faster execution."
+          "description": "The desired absolute tolerance of the result.  A larger tolerance will generally lead to faster execution. Default is 0."
         }
       },
       {
@@ -652,7 +649,7 @@
           ],
           "_structural_type": "float",
           "default": 0,
-          "description": "The desired relative tolerance of the result.  A larger tolerance will generally lead to faster execution."
+          "description": "The desired relative tolerance of the result.  A larger tolerance will generally lead to faster execution.  Default is 1E-8."
         }
       },
       {
@@ -676,7 +673,7 @@
           ],
           "_structural_type": "int",
           "default": 40,
-          "description": "Specify the leaf size of the underlying tree.  See :class:`BallTree` or :class:`KDTree` for details."
+          "description": "Specify the leaf size of the underlying tree.  See :class:`BallTree` or :class:`KDTree` for details.  Default is 40."
         }
       },
       {
@@ -713,14 +710,13 @@
           }
         ]
       }
-    ],
-    "Params": []
+    ]
   },
   "LocalOutlierFactor": {
     "name": "sklearn.neighbors._lof.LocalOutlierFactor",
     "common_name": "LocalOutlierFactor",
     "description": "Unsupervised Outlier Detection using Local Outlier Factor (LOF) The anomaly score of each sample is called Local Outlier Factor. It measures the local deviation of density of a given sample with respect to its neighbors. It is local in that the anomaly score depends on how isolated the object is with respect to the surrounding neighborhood. More precisely, locality is given by k-nearest neighbors, whose distance is used to estimate the local density. By comparing the local density of a sample to the local densities of its neighbors, one can identify samples that have a substantially lower density than their neighbors. These are considered outliers.  .. versionadded:: 0.19",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -865,7 +861,7 @@
           ],
           "_structural_type": "bool",
           "default": "False",
-          "description": "By default, LocalOutlierFactor is only meant to be used for outlier detection (novelty=False). Set novelty to True if you want to use LocalOutlierFactor for novelty detection. In this case be aware that that you should only use predict, decision_function and score_samples on new unseen data and not on the training set.  .. versionadded:: 0.20"
+          "description": "By default, LocalOutlierFactor is only meant to be used for outlier detection (novelty=False). Set novelty to True if you want to use LocalOutlierFactor for novelty detection. In this case be aware that that you should only use predict, decision_function and score_samples on new unseen data and not on the training set."
         }
       },
       {
@@ -902,14 +898,13 @@
           }
         ]
       }
-    ],
-    "Params": []
+    ]
   },
   "NearestCentroid": {
     "name": "sklearn.neighbors._nearest_centroid.NearestCentroid",
     "common_name": "NearestCentroid",
     "description": "Nearest centroid classifier. Each class is represented by its centroid, with test samples classified to the class with the nearest centroid.  Read more in the :ref:`User Guide <nearest_centroid_classifier>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "name": "metric",
@@ -919,7 +914,7 @@
             "metric"
           ],
           "default": "metric__str",
-          "description": "The metric to use when calculating distance between instances in a feature array. If metric is a string or callable, it must be one of the options allowed by metrics.pairwise.pairwise_distances for its metric parameter. The centroids for the samples corresponding to each class is the point from which the sum of the distances (according to the metric) of all samples that belong to that particular class are minimized. If the \"manhattan\" metric is provided, this centroid is the median and for all other metrics, the centroid is now set to be the mean.  .. versionchanged:: 0.19     ``metric='precomputed'`` was deprecated and now raises an error"
+          "description": "The metric to use when calculating distance between instances in a feature array. If metric is a string or callable, it must be one of the options allowed by metrics.pairwise.pairwise_distances for its metric parameter. The centroids for the samples corresponding to each class is the point from which the sum of the distances (according to the metric) of all samples that belong to that particular class are minimized. If the \"manhattan\" metric is provided, this centroid is the median and for all other metrics, the centroid is now set to be the mean."
         },
         "hyperparams": [
           {
@@ -979,14 +974,13 @@
           }
         ]
       }
-    ],
-    "Params": []
+    ]
   },
   "NearestNeighbors": {
     "name": "sklearn.neighbors._unsupervised.NearestNeighbors",
     "common_name": "NearestNeighbors",
     "description": "Unsupervised learner for implementing neighbor searches. Read more in the :ref:`User Guide <unsupervised_neighbors>`.  .. versionadded:: 0.9",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -1050,7 +1044,7 @@
             "metric"
           ],
           "default": "metric__str",
-          "description": "the distance metric to use for the tree.  The default metric is minkowski, and with p=2 is equivalent to the standard Euclidean metric. See the documentation of :class:`DistanceMetric` for a list of available metrics. If metric is \"precomputed\", X is assumed to be a distance matrix and must be square during fit. X may be a :term:`sparse graph`, in which case only \"nonzero\" elements may be considered neighbors."
+          "description": "the distance metric to use for the tree.  The default metric is minkowski, and with p=2 is equivalent to the standard Euclidean metric. See the documentation of the DistanceMetric class for a list of available metrics. If metric is \"precomputed\", X is assumed to be a distance matrix and must be square during fit. X may be a :term:`Glossary <sparse graph>`, in which case only \"nonzero\" elements may be considered neighbors."
         },
         "hyperparams": [
           {
@@ -1156,14 +1150,13 @@
           }
         ]
       }
-    ],
-    "Params": []
+    ]
   },
   "NeighborhoodComponentsAnalysis": {
     "name": "sklearn.neighbors._nca.NeighborhoodComponentsAnalysis",
     "common_name": "NeighborhoodComponentsAnalysis",
     "description": "Neighborhood Components Analysis Neighborhood Component Analysis (NCA) is a machine learning algorithm for metric learning. It learns a linear transformation in a supervised fashion to improve the classification accuracy of a stochastic nearest neighbors rule in the transformed space.  Read more in the :ref:`User Guide <nca>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "name": "n_components",
@@ -1308,7 +1301,7 @@
             "random_state"
           ],
           "default": "random_state__None",
-          "description": "A pseudo random number generator object or a seed for it if int. If ``init='random'``, ``random_state`` is used to initialize the random transformation. If ``init='pca'``, ``random_state`` is passed as an argument to PCA when initializing the transformation. Pass an int for reproducible results across multiple function calls. See :term: `Glossary <random_state>`."
+          "description": "A pseudo random number generator object or a seed for it if int. If ``init='random'``, ``random_state`` is used to initialize the random transformation. If ``init='pca'``, ``random_state`` is passed as an argument to PCA when initializing the transformation."
         },
         "hyperparams": [
           {
@@ -1334,14 +1327,13 @@
           }
         ]
       }
-    ],
-    "Params": []
+    ]
   },
   "RadiusNeighborsClassifier": {
     "name": "sklearn.neighbors._classification.RadiusNeighborsClassifier",
     "common_name": "RadiusNeighborsClassifier",
     "description": "Classifier implementing a vote among neighbors within a given radius Read more in the :ref:`User Guide <classification>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -1443,7 +1435,7 @@
             "metric"
           ],
           "default": "metric__str",
-          "description": "the distance metric to use for the tree.  The default metric is minkowski, and with p=2 is equivalent to the standard Euclidean metric. See the documentation of :class:`DistanceMetric` for a list of available metrics. If metric is \"precomputed\", X is assumed to be a distance matrix and must be square during fit. X may be a :term:`sparse graph`, in which case only \"nonzero\" elements may be considered neighbors."
+          "description": "the distance metric to use for the tree.  The default metric is minkowski, and with p=2 is equivalent to the standard Euclidean metric. See the documentation of the DistanceMetric class for a list of available metrics. If metric is \"precomputed\", X is assumed to be a distance matrix and must be square during fit. X may be a :term:`Glossary <sparse graph>`, in which case only \"nonzero\" elements may be considered neighbors."
         },
         "hyperparams": [
           {
@@ -1581,14 +1573,13 @@
           }
         ]
       }
-    ],
-    "Params": []
+    ]
   },
   "RadiusNeighborsRegressor": {
     "name": "sklearn.neighbors._regression.RadiusNeighborsRegressor",
     "common_name": "RadiusNeighborsRegressor",
     "description": "Regression based on neighbors within a fixed radius. The target is predicted by local interpolation of the targets associated of the nearest neighbors in the training set.  Read more in the :ref:`User Guide <regression>`.  .. versionadded:: 0.9",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -1690,7 +1681,7 @@
             "metric"
           ],
           "default": "metric__str",
-          "description": "the distance metric to use for the tree.  The default metric is minkowski, and with p=2 is equivalent to the standard Euclidean metric. See the documentation of :class:`DistanceMetric` for a list of available metrics. If metric is \"precomputed\", X is assumed to be a distance matrix and must be square during fit. X may be a :term:`sparse graph`, in which case only \"nonzero\" elements may be considered neighbors."
+          "description": "the distance metric to use for the tree.  The default metric is minkowski, and with p=2 is equivalent to the standard Euclidean metric. See the documentation of the DistanceMetric class for a list of available metrics. If metric is \"precomputed\", X is assumed to be a distance matrix and must be square during fit. X may be a :term:`Glossary <sparse graph>`, in which case only \"nonzero\" elements may be considered neighbors."
         },
         "hyperparams": [
           {
@@ -1784,14 +1775,13 @@
           }
         ]
       }
-    ],
-    "Params": []
+    ]
   },
   "RadiusNeighborsTransformer": {
     "name": "sklearn.neighbors._graph.RadiusNeighborsTransformer",
     "common_name": "RadiusNeighborsTransformer",
     "description": "Transform X into a (weighted) graph of neighbors nearer than a radius The transformed data is a sparse graph as returned by radius_neighbors_graph.  Read more in the :ref:`User Guide <neighbors_transformer>`.  .. versionadded:: 0.22",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Enumeration",
@@ -1965,7 +1955,6 @@
           }
         ]
       }
-    ],
-    "Params": []
+    ]
   }
 }

@@ -3,7 +3,7 @@
     "name": "sklearn.dummy.DummyClassifier",
     "common_name": "DummyClassifier",
     "description": "DummyClassifier is a classifier that makes predictions using simple rules. This classifier is useful as a simple baseline to compare with other (real) classifiers. Do not use it for real problems.  Read more in the :ref:`User Guide <dummy_estimators>`.  .. versionadded:: 0.13",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Enumeration",
@@ -17,11 +17,12 @@
             "most_frequent",
             "prior",
             "uniform",
-            "constant"
+            "constant",
+            "warn"
           ],
           "_structural_type": "str",
-          "default": "prior",
-          "description": "Strategy to use to generate predictions.  * \"stratified\": generates predictions by respecting the training   set's class distribution. * \"most_frequent\": always predicts the most frequent label in the   training set. * \"prior\": always predicts the class that maximizes the class prior   (like \"most_frequent\") and ``predict_proba`` returns the class prior. * \"uniform\": generates predictions uniformly at random. * \"constant\": always predicts a constant label that is provided by   the user. This is useful for metrics that evaluate a non-majority   class    .. versionchanged:: 0.24      The default value of `strategy` has changed to \"prior\" in version      0.24."
+          "default": "warn",
+          "description": "Strategy to use to generate predictions.  * \"stratified\": generates predictions by respecting the training   set's class distribution. * \"most_frequent\": always predicts the most frequent label in the   training set. * \"prior\": always predicts the class that maximizes the class prior   (like \"most_frequent\") and ``predict_proba`` returns the class prior. * \"uniform\": generates predictions uniformly at random. * \"constant\": always predicts a constant label that is provided by   the user. This is useful for metrics that evaluate a non-majority   class    .. versionchanged:: 0.22      The default value of `strategy` will change to \"prior\" in version      0.24. Starting from version 0.22, a warning will be raised if      `strategy` is not explicitly set.    .. versionadded:: 0.17      Dummy Classifier now supports prior fitting strategy using      parameter *prior*."
         }
       },
       {
@@ -32,7 +33,7 @@
             "random_state"
           ],
           "default": "random_state__None",
-          "description": "Controls the randomness to generate the predictions when ``strategy='stratified'`` or ``strategy='uniform'``. Pass an int for reproducible output across multiple function calls. See :term:`Glossary <random_state>`."
+          "description": "If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by `np.random`."
         },
         "hyperparams": [
           {
@@ -112,14 +113,13 @@
           }
         ]
       }
-    ],
-    "Params": []
+    ]
   },
   "DummyRegressor": {
     "name": "sklearn.dummy.DummyRegressor",
     "common_name": "DummyRegressor",
     "description": "DummyRegressor is a regressor that makes predictions using simple rules. This regressor is useful as a simple baseline to compare with other (real) regressors. Do not use it for real problems.  Read more in the :ref:`User Guide <dummy_estimators>`.  .. versionadded:: 0.13",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Enumeration",
@@ -227,7 +227,6 @@
           }
         ]
       }
-    ],
-    "Params": []
+    ]
   }
 }

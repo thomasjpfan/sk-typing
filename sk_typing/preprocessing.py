@@ -34,7 +34,6 @@ class KBinsDiscretizer:
         n_bins: Union[int, ArrayLike] = 5,
         encode: Literal["onehot", "onehot-dense", "ordinal"] = "onehot",
         strategy: Literal["Uniform", "quantile", "kmeans"] = "quantile",
-        dtype: Optional[DType] = None,
     ):
         ...
 
@@ -67,7 +66,9 @@ class MaxAbsScaler:
 
 class MinMaxScaler:
     def __init__(
-        self, feature_range: tuple = (0, 1), copy: bool = True, clip: bool = False
+        self,
+        feature_range: tuple = (0, 1),
+        copy: bool = True,
     ):
         ...
 
@@ -101,8 +102,6 @@ class OrdinalEncoder:
         self,
         categories: Union[Literal["auto"], ArrayLike] = "auto",
         dtype: DType = np.float64,
-        handle_unknown: Literal["error", "ignore"] = "error",
-        unknown_value: Union[int, float, None] = None,
     ):
         ...
 
@@ -148,7 +147,6 @@ class RobustScaler:
         with_scaling: bool = True,
         quantile_range: tuple = (25.0, 75.0),
         copy: bool = True,
-        unit_variance: bool = False,
     ):
         ...
 

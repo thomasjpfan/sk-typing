@@ -142,6 +142,7 @@ class GradientBoostingClassifier:
         verbose: int = 0,
         max_leaf_nodes: Optional[None] = None,
         warm_start: bool = False,
+        presort: Union[bool, Literal["deprecated"]] = "deprecated",
         validation_fraction: float = 0.1,
         n_iter_no_change: Optional[int] = None,
         tol: float = 0.0001,
@@ -171,6 +172,7 @@ class GradientBoostingRegressor:
         verbose: int = 0,
         max_leaf_nodes: Optional[int] = None,
         warm_start: bool = False,
+        presort: Union[bool, Literal["deprecated"]] = "deprecated",
         validation_fraction: float = 0.1,
         n_iter_no_change: Optional[int] = None,
         tol: float = 0.0001,
@@ -192,13 +194,10 @@ class HistGradientBoostingClassifier:
         min_samples_leaf: int = 20,
         l2_regularization: float = 0.0,
         max_bins: int = 255,
-        categorical_features: Optional[ArrayLike] = None,
-        monotonic_cst: Optional[ArrayLike] = None,
         warm_start: bool = False,
-        early_stopping: Union[Literal["auto"], bool] = "auto",
-        scoring: Union[str, Callable, None] = "loss",
+        scoring: Union[str, Callable, None] = None,
         validation_fraction: Union[int, float, None] = 0.1,
-        n_iter_no_change: int = 10,
+        n_iter_no_change: Optional[int] = None,
         tol: Optional[float] = 1e-07,
         verbose: int = 0,
         random_state: RandomStateType = None,
@@ -209,9 +208,7 @@ class HistGradientBoostingClassifier:
 class HistGradientBoostingRegressor:
     def __init__(
         self,
-        loss: Literal[
-            "least_squares", "least_absolute_deviation", "poisson"
-        ] = "least_squares",
+        loss: Literal["least_squares", "least_absolute_deviation"] = "least_squares",
         learning_rate: float = 0.1,
         max_iter: int = 100,
         max_leaf_nodes: Optional[int] = 31,
@@ -219,13 +216,10 @@ class HistGradientBoostingRegressor:
         min_samples_leaf: int = 20,
         l2_regularization: float = 0.0,
         max_bins: int = 255,
-        categorical_features: Optional[ArrayLike] = None,
-        monotonic_cst: Optional[ArrayLike] = None,
         warm_start: bool = False,
-        early_stopping: Union[Literal["auto"], bool] = "auto",
-        scoring: Union[str, Callable, None] = "loss",
+        scoring: Union[str, Callable, None] = None,
         validation_fraction: Union[int, float, None] = 0.1,
-        n_iter_no_change: int = 10,
+        n_iter_no_change: Optional[int] = None,
         tol: Optional[float] = 1e-07,
         verbose: int = 0,
         random_state: RandomStateType = None,
@@ -242,6 +236,7 @@ class IsolationForest:
         max_features: Union[int, float] = 1.0,
         bootstrap: bool = False,
         n_jobs: Optional[int] = None,
+        behaviour: str = "deprecated",
         random_state: RandomStateType = None,
         verbose: int = 0,
         warm_start: bool = False,
@@ -359,7 +354,6 @@ class VotingClassifier:
         weights: Optional[ArrayLike] = None,
         n_jobs: Optional[int] = None,
         flatten_transform: bool = True,
-        verbose: bool = False,
     ):
         ...
 
@@ -370,6 +364,5 @@ class VotingRegressor:
         estimators: list,
         weights: Optional[ArrayLike] = None,
         n_jobs: Optional[int] = None,
-        verbose: bool = False,
     ):
         ...

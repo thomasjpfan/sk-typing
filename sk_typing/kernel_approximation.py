@@ -20,7 +20,6 @@ class Nystroem:
         kernel_params: Optional[dict] = None,
         n_components: int = 100,
         random_state: RandomStateType = None,
-        n_jobs: Optional[int] = None,
     ):
         ...
 

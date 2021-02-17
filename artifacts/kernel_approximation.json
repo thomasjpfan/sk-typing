@@ -3,7 +3,7 @@
     "name": "sklearn.kernel_approximation.AdditiveChi2Sampler",
     "common_name": "AdditiveChi2Sampler",
     "description": "Approximate feature map for additive chi2 kernel. Uses sampling the fourier transform of the kernel characteristic at regular intervals.  Since the kernel that is to be approximated is additive, the components of the input vectors can be treated separately.  Each entry in the original space is transformed into 2*sample_steps+1 features, where sample_steps is a parameter of the method. Typical values of sample_steps include 1, 2 and 3.  Optimal choices for the sampling interval for certain data ranges can be computed (see the reference). The default values should be reasonable.  Read more in the :ref:`User Guide <additive_chi_kernel_approx>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -51,14 +51,13 @@
           }
         ]
       }
-    ],
-    "Params": []
+    ]
   },
   "Nystroem": {
     "name": "sklearn.kernel_approximation.Nystroem",
     "common_name": "Nystroem",
     "description": "Approximate a kernel map using a subset of the training data. Constructs an approximate feature map for an arbitrary kernel using a subset of the data as basis.  Read more in the :ref:`User Guide <nystroem_kernel_approx>`.  .. versionadded:: 0.13",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "name": "kernel",
@@ -250,132 +249,7 @@
             "random_state"
           ],
           "default": "random_state__None",
-          "description": "Pseudo-random number generator to control the uniform sampling without replacement of n_components of the training data to construct the basis kernel. Pass an int for reproducible output across multiple function calls. See :term:`Glossary <random_state>`."
-        },
-        "hyperparams": [
-          {
-            "type": "Hyperparameter",
-            "name": "random_state__int",
-            "init_args": {
-              "semantic_types": [
-                "random_state"
-              ],
-              "_structural_type": "int"
-            }
-          },
-          {
-            "type": "Constant",
-            "name": "random_state__None",
-            "init_args": {
-              "semantic_types": [
-                "random_state"
-              ],
-              "_structural_type": "None",
-              "default": "None"
-            }
-          }
-        ]
-      },
-      {
-        "name": "n_jobs",
-        "type": "Union",
-        "init_args": {
-          "semantic_types": [
-            "n_jobs"
-          ],
-          "default": "n_jobs__None",
-          "description": "The number of jobs to use for the computation. This works by breaking down the kernel matrix into n_jobs even slices and computing them in parallel.  ``None`` means 1 unless in a :obj:`joblib.parallel_backend` context. ``-1`` means using all processors. See :term:`Glossary <n_jobs>` for more details.  .. versionadded:: 0.24"
-        },
-        "hyperparams": [
-          {
-            "type": "Hyperparameter",
-            "name": "n_jobs__int",
-            "init_args": {
-              "semantic_types": [
-                "n_jobs"
-              ],
-              "_structural_type": "int"
-            }
-          },
-          {
-            "type": "Constant",
-            "name": "n_jobs__None",
-            "init_args": {
-              "semantic_types": [
-                "n_jobs"
-              ],
-              "_structural_type": "None",
-              "default": "None"
-            }
-          }
-        ]
-      }
-    ],
-    "Params": []
-  },
-  "PolynomialCountSketch": {
-    "name": "sklearn.kernel_approximation.PolynomialCountSketch",
-    "common_name": "PolynomialCountSketch",
-    "description": "Polynomial kernel approximation via Tensor Sketch. Implements Tensor Sketch, which approximates the feature map of the polynomial kernel::      K(X, Y) = (gamma * <X, Y> + coef0)^degree  by efficiently computing a Count Sketch of the outer product of a vector with itself using Fast Fourier Transforms (FFT). Read more in the :ref:`User Guide <polynomial_kernel_approx>`.  .. versionadded:: 0.24",
-    "sklearn_version": "0.24.0",
-    "Hyperparams": [
-      {
-        "type": "Hyperparameter",
-        "name": "gamma",
-        "init_args": {
-          "semantic_types": [
-            "gamma"
-          ],
-          "_structural_type": "float",
-          "default": 1.0,
-          "description": "Parameter of the polynomial kernel whose feature map will be approximated."
-        }
-      },
-      {
-        "type": "Hyperparameter",
-        "name": "degree",
-        "init_args": {
-          "semantic_types": [
-            "degree"
-          ],
-          "_structural_type": "int",
-          "default": 2,
-          "description": "Degree of the polynomial kernel whose feature map will be approximated."
-        }
-      },
-      {
-        "type": "Hyperparameter",
-        "name": "coef0",
-        "init_args": {
-          "semantic_types": [
-            "coef0"
-          ],
-          "_structural_type": "int",
-          "default": 0,
-          "description": "Constant term of the polynomial kernel whose feature map will be approximated."
-        }
-      },
-      {
-        "type": "Hyperparameter",
-        "name": "n_components",
-        "init_args": {
-          "semantic_types": [
-            "n_components"
-          ],
-          "_structural_type": "int",
-          "default": 100,
-          "description": "Dimensionality of the output feature space. Usually, n_components should be greater than the number of features in input samples in order to achieve good performance. The optimal score / run time balance is typically achieved around n_components = 10 * n_features, but this depends on the specific dataset being used."
-        }
-      },
-      {
-        "name": "random_state",
-        "type": "Union",
-        "init_args": {
-          "semantic_types": [
-            "random_state"
-          ],
-          "default": "random_state__None",
-          "description": "Determines random number generation for indexHash and bitHash initialization. Pass an int for reproducible results across multiple function calls. See :term:`Glossary <random_state>`."
+          "description": "If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by `np.random`."
         },
         "hyperparams": [
           {
@@ -401,14 +275,13 @@
           }
         ]
       }
-    ],
-    "Params": []
+    ]
   },
   "RBFSampler": {
     "name": "sklearn.kernel_approximation.RBFSampler",
     "common_name": "RBFSampler",
     "description": "Approximates feature map of an RBF kernel by Monte Carlo approximation of its Fourier transform. It implements a variant of Random Kitchen Sinks.[1]  Read more in the :ref:`User Guide <rbf_kernel_approx>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -442,7 +315,7 @@
             "random_state"
           ],
           "default": "random_state__None",
-          "description": "Pseudo-random number generator to control the generation of the random weights and random offset when fitting the training data. Pass an int for reproducible output across multiple function calls. See :term:`Glossary <random_state>`."
+          "description": "If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by `np.random`."
         },
         "hyperparams": [
           {
@@ -468,14 +341,13 @@
           }
         ]
       }
-    ],
-    "Params": []
+    ]
   },
   "SkewedChi2Sampler": {
     "name": "sklearn.kernel_approximation.SkewedChi2Sampler",
     "common_name": "SkewedChi2Sampler",
     "description": "Approximates feature map of the \"skewed chi-squared\" kernel by Monte Carlo approximation of its Fourier transform. Read more in the :ref:`User Guide <skewed_chi_kernel_approx>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -509,7 +381,7 @@
             "random_state"
           ],
           "default": "random_state__None",
-          "description": "Pseudo-random number generator to control the generation of the random weights and random offset when fitting the training data. Pass an int for reproducible output across multiple function calls. See :term:`Glossary <random_state>`."
+          "description": "If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by `np.random`."
         },
         "hyperparams": [
           {
@@ -535,7 +407,6 @@
           }
         ]
       }
-    ],
-    "Params": []
+    ]
   }
 }

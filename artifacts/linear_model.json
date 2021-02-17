@@ -3,7 +3,7 @@
     "name": "sklearn.linear_model._bayes.ARDRegression",
     "common_name": "ARDRegression",
     "description": "Bayesian ARD regression. Fit the weights of a regression model, using an ARD prior. The weights of the regression model are assumed to be in Gaussian distributions. Also estimate the parameters lambda (precisions of the distributions of the weights) and alpha (precision of the distribution of the noise). The estimation is done by an iterative procedures (Evidence Maximization)  Read more in the :ref:`User Guide <bayesian_regression>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -122,7 +122,7 @@
           ],
           "_structural_type": "bool",
           "default": "False",
-          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`~sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
+          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
         }
       },
       {
@@ -149,14 +149,13 @@
           "description": "Verbose mode when fitting the model."
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "BayesianRidge": {
     "name": "sklearn.linear_model._bayes.BayesianRidge",
     "common_name": "BayesianRidge",
     "description": "Bayesian ridge regression. Fit a Bayesian ridge model. See the Notes section for details on this implementation and the optimization of the regularization parameters lambda (precision of the weights) and alpha (precision of the noise).  Read more in the :ref:`User Guide <bayesian_regression>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -287,7 +286,7 @@
           ],
           "_structural_type": "bool",
           "default": "False",
-          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`~sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
+          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
         }
       },
       {
@@ -314,14 +313,13 @@
           "description": "Verbose mode when fitting the model."
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "ElasticNet": {
     "name": "sklearn.linear_model._coordinate_descent.ElasticNet",
     "common_name": "ElasticNet",
     "description": "Linear regression with combined L1 and L2 priors as regularizer. Minimizes the objective function::          1 / (2 * n_samples) * ||y - Xw||^2_2         + alpha * l1_ratio * ||w||_1         + 0.5 * alpha * (1 - l1_ratio) * ||w||^2_2  If you are interested in controlling the L1 and L2 penalty separately, keep in mind that this is equivalent to::          a * L1 + b * L2  where::          alpha = a + b and l1_ratio = a / (a + b)  The parameter l1_ratio corresponds to alpha in the glmnet R package while alpha corresponds to the lambda parameter in glmnet. Specifically, l1_ratio = 1 is the lasso penalty. Currently, l1_ratio <= 0.01 is not reliable, unless you supply your own sequence of alpha.  Read more in the :ref:`User Guide <elastic_net>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -368,7 +366,7 @@
           ],
           "_structural_type": "bool",
           "default": "False",
-          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`~sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
+          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
         }
       },
       {
@@ -414,7 +412,7 @@
           ],
           "_structural_type": "int",
           "default": 1000,
-          "description": "The maximum number of iterations."
+          "description": "The maximum number of iterations"
         }
       },
       {
@@ -473,7 +471,7 @@
             "random_state"
           ],
           "default": "random_state__None",
-          "description": "The seed of the pseudo random number generator that selects a random feature to update. Used when ``selection`` == 'random'. Pass an int for reproducible output across multiple function calls. See :term:`Glossary <random_state>`."
+          "description": "The seed of the pseudo random number generator that selects a random feature to update.  If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by `np.random`. Used when ``selection`` == 'random'."
         },
         "hyperparams": [
           {
@@ -515,14 +513,13 @@
           "description": "If set to 'random', a random coefficient is updated every iteration rather than looping over features sequentially by default. This (setting to 'random') often leads to significantly faster convergence especially when tol is higher than 1e-4."
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "ElasticNetCV": {
     "name": "sklearn.linear_model._coordinate_descent.ElasticNetCV",
     "common_name": "ElasticNetCV",
     "description": "Elastic Net model with iterative fitting along a regularization path. See glossary entry for :term:`cross-validation estimator`.  Read more in the :ref:`User Guide <elastic_net>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "name": "l1_ratio",
@@ -532,7 +529,7 @@
             "l1_ratio"
           ],
           "default": "l1_ratio__float",
-          "description": "float between 0 and 1 passed to ElasticNet (scaling between l1 and l2 penalties). For ``l1_ratio = 0`` the penalty is an L2 penalty. For ``l1_ratio = 1`` it is an L1 penalty. For ``0 < l1_ratio < 1``, the penalty is a combination of L1 and L2 This parameter can be a list, in which case the different values are tested by cross-validation and the one giving the best prediction score is used. Note that a good choice of list of values for l1_ratio is often to put more values close to 1 (i.e. Lasso) and less close to 0 (i.e. Ridge), as in ``[.1, .5, .7, .9, .95, .99, 1]``."
+          "description": "float between 0 and 1 passed to ElasticNet (scaling between l1 and l2 penalties). For ``l1_ratio = 0`` the penalty is an L2 penalty. For ``l1_ratio = 1`` it is an L1 penalty. For ``0 < l1_ratio < 1``, the penalty is a combination of L1 and L2 This parameter can be a list, in which case the different values are tested by cross-validation and the one giving the best prediction score is used. Note that a good choice of list of values for l1_ratio is often to put more values close to 1 (i.e. Lasso) and less close to 0 (i.e. Ridge), as in ``[.1, .5, .7, .9, .95, .99, 1]``"
         },
         "hyperparams": [
           {
@@ -590,9 +587,19 @@
             "alphas"
           ],
           "default": "alphas__None",
-          "description": "List of alphas where to compute the models. If None alphas are set automatically."
+          "description": "List of alphas where to compute the models. If None alphas are set automatically"
         },
         "hyperparams": [
+          {
+            "name": "alphas__ndarray",
+            "type": "Hyperparameter",
+            "init_args": {
+              "_structural_type": "ndarray",
+              "semantic_types": [
+                "alphas"
+              ]
+            }
+          },
           {
             "type": "Constant",
             "name": "alphas__None",
@@ -615,7 +622,7 @@
           ],
           "_structural_type": "bool",
           "default": "True",
-          "description": "Whether to calculate the intercept for this model. If set to false, no intercept will be used in calculations (i.e. data is expected to be centered)."
+          "description": "whether to calculate the intercept for this model. If set to false, no intercept will be used in calculations (i.e. data is expected to be centered)."
         }
       },
       {
@@ -627,7 +634,7 @@
           ],
           "_structural_type": "bool",
           "default": "False",
-          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`~sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
+          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
         }
       },
       {
@@ -683,7 +690,7 @@
           ],
           "_structural_type": "int",
           "default": 1000,
-          "description": "The maximum number of iterations."
+          "description": "The maximum number of iterations"
         }
       },
       {
@@ -706,7 +713,7 @@
             "cv"
           ],
           "default": "cv__None",
-          "description": "Determines the cross-validation splitting strategy. Possible inputs for cv are:  - None, to use the default 5-fold cross-validation, - int, to specify the number of folds. - :term:`CV splitter`, - An iterable yielding (train, test) splits as arrays of indices.  For int/None inputs, :class:`KFold` is used.  Refer :ref:`User Guide <cross_validation>` for the various cross-validation strategies that can be used here.  .. versionchanged:: 0.22     ``cv`` default value if None changed from 3-fold to 5-fold."
+          "description": "Determines the cross-validation splitting strategy. Possible inputs for cv are:  - None, to use the default 5-fold cross-validation, - integer, to specify the number of folds. - :term:`CV splitter`, - An iterable yielding (train, test) splits as arrays of indices.  For integer/None inputs, :class:`KFold` is used.  Refer :ref:`User Guide <cross_validation>` for the various cross-validation strategies that can be used here.  .. versionchanged:: 0.22     ``cv`` default value if None changed from 3-fold to 5-fold."
         },
         "hyperparams": [
           {
@@ -745,38 +752,16 @@
         }
       },
       {
+        "type": "Hyperparameter",
         "name": "verbose",
-        "type": "Union",
         "init_args": {
           "semantic_types": [
             "verbose"
           ],
-          "default": "verbose__int",
+          "_structural_type": "int",
+          "default": 0,
           "description": "Amount of verbosity."
-        },
-        "hyperparams": [
-          {
-            "type": "Hyperparameter",
-            "name": "verbose__bool",
-            "init_args": {
-              "semantic_types": [
-                "verbose"
-              ],
-              "_structural_type": "bool"
-            }
-          },
-          {
-            "type": "Hyperparameter",
-            "name": "verbose__int",
-            "init_args": {
-              "semantic_types": [
-                "verbose"
-              ],
-              "_structural_type": "int",
-              "default": 0
-            }
-          }
-        ]
+        }
       },
       {
         "name": "n_jobs",
@@ -832,7 +817,7 @@
             "random_state"
           ],
           "default": "random_state__None",
-          "description": "The seed of the pseudo random number generator that selects a random feature to update. Used when ``selection`` == 'random'. Pass an int for reproducible output across multiple function calls. See :term:`Glossary <random_state>`."
+          "description": "The seed of the pseudo random number generator that selects a random feature to update.  If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by `np.random`. Used when ``selection`` == 'random'."
         },
         "hyperparams": [
           {
@@ -874,95 +859,13 @@
           "description": "If set to 'random', a random coefficient is updated every iteration rather than looping over features sequentially by default. This (setting to 'random') often leads to significantly faster convergence especially when tol is higher than 1e-4."
         }
       }
-    ],
-    "Params": []
-  },
-  "GammaRegressor": {
-    "name": "sklearn.linear_model._glm.glm.GammaRegressor",
-    "common_name": "GammaRegressor",
-    "description": "Generalized Linear Model with a Gamma distribution. Read more in the :ref:`User Guide <Generalized_linear_regression>`.  .. versionadded:: 0.23",
-    "sklearn_version": "0.24.0",
-    "Hyperparams": [
-      {
-        "type": "Hyperparameter",
-        "name": "alpha",
-        "init_args": {
-          "semantic_types": [
-            "alpha"
-          ],
-          "_structural_type": "float",
-          "default": 1.0,
-          "description": "Constant that multiplies the penalty term and thus determines the regularization strength. ``alpha = 0`` is equivalent to unpenalized GLMs. In this case, the design matrix `X` must have full column rank (no collinearities)."
-        }
-      },
-      {
-        "type": "Hyperparameter",
-        "name": "fit_intercept",
-        "init_args": {
-          "semantic_types": [
-            "fit_intercept"
-          ],
-          "_structural_type": "bool",
-          "default": "True",
-          "description": "Specifies if a constant (a.k.a. bias or intercept) should be added to the linear predictor (X @ coef + intercept)."
-        }
-      },
-      {
-        "type": "Hyperparameter",
-        "name": "max_iter",
-        "init_args": {
-          "semantic_types": [
-            "max_iter"
-          ],
-          "_structural_type": "int",
-          "default": 100,
-          "description": "The maximal number of iterations for the solver."
-        }
-      },
-      {
-        "type": "Hyperparameter",
-        "name": "tol",
-        "init_args": {
-          "semantic_types": [
-            "tol"
-          ],
-          "_structural_type": "float",
-          "default": 0.0001,
-          "description": "Stopping criterion. For the lbfgs solver, the iteration will stop when ``max{|g_j|, j = 1, ..., d} <= tol`` where ``g_j`` is the j-th component of the gradient (derivative) of the objective function."
-        }
-      },
-      {
-        "type": "Hyperparameter",
-        "name": "warm_start",
-        "init_args": {
-          "semantic_types": [
-            "warm_start"
-          ],
-          "_structural_type": "bool",
-          "default": "False",
-          "description": "If set to ``True``, reuse the solution of the previous call to ``fit`` as initialization for ``coef_`` and ``intercept_`` ."
-        }
-      },
-      {
-        "type": "Hyperparameter",
-        "name": "verbose",
-        "init_args": {
-          "semantic_types": [
-            "verbose"
-          ],
-          "_structural_type": "int",
-          "default": 0,
-          "description": "For the lbfgs solver set verbose to any positive number for verbosity."
-        }
-      }
-    ],
-    "Params": []
+    ]
   },
   "HuberRegressor": {
     "name": "sklearn.linear_model._huber.HuberRegressor",
     "common_name": "HuberRegressor",
     "description": "Linear regression model that is robust to outliers. The Huber Regressor optimizes the squared loss for the samples where ``|(y - X'w) / sigma| < epsilon`` and the absolute loss for the samples where ``|(y - X'w) / sigma| > epsilon``, where w and sigma are parameters to be optimized. The parameter sigma makes sure that if y is scaled up or down by a certain factor, one does not need to rescale epsilon to achieve the same robustness. Note that this does not take into account the fact that the different features of X may be of different scales.  This makes sure that the loss function is not heavily influenced by the outliers while not completely ignoring their effect.  Read more in the :ref:`User Guide <huber_regression>`  .. versionadded:: 0.18",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -1036,14 +939,13 @@
           "description": "The iteration will stop when ``max{|proj g_i | i = 1, ..., n}`` <= ``tol`` where pg_i is the i-th component of the projected gradient."
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "Lars": {
     "name": "sklearn.linear_model._least_angle.Lars",
     "common_name": "Lars",
     "description": "Least Angle Regression model a.k.a. LAR Read more in the :ref:`User Guide <least_angle_regression>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -1058,38 +960,16 @@
         }
       },
       {
+        "type": "Hyperparameter",
         "name": "verbose",
-        "type": "Union",
         "init_args": {
           "semantic_types": [
             "verbose"
           ],
-          "default": "verbose__bool",
-          "description": "Sets the verbosity amount."
-        },
-        "hyperparams": [
-          {
-            "type": "Hyperparameter",
-            "name": "verbose__bool",
-            "init_args": {
-              "semantic_types": [
-                "verbose"
-              ],
-              "_structural_type": "bool",
-              "default": "False"
-            }
-          },
-          {
-            "type": "Hyperparameter",
-            "name": "verbose__int",
-            "init_args": {
-              "semantic_types": [
-                "verbose"
-              ],
-              "_structural_type": "int"
-            }
-          }
-        ]
+          "_structural_type": "int",
+          "default": "False",
+          "description": "Sets the verbosity amount"
+        }
       },
       {
         "type": "Hyperparameter",
@@ -1100,7 +980,7 @@
           ],
           "_structural_type": "bool",
           "default": "True",
-          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`~sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
+          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
         }
       },
       {
@@ -1168,7 +1048,7 @@
           ],
           "_structural_type": "float",
           "default": 2.220446049250313e-16,
-          "description": "The machine-precision regularization in the computation of the Cholesky diagonal factors. Increase this for very ill-conditioned systems. Unlike the ``tol`` parameter in some iterative optimization-based algorithms, this parameter does not control the tolerance of the optimization."
+          "description": "The machine-precision regularization in the computation of the Cholesky diagonal factors. Increase this for very ill-conditioned systems. Unlike the ``tol`` parameter in some iterative optimization-based algorithms, this parameter does not control the tolerance of the optimization. By default, ``np.finfo(np.float).eps`` is used."
         }
       },
       {
@@ -1194,83 +1074,14 @@
           "default": "True",
           "description": "If True the full path is stored in the ``coef_path_`` attribute. If you compute the solution for a large problem or many targets, setting ``fit_path`` to ``False`` will lead to a speedup, especially with a small alpha."
         }
-      },
-      {
-        "name": "jitter",
-        "type": "Union",
-        "init_args": {
-          "semantic_types": [
-            "jitter"
-          ],
-          "default": "jitter__None",
-          "description": "Upper bound on a uniform noise parameter to be added to the `y` values, to satisfy the model's assumption of one-at-a-time computations. Might help with stability.  .. versionadded:: 0.23"
-        },
-        "hyperparams": [
-          {
-            "type": "Hyperparameter",
-            "name": "jitter__int",
-            "init_args": {
-              "semantic_types": [
-                "jitter"
-              ],
-              "_structural_type": "int"
-            }
-          },
-          {
-            "type": "Constant",
-            "name": "jitter__None",
-            "init_args": {
-              "semantic_types": [
-                "jitter"
-              ],
-              "_structural_type": "None",
-              "default": "None"
-            }
-          }
-        ]
-      },
-      {
-        "name": "random_state",
-        "type": "Union",
-        "init_args": {
-          "semantic_types": [
-            "random_state"
-          ],
-          "default": "random_state__None",
-          "description": "Determines random number generation for jittering. Pass an int for reproducible output across multiple function calls. See :term:`Glossary <random_state>`. Ignored if `jitter` is None.  .. versionadded:: 0.23"
-        },
-        "hyperparams": [
-          {
-            "type": "Hyperparameter",
-            "name": "random_state__int",
-            "init_args": {
-              "semantic_types": [
-                "random_state"
-              ],
-              "_structural_type": "int"
-            }
-          },
-          {
-            "type": "Constant",
-            "name": "random_state__None",
-            "init_args": {
-              "semantic_types": [
-                "random_state"
-              ],
-              "_structural_type": "None",
-              "default": "None"
-            }
-          }
-        ]
       }
-    ],
-    "Params": []
+    ]
   },
   "LarsCV": {
     "name": "sklearn.linear_model._least_angle.LarsCV",
     "common_name": "LarsCV",
     "description": "Cross-validated Least Angle Regression model. See glossary entry for :term:`cross-validation estimator`.  Read more in the :ref:`User Guide <least_angle_regression>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -1293,7 +1104,7 @@
           ],
           "_structural_type": "bool",
           "default": "False",
-          "description": "Sets the verbosity amount."
+          "description": "Sets the verbosity amount"
         }
       },
       {
@@ -1317,7 +1128,7 @@
           ],
           "_structural_type": "bool",
           "default": "True",
-          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`~sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
+          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
         }
       },
       {
@@ -1453,7 +1264,7 @@
           ],
           "_structural_type": "float",
           "default": 2.220446049250313e-16,
-          "description": "The machine-precision regularization in the computation of the Cholesky diagonal factors. Increase this for very ill-conditioned systems. Unlike the ``tol`` parameter in some iterative optimization-based algorithms, this parameter does not control the tolerance of the optimization."
+          "description": "The machine-precision regularization in the computation of the Cholesky diagonal factors. Increase this for very ill-conditioned systems. By default, ``np.finfo(np.float).eps`` is used."
         }
       },
       {
@@ -1468,14 +1279,13 @@
           "description": "If ``True``, X will be copied; else, it may be overwritten."
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "Lasso": {
     "name": "sklearn.linear_model._coordinate_descent.Lasso",
     "common_name": "Lasso",
     "description": "Linear Model trained with L1 prior as regularizer (aka the Lasso) The optimization objective for Lasso is::      (1 / (2 * n_samples)) * ||y - Xw||^2_2 + alpha * ||w||_1  Technically the Lasso model is optimizing the same objective function as the Elastic Net with ``l1_ratio=1.0`` (no L2 penalty).  Read more in the :ref:`User Guide <lasso>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -1510,7 +1320,7 @@
           ],
           "_structural_type": "bool",
           "default": "False",
-          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`~sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
+          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
         }
       },
       {
@@ -1578,7 +1388,7 @@
           ],
           "_structural_type": "int",
           "default": 1000,
-          "description": "The maximum number of iterations."
+          "description": "The maximum number of iterations"
         }
       },
       {
@@ -1625,7 +1435,7 @@
             "random_state"
           ],
           "default": "random_state__None",
-          "description": "The seed of the pseudo random number generator that selects a random feature to update. Used when ``selection`` == 'random'. Pass an int for reproducible output across multiple function calls. See :term:`Glossary <random_state>`."
+          "description": "The seed of the pseudo random number generator that selects a random feature to update.  If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by `np.random`. Used when ``selection`` == 'random'."
         },
         "hyperparams": [
           {
@@ -1667,14 +1477,13 @@
           "description": "If set to 'random', a random coefficient is updated every iteration rather than looping over features sequentially by default. This (setting to 'random') often leads to significantly faster convergence especially when tol is higher than 1e-4."
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "LassoCV": {
     "name": "sklearn.linear_model._coordinate_descent.LassoCV",
     "common_name": "LassoCV",
     "description": "Lasso linear model with iterative fitting along a regularization path. See glossary entry for :term:`cross-validation estimator`.  The best model is selected by cross-validation.  The optimization objective for Lasso is::      (1 / (2 * n_samples)) * ||y - Xw||^2_2 + alpha * ||w||_1  Read more in the :ref:`User Guide <lasso>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -1697,7 +1506,7 @@
           ],
           "_structural_type": "int",
           "default": 100,
-          "description": "Number of alphas along the regularization path."
+          "description": "Number of alphas along the regularization path"
         }
       },
       {
@@ -1708,9 +1517,19 @@
             "alphas"
           ],
           "default": "alphas__None",
-          "description": "List of alphas where to compute the models. If ``None`` alphas are set automatically."
+          "description": "List of alphas where to compute the models. If ``None`` alphas are set automatically"
         },
         "hyperparams": [
+          {
+            "name": "alphas__ndarray",
+            "type": "Hyperparameter",
+            "init_args": {
+              "_structural_type": "ndarray",
+              "semantic_types": [
+                "alphas"
+              ]
+            }
+          },
           {
             "type": "Constant",
             "name": "alphas__None",
@@ -1733,7 +1552,7 @@
           ],
           "_structural_type": "bool",
           "default": "True",
-          "description": "Whether to calculate the intercept for this model. If set to false, no intercept will be used in calculations (i.e. data is expected to be centered)."
+          "description": "whether to calculate the intercept for this model. If set to false, no intercept will be used in calculations (i.e. data is expected to be centered)."
         }
       },
       {
@@ -1745,7 +1564,7 @@
           ],
           "_structural_type": "bool",
           "default": "False",
-          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`~sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
+          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
         }
       },
       {
@@ -1801,7 +1620,7 @@
           ],
           "_structural_type": "int",
           "default": 1000,
-          "description": "The maximum number of iterations."
+          "description": "The maximum number of iterations"
         }
       },
       {
@@ -1836,7 +1655,7 @@
             "cv"
           ],
           "default": "cv__None",
-          "description": "Determines the cross-validation splitting strategy. Possible inputs for cv are:  - None, to use the default 5-fold cross-validation, - int, to specify the number of folds. - :term:`CV splitter`, - An iterable yielding (train, test) splits as arrays of indices.  For int/None inputs, :class:`KFold` is used.  Refer :ref:`User Guide <cross_validation>` for the various cross-validation strategies that can be used here.  .. versionchanged:: 0.22     ``cv`` default value if None changed from 3-fold to 5-fold."
+          "description": "Determines the cross-validation splitting strategy. Possible inputs for cv are:  - None, to use the default 5-fold cross-validation, - integer, to specify the number of folds. - :term:`CV splitter`, - An iterable yielding (train, test) splits as arrays of indices.  For integer/None inputs, :class:`KFold` is used.  Refer :ref:`User Guide <cross_validation>` for the various cross-validation strategies that can be used here.  .. versionchanged:: 0.22     ``cv`` default value if None changed from 3-fold to 5-fold."
         },
         "hyperparams": [
           {
@@ -1863,38 +1682,16 @@
         ]
       },
       {
+        "type": "Hyperparameter",
         "name": "verbose",
-        "type": "Union",
         "init_args": {
           "semantic_types": [
             "verbose"
           ],
-          "default": "verbose__bool",
+          "_structural_type": "int",
+          "default": "False",
           "description": "Amount of verbosity."
-        },
-        "hyperparams": [
-          {
-            "type": "Hyperparameter",
-            "name": "verbose__bool",
-            "init_args": {
-              "semantic_types": [
-                "verbose"
-              ],
-              "_structural_type": "bool",
-              "default": "False"
-            }
-          },
-          {
-            "type": "Hyperparameter",
-            "name": "verbose__int",
-            "init_args": {
-              "semantic_types": [
-                "verbose"
-              ],
-              "_structural_type": "int"
-            }
-          }
-        ]
+        }
       },
       {
         "type": "Hyperparameter",
@@ -1917,7 +1714,7 @@
           ],
           "_structural_type": "bool",
           "default": "False",
-          "description": "If positive, restrict regression coefficients to be positive."
+          "description": "If positive, restrict regression coefficients to be positive"
         }
       },
       {
@@ -1928,7 +1725,7 @@
             "random_state"
           ],
           "default": "random_state__None",
-          "description": "The seed of the pseudo random number generator that selects a random feature to update. Used when ``selection`` == 'random'. Pass an int for reproducible output across multiple function calls. See :term:`Glossary <random_state>`."
+          "description": "The seed of the pseudo random number generator that selects a random feature to update.  If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by `np.random`. Used when ``selection`` == 'random'."
         },
         "hyperparams": [
           {
@@ -1970,14 +1767,13 @@
           "description": "If set to 'random', a random coefficient is updated every iteration rather than looping over features sequentially by default. This (setting to 'random') often leads to significantly faster convergence especially when tol is higher than 1e-4."
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "LassoLars": {
     "name": "sklearn.linear_model._least_angle.LassoLars",
     "common_name": "LassoLars",
     "description": "Lasso model fit with Least Angle Regression a.k.a. Lars It is a Linear Model trained with an L1 prior as regularizer.  The optimization objective for Lasso is::  (1 / (2 * n_samples)) * ||y - Xw||^2_2 + alpha * ||w||_1  Read more in the :ref:`User Guide <least_angle_regression>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -2004,38 +1800,16 @@
         }
       },
       {
+        "type": "Hyperparameter",
         "name": "verbose",
-        "type": "Union",
         "init_args": {
           "semantic_types": [
             "verbose"
           ],
-          "default": "verbose__bool",
-          "description": "Sets the verbosity amount."
-        },
-        "hyperparams": [
-          {
-            "type": "Hyperparameter",
-            "name": "verbose__bool",
-            "init_args": {
-              "semantic_types": [
-                "verbose"
-              ],
-              "_structural_type": "bool",
-              "default": "False"
-            }
-          },
-          {
-            "type": "Hyperparameter",
-            "name": "verbose__int",
-            "init_args": {
-              "semantic_types": [
-                "verbose"
-              ],
-              "_structural_type": "int"
-            }
-          }
-        ]
+          "_structural_type": "int",
+          "default": "False",
+          "description": "Sets the verbosity amount"
+        }
       },
       {
         "type": "Hyperparameter",
@@ -2046,7 +1820,7 @@
           ],
           "_structural_type": "bool",
           "default": "True",
-          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`~sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
+          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
         }
       },
       {
@@ -2114,7 +1888,7 @@
           ],
           "_structural_type": "float",
           "default": 2.220446049250313e-16,
-          "description": "The machine-precision regularization in the computation of the Cholesky diagonal factors. Increase this for very ill-conditioned systems. Unlike the ``tol`` parameter in some iterative optimization-based algorithms, this parameter does not control the tolerance of the optimization."
+          "description": "The machine-precision regularization in the computation of the Cholesky diagonal factors. Increase this for very ill-conditioned systems. Unlike the ``tol`` parameter in some iterative optimization-based algorithms, this parameter does not control the tolerance of the optimization. By default, ``np.finfo(np.float).eps`` is used."
         }
       },
       {
@@ -2152,83 +1926,14 @@
           "default": "False",
           "description": "Restrict coefficients to be >= 0. Be aware that you might want to remove fit_intercept which is set True by default. Under the positive restriction the model coefficients will not converge to the ordinary-least-squares solution for small values of alpha. Only coefficients up to the smallest alpha value (``alphas_[alphas_ > 0.].min()`` when fit_path=True) reached by the stepwise Lars-Lasso algorithm are typically in congruence with the solution of the coordinate descent Lasso estimator."
         }
-      },
-      {
-        "name": "jitter",
-        "type": "Union",
-        "init_args": {
-          "semantic_types": [
-            "jitter"
-          ],
-          "default": "jitter__None",
-          "description": "Upper bound on a uniform noise parameter to be added to the `y` values, to satisfy the model's assumption of one-at-a-time computations. Might help with stability.  .. versionadded:: 0.23"
-        },
-        "hyperparams": [
-          {
-            "type": "Hyperparameter",
-            "name": "jitter__float",
-            "init_args": {
-              "semantic_types": [
-                "jitter"
-              ],
-              "_structural_type": "float"
-            }
-          },
-          {
-            "type": "Constant",
-            "name": "jitter__None",
-            "init_args": {
-              "semantic_types": [
-                "jitter"
-              ],
-              "_structural_type": "None",
-              "default": "None"
-            }
-          }
-        ]
-      },
-      {
-        "name": "random_state",
-        "type": "Union",
-        "init_args": {
-          "semantic_types": [
-            "random_state"
-          ],
-          "default": "random_state__None",
-          "description": "Determines random number generation for jittering. Pass an int for reproducible output across multiple function calls. See :term:`Glossary <random_state>`. Ignored if `jitter` is None.  .. versionadded:: 0.23"
-        },
-        "hyperparams": [
-          {
-            "type": "Hyperparameter",
-            "name": "random_state__int",
-            "init_args": {
-              "semantic_types": [
-                "random_state"
-              ],
-              "_structural_type": "int"
-            }
-          },
-          {
-            "type": "Constant",
-            "name": "random_state__None",
-            "init_args": {
-              "semantic_types": [
-                "random_state"
-              ],
-              "_structural_type": "None",
-              "default": "None"
-            }
-          }
-        ]
       }
-    ],
-    "Params": []
+    ]
   },
   "LassoLarsCV": {
     "name": "sklearn.linear_model._least_angle.LassoLarsCV",
     "common_name": "LassoLarsCV",
     "description": "Cross-validated Lasso, using the LARS algorithm. See glossary entry for :term:`cross-validation estimator`.  The optimization objective for Lasso is::  (1 / (2 * n_samples)) * ||y - Xw||^2_2 + alpha * ||w||_1  Read more in the :ref:`User Guide <least_angle_regression>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -2243,38 +1948,16 @@
         }
       },
       {
+        "type": "Hyperparameter",
         "name": "verbose",
-        "type": "Union",
         "init_args": {
           "semantic_types": [
             "verbose"
           ],
-          "default": "verbose__bool",
-          "description": "Sets the verbosity amount."
-        },
-        "hyperparams": [
-          {
-            "type": "Hyperparameter",
-            "name": "verbose__bool",
-            "init_args": {
-              "semantic_types": [
-                "verbose"
-              ],
-              "_structural_type": "bool",
-              "default": "False"
-            }
-          },
-          {
-            "type": "Hyperparameter",
-            "name": "verbose__int",
-            "init_args": {
-              "semantic_types": [
-                "verbose"
-              ],
-              "_structural_type": "int"
-            }
-          }
-        ]
+          "_structural_type": "int",
+          "default": "False",
+          "description": "Sets the verbosity amount"
+        }
       },
       {
         "type": "Hyperparameter",
@@ -2297,7 +1980,7 @@
           ],
           "_structural_type": "bool",
           "default": "True",
-          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`~sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
+          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
         }
       },
       {
@@ -2423,7 +2106,7 @@
           ],
           "_structural_type": "float",
           "default": 2.220446049250313e-16,
-          "description": "The machine-precision regularization in the computation of the Cholesky diagonal factors. Increase this for very ill-conditioned systems. Unlike the ``tol`` parameter in some iterative optimization-based algorithms, this parameter does not control the tolerance of the optimization."
+          "description": "The machine-precision regularization in the computation of the Cholesky diagonal factors. Increase this for very ill-conditioned systems. By default, ``np.finfo(np.float).eps`` is used."
         }
       },
       {
@@ -2450,14 +2133,13 @@
           "description": "Restrict coefficients to be >= 0. Be aware that you might want to remove fit_intercept which is set True by default. Under the positive restriction the model coefficients do not converge to the ordinary-least-squares solution for small values of alpha. Only coefficients up to the smallest alpha value (``alphas_[alphas_ > 0.].min()`` when fit_path=True) reached by the stepwise Lars-Lasso algorithm are typically in congruence with the solution of the coordinate descent Lasso estimator. As a consequence using LassoLarsCV only makes sense for problems where a sparse solution is expected and/or reached."
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "LassoLarsIC": {
     "name": "sklearn.linear_model._least_angle.LassoLarsIC",
     "common_name": "LassoLarsIC",
     "description": "Lasso model fit with Lars using BIC or AIC for model selection The optimization objective for Lasso is::  (1 / (2 * n_samples)) * ||y - Xw||^2_2 + alpha * ||w||_1  AIC is the Akaike information criterion and BIC is the Bayes Information criterion. Such criteria are useful to select the value of the regularization parameter by making a trade-off between the goodness of fit and the complexity of the model. A good model should explain well the data while being simple.  Read more in the :ref:`User Guide <least_angle_regression>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Enumeration",
@@ -2488,38 +2170,16 @@
         }
       },
       {
+        "type": "Hyperparameter",
         "name": "verbose",
-        "type": "Union",
         "init_args": {
           "semantic_types": [
             "verbose"
           ],
-          "default": "verbose__bool",
-          "description": "Sets the verbosity amount."
-        },
-        "hyperparams": [
-          {
-            "type": "Hyperparameter",
-            "name": "verbose__bool",
-            "init_args": {
-              "semantic_types": [
-                "verbose"
-              ],
-              "_structural_type": "bool",
-              "default": "False"
-            }
-          },
-          {
-            "type": "Hyperparameter",
-            "name": "verbose__int",
-            "init_args": {
-              "semantic_types": [
-                "verbose"
-              ],
-              "_structural_type": "int"
-            }
-          }
-        ]
+          "_structural_type": "int",
+          "default": "False",
+          "description": "Sets the verbosity amount"
+        }
       },
       {
         "type": "Hyperparameter",
@@ -2530,7 +2190,7 @@
           ],
           "_structural_type": "bool",
           "default": "True",
-          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`~sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
+          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
         }
       },
       {
@@ -2598,7 +2258,7 @@
           ],
           "_structural_type": "float",
           "default": 2.220446049250313e-16,
-          "description": "The machine-precision regularization in the computation of the Cholesky diagonal factors. Increase this for very ill-conditioned systems. Unlike the ``tol`` parameter in some iterative optimization-based algorithms, this parameter does not control the tolerance of the optimization."
+          "description": "The machine-precision regularization in the computation of the Cholesky diagonal factors. Increase this for very ill-conditioned systems. Unlike the ``tol`` parameter in some iterative optimization-based algorithms, this parameter does not control the tolerance of the optimization. By default, ``np.finfo(np.float).eps`` is used"
         }
       },
       {
@@ -2625,14 +2285,13 @@
           "description": "Restrict coefficients to be >= 0. Be aware that you might want to remove fit_intercept which is set True by default. Under the positive restriction the model coefficients do not converge to the ordinary-least-squares solution for small values of alpha. Only coefficients up to the smallest alpha value (``alphas_[alphas_ > 0.].min()`` when fit_path=True) reached by the stepwise Lars-Lasso algorithm are typically in congruence with the solution of the coordinate descent Lasso estimator. As a consequence using LassoLarsIC only makes sense for problems where a sparse solution is expected and/or reached."
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "LinearRegression": {
     "name": "sklearn.linear_model._base.LinearRegression",
     "common_name": "LinearRegression",
     "description": "Ordinary least squares Linear Regression. LinearRegression fits a linear model with coefficients w = (w1, ..., wp) to minimize the residual sum of squares between the observed targets in the dataset, and the targets predicted by the linear approximation.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -2655,7 +2314,7 @@
           ],
           "_structural_type": "bool",
           "default": "False",
-          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`~sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
+          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
         }
       },
       {
@@ -2703,27 +2362,14 @@
             }
           }
         ]
-      },
-      {
-        "type": "Hyperparameter",
-        "name": "positive",
-        "init_args": {
-          "semantic_types": [
-            "positive"
-          ],
-          "_structural_type": "bool",
-          "default": "False",
-          "description": "When set to ``True``, forces the coefficients to be positive. This option is only supported for dense arrays.  .. versionadded:: 0.24"
-        }
       }
-    ],
-    "Params": []
+    ]
   },
   "LogisticRegression": {
     "name": "sklearn.linear_model._logistic.LogisticRegression",
     "common_name": "LogisticRegression",
     "description": "Logistic Regression (aka logit, MaxEnt) classifier. In the multiclass case, the training algorithm uses the one-vs-rest (OvR) scheme if the 'multi_class' option is set to 'ovr', and uses the cross-entropy loss if the 'multi_class' option is set to 'multinomial'. (Currently the 'multinomial' option is supported only by the 'lbfgs', 'sag', 'saga' and 'newton-cg' solvers.)  This class implements regularized logistic regression using the 'liblinear' library, 'newton-cg', 'sag', 'saga' and 'lbfgs' solvers. **Note that regularization is applied by default**. It can handle both dense and sparse input. Use C-ordered arrays or CSR matrices containing 64-bit floats for optimal performance; any other input format will be converted (and copied).  The 'newton-cg', 'sag', and 'lbfgs' solvers support only L2 regularization with primal formulation, or no regularization. The 'liblinear' solver supports both L1 and L2 regularization, with a dual formulation only for the L2 penalty. The Elastic-Net regularization is only supported by the 'saga' solver.  Read more in the :ref:`User Guide <logistic_regression>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Enumeration",
@@ -2844,7 +2490,7 @@
             "random_state"
           ],
           "default": "random_state__None",
-          "description": "Used when ``solver`` == 'sag', 'saga' or 'liblinear' to shuffle the data. See :term:`Glossary <random_state>` for details."
+          "description": "The seed of the pseudo random number generator to use when shuffling the data.  If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by `np.random`. Used when ``solver`` == 'sag' or 'liblinear'."
         },
         "hyperparams": [
           {
@@ -2984,7 +2630,7 @@
             "l1_ratio"
           ],
           "default": "l1_ratio__None",
-          "description": "The Elastic-Net mixing parameter, with ``0 <= l1_ratio <= 1``. Only used if ``penalty='elasticnet'``. Setting ``l1_ratio=0`` is equivalent to using ``penalty='l2'``, while setting ``l1_ratio=1`` is equivalent to using ``penalty='l1'``. For ``0 < l1_ratio <1``, the penalty is a combination of L1 and L2."
+          "description": "The Elastic-Net mixing parameter, with ``0 <= l1_ratio <= 1``. Only used if ``penalty='elasticnet'`. Setting ``l1_ratio=0`` is equivalent to using ``penalty='l2'``, while setting ``l1_ratio=1`` is equivalent to using ``penalty='l1'``. For ``0 < l1_ratio <1``, the penalty is a combination of L1 and L2."
         },
         "hyperparams": [
           {
@@ -3010,14 +2656,13 @@
           }
         ]
       }
-    ],
-    "Params": []
+    ]
   },
   "LogisticRegressionCV": {
     "name": "sklearn.linear_model._logistic.LogisticRegressionCV",
     "common_name": "LogisticRegressionCV",
     "description": "Logistic Regression CV (aka logit, MaxEnt) classifier. See glossary entry for :term:`cross-validation estimator`.  This class implements logistic regression using liblinear, newton-cg, sag of lbfgs optimizer. The newton-cg, sag and lbfgs solvers support only L2 regularization with primal formulation. The liblinear solver supports both L1 and L2 regularization, with a dual formulation only for the L2 penalty. Elastic-Net penalty is only supported by the saga solver.  For the grid of `Cs` values and `l1_ratios` values, the best hyperparameter is selected by the cross-validator :class:`~sklearn.model_selection.StratifiedKFold`, but it can be changed using the :term:`cv` parameter. The 'newton-cg', 'sag', 'saga' and 'lbfgs' solvers can warm-start the coefficients (see :term:`Glossary<warm_start>`).  Read more in the :ref:`User Guide <logistic_regression>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "name": "Cs",
@@ -3354,7 +2999,7 @@
             "random_state"
           ],
           "default": "random_state__None",
-          "description": "Used when `solver='sag'`, 'saga' or 'liblinear' to shuffle the data. Note that this only applies to the solver and not the cross-validation generator. See :term:`Glossary <random_state>` for details."
+          "description": "If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by `np.random`. Used when `solver='sag'` or `solver='liblinear'`. Note that this only applies to the solver and not the cross-validation generator."
         },
         "hyperparams": [
           {
@@ -3414,14 +3059,13 @@
           }
         ]
       }
-    ],
-    "Params": []
+    ]
   },
   "MultiTaskElasticNet": {
     "name": "sklearn.linear_model._coordinate_descent.MultiTaskElasticNet",
     "common_name": "MultiTaskElasticNet",
-    "description": "Multi-task ElasticNet model trained with L1/L2 mixed-norm as regularizer. The optimization objective for MultiTaskElasticNet is::      (1 / (2 * n_samples)) * ||Y - XW||_Fro^2     + alpha * l1_ratio * ||W||_21     + 0.5 * alpha * (1 - l1_ratio) * ||W||_Fro^2  Where::      ||W||_21 = sum_i sqrt(sum_j W_ij ^ 2)  i.e. the sum of norms of each row.  Read more in the :ref:`User Guide <multi_task_elastic_net>`.",
-    "sklearn_version": "0.24.0",
+    "description": "Multi-task ElasticNet model trained with L1/L2 mixed-norm as regularizer The optimization objective for MultiTaskElasticNet is::      (1 / (2 * n_samples)) * ||Y - XW||_Fro^2     + alpha * l1_ratio * ||W||_21     + 0.5 * alpha * (1 - l1_ratio) * ||W||_Fro^2  Where::      ||W||_21 = sum_i sqrt(sum_j w_ij ^ 2)  i.e. the sum of norm of each row.  Read more in the :ref:`User Guide <multi_task_elastic_net>`.",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -3432,7 +3076,7 @@
           ],
           "_structural_type": "float",
           "default": 1.0,
-          "description": "Constant that multiplies the L1/L2 term. Defaults to 1.0."
+          "description": "Constant that multiplies the L1/L2 term. Defaults to 1.0"
         }
       },
       {
@@ -3456,7 +3100,7 @@
           ],
           "_structural_type": "bool",
           "default": "True",
-          "description": "Whether to calculate the intercept for this model. If set to false, no intercept will be used in calculations (i.e. data is expected to be centered)."
+          "description": "whether to calculate the intercept for this model. If set to false, no intercept will be used in calculations (i.e. data is expected to be centered)."
         }
       },
       {
@@ -3468,7 +3112,7 @@
           ],
           "_structural_type": "bool",
           "default": "False",
-          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`~sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
+          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
         }
       },
       {
@@ -3492,7 +3136,7 @@
           ],
           "_structural_type": "int",
           "default": 1000,
-          "description": "The maximum number of iterations."
+          "description": "The maximum number of iterations"
         }
       },
       {
@@ -3527,7 +3171,7 @@
             "random_state"
           ],
           "default": "random_state__None",
-          "description": "The seed of the pseudo random number generator that selects a random feature to update. Used when ``selection`` == 'random'. Pass an int for reproducible output across multiple function calls. See :term:`Glossary <random_state>`."
+          "description": "The seed of the pseudo random number generator that selects a random feature to update.  If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by `np.random`. Used when ``selection`` == 'random'."
         },
         "hyperparams": [
           {
@@ -3569,14 +3213,13 @@
           "description": "If set to 'random', a random coefficient is updated every iteration rather than looping over features sequentially by default. This (setting to 'random') often leads to significantly faster convergence especially when tol is higher than 1e-4."
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "MultiTaskElasticNetCV": {
     "name": "sklearn.linear_model._coordinate_descent.MultiTaskElasticNetCV",
     "common_name": "MultiTaskElasticNetCV",
     "description": "Multi-task L1/L2 ElasticNet with built-in cross-validation. See glossary entry for :term:`cross-validation estimator`.  The optimization objective for MultiTaskElasticNet is::      (1 / (2 * n_samples)) * ||Y - XW||^Fro_2     + alpha * l1_ratio * ||W||_21     + 0.5 * alpha * (1 - l1_ratio) * ||W||_Fro^2  Where::      ||W||_21 = \\sum_i \\sqrt{\\sum_j w_{ij}^2}  i.e. the sum of norm of each row.  Read more in the :ref:`User Guide <multi_task_elastic_net>`.  .. versionadded:: 0.15",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "name": "l1_ratio",
@@ -3633,7 +3276,7 @@
           ],
           "_structural_type": "int",
           "default": 100,
-          "description": "Number of alphas along the regularization path."
+          "description": "Number of alphas along the regularization path"
         }
       },
       {
@@ -3657,7 +3300,7 @@
           ],
           "_structural_type": "bool",
           "default": "True",
-          "description": "Whether to calculate the intercept for this model. If set to false, no intercept will be used in calculations (i.e. data is expected to be centered)."
+          "description": "whether to calculate the intercept for this model. If set to false, no intercept will be used in calculations (i.e. data is expected to be centered)."
         }
       },
       {
@@ -3669,7 +3312,7 @@
           ],
           "_structural_type": "bool",
           "default": "False",
-          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`~sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
+          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
         }
       },
       {
@@ -3681,7 +3324,7 @@
           ],
           "_structural_type": "int",
           "default": 1000,
-          "description": "The maximum number of iterations."
+          "description": "The maximum number of iterations"
         }
       },
       {
@@ -3704,7 +3347,7 @@
             "cv"
           ],
           "default": "cv__None",
-          "description": "Determines the cross-validation splitting strategy. Possible inputs for cv are:  - None, to use the default 5-fold cross-validation, - int, to specify the number of folds. - :term:`CV splitter`, - An iterable yielding (train, test) splits as arrays of indices.  For int/None inputs, :class:`KFold` is used.  Refer :ref:`User Guide <cross_validation>` for the various cross-validation strategies that can be used here.  .. versionchanged:: 0.22     ``cv`` default value if None changed from 3-fold to 5-fold."
+          "description": "Determines the cross-validation splitting strategy. Possible inputs for cv are:  - None, to use the default 5-fold cross-validation, - integer, to specify the number of folds. - :term:`CV splitter`, - An iterable yielding (train, test) splits as arrays of indices.  For integer/None inputs, :class:`KFold` is used.  Refer :ref:`User Guide <cross_validation>` for the various cross-validation strategies that can be used here.  .. versionchanged:: 0.22     ``cv`` default value if None changed from 3-fold to 5-fold."
         },
         "hyperparams": [
           {
@@ -3743,38 +3386,16 @@
         }
       },
       {
+        "type": "Hyperparameter",
         "name": "verbose",
-        "type": "Union",
         "init_args": {
           "semantic_types": [
             "verbose"
           ],
-          "default": "verbose__int",
+          "_structural_type": "int",
+          "default": 0,
           "description": "Amount of verbosity."
-        },
-        "hyperparams": [
-          {
-            "type": "Hyperparameter",
-            "name": "verbose__bool",
-            "init_args": {
-              "semantic_types": [
-                "verbose"
-              ],
-              "_structural_type": "bool"
-            }
-          },
-          {
-            "type": "Hyperparameter",
-            "name": "verbose__int",
-            "init_args": {
-              "semantic_types": [
-                "verbose"
-              ],
-              "_structural_type": "int",
-              "default": 0
-            }
-          }
-        ]
+        }
       },
       {
         "name": "n_jobs",
@@ -3818,7 +3439,7 @@
             "random_state"
           ],
           "default": "random_state__None",
-          "description": "The seed of the pseudo random number generator that selects a random feature to update. Used when ``selection`` == 'random'. Pass an int for reproducible output across multiple function calls. See :term:`Glossary <random_state>`."
+          "description": "The seed of the pseudo random number generator that selects a random feature to update.  If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by `np.random`. Used when ``selection`` == 'random'."
         },
         "hyperparams": [
           {
@@ -3860,14 +3481,13 @@
           "description": "If set to 'random', a random coefficient is updated every iteration rather than looping over features sequentially by default. This (setting to 'random') often leads to significantly faster convergence especially when tol is higher than 1e-4."
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "MultiTaskLasso": {
     "name": "sklearn.linear_model._coordinate_descent.MultiTaskLasso",
     "common_name": "MultiTaskLasso",
     "description": "Multi-task Lasso model trained with L1/L2 mixed-norm as regularizer. The optimization objective for Lasso is::      (1 / (2 * n_samples)) * ||Y - XW||^2_Fro + alpha * ||W||_21  Where::      ||W||_21 = \\sum_i \\sqrt{\\sum_j w_{ij}^2}  i.e. the sum of norm of each row.  Read more in the :ref:`User Guide <multi_task_lasso>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -3878,7 +3498,7 @@
           ],
           "_structural_type": "float",
           "default": 1.0,
-          "description": "Constant that multiplies the L1/L2 term. Defaults to 1.0."
+          "description": "Constant that multiplies the L1/L2 term. Defaults to 1.0"
         }
       },
       {
@@ -3890,7 +3510,7 @@
           ],
           "_structural_type": "bool",
           "default": "True",
-          "description": "Whether to calculate the intercept for this model. If set to false, no intercept will be used in calculations (i.e. data is expected to be centered)."
+          "description": "whether to calculate the intercept for this model. If set to false, no intercept will be used in calculations (i.e. data is expected to be centered)."
         }
       },
       {
@@ -3902,7 +3522,7 @@
           ],
           "_structural_type": "bool",
           "default": "False",
-          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`~sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
+          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
         }
       },
       {
@@ -3926,7 +3546,7 @@
           ],
           "_structural_type": "int",
           "default": 1000,
-          "description": "The maximum number of iterations."
+          "description": "The maximum number of iterations"
         }
       },
       {
@@ -3961,7 +3581,7 @@
             "random_state"
           ],
           "default": "random_state__None",
-          "description": "The seed of the pseudo random number generator that selects a random feature to update. Used when ``selection`` == 'random'. Pass an int for reproducible output across multiple function calls. See :term:`Glossary <random_state>`."
+          "description": "The seed of the pseudo random number generator that selects a random feature to update.  If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by `np.random`. Used when ``selection`` == 'random'."
         },
         "hyperparams": [
           {
@@ -4003,14 +3623,13 @@
           "description": "If set to 'random', a random coefficient is updated every iteration rather than looping over features sequentially by default. This (setting to 'random') often leads to significantly faster convergence especially when tol is higher than 1e-4"
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "MultiTaskLassoCV": {
     "name": "sklearn.linear_model._coordinate_descent.MultiTaskLassoCV",
     "common_name": "MultiTaskLassoCV",
     "description": "Multi-task Lasso model trained with L1/L2 mixed-norm as regularizer. See glossary entry for :term:`cross-validation estimator`.  The optimization objective for MultiTaskLasso is::      (1 / (2 * n_samples)) * ||Y - XW||^Fro_2 + alpha * ||W||_21  Where::      ||W||_21 = \\sum_i \\sqrt{\\sum_j w_{ij}^2}  i.e. the sum of norm of each row.  Read more in the :ref:`User Guide <multi_task_lasso>`.  .. versionadded:: 0.15",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -4033,7 +3652,7 @@
           ],
           "_structural_type": "int",
           "default": 100,
-          "description": "Number of alphas along the regularization path."
+          "description": "Number of alphas along the regularization path"
         }
       },
       {
@@ -4079,7 +3698,7 @@
           ],
           "_structural_type": "bool",
           "default": "True",
-          "description": "Whether to calculate the intercept for this model. If set to false, no intercept will be used in calculations (i.e. data is expected to be centered)."
+          "description": "whether to calculate the intercept for this model. If set to false, no intercept will be used in calculations (i.e. data is expected to be centered)."
         }
       },
       {
@@ -4091,7 +3710,7 @@
           ],
           "_structural_type": "bool",
           "default": "False",
-          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`~sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
+          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
         }
       },
       {
@@ -4138,7 +3757,7 @@
             "cv"
           ],
           "default": "cv__None",
-          "description": "Determines the cross-validation splitting strategy. Possible inputs for cv are:  - None, to use the default 5-fold cross-validation, - int, to specify the number of folds. - :term:`CV splitter`, - An iterable yielding (train, test) splits as arrays of indices.  For int/None inputs, :class:`KFold` is used.  Refer :ref:`User Guide <cross_validation>` for the various cross-validation strategies that can be used here.  .. versionchanged:: 0.22     ``cv`` default value if None changed from 3-fold to 5-fold."
+          "description": "Determines the cross-validation splitting strategy. Possible inputs for cv are:  - None, to use the default 5-fold cross-validation, - integer, to specify the number of folds. - :term:`CV splitter`, - An iterable yielding (train, test) splits as arrays of indices.  For integer/None inputs, :class:`KFold` is used.  Refer :ref:`User Guide <cross_validation>` for the various cross-validation strategies that can be used here.  .. versionchanged:: 0.22     ``cv`` default value if None changed from 3-fold to 5-fold."
         },
         "hyperparams": [
           {
@@ -4218,7 +3837,7 @@
             "random_state"
           ],
           "default": "random_state__None",
-          "description": "The seed of the pseudo random number generator that selects a random feature to update. Used when ``selection`` == 'random'. Pass an int for reproducible output across multiple function calls. See :term:`Glossary <random_state>`."
+          "description": "The seed of the pseudo random number generator that selects a random feature to update.  If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by `np.random`. Used when ``selection`` == 'random'"
         },
         "hyperparams": [
           {
@@ -4260,14 +3879,13 @@
           "description": "If set to 'random', a random coefficient is updated every iteration rather than looping over features sequentially by default. This (setting to 'random') often leads to significantly faster convergence especially when tol is higher than 1e-4."
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "OrthogonalMatchingPursuit": {
     "name": "sklearn.linear_model._omp.OrthogonalMatchingPursuit",
     "common_name": "OrthogonalMatchingPursuit",
-    "description": "Orthogonal Matching Pursuit model (OMP). Read more in the :ref:`User Guide <omp>`.",
-    "sklearn_version": "0.24.0",
+    "description": "Orthogonal Matching Pursuit model (OMP) Read more in the :ref:`User Guide <omp>`.",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "name": "n_nonzero_coefs",
@@ -4358,7 +3976,7 @@
           ],
           "_structural_type": "bool",
           "default": "True",
-          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`~sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
+          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
         }
       },
       {
@@ -4395,14 +4013,13 @@
           }
         ]
       }
-    ],
-    "Params": []
+    ]
   },
   "OrthogonalMatchingPursuitCV": {
     "name": "sklearn.linear_model._omp.OrthogonalMatchingPursuitCV",
     "common_name": "OrthogonalMatchingPursuitCV",
     "description": "Cross-validated Orthogonal Matching Pursuit model (OMP). See glossary entry for :term:`cross-validation estimator`.  Read more in the :ref:`User Guide <omp>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -4437,7 +4054,7 @@
           ],
           "_structural_type": "bool",
           "default": "True",
-          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`~sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
+          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
         }
       },
       {
@@ -4521,47 +4138,24 @@
         }
       },
       {
+        "type": "Hyperparameter",
         "name": "verbose",
-        "type": "Union",
         "init_args": {
           "semantic_types": [
             "verbose"
           ],
-          "default": "verbose__bool",
-          "description": "Sets the verbosity amount."
-        },
-        "hyperparams": [
-          {
-            "type": "Hyperparameter",
-            "name": "verbose__bool",
-            "init_args": {
-              "semantic_types": [
-                "verbose"
-              ],
-              "_structural_type": "bool",
-              "default": "False"
-            }
-          },
-          {
-            "type": "Hyperparameter",
-            "name": "verbose__int",
-            "init_args": {
-              "semantic_types": [
-                "verbose"
-              ],
-              "_structural_type": "int"
-            }
-          }
-        ]
+          "_structural_type": "int",
+          "default": "False",
+          "description": "Sets the verbosity amount"
+        }
       }
-    ],
-    "Params": []
+    ]
   },
   "PassiveAggressiveClassifier": {
     "name": "sklearn.linear_model._passive_aggressive.PassiveAggressiveClassifier",
     "common_name": "PassiveAggressiveClassifier",
     "description": "Passive Aggressive Classifier Read more in the :ref:`User Guide <passive_aggressive>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -4747,7 +4341,7 @@
             "random_state"
           ],
           "default": "random_state__None",
-          "description": "Used to shuffle the training data, when ``shuffle`` is set to ``True``. Pass an int for reproducible output across multiple function calls. See :term:`Glossary <random_state>`."
+          "description": "The seed of the pseudo random number generator to use when shuffling the data.  If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by `np.random`."
         },
         "hyperparams": [
           {
@@ -4830,47 +4424,24 @@
         ]
       },
       {
+        "type": "Hyperparameter",
         "name": "average",
-        "type": "Union",
         "init_args": {
           "semantic_types": [
             "average"
           ],
-          "default": "average__bool",
+          "_structural_type": "int",
+          "default": "False",
           "description": "When set to True, computes the averaged SGD weights and stores the result in the ``coef_`` attribute. If set to an int greater than 1, averaging will begin once the total number of samples seen reaches average. So average=10 will begin averaging after seeing 10 samples.  .. versionadded:: 0.19    parameter *average* to use weights averaging in SGD"
-        },
-        "hyperparams": [
-          {
-            "type": "Hyperparameter",
-            "name": "average__bool",
-            "init_args": {
-              "semantic_types": [
-                "average"
-              ],
-              "_structural_type": "bool",
-              "default": "False"
-            }
-          },
-          {
-            "type": "Hyperparameter",
-            "name": "average__int",
-            "init_args": {
-              "semantic_types": [
-                "average"
-              ],
-              "_structural_type": "int"
-            }
-          }
-        ]
+        }
       }
-    ],
-    "Params": []
+    ]
   },
   "PassiveAggressiveRegressor": {
     "name": "sklearn.linear_model._passive_aggressive.PassiveAggressiveRegressor",
     "common_name": "PassiveAggressiveRegressor",
     "description": "Passive Aggressive Regressor Read more in the :ref:`User Guide <passive_aggressive>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -5013,7 +4584,7 @@
           ],
           "_structural_type": "int",
           "default": "None",
-          "description": "Used to shuffle the training data, when ``shuffle`` is set to ``True``. Pass an int for reproducible output across multiple function calls. See :term:`Glossary <random_state>`."
+          "description": "The seed of the pseudo random number generator to use when shuffling the data.  If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by `np.random`."
         }
       },
       {
@@ -5029,47 +4600,24 @@
         }
       },
       {
+        "type": "Hyperparameter",
         "name": "average",
-        "type": "Union",
         "init_args": {
           "semantic_types": [
             "average"
           ],
-          "default": "average__bool",
+          "_structural_type": "int",
+          "default": "False",
           "description": "When set to True, computes the averaged SGD weights and stores the result in the ``coef_`` attribute. If set to an int greater than 1, averaging will begin once the total number of samples seen reaches average. So average=10 will begin averaging after seeing 10 samples.  .. versionadded:: 0.19    parameter *average* to use weights averaging in SGD"
-        },
-        "hyperparams": [
-          {
-            "type": "Hyperparameter",
-            "name": "average__bool",
-            "init_args": {
-              "semantic_types": [
-                "average"
-              ],
-              "_structural_type": "bool",
-              "default": "False"
-            }
-          },
-          {
-            "type": "Hyperparameter",
-            "name": "average__int",
-            "init_args": {
-              "semantic_types": [
-                "average"
-              ],
-              "_structural_type": "int"
-            }
-          }
-        ]
+        }
       }
-    ],
-    "Params": []
+    ]
   },
   "Perceptron": {
     "name": "sklearn.linear_model._perceptron.Perceptron",
     "common_name": "Perceptron",
     "description": "Perceptron Read more in the :ref:`User Guide <perceptron>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "name": "penalty",
@@ -5120,18 +4668,6 @@
           "_structural_type": "float",
           "default": 0.0001,
           "description": "Constant that multiplies the regularization term if regularization is used."
-        }
-      },
-      {
-        "type": "Hyperparameter",
-        "name": "l1_ratio",
-        "init_args": {
-          "semantic_types": [
-            "l1_ratio"
-          ],
-          "_structural_type": "float",
-          "default": 0.15,
-          "description": "The Elastic Net mixing parameter, with `0 <= l1_ratio <= 1`. `l1_ratio=0` corresponds to L2 penalty, `l1_ratio=1` to L1. Only used if `penalty='elasticnet'`.  .. versionadded:: 0.24"
         }
       },
       {
@@ -5248,7 +4784,7 @@
             "random_state"
           ],
           "default": "random_state__int",
-          "description": "Used to shuffle the training data, when ``shuffle`` is set to ``True``. Pass an int for reproducible output across multiple function calls. See :term:`Glossary <random_state>`."
+          "description": "The seed of the pseudo random number generator to use when shuffling the data.  If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by `np.random`."
         },
         "hyperparams": [
           {
@@ -5366,95 +4902,13 @@
           "description": "When set to True, reuse the solution of the previous call to fit as initialization, otherwise, just erase the previous solution. See :term:`the Glossary <warm_start>`."
         }
       }
-    ],
-    "Params": []
-  },
-  "PoissonRegressor": {
-    "name": "sklearn.linear_model._glm.glm.PoissonRegressor",
-    "common_name": "PoissonRegressor",
-    "description": "Generalized Linear Model with a Poisson distribution. Read more in the :ref:`User Guide <Generalized_linear_regression>`.  .. versionadded:: 0.23",
-    "sklearn_version": "0.24.0",
-    "Hyperparams": [
-      {
-        "type": "Hyperparameter",
-        "name": "alpha",
-        "init_args": {
-          "semantic_types": [
-            "alpha"
-          ],
-          "_structural_type": "float",
-          "default": 1.0,
-          "description": "Constant that multiplies the penalty term and thus determines the regularization strength. ``alpha = 0`` is equivalent to unpenalized GLMs. In this case, the design matrix `X` must have full column rank (no collinearities)."
-        }
-      },
-      {
-        "type": "Hyperparameter",
-        "name": "fit_intercept",
-        "init_args": {
-          "semantic_types": [
-            "fit_intercept"
-          ],
-          "_structural_type": "bool",
-          "default": "True",
-          "description": "Specifies if a constant (a.k.a. bias or intercept) should be added to the linear predictor (X @ coef + intercept)."
-        }
-      },
-      {
-        "type": "Hyperparameter",
-        "name": "max_iter",
-        "init_args": {
-          "semantic_types": [
-            "max_iter"
-          ],
-          "_structural_type": "int",
-          "default": 100,
-          "description": "The maximal number of iterations for the solver."
-        }
-      },
-      {
-        "type": "Hyperparameter",
-        "name": "tol",
-        "init_args": {
-          "semantic_types": [
-            "tol"
-          ],
-          "_structural_type": "float",
-          "default": 0.0001,
-          "description": "Stopping criterion. For the lbfgs solver, the iteration will stop when ``max{|g_j|, j = 1, ..., d} <= tol`` where ``g_j`` is the j-th component of the gradient (derivative) of the objective function."
-        }
-      },
-      {
-        "type": "Hyperparameter",
-        "name": "warm_start",
-        "init_args": {
-          "semantic_types": [
-            "warm_start"
-          ],
-          "_structural_type": "bool",
-          "default": "False",
-          "description": "If set to ``True``, reuse the solution of the previous call to ``fit`` as initialization for ``coef_`` and ``intercept_`` ."
-        }
-      },
-      {
-        "type": "Hyperparameter",
-        "name": "verbose",
-        "init_args": {
-          "semantic_types": [
-            "verbose"
-          ],
-          "_structural_type": "int",
-          "default": 0,
-          "description": "For the lbfgs solver set verbose to any positive number for verbosity."
-        }
-      }
-    ],
-    "Params": []
+    ]
   },
   "RANSACRegressor": {
     "name": "sklearn.linear_model._ransac.RANSACRegressor",
     "common_name": "RANSACRegressor",
     "description": "RANSAC (RANdom SAmple Consensus) algorithm. RANSAC is an iterative algorithm for the robust estimation of parameters from a subset of inliers from the complete data set.  Read more in the :ref:`User Guide <ransac_regression>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "name": "base_estimator",
@@ -5464,7 +4918,7 @@
             "base_estimator"
           ],
           "default": "base_estimator__None",
-          "description": "Base estimator object which implements the following methods:   * `fit(X, y)`: Fit model to given training data and target values.  * `score(X, y)`: Returns the mean accuracy on the given test data,    which is used for the stop criterion defined by `stop_score`.    Additionally, the score is used to decide which of two equally    large consensus sets is chosen as the better one.  * `predict(X)`: Returns predicted values using the linear model,    which is used to compute residual error using loss function.  If `base_estimator` is None, then :class:`~sklearn.linear_model.LinearRegression` is used for target values of dtype float.  Note that the current implementation only supports regression estimators."
+          "description": "Base estimator object which implements the following methods:   * `fit(X, y)`: Fit model to given training data and target values.  * `score(X, y)`: Returns the mean accuracy on the given test data,    which is used for the stop criterion defined by `stop_score`.    Additionally, the score is used to decide which of two equally    large consensus sets is chosen as the better one.  * `predict(X)`: Returns predicted values using the linear model,    which is used to compute residual error using loss function.  If `base_estimator` is None, then ``base_estimator=sklearn.linear_model.LinearRegression()`` is used for target values of dtype float.  Note that the current implementation only supports regression estimators."
         },
         "hyperparams": [
           {
@@ -5704,7 +5158,7 @@
             "loss"
           ],
           "default": "loss__str",
-          "description": "String inputs, \"absolute_loss\" and \"squared_loss\" are supported which find the absolute loss and squared loss per sample respectively.  If ``loss`` is a callable, then it should be a function that takes two arrays as inputs, the true and predicted value and returns a 1-D array with the i-th value of the array corresponding to the loss on ``X[i]``.  If the loss on a sample is greater than the ``residual_threshold``, then this sample is classified as an outlier.  .. versionadded:: 0.18"
+          "description": "String inputs, \"absolute_loss\" and \"squared_loss\" are supported which find the absolute loss and squared loss per sample respectively.  If ``loss`` is a callable, then it should be a function that takes two arrays as inputs, the true and predicted value and returns a 1-D array with the i-th value of the array corresponding to the loss on ``X[i]``.  If the loss on a sample is greater than the ``residual_threshold``, then this sample is classified as an outlier."
         },
         "hyperparams": [
           {
@@ -5742,7 +5196,7 @@
             "random_state"
           ],
           "default": "random_state__None",
-          "description": "The generator used to initialize the centers. Pass an int for reproducible output across multiple function calls. See :term:`Glossary <random_state>`."
+          "description": "The generator used to initialize the centers.  If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by `np.random`."
         },
         "hyperparams": [
           {
@@ -5768,14 +5222,13 @@
           }
         ]
       }
-    ],
-    "Params": []
+    ]
   },
   "Ridge": {
     "name": "sklearn.linear_model._ridge.Ridge",
     "common_name": "Ridge",
     "description": "Linear least squares with l2 regularization. Minimizes the objective function::  ||y - Xw||^2_2 + alpha * ||w||^2_2  This model solves a regression model where the loss function is the linear least squares function and regularization is given by the l2-norm. Also known as Ridge Regression or Tikhonov regularization. This estimator has built-in support for multi-variate regression (i.e., when y is a 2d-array of shape (n_samples, n_targets)).  Read more in the :ref:`User Guide <ridge_regression>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "name": "alpha",
@@ -5785,7 +5238,7 @@
             "alpha"
           ],
           "default": "alpha__float",
-          "description": "Regularization strength; must be a positive float. Regularization improves the conditioning of the problem and reduces the variance of the estimates. Larger values specify stronger regularization. Alpha corresponds to ``1 / (2C)`` in other linear models such as :class:`~sklearn.linear_model.LogisticRegression` or :class:`~sklearn.svm.LinearSVC`. If an array is passed, penalties are assumed to be specific to the targets. Hence they must correspond in number."
+          "description": "Regularization strength; must be a positive float. Regularization improves the conditioning of the problem and reduces the variance of the estimates. Larger values specify stronger regularization. Alpha corresponds to ``C^-1`` in other linear models such as LogisticRegression or LinearSVC. If an array is passed, penalties are assumed to be specific to the targets. Hence they must correspond in number."
         },
         "hyperparams": [
           {
@@ -5797,6 +5250,16 @@
               ],
               "_structural_type": "float",
               "default": 1.0
+            }
+          },
+          {
+            "name": "alpha__ndarray",
+            "type": "Hyperparameter",
+            "init_args": {
+              "_structural_type": "ndarray",
+              "semantic_types": [
+                "alpha"
+              ]
             }
           }
         ]
@@ -5810,7 +5273,7 @@
           ],
           "_structural_type": "bool",
           "default": "True",
-          "description": "Whether to fit the intercept for this model. If set to false, no intercept will be used in calculations (i.e. ``X`` and ``y`` are expected to be centered)."
+          "description": "Whether to calculate the intercept for this model. If set to false, no intercept will be used in calculations (i.e. data is expected to be centered)."
         }
       },
       {
@@ -5822,7 +5285,7 @@
           ],
           "_structural_type": "bool",
           "default": "False",
-          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`~sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
+          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
         }
       },
       {
@@ -5901,7 +5364,7 @@
           ],
           "_structural_type": "str",
           "default": "auto",
-          "description": "Solver to use in the computational routines:  - 'auto' chooses the solver automatically based on the type of data.  - 'svd' uses a Singular Value Decomposition of X to compute the Ridge   coefficients. More stable for singular matrices than 'cholesky'.  - 'cholesky' uses the standard scipy.linalg.solve function to   obtain a closed-form solution.  - 'sparse_cg' uses the conjugate gradient solver as found in   scipy.sparse.linalg.cg. As an iterative algorithm, this solver is   more appropriate than 'cholesky' for large-scale data   (possibility to set `tol` and `max_iter`).  - 'lsqr' uses the dedicated regularized least-squares routine   scipy.sparse.linalg.lsqr. It is the fastest and uses an iterative   procedure.  - 'sag' uses a Stochastic Average Gradient descent, and 'saga' uses   its improved, unbiased version named SAGA. Both methods also use an   iterative procedure, and are often faster than other solvers when   both n_samples and n_features are large. Note that 'sag' and   'saga' fast convergence is only guaranteed on features with   approximately the same scale. You can preprocess the data with a   scaler from sklearn.preprocessing.  All last five solvers support both dense and sparse data. However, only 'sag' and 'sparse_cg' supports sparse input when `fit_intercept` is True.  .. versionadded:: 0.17    Stochastic Average Gradient descent solver. .. versionadded:: 0.19    SAGA solver."
+          "description": "Solver to use in the computational routines:  - 'auto' chooses the solver automatically based on the type of data.  - 'svd' uses a Singular Value Decomposition of X to compute the Ridge   coefficients. More stable for singular matrices than   'cholesky'.  - 'cholesky' uses the standard scipy.linalg.solve function to   obtain a closed-form solution.  - 'sparse_cg' uses the conjugate gradient solver as found in   scipy.sparse.linalg.cg. As an iterative algorithm, this solver is   more appropriate than 'cholesky' for large-scale data   (possibility to set `tol` and `max_iter`).  - 'lsqr' uses the dedicated regularized least-squares routine   scipy.sparse.linalg.lsqr. It is the fastest and uses an iterative   procedure.  - 'sag' uses a Stochastic Average Gradient descent, and 'saga' uses   its improved, unbiased version named SAGA. Both methods also use an   iterative procedure, and are often faster than other solvers when   both n_samples and n_features are large. Note that 'sag' and   'saga' fast convergence is only guaranteed on features with   approximately the same scale. You can preprocess the data with a   scaler from sklearn.preprocessing.  All last five solvers support both dense and sparse data. However, only 'sparse_cg' supports sparse input when `fit_intercept` is True.  .. versionadded:: 0.17    Stochastic Average Gradient descent solver. .. versionadded:: 0.19    SAGA solver."
         }
       },
       {
@@ -5912,7 +5375,7 @@
             "random_state"
           ],
           "default": "random_state__None",
-          "description": "Used when ``solver`` == 'sag' or 'saga' to shuffle the data. See :term:`Glossary <random_state>` for details.  .. versionadded:: 0.17    `random_state` to support Stochastic Average Gradient."
+          "description": "The seed of the pseudo random number generator to use when shuffling the data.  If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by `np.random`. Used when ``solver`` == 'sag'.  .. versionadded:: 0.17    *random_state* to support Stochastic Average Gradient."
         },
         "hyperparams": [
           {
@@ -5938,14 +5401,13 @@
           }
         ]
       }
-    ],
-    "Params": []
+    ]
   },
   "RidgeCV": {
     "name": "sklearn.linear_model._ridge.RidgeCV",
     "common_name": "RidgeCV",
-    "description": "Ridge regression with built-in cross-validation. See glossary entry for :term:`cross-validation estimator`.  By default, it performs Leave-One-Out Cross-Validation, which is a form of efficient Leave-One-Out cross-validation.  Read more in the :ref:`User Guide <ridge_regression>`.",
-    "sklearn_version": "0.24.0",
+    "description": "Ridge regression with built-in cross-validation. See glossary entry for :term:`cross-validation estimator`.  By default, it performs Generalized Cross-Validation, which is a form of efficient Leave-One-Out cross-validation.  Read more in the :ref:`User Guide <ridge_regression>`.",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -5956,7 +5418,7 @@
           ],
           "_structural_type": "tuple",
           "default": "&esc(0.1, 1.0, 10.0)",
-          "description": "Array of alpha values to try. Regularization strength; must be a positive float. Regularization improves the conditioning of the problem and reduces the variance of the estimates. Larger values specify stronger regularization. Alpha corresponds to ``1 / (2C)`` in other linear models such as :class:`~sklearn.linear_model.LogisticRegression` or :class:`~sklearn.svm.LinearSVC`. If using Leave-One-Out cross-validation, alphas must be positive."
+          "description": "Array of alpha values to try. Regularization strength; must be a positive float. Regularization improves the conditioning of the problem and reduces the variance of the estimates. Larger values specify stronger regularization. Alpha corresponds to ``C^-1`` in other linear models such as LogisticRegression or LinearSVC. If using generalized cross-validation, alphas must be positive."
         }
       },
       {
@@ -5980,7 +5442,7 @@
           ],
           "_structural_type": "bool",
           "default": "False",
-          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`~sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
+          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
         }
       },
       {
@@ -5991,7 +5453,7 @@
             "scoring"
           ],
           "default": "scoring__None",
-          "description": "A string (see model evaluation documentation) or a scorer callable object / function with signature ``scorer(estimator, X, y)``. If None, the negative mean squared error if cv is 'auto' or None (i.e. when using leave-one-out cross-validation), and r2 score otherwise."
+          "description": "A string (see model evaluation documentation) or a scorer callable object / function with signature ``scorer(estimator, X, y)``. If None, the negative mean squared error if cv is 'auto' or None (i.e. when using generalized cross-validation), and r2 score otherwise."
         },
         "hyperparams": [
           {
@@ -6035,7 +5497,7 @@
             "cv"
           ],
           "default": "cv__None",
-          "description": "Determines the cross-validation splitting strategy. Possible inputs for cv are:  - None, to use the efficient Leave-One-Out cross-validation - integer, to specify the number of folds. - :term:`CV splitter`, - An iterable yielding (train, test) splits as arrays of indices.  For integer/None inputs, if ``y`` is binary or multiclass, :class:`~sklearn.model_selection.StratifiedKFold` is used, else, :class:`~sklearn.model_selection.KFold` is used.  Refer :ref:`User Guide <cross_validation>` for the various cross-validation strategies that can be used here."
+          "description": "Determines the cross-validation splitting strategy. Possible inputs for cv are:  - None, to use the efficient Leave-One-Out cross-validation   (also known as Generalized Cross-Validation). - integer, to specify the number of folds. - :term:`CV splitter`, - An iterable yielding (train, test) splits as arrays of indices.  For integer/None inputs, if ``y`` is binary or multiclass, :class:`sklearn.model_selection.StratifiedKFold` is used, else, :class:`sklearn.model_selection.KFold` is used.  Refer :ref:`User Guide <cross_validation>` for the various cross-validation strategies that can be used here."
         },
         "hyperparams": [
           {
@@ -6075,7 +5537,7 @@
           ],
           "_structural_type": "str",
           "default": "None",
-          "description": "Flag indicating which strategy to use when performing Leave-One-Out Cross-Validation. Options are::      'auto' : use 'svd' if n_samples > n_features, otherwise use 'eigen'     'svd' : force use of singular value decomposition of X when X is         dense, eigenvalue decomposition of X^T.X when X is sparse.     'eigen' : force computation via eigendecomposition of X.X^T  The 'auto' mode is the default and is intended to pick the cheaper option of the two depending on the shape of the training data."
+          "description": "Flag indicating which strategy to use when performing Generalized Cross-Validation. Options are::      'auto' : use 'svd' if n_samples > n_features, otherwise use 'eigen'     'svd' : force use of singular value decomposition of X when X is         dense, eigenvalue decomposition of X^T.X when X is sparse.     'eigen' : force computation via eigendecomposition of X.X^T  The 'auto' mode is the default and is intended to pick the cheaper option of the two depending on the shape of the training data."
         }
       },
       {
@@ -6087,29 +5549,16 @@
           ],
           "_structural_type": "bool",
           "default": "False",
-          "description": "Flag indicating if the cross-validation values corresponding to each alpha should be stored in the ``cv_values_`` attribute (see below). This flag is only compatible with ``cv=None`` (i.e. using Leave-One-Out Cross-Validation)."
-        }
-      },
-      {
-        "type": "Hyperparameter",
-        "name": "alpha_per_target",
-        "init_args": {
-          "semantic_types": [
-            "alpha_per_target"
-          ],
-          "_structural_type": "bool",
-          "default": "False",
-          "description": "Flag indicating whether to optimize the alpha value (picked from the `alphas` parameter list) for each target separately (for multi-output settings: multiple prediction targets). When set to `True`, after fitting, the `alpha_` attribute will contain a value for each target. When set to `False`, a single alpha is used for all targets.  .. versionadded:: 0.24"
+          "description": "Flag indicating if the cross-validation values corresponding to each alpha should be stored in the ``cv_values_`` attribute (see below). This flag is only compatible with ``cv=None`` (i.e. using Generalized Cross-Validation)."
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "RidgeClassifier": {
     "name": "sklearn.linear_model._ridge.RidgeClassifier",
     "common_name": "RidgeClassifier",
     "description": "Classifier using Ridge regression. This classifier first converts the target values into ``{-1, 1}`` and then treats the problem as a regression task (multi-output regression in the multiclass case).  Read more in the :ref:`User Guide <ridge_regression>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -6120,7 +5569,7 @@
           ],
           "_structural_type": "float",
           "default": 1.0,
-          "description": "Regularization strength; must be a positive float. Regularization improves the conditioning of the problem and reduces the variance of the estimates. Larger values specify stronger regularization. Alpha corresponds to ``1 / (2C)`` in other linear models such as :class:`~sklearn.linear_model.LogisticRegression` or :class:`~sklearn.svm.LinearSVC`."
+          "description": "Regularization strength; must be a positive float. Regularization improves the conditioning of the problem and reduces the variance of the estimates. Larger values specify stronger regularization. Alpha corresponds to ``C^-1`` in other linear models such as LogisticRegression or LinearSVC."
         }
       },
       {
@@ -6144,7 +5593,7 @@
           ],
           "_structural_type": "bool",
           "default": "False",
-          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`~sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
+          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
         }
       },
       {
@@ -6267,7 +5716,7 @@
           ],
           "_structural_type": "str",
           "default": "auto",
-          "description": "Solver to use in the computational routines:  - 'auto' chooses the solver automatically based on the type of data.  - 'svd' uses a Singular Value Decomposition of X to compute the Ridge   coefficients. More stable for singular matrices than 'cholesky'.  - 'cholesky' uses the standard scipy.linalg.solve function to   obtain a closed-form solution.  - 'sparse_cg' uses the conjugate gradient solver as found in   scipy.sparse.linalg.cg. As an iterative algorithm, this solver is   more appropriate than 'cholesky' for large-scale data   (possibility to set `tol` and `max_iter`).  - 'lsqr' uses the dedicated regularized least-squares routine   scipy.sparse.linalg.lsqr. It is the fastest and uses an iterative   procedure.  - 'sag' uses a Stochastic Average Gradient descent, and 'saga' uses   its unbiased and more flexible version named SAGA. Both methods   use an iterative procedure, and are often faster than other solvers   when both n_samples and n_features are large. Note that 'sag' and   'saga' fast convergence is only guaranteed on features with   approximately the same scale. You can preprocess the data with a   scaler from sklearn.preprocessing.    .. versionadded:: 0.17      Stochastic Average Gradient descent solver.   .. versionadded:: 0.19    SAGA solver."
+          "description": "Solver to use in the computational routines:  - 'auto' chooses the solver automatically based on the type of data.  - 'svd' uses a Singular Value Decomposition of X to compute the Ridge   coefficients. More stable for singular matrices than   'cholesky'.  - 'cholesky' uses the standard scipy.linalg.solve function to   obtain a closed-form solution.  - 'sparse_cg' uses the conjugate gradient solver as found in   scipy.sparse.linalg.cg. As an iterative algorithm, this solver is   more appropriate than 'cholesky' for large-scale data   (possibility to set `tol` and `max_iter`).  - 'lsqr' uses the dedicated regularized least-squares routine   scipy.sparse.linalg.lsqr. It is the fastest and uses an iterative   procedure.  - 'sag' uses a Stochastic Average Gradient descent, and 'saga' uses   its unbiased and more flexible version named SAGA. Both methods   use an iterative procedure, and are often faster than other solvers   when both n_samples and n_features are large. Note that 'sag' and   'saga' fast convergence is only guaranteed on features with   approximately the same scale. You can preprocess the data with a   scaler from sklearn.preprocessing.    .. versionadded:: 0.17      Stochastic Average Gradient descent solver.   .. versionadded:: 0.19    SAGA solver."
         }
       },
       {
@@ -6278,7 +5727,7 @@
             "random_state"
           ],
           "default": "random_state__None",
-          "description": "Used when ``solver`` == 'sag' or 'saga' to shuffle the data. See :term:`Glossary <random_state>` for details."
+          "description": "The seed of the pseudo random number generator to use when shuffling the data.  If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by `np.random`. Used when ``solver`` == 'sag'."
         },
         "hyperparams": [
           {
@@ -6304,14 +5753,13 @@
           }
         ]
       }
-    ],
-    "Params": []
+    ]
   },
   "RidgeClassifierCV": {
     "name": "sklearn.linear_model._ridge.RidgeClassifierCV",
     "common_name": "RidgeClassifierCV",
-    "description": "Ridge classifier with built-in cross-validation. See glossary entry for :term:`cross-validation estimator`.  By default, it performs Leave-One-Out Cross-Validation. Currently, only the n_features > n_samples case is handled efficiently.  Read more in the :ref:`User Guide <ridge_regression>`.",
-    "sklearn_version": "0.24.0",
+    "description": "Ridge classifier with built-in cross-validation. See glossary entry for :term:`cross-validation estimator`.  By default, it performs Generalized Cross-Validation, which is a form of efficient Leave-One-Out cross-validation. Currently, only the n_features > n_samples case is handled efficiently.  Read more in the :ref:`User Guide <ridge_regression>`.",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -6322,7 +5770,7 @@
           ],
           "_structural_type": "tuple",
           "default": "&esc(0.1, 1.0, 10.0)",
-          "description": "Array of alpha values to try. Regularization strength; must be a positive float. Regularization improves the conditioning of the problem and reduces the variance of the estimates. Larger values specify stronger regularization. Alpha corresponds to ``1 / (2C)`` in other linear models such as :class:`~sklearn.linear_model.LogisticRegression` or :class:`~sklearn.svm.LinearSVC`."
+          "description": "Array of alpha values to try. Regularization strength; must be a positive float. Regularization improves the conditioning of the problem and reduces the variance of the estimates. Larger values specify stronger regularization. Alpha corresponds to ``C^-1`` in other linear models such as LogisticRegression or LinearSVC."
         }
       },
       {
@@ -6346,7 +5794,7 @@
           ],
           "_structural_type": "bool",
           "default": "False",
-          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`~sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
+          "description": "This parameter is ignored when ``fit_intercept`` is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use :class:`sklearn.preprocessing.StandardScaler` before calling ``fit`` on an estimator with ``normalize=False``."
         }
       },
       {
@@ -6458,17 +5906,16 @@
           ],
           "_structural_type": "bool",
           "default": "False",
-          "description": "Flag indicating if the cross-validation values corresponding to each alpha should be stored in the ``cv_values_`` attribute (see below). This flag is only compatible with ``cv=None`` (i.e. using Leave-One-Out Cross-Validation)."
+          "description": "Flag indicating if the cross-validation values corresponding to each alpha should be stored in the ``cv_values_`` attribute (see below). This flag is only compatible with ``cv=None`` (i.e. using Generalized Cross-Validation)."
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "SGDClassifier": {
     "name": "sklearn.linear_model._stochastic_gradient.SGDClassifier",
     "common_name": "SGDClassifier",
-    "description": "Linear classifiers (SVM, logistic regression, etc.) with SGD training. This estimator implements regularized linear models with stochastic gradient descent (SGD) learning: the gradient of the loss is estimated each sample at a time and the model is updated along the way with a decreasing strength schedule (aka learning rate). SGD allows minibatch (online/out-of-core) learning via the `partial_fit` method. For best results using the default learning rate schedule, the data should have zero mean and unit variance.  This implementation works with data represented as dense or sparse arrays of floating point values for the features. The model it fits can be controlled with the loss parameter; by default, it fits a linear support vector machine (SVM).  The regularizer is a penalty added to the loss function that shrinks model parameters towards the zero vector using either the squared euclidean norm L2 or the absolute norm L1 or a combination of both (Elastic Net). If the parameter update crosses the 0.0 value because of the regularizer, the update is truncated to 0.0 to allow for learning sparse models and achieve online feature selection.  Read more in the :ref:`User Guide <sgd>`.",
-    "sklearn_version": "0.24.0",
+    "description": "Linear classifiers (SVM, logistic regression, a.o.) with SGD training. This estimator implements regularized linear models with stochastic gradient descent (SGD) learning: the gradient of the loss is estimated each sample at a time and the model is updated along the way with a decreasing strength schedule (aka learning rate). SGD allows minibatch (online/out-of-core) learning, see the partial_fit method. For best results using the default learning rate schedule, the data should have zero mean and unit variance.  This implementation works with data represented as dense or sparse arrays of floating point values for the features. The model it fits can be controlled with the loss parameter; by default, it fits a linear support vector machine (SVM).  The regularizer is a penalty added to the loss function that shrinks model parameters towards the zero vector using either the squared euclidean norm L2 or the absolute norm L1 or a combination of both (Elastic Net). If the parameter update crosses the 0.0 value because of the regularizer, the update is truncated to 0.0 to allow for learning sparse models and achieve online feature selection.  Read more in the :ref:`User Guide <sgd>`.",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -6479,7 +5926,7 @@
           ],
           "_structural_type": "str",
           "default": "hinge",
-          "description": "The loss function to be used. Defaults to 'hinge', which gives a linear SVM.  The possible options are 'hinge', 'log', 'modified_huber', 'squared_hinge', 'perceptron', or a regression loss: 'squared_loss', 'huber', 'epsilon_insensitive', or 'squared_epsilon_insensitive'.  The 'log' loss gives logistic regression, a probabilistic classifier. 'modified_huber' is another smooth loss that brings tolerance to outliers as well as probability estimates. 'squared_hinge' is like hinge but is quadratically penalized. 'perceptron' is the linear loss used by the perceptron algorithm. The other losses are designed for regression but can be useful in classification as well; see :class:`~sklearn.linear_model.SGDRegressor` for a description.  More details about the losses formulas can be found in the :ref:`User Guide <sgd_mathematical_formulation>`."
+          "description": "The loss function to be used. Defaults to 'hinge', which gives a linear SVM.  The possible options are 'hinge', 'log', 'modified_huber', 'squared_hinge', 'perceptron', or a regression loss: 'squared_loss', 'huber', 'epsilon_insensitive', or 'squared_epsilon_insensitive'.  The 'log' loss gives logistic regression, a probabilistic classifier. 'modified_huber' is another smooth loss that brings tolerance to outliers as well as probability estimates. 'squared_hinge' is like hinge but is quadratically penalized. 'perceptron' is the linear loss used by the perceptron algorithm. The other losses are designed for regression but can be useful in classification as well; see SGDRegressor for a description."
         }
       },
       {
@@ -6508,7 +5955,7 @@
           ],
           "_structural_type": "float",
           "default": 0.0001,
-          "description": "Constant that multiplies the regularization term. The higher the value, the stronger the regularization. Also used to compute the learning rate when set to `learning_rate` is set to 'optimal'."
+          "description": "Constant that multiplies the regularization term. Defaults to 0.0001. Also used to compute learning_rate when set to 'optimal'."
         }
       },
       {
@@ -6520,7 +5967,7 @@
           ],
           "_structural_type": "float",
           "default": 0.15,
-          "description": "The Elastic Net mixing parameter, with 0 <= l1_ratio <= 1. l1_ratio=0 corresponds to L2 penalty, l1_ratio=1 to L1. Only used if `penalty` is 'elasticnet'."
+          "description": "The Elastic Net mixing parameter, with 0 <= l1_ratio <= 1. l1_ratio=0 corresponds to L2 penalty, l1_ratio=1 to L1. Defaults to 0.15."
         }
       },
       {
@@ -6532,7 +5979,7 @@
           ],
           "_structural_type": "bool",
           "default": "True",
-          "description": "Whether the intercept should be estimated or not. If False, the data is assumed to be already centered."
+          "description": "Whether the intercept should be estimated or not. If False, the data is assumed to be already centered. Defaults to True."
         }
       },
       {
@@ -6556,7 +6003,7 @@
           ],
           "_structural_type": "float",
           "default": 0.001,
-          "description": "The stopping criterion. If it is not None, training will stop when (loss > best_loss - tol) for ``n_iter_no_change`` consecutive epochs.  .. versionadded:: 0.19"
+          "description": "The stopping criterion. If it is not None, the iterations will stop when (loss > best_loss - tol) for ``n_iter_no_change`` consecutive epochs.  .. versionadded:: 0.19"
         }
       },
       {
@@ -6637,7 +6084,7 @@
             "random_state"
           ],
           "default": "random_state__None",
-          "description": "Used for shuffling the data, when ``shuffle`` is set to ``True``. Pass an int for reproducible output across multiple function calls. See :term:`Glossary <random_state>`."
+          "description": "The seed of the pseudo random number generator to use when shuffling the data.  If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by `np.random`."
         },
         "hyperparams": [
           {
@@ -6678,7 +6125,7 @@
           ],
           "_structural_type": "str",
           "default": "optimal",
-          "description": "The learning rate schedule:  - 'constant': `eta = eta0` - 'optimal': `eta = 1.0 / (alpha * (t + t0))`   where t0 is chosen by a heuristic proposed by Leon Bottou. - 'invscaling': `eta = eta0 / pow(t, power_t)` - 'adaptive': eta = eta0, as long as the training keeps decreasing.   Each time n_iter_no_change consecutive epochs fail to decrease the   training loss by tol or fail to increase validation score by tol if   early_stopping is True, the current learning rate is divided by 5.      .. versionadded:: 0.20         Added 'adaptive' option"
+          "description": "The learning rate schedule:  'constant':     eta = eta0 'optimal': [default]     eta = 1.0 / (alpha * (t + t0))     where t0 is chosen by a heuristic proposed by Leon Bottou. 'invscaling':     eta = eta0 / pow(t, power_t) 'adaptive':     eta = eta0, as long as the training keeps decreasing.     Each time n_iter_no_change consecutive epochs fail to decrease the     training loss by tol or fail to increase validation score by tol if     early_stopping is True, the current learning rate is divided by 5."
         }
       },
       {
@@ -6714,7 +6161,7 @@
           ],
           "_structural_type": "bool",
           "default": "False",
-          "description": "Whether to use early stopping to terminate training when validation score is not improving. If set to True, it will automatically set aside a stratified fraction of training data as validation and terminate training when validation score returned by the `score` method is not improving by at least tol for n_iter_no_change consecutive epochs.  .. versionadded:: 0.20     Added 'early_stopping' option"
+          "description": "Whether to use early stopping to terminate training when validation score is not improving. If set to True, it will automatically set aside a stratified fraction of training data as validation and terminate training when validation score is not improving by at least tol for n_iter_no_change consecutive epochs.  .. versionadded:: 0.20"
         }
       },
       {
@@ -6726,7 +6173,7 @@
           ],
           "_structural_type": "float",
           "default": 0.1,
-          "description": "The proportion of training data to set aside as validation set for early stopping. Must be between 0 and 1. Only used if `early_stopping` is True.  .. versionadded:: 0.20     Added 'validation_fraction' option"
+          "description": "The proportion of training data to set aside as validation set for early stopping. Must be between 0 and 1. Only used if early_stopping is True.  .. versionadded:: 0.20"
         }
       },
       {
@@ -6738,7 +6185,7 @@
           ],
           "_structural_type": "int",
           "default": 5,
-          "description": "Number of iterations with no improvement to wait before early stopping.  .. versionadded:: 0.20     Added 'n_iter_no_change' option"
+          "description": "Number of iterations with no improvement to wait before early stopping.  .. versionadded:: 0.20"
         }
       },
       {
@@ -6798,47 +6245,24 @@
         }
       },
       {
+        "type": "Hyperparameter",
         "name": "average",
-        "type": "Union",
         "init_args": {
           "semantic_types": [
             "average"
           ],
-          "default": "average__bool",
-          "description": "When set to True, computes the averaged SGD weights accross all updates and stores the result in the ``coef_`` attribute. If set to an int greater than 1, averaging will begin once the total number of samples seen reaches `average`. So ``average=10`` will begin averaging after seeing 10 samples."
-        },
-        "hyperparams": [
-          {
-            "type": "Hyperparameter",
-            "name": "average__bool",
-            "init_args": {
-              "semantic_types": [
-                "average"
-              ],
-              "_structural_type": "bool",
-              "default": "False"
-            }
-          },
-          {
-            "type": "Hyperparameter",
-            "name": "average__int",
-            "init_args": {
-              "semantic_types": [
-                "average"
-              ],
-              "_structural_type": "int"
-            }
-          }
-        ]
+          "_structural_type": "int",
+          "default": "False",
+          "description": "When set to True, computes the averaged SGD weights and stores the result in the ``coef_`` attribute. If set to an int greater than 1, averaging will begin once the total number of samples seen reaches average. So ``average=10`` will begin averaging after seeing 10 samples."
+        }
       }
-    ],
-    "Params": []
+    ]
   },
   "SGDRegressor": {
     "name": "sklearn.linear_model._stochastic_gradient.SGDRegressor",
     "common_name": "SGDRegressor",
     "description": "Linear model fitted by minimizing a regularized empirical loss with SGD SGD stands for Stochastic Gradient Descent: the gradient of the loss is estimated each sample at a time and the model is updated along the way with a decreasing strength schedule (aka learning rate).  The regularizer is a penalty added to the loss function that shrinks model parameters towards the zero vector using either the squared euclidean norm L2 or the absolute norm L1 or a combination of both (Elastic Net). If the parameter update crosses the 0.0 value because of the regularizer, the update is truncated to 0.0 to allow for learning sparse models and achieve online feature selection.  This implementation works with data represented as dense numpy arrays of floating point values for the features.  Read more in the :ref:`User Guide <sgd>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -6849,7 +6273,7 @@
           ],
           "_structural_type": "str",
           "default": "squared_loss",
-          "description": "The loss function to be used. The possible values are 'squared_loss', 'huber', 'epsilon_insensitive', or 'squared_epsilon_insensitive'  The 'squared_loss' refers to the ordinary least squares fit. 'huber' modifies 'squared_loss' to focus less on getting outliers correct by switching from squared to linear loss past a distance of epsilon. 'epsilon_insensitive' ignores errors less than epsilon and is linear past that; this is the loss function used in SVR. 'squared_epsilon_insensitive' is the same but becomes squared loss past a tolerance of epsilon.  More details about the losses formulas can be found in the :ref:`User Guide <sgd_mathematical_formulation>`."
+          "description": "The loss function to be used. The possible values are 'squared_loss', 'huber', 'epsilon_insensitive', or 'squared_epsilon_insensitive'  The 'squared_loss' refers to the ordinary least squares fit. 'huber' modifies 'squared_loss' to focus less on getting outliers correct by switching from squared to linear loss past a distance of epsilon. 'epsilon_insensitive' ignores errors less than epsilon and is linear past that; this is the loss function used in SVR. 'squared_epsilon_insensitive' is the same but becomes squared loss past a tolerance of epsilon."
         }
       },
       {
@@ -6878,7 +6302,7 @@
           ],
           "_structural_type": "float",
           "default": 0.0001,
-          "description": "Constant that multiplies the regularization term. The higher the value, the stronger the regularization. Also used to compute the learning rate when set to `learning_rate` is set to 'optimal'."
+          "description": "Constant that multiplies the regularization term. Also used to compute learning_rate when set to 'optimal'."
         }
       },
       {
@@ -6890,7 +6314,7 @@
           ],
           "_structural_type": "float",
           "default": 0.15,
-          "description": "The Elastic Net mixing parameter, with 0 <= l1_ratio <= 1. l1_ratio=0 corresponds to L2 penalty, l1_ratio=1 to L1. Only used if `penalty` is 'elasticnet'."
+          "description": "The Elastic Net mixing parameter, with 0 <= l1_ratio <= 1. l1_ratio=0 corresponds to L2 penalty, l1_ratio=1 to L1."
         }
       },
       {
@@ -6926,7 +6350,7 @@
           ],
           "_structural_type": "float",
           "default": 0.001,
-          "description": "The stopping criterion. If it is not None, training will stop when (loss > best_loss - tol) for ``n_iter_no_change`` consecutive epochs.  .. versionadded:: 0.19"
+          "description": "The stopping criterion. If it is not None, the iterations will stop when (loss > best_loss - tol) for ``n_iter_no_change`` consecutive epochs.  .. versionadded:: 0.19"
         }
       },
       {
@@ -6973,7 +6397,7 @@
             "random_state"
           ],
           "default": "random_state__None",
-          "description": "Used for shuffling the data, when ``shuffle`` is set to ``True``. Pass an int for reproducible output across multiple function calls. See :term:`Glossary <random_state>`."
+          "description": "The seed of the pseudo random number generator to use when shuffling the data.  If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by `np.random`."
         },
         "hyperparams": [
           {
@@ -7014,7 +6438,7 @@
           ],
           "_structural_type": "str",
           "default": "invscaling",
-          "description": "The learning rate schedule:  - 'constant': `eta = eta0` - 'optimal': `eta = 1.0 / (alpha * (t + t0))`   where t0 is chosen by a heuristic proposed by Leon Bottou. - 'invscaling': `eta = eta0 / pow(t, power_t)` - 'adaptive': eta = eta0, as long as the training keeps decreasing.   Each time n_iter_no_change consecutive epochs fail to decrease the   training loss by tol or fail to increase validation score by tol if   early_stopping is True, the current learning rate is divided by 5.      .. versionadded:: 0.20         Added 'adaptive' option"
+          "description": "The learning rate schedule:  'constant':     eta = eta0 'optimal':     eta = 1.0 / (alpha * (t + t0))     where t0 is chosen by a heuristic proposed by Leon Bottou. 'invscaling': [default]     eta = eta0 / pow(t, power_t) 'adaptive':     eta = eta0, as long as the training keeps decreasing.     Each time n_iter_no_change consecutive epochs fail to decrease the     training loss by tol or fail to increase validation score by tol if     early_stopping is True, the current learning rate is divided by 5."
         }
       },
       {
@@ -7050,7 +6474,7 @@
           ],
           "_structural_type": "bool",
           "default": "False",
-          "description": "Whether to use early stopping to terminate training when validation score is not improving. If set to True, it will automatically set aside a fraction of training data as validation and terminate training when validation score returned by the `score` method is not improving by at least `tol` for `n_iter_no_change` consecutive epochs.  .. versionadded:: 0.20     Added 'early_stopping' option"
+          "description": "Whether to use early stopping to terminate training when validation score is not improving. If set to True, it will automatically set aside a fraction of training data as validation and terminate training when validation score is not improving by at least tol for n_iter_no_change consecutive epochs.  .. versionadded:: 0.20"
         }
       },
       {
@@ -7062,7 +6486,7 @@
           ],
           "_structural_type": "float",
           "default": 0.1,
-          "description": "The proportion of training data to set aside as validation set for early stopping. Must be between 0 and 1. Only used if `early_stopping` is True.  .. versionadded:: 0.20     Added 'validation_fraction' option"
+          "description": "The proportion of training data to set aside as validation set for early stopping. Must be between 0 and 1. Only used if early_stopping is True.  .. versionadded:: 0.20"
         }
       },
       {
@@ -7074,7 +6498,7 @@
           ],
           "_structural_type": "int",
           "default": 5,
-          "description": "Number of iterations with no improvement to wait before early stopping.  .. versionadded:: 0.20     Added 'n_iter_no_change' option"
+          "description": "Number of iterations with no improvement to wait before early stopping.  .. versionadded:: 0.20"
         }
       },
       {
@@ -7090,47 +6514,24 @@
         }
       },
       {
+        "type": "Hyperparameter",
         "name": "average",
-        "type": "Union",
         "init_args": {
           "semantic_types": [
             "average"
           ],
-          "default": "average__bool",
-          "description": "When set to True, computes the averaged SGD weights accross all updates and stores the result in the ``coef_`` attribute. If set to an int greater than 1, averaging will begin once the total number of samples seen reaches `average`. So ``average=10`` will begin averaging after seeing 10 samples."
-        },
-        "hyperparams": [
-          {
-            "type": "Hyperparameter",
-            "name": "average__bool",
-            "init_args": {
-              "semantic_types": [
-                "average"
-              ],
-              "_structural_type": "bool",
-              "default": "False"
-            }
-          },
-          {
-            "type": "Hyperparameter",
-            "name": "average__int",
-            "init_args": {
-              "semantic_types": [
-                "average"
-              ],
-              "_structural_type": "int"
-            }
-          }
-        ]
+          "_structural_type": "int",
+          "default": "False",
+          "description": "When set to True, computes the averaged SGD weights and stores the result in the ``coef_`` attribute. If set to an int greater than 1, averaging will begin once the total number of samples seen reaches average. So ``average=10`` will begin averaging after seeing 10 samples."
+        }
       }
-    ],
-    "Params": []
+    ]
   },
   "TheilSenRegressor": {
     "name": "sklearn.linear_model._theil_sen.TheilSenRegressor",
     "common_name": "TheilSenRegressor",
     "description": "Theil-Sen Estimator: robust multivariate regression model. The algorithm calculates least square solutions on subsets with size n_subsamples of the samples in X. Any value of n_subsamples between the number of features and samples leads to an estimator with a compromise between robustness and efficiency. Since the number of least square solutions is \"n_samples choose n_subsamples\", it can be extremely large and can therefore be limited with max_subpopulation. If this limit is reached, the subsets are chosen randomly. In a final step, the spatial median (or L1 median) is calculated of all least square solutions.  Read more in the :ref:`User Guide <theil_sen_regression>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -7234,7 +6635,7 @@
             "random_state"
           ],
           "default": "random_state__None",
-          "description": "A random number generator instance to define the state of the random permutations generator. Pass an int for reproducible output across multiple function calls. See :term:`Glossary <random_state>`"
+          "description": "A random number generator instance to define the state of the random permutations generator.  If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by `np.random`."
         },
         "hyperparams": [
           {
@@ -7306,117 +6707,6 @@
           "description": "Verbose mode when fitting the model."
         }
       }
-    ],
-    "Params": []
-  },
-  "TweedieRegressor": {
-    "name": "sklearn.linear_model._glm.glm.TweedieRegressor",
-    "common_name": "TweedieRegressor",
-    "description": "Generalized Linear Model with a Tweedie distribution. This estimator can be used to model different GLMs depending on the ``power`` parameter, which determines the underlying distribution.  Read more in the :ref:`User Guide <Generalized_linear_regression>`.  .. versionadded:: 0.23",
-    "sklearn_version": "0.24.0",
-    "Hyperparams": [
-      {
-        "type": "Hyperparameter",
-        "name": "power",
-        "init_args": {
-          "semantic_types": [
-            "power"
-          ],
-          "_structural_type": "float",
-          "default": 0.0,
-          "description": "The power determines the underlying target distribution according to the following table:  +-------+------------------------+ | Power | Distribution           | +=======+========================+ | 0     | Normal                 | +-------+------------------------+ | 1     | Poisson                | +-------+------------------------+ | (1,2) | Compound Poisson Gamma | +-------+------------------------+ | 2     | Gamma                  | +-------+------------------------+ | 3     | Inverse Gaussian       | +-------+------------------------+  For ``0 < power < 1``, no distribution exists."
-        }
-      },
-      {
-        "type": "Hyperparameter",
-        "name": "alpha",
-        "init_args": {
-          "semantic_types": [
-            "alpha"
-          ],
-          "_structural_type": "float",
-          "default": 1.0,
-          "description": "Constant that multiplies the penalty term and thus determines the regularization strength. ``alpha = 0`` is equivalent to unpenalized GLMs. In this case, the design matrix `X` must have full column rank (no collinearities)."
-        }
-      },
-      {
-        "type": "Hyperparameter",
-        "name": "fit_intercept",
-        "init_args": {
-          "semantic_types": [
-            "fit_intercept"
-          ],
-          "_structural_type": "bool",
-          "default": "True",
-          "description": "Specifies if a constant (a.k.a. bias or intercept) should be added to the linear predictor (X @ coef + intercept)."
-        }
-      },
-      {
-        "type": "Enumeration",
-        "name": "link",
-        "init_args": {
-          "semantic_types": [
-            "link"
-          ],
-          "values": [
-            "auto",
-            "identity",
-            "log"
-          ],
-          "_structural_type": "str",
-          "default": "auto",
-          "description": "The link function of the GLM, i.e. mapping from linear predictor `X @ coeff + intercept` to prediction `y_pred`. Option 'auto' sets the link depending on the chosen family as follows:  - 'identity' for Normal distribution - 'log' for Poisson,  Gamma and Inverse Gaussian distributions"
-        }
-      },
-      {
-        "type": "Hyperparameter",
-        "name": "max_iter",
-        "init_args": {
-          "semantic_types": [
-            "max_iter"
-          ],
-          "_structural_type": "int",
-          "default": 100,
-          "description": "The maximal number of iterations for the solver."
-        }
-      },
-      {
-        "type": "Hyperparameter",
-        "name": "tol",
-        "init_args": {
-          "semantic_types": [
-            "tol"
-          ],
-          "_structural_type": "float",
-          "default": 0.0001,
-          "description": "Stopping criterion. For the lbfgs solver, the iteration will stop when ``max{|g_j|, j = 1, ..., d} <= tol`` where ``g_j`` is the j-th component of the gradient (derivative) of the objective function."
-        }
-      },
-      {
-        "type": "Hyperparameter",
-        "name": "warm_start",
-        "init_args": {
-          "semantic_types": [
-            "warm_start"
-          ],
-          "_structural_type": "bool",
-          "default": "False",
-          "description": "If set to ``True``, reuse the solution of the previous call to ``fit`` as initialization for ``coef_`` and ``intercept_`` ."
-        }
-      },
-      {
-        "type": "Hyperparameter",
-        "name": "verbose",
-        "init_args": {
-          "semantic_types": [
-            "verbose"
-          ],
-          "_structural_type": "int",
-          "default": 0,
-          "description": "For the lbfgs solver set verbose to any positive number for verbosity."
-        }
-      }
-    ],
-    "Params": []
+    ]
   }
 }

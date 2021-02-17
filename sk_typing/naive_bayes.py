@@ -1,5 +1,4 @@
 from typing import Optional
-from typing import Union
 
 from .typing import ArrayLike
 
@@ -21,7 +20,6 @@ class CategoricalNB:
         alpha: float = 1.0,
         fit_prior: bool = True,
         class_prior: Optional[ArrayLike] = None,
-        min_categories: Union[int, ArrayLike, None] = None,
     ):
         ...
 

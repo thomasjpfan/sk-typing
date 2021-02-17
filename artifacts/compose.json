@@ -135,8 +135,7 @@
           "description": "If True, the time elapsed while fitting each transformer will be printed as it is completed."
         }
       }
-    ],
-    "Params": []
+    ]
   },
   "TransformedTargetRegressor": {
     "name": "sklearn.compose._target.TransformedTargetRegressor",
@@ -248,7 +247,6 @@
           "description": "Whether to check that ``transform`` followed by ``inverse_transform`` or ``func`` followed by ``inverse_func`` leads to the original targets."
         }
       }
-    ],
-    "Params": []
+    ]
   }
 }

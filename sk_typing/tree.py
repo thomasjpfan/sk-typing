@@ -20,6 +20,7 @@ class DecisionTreeClassifier:
         min_impurity_decrease: float = 0.0,
         min_impurity_split: Optional[float] = None,
         class_weight: Union[dict, list, Literal["balanced"], None] = None,
+        presort: Union[bool, Literal["deprecated"]] = "deprecated",
         ccp_alpha: float = 0.0,
     ):
         ...
@@ -28,7 +29,7 @@ class DecisionTreeClassifier:
 class DecisionTreeRegressor:
     def __init__(
         self,
-        criterion: Literal["mse", "friedman_mse", "mae", "poisson"] = "mse",
+        criterion: Literal["mse", "friedman_mse", "mae"] = "mse",
         splitter: Literal["best", "random"] = "best",
         max_depth: Optional[int] = None,
         min_samples_split: Union[int, float] = 2,
@@ -39,6 +40,7 @@ class DecisionTreeRegressor:
         max_leaf_nodes: Optional[int] = None,
         min_impurity_decrease: float = 0.0,
         min_impurity_split: Optional[float] = None,
+        presort: Union[bool, Literal["deprecated"]] = "deprecated",
         ccp_alpha: float = 0.0,
     ):
         ...

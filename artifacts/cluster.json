@@ -125,33 +125,6 @@
           "description": "Whether to be verbose."
         }
       }
-    ],
-    "Params": [
-      {
-        "name": "cluster_centers_indices_",
-        "description": "Indices of cluster centers",
-        "type": "ndarray"
-      },
-      {
-        "name": "cluster_centers_",
-        "description": "Cluster centers (if affinity != ``precomputed``).",
-        "type": "ndarray"
-      },
-      {
-        "name": "labels_",
-        "description": "Labels of each point",
-        "type": "ndarray"
-      },
-      {
-        "name": "affinity_matrix_",
-        "description": "Stores the affinity matrix used in ``fit``.",
-        "type": "ndarray"
-      },
-      {
-        "name": "n_iter_",
-        "description": "Number of iterations taken to converge.",
-        "type": "int"
-      }
     ]
   },
   "AgglomerativeClustering": {
@@ -370,33 +343,6 @@
           "description": "The linkage distance threshold above which, clusters will not be merged. If not ``None``, ``n_clusters`` must be ``None`` and ``compute_full_tree`` must be ``True``.  .. versionadded:: 0.21"
         }
       }
-    ],
-    "Params": [
-      {
-        "name": "n_clusters_",
-        "description": "The number of clusters found by the algorithm. If ``distance_threshold=None``, it will be equal to the given ``n_clusters``.",
-        "type": "int"
-      },
-      {
-        "name": "labels_",
-        "description": "cluster labels for each point",
-        "type": "ndarray"
-      },
-      {
-        "name": "n_leaves_",
-        "description": "Number of leaves in the hierarchical tree.",
-        "type": "int"
-      },
-      {
-        "name": "n_connected_components_",
-        "description": "The estimated number of connected components in the graph.",
-        "type": "int"
-      },
-      {
-        "name": "children_",
-        "description": "The children of each non-leaf node. Values less than `n_samples` correspond to leaves of the tree which are the original samples. A node `i` greater than or equal to `n_samples` is a non-leaf node and has children `children_[i - n_samples]`. Alternatively at the i-th iteration, children[i][0] and children[i][1] are merged to form node `n_samples + i`",
-        "type": "ndarray"
-      }
     ]
   },
   "Birch": {
@@ -496,33 +442,6 @@
           "default": "True",
           "description": "Whether or not to make a copy of the given data. If set to False, the initial data will be overwritten."
         }
-      }
-    ],
-    "Params": [
-      {
-        "name": "root_",
-        "description": "Root of the CFTree.",
-        "type": "object"
-      },
-      {
-        "name": "dummy_leaf_",
-        "description": "Start pointer to all the leaves.",
-        "type": "object"
-      },
-      {
-        "name": "subcluster_centers_",
-        "description": "Centroids of all subclusters read directly from the leaves.",
-        "type": "ndarray"
-      },
-      {
-        "name": "subcluster_labels_",
-        "description": "Labels assigned to the centroids of the subclusters after they are clustered globally.",
-        "type": "ndarray"
-      },
-      {
-        "name": "labels_",
-        "description": "Array of labels assigned to the input data. if partial_fit is used instead of fit, they are assigned to the last batch of data.",
-        "type": "ndarray"
       }
     ]
   },
@@ -721,23 +640,6 @@
             }
           }
         ]
-      }
-    ],
-    "Params": [
-      {
-        "name": "core_sample_indices_",
-        "description": "Indices of core samples.",
-        "type": "ndarray"
-      },
-      {
-        "name": "components_",
-        "description": "Copy of each core sample found by training.",
-        "type": "ndarray"
-      },
-      {
-        "name": "labels_",
-        "description": "Cluster labels for each point in the dataset given to fit(). Noisy samples are given the label -1.",
-        "type": "ndarray"
       }
     ]
   },
@@ -946,38 +848,6 @@
           }
         ]
       }
-    ],
-    "Params": [
-      {
-        "name": "n_clusters_",
-        "description": "The number of clusters found by the algorithm. If ``distance_threshold=None``, it will be equal to the given ``n_clusters``.",
-        "type": "int"
-      },
-      {
-        "name": "labels_",
-        "description": "cluster labels for each feature.",
-        "type": "ndarray"
-      },
-      {
-        "name": "n_leaves_",
-        "description": "Number of leaves in the hierarchical tree.",
-        "type": "int"
-      },
-      {
-        "name": "n_connected_components_",
-        "description": "The estimated number of connected components in the graph.",
-        "type": "int"
-      },
-      {
-        "name": "children_",
-        "description": "The children of each non-leaf node. Values less than `n_features` correspond to leaves of the tree which are the original samples. A node `i` greater than or equal to `n_features` is a non-leaf node and has children `children_[i - n_features]`. Alternatively at the i-th iteration, children[i][0] and children[i][1] are merged to form node `n_features + i`",
-        "type": "ndarray"
-      },
-      {
-        "name": "distances_",
-        "description": "Distances between nodes in the corresponding place in `children_`. Only computed if distance_threshold is not None.",
-        "type": "ndarray"
-      }
     ]
   },
   "KMeans": {
@@ -1179,6 +1049,40 @@
         }
       },
       {
+        "name": "n_jobs",
+        "type": "Union",
+        "init_args": {
+          "semantic_types": [
+            "n_jobs"
+          ],
+          "default": "n_jobs__None",
+          "description": "The number of jobs to use for the computation. This works by computing each of the n_init runs in parallel.  ``None`` means 1 unless in a :obj:`joblib.parallel_backend` context. ``-1`` means using all processors. See :term:`Glossary <n_jobs>` for more details."
+        },
+        "hyperparams": [
+          {
+            "type": "Hyperparameter",
+            "name": "n_jobs__int",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "int"
+            }
+          },
+          {
+            "type": "Constant",
+            "name": "n_jobs__None",
+            "init_args": {
+              "semantic_types": [
+                "n_jobs"
+              ],
+              "_structural_type": "None",
+              "default": "None"
+            }
+          }
+        ]
+      },
+      {
         "type": "Enumeration",
         "name": "algorithm",
         "init_args": {
@@ -1194,28 +1098,6 @@
           "default": "auto",
           "description": "K-means algorithm to use. The classical EM-style algorithm is \"full\". The \"elkan\" variation is more efficient by using the triangle inequality, but currently doesn't support sparse data. \"auto\" chooses \"elkan\" for dense data and \"full\" for sparse data."
         }
-      }
-    ],
-    "Params": [
-      {
-        "name": "cluster_centers_",
-        "description": "Coordinates of cluster centers. If the algorithm stops before fully converging (see ``tol`` and ``max_iter``), these will not be consistent with ``labels_``.",
-        "type": "ndarray"
-      },
-      {
-        "name": "labels_",
-        "description": "Labels of each point",
-        "type": "ndarray"
-      },
-      {
-        "name": "inertia_",
-        "description": "Sum of squared distances of samples to their closest cluster center.",
-        "type": "float"
-      },
-      {
-        "name": "n_iter_",
-        "description": "Number of iterations run.",
-        "type": "int"
       }
     ]
   },
@@ -1352,23 +1234,6 @@
           "default": 300,
           "description": "Maximum number of iterations, per seed point before the clustering operation terminates (for that seed point), if has not converged yet.  .. versionadded:: 0.22"
         }
-      }
-    ],
-    "Params": [
-      {
-        "name": "cluster_centers_",
-        "description": "Coordinates of cluster centers.",
-        "type": "ndarray"
-      },
-      {
-        "name": "labels_",
-        "description": "Labels of each point.",
-        "type": "ndarray"
-      },
-      {
-        "name": "n_iter_",
-        "description": "Maximum number of iterations performed on each seed.  .. versionadded:: 0.22",
-        "type": "int"
       }
     ]
   },
@@ -1601,23 +1466,6 @@
           "default": 0.01,
           "description": "Control the fraction of the maximum number of counts for a center to be reassigned. A higher value means that low count centers are more easily reassigned, which means that the model will take longer to converge, but should converge in a better clustering."
         }
-      }
-    ],
-    "Params": [
-      {
-        "name": "cluster_centers_",
-        "description": "Coordinates of cluster centers",
-        "type": "ndarray"
-      },
-      {
-        "name": "labels_",
-        "description": "Labels of each point (if compute_labels is set to True).",
-        "type": "int"
-      },
-      {
-        "name": "inertia_",
-        "description": "The value of the inertia criterion associated with the chosen partition (if compute_labels is set to True). The inertia is defined as the sum of square distances of samples to their nearest neighbor.",
-        "type": "float"
       }
     ]
   },
@@ -1902,38 +1750,6 @@
           }
         ]
       }
-    ],
-    "Params": [
-      {
-        "name": "labels_",
-        "description": "Cluster labels for each point in the dataset given to fit(). Noisy samples and points which are not included in a leaf cluster of ``cluster_hierarchy_`` are labeled as -1.",
-        "type": "ndarray"
-      },
-      {
-        "name": "reachability_",
-        "description": "Reachability distances per sample, indexed by object order. Use ``clust.reachability_[clust.ordering_]`` to access in cluster order.",
-        "type": "ndarray"
-      },
-      {
-        "name": "ordering_",
-        "description": "The cluster ordered list of sample indices.",
-        "type": "ndarray"
-      },
-      {
-        "name": "core_distances_",
-        "description": "Distance at which each sample becomes a core point, indexed by object order. Points which will never be core have a distance of inf. Use ``clust.core_distances_[clust.ordering_]`` to access in cluster order.",
-        "type": "ndarray"
-      },
-      {
-        "name": "predecessor_",
-        "description": "Point that a sample was reached from, indexed by object order. Seed points have a predecessor of -1.",
-        "type": "ndarray"
-      },
-      {
-        "name": "cluster_hierarchy_",
-        "description": "The list of clusters in the form of ``[start, end]`` in each row, with all indices inclusive. The clusters are ordered according to ``(end, -start)`` (ascending) so that larger clusters encompassing smaller clusters come after those smaller ones. Since ``labels_`` does not reflect the hierarchy, usually ``len(cluster_hierarchy_) > np.unique(optics.labels_)``. Please also note that these indices are of the ``ordering_``, i.e. ``X[ordering_][start:end + 1]`` form a cluster. Only available when ``cluster_method='xi'``.",
-        "type": "ndarray"
-      }
     ]
   },
   "SpectralBiclustering": {
@@ -2206,28 +2022,6 @@
             }
           }
         ]
-      }
-    ],
-    "Params": [
-      {
-        "name": "rows_",
-        "description": "Results of the clustering. `rows[i, r]` is True if cluster `i` contains row `r`. Available only after calling ``fit``.",
-        "type": "ndarray"
-      },
-      {
-        "name": "columns_",
-        "description": "Results of the clustering, like `rows`.",
-        "type": "ndarray"
-      },
-      {
-        "name": "row_labels_",
-        "description": "Row partition labels.",
-        "type": "ndarray"
-      },
-      {
-        "name": "column_labels_",
-        "description": "Column partition labels.",
-        "type": "ndarray"
       }
     ]
   },
@@ -2530,18 +2324,6 @@
           }
         ]
       }
-    ],
-    "Params": [
-      {
-        "name": "affinity_matrix_",
-        "description": "Affinity matrix used for clustering. Available only if after calling ``fit``.",
-        "type": "ndarray"
-      },
-      {
-        "name": "labels_",
-        "description": "Labels of each point",
-        "type": "ndarray"
-      }
     ]
   },
   "SpectralCoclustering": {
@@ -2751,28 +2533,6 @@
             }
           }
         ]
-      }
-    ],
-    "Params": [
-      {
-        "name": "rows_",
-        "description": "Results of the clustering. `rows[i, r]` is True if cluster `i` contains row `r`. Available only after calling ``fit``.",
-        "type": "ndarray"
-      },
-      {
-        "name": "columns_",
-        "description": "Results of the clustering, like `rows`.",
-        "type": "ndarray"
-      },
-      {
-        "name": "row_labels_",
-        "description": "The bicluster label of each row.",
-        "type": "ndarray"
-      },
-      {
-        "name": "column_labels_",
-        "description": "The bicluster label of each column.",
-        "type": "ndarray"
       }
     ]
   }

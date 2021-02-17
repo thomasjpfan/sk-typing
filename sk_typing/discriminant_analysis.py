@@ -3,7 +3,6 @@ from typing import Optional
 
 from .typing import Literal
 from .typing import ArrayLike
-from .typing import EstimatorType
 
 
 class LinearDiscriminantAnalysis:
@@ -15,7 +14,6 @@ class LinearDiscriminantAnalysis:
         n_components: Optional[int] = None,
         store_covariance: bool = False,
         tol: float = 0.0001,
-        covariance_estimator: Optional[EstimatorType] = None,
     ):
         ...
 

@@ -129,8 +129,6 @@ class Lars:
         eps: float = 2.220446049250313e-16,
         copy_X: bool = True,
         fit_path: bool = True,
-        jitter: Optional[int] = None,
-        random_state: RandomStateType = None,
     ):
         ...
 
@@ -205,8 +203,6 @@ class LassoLars:
         copy_X: bool = True,
         fit_path: bool = True,
         positive: bool = False,
-        jitter: Optional[float] = None,
-        random_state: RandomStateType = None,
     ):
         ...
 
@@ -252,7 +248,6 @@ class LinearRegression:
         normalize: bool = False,
         copy_X: bool = True,
         n_jobs: Optional[int] = None,
-        positive: bool = False,
     ):
         ...
 
@@ -451,7 +446,6 @@ class Perceptron:
         self,
         penalty: Optional[Literal["l2", "l1", "elasticnet"]] = None,
         alpha: float = 0.0001,
-        l1_ratio: float = 0.15,
         fit_intercept: bool = True,
         max_iter: int = 1000,
         tol: float = 0.001,
@@ -530,7 +524,6 @@ class RidgeCV:
         cv: CVType = None,
         gcv_mode: Literal["auto", "svd", "eigen"] = None,
         store_cv_values: bool = False,
-        alpha_per_target: bool = False,
     ):
         ...
 

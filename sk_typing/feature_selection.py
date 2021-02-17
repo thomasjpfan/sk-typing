@@ -26,7 +26,6 @@ class RFE:
         n_features_to_select: Union[int, float, None] = None,
         step: Union[int, float] = 1,
         verbose: int = 0,
-        importance_getter: Union[str, Callable] = "auto",
     ):
         ...
 
@@ -41,7 +40,6 @@ class RFECV:
         scoring: Union[str, Callable, None] = None,
         verbose: int = 0,
         n_jobs: Union[int, None] = None,
-        importance_getter: Union[str, Callable] = "auto",
     ):
         ...
 
@@ -64,7 +62,6 @@ class SelectFromModel:
         prefit: bool = False,
         norm_order: Union[int, float] = 1,
         max_features: Optional[None] = None,
-        importance_getter: Union[str, Callable] = "auto",
     ):
         ...
 

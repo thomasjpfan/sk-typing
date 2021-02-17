@@ -9,6 +9,10 @@ from .typing import Literal
 
 
 class DictionaryLearning:
+    components_: np.ndarray
+    error_: np.ndarray
+    n_iter_: int
+
     def __init__(
         self,
         n_components: Optional[int] = None,
@@ -35,6 +39,12 @@ class DictionaryLearning:
 
 
 class FactorAnalysis:
+    components_: np.ndarray
+    loglike_: list
+    noise_variance_: np.ndarray
+    n_iter_: int
+    mean_: np.ndarray
+
     def __init__(
         self,
         n_components: Optional[int] = None,
@@ -44,13 +54,18 @@ class FactorAnalysis:
         noise_variance_init: Optional[np.ndarray] = None,
         svd_method: Literal["lapack", "randomized"] = "randomized",
         iterated_power: int = 3,
-        rotation: Literal["varimax", "quartimax"] = None,
         random_state: RandomStateType = 0,
     ):
         ...
 
 
 class FastICA:
+    components_: np.ndarray
+    mixing_: np.ndarray
+    mean_: np.ndarray
+    n_iter_: int
+    whitening_: np.ndarray
+
     def __init__(
         self,
         n_components: Optional[int] = None,
@@ -67,6 +82,16 @@ class FastICA:
 
 
 class IncrementalPCA:
+    components_: np.ndarray
+    explained_variance_: np.ndarray
+    explained_variance_ratio_: np.ndarray
+    singular_values_: np.ndarray
+    mean_: np.ndarray
+    var_: np.ndarray
+    noise_variance_: float
+    n_components_: int
+    n_samples_seen_: int
+
     def __init__(
         self,
         n_components: Optional[int] = None,
@@ -78,6 +103,12 @@ class IncrementalPCA:
 
 
 class KernelPCA:
+    lambdas_: np.ndarray
+    alphas_: np.ndarray
+    dual_coef_: np.ndarray
+    X_transformed_fit_: np.ndarray
+    X_fit_: np.ndarray
+
     def __init__(
         self,
         n_components: Optional[None] = None,
@@ -102,6 +133,13 @@ class KernelPCA:
 
 
 class LatentDirichletAllocation:
+    components_: np.ndarray
+    n_batch_iter_: int
+    n_iter_: int
+    bound_: float
+    doc_topic_prior_: float
+    topic_word_prior_: float
+
     def __init__(
         self,
         n_components: int = 10,
@@ -125,6 +163,12 @@ class LatentDirichletAllocation:
 
 
 class MiniBatchDictionaryLearning:
+    components_: np.ndarray
+    inner_stats_: tuple
+    n_iter_: int
+    iter_offset_: int
+    random_state_: np.random.RandomState
+
     def __init__(
         self,
         n_components: Optional[None] = None,
@@ -151,6 +195,10 @@ class MiniBatchDictionaryLearning:
 
 
 class MiniBatchSparsePCA:
+    components_: np.ndarray
+    n_iter_: int
+    mean_: np.ndarray
+
     def __init__(
         self,
         n_components: Optional[int] = None,
@@ -164,17 +212,23 @@ class MiniBatchSparsePCA:
         n_jobs: Optional[int] = None,
         method: Literal["lars", "cd"] = "lars",
         random_state: RandomStateType = None,
+        normalize_components: str = "deprecated",
     ):
         ...
 
 
 class NMF:
+    components_: np.ndarray
+    n_components_: int
+    reconstruction_err_: float
+    n_iter_: int
+
     def __init__(
         self,
         n_components: Optional[int] = None,
         init: Optional[
             Literal["random", "nndsvd", "nndsvda", "nndsvdar", "custom", "warn"]
-        ] = "warn",
+        ] = None,
         solver: Literal["cd", "mu"] = "cd",
         beta_loss: Union[
             float, Literal["frobenius", "kullback-leibler", "itakura-saito"]
@@ -186,12 +240,21 @@ class NMF:
         l1_ratio: float = 0.0,
         verbose: int = 0,
         shuffle: bool = False,
-        regularization: Literal["both", "components", "transformation", None] = "both",
     ):
         ...
 
 
 class PCA:
+    components_: np.ndarray
+    explained_variance_: np.ndarray
+    explained_variance_ratio_: np.ndarray
+    singular_values_: np.ndarray
+    mean_: np.ndarray
+    n_components_: np.ndarray
+    n_features_: int
+    n_samples_: int
+    noise_variance_: float
+
     def __init__(
         self,
         n_components: Union[int, float, None, Literal["mle"]] = None,
@@ -206,6 +269,8 @@ class PCA:
 
 
 class SparseCoder:
+    components_: np.ndarray
+
     def __init__(
         self,
         dictionary: np.ndarray,
@@ -223,6 +288,11 @@ class SparseCoder:
 
 
 class SparsePCA:
+    components_: np.ndarray
+    error_: np.ndarray
+    n_iter_: int
+    mean_: np.ndarray
+
     def __init__(
         self,
         n_components: Optional[int] = None,
@@ -236,11 +306,17 @@ class SparsePCA:
         V_init: Optional[np.ndarray] = None,
         verbose: Union[int, bool] = False,
         random_state: RandomStateType = None,
+        normalize_components: str = "deprecated",
     ):
         ...
 
 
 class TruncatedSVD:
+    components_: np.ndarray
+    explained_variance_: np.ndarray
+    explained_variance_ratio_: np.ndarray
+    singular_values_: np.ndarray
+
     def __init__(
         self,
         n_components: int = 2,
