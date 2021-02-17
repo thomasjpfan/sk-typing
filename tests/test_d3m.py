@@ -1,4 +1,3 @@
-import numpy as np
 from typing import Union
 from typing import Optional
 import json
@@ -11,6 +10,7 @@ from sk_typing.convert.d3m import _get_output_for_estimator
 from typing_extensions import Literal
 
 from sk_typing.typing import ArrayLike
+from sk_typing.typing import NDArray
 from sk_typing.typing import EstimatorType
 
 
@@ -184,7 +184,7 @@ def test_convert_hyperparam_to_d3m_optional(annotation):
     assert none_output["init_args"]["_structural_type"] == "None"
 
 
-@pytest.mark.parametrize("array_like", [ArrayLike, np.ndarray])
+@pytest.mark.parametrize("array_like", [ArrayLike, NDArray])
 def test_convert_hyperparam_to_d3m_ndarray(array_like):
     output = convert_hyperparam_to_d3m("X", Optional[array_like], default=None)
     assert output["name"] == "X"
