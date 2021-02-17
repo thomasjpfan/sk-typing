@@ -1,6 +1,5 @@
 import numpy as np
 
-from typing import Optional
 from typing import Union
 
 from .typing import CVType
@@ -17,7 +16,5 @@ class CalibratedClassifierCV:
         base_estimator: EstimatorType = None,
         method: Literal["sigmoid", "isotonic"] = "sigmoid",
         cv: Union[CVType, Literal["prefit"]] = None,
-        n_jobs: Optional[int] = None,
-        ensemble: bool = True,
     ):
         ...

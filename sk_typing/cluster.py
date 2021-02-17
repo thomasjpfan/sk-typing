@@ -20,7 +20,6 @@ class AffinityPropagation:
         preference: Union[ArrayLike, float, None] = None,
         affinity: Literal["euclidean", "precomputed"] = "euclidean",
         verbose: bool = False,
-        random_state: Union[RandomStateType, Literal["warn"]] = "warn",
     ):
         ...
 
@@ -35,7 +34,6 @@ class AgglomerativeClustering:
         compute_full_tree: Union[Literal["auto"], bool] = "auto",
         linkage: Literal["ward", "complete", "average", "single"] = "ward",
         distance_threshold: float = None,
-        compute_distances: bool = False,
     ):
         ...
 
@@ -95,7 +93,6 @@ class KMeans:
         verbose: int = 0,
         random_state: RandomStateType = None,
         copy_x: bool = True,
-        n_jobs: Union[int, None, Literal["deprecated"]] = "deprecated",
         algorithm: Literal["auto", "full", "elkan"] = "auto",
     ):
         ...
@@ -197,7 +194,6 @@ class SpectralClustering:
         coef0: float = 1,
         kernel_params: dict = None,
         n_jobs: Optional[int] = None,
-        verbose: bool = False,
     ):
         ...
 
