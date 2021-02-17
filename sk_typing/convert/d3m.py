@@ -25,7 +25,8 @@ def _get_output_for_estimator(name, estimator):
         param.name: " ".join(param.desc) for param in class_doc["Parameters"]
     }
     attribute_descriptions = {
-        attr.name.split(":")[0]: " ".join(attr.desc) for attr in class_doc["Attributes"]
+        attr.name.split(":")[0].strip(): " ".join(attr.desc)
+        for attr in class_doc["Attributes"]
     }
 
     hyperparmas = []

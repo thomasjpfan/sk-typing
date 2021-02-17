@@ -58,7 +58,9 @@ def test_get_metadata_attributes(Estimator):
     annotated_attr = set(meta_data["attributes"])
 
     class_doc = ClassDoc(Estimator)
-    docstring_attributes = set(p.name for p in class_doc["Attributes"])
+    docstring_attributes = set(
+        p.name.split(":")[0].strip() for p in class_doc["Attributes"]
+    )
 
     assert annotated_attr <= docstring_attributes
 

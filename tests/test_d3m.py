@@ -1,20 +1,21 @@
 from typing import Union
 from typing import Optional
+from typing import List
 import json
 
 import pytest
 
+import numpy as np
 from sklearn.utils import all_estimators
 from sk_typing.convert.d3m import _get_output_for_estimator
 
 from typing_extensions import Literal
 
 from sk_typing.typing import ArrayLike
-from sk_typing.typing import NDArray
 from sk_typing.typing import EstimatorType
 
-
 from sk_typing.convert import convert_hyperparam_to_d3m
+from sk_typing.convert import convert_attribute_to_d3m
 
 
 ALL_ESTIMATORS = all_estimators()
@@ -184,7 +185,7 @@ def test_convert_hyperparam_to_d3m_optional(annotation):
     assert none_output["init_args"]["_structural_type"] == "None"
 
 
-@pytest.mark.parametrize("array_like", [ArrayLike, NDArray])
+@pytest.mark.parametrize("array_like", [ArrayLike, np.ndarray])
 def test_convert_hyperparam_to_d3m_ndarray(array_like):
     output = convert_hyperparam_to_d3m("X", Optional[array_like], default=None)
     assert output["name"] == "X"
@@ -210,3 +211,28 @@ def test_convert_hyperparam_to_d3m_base_estimator():
     assert output["name"] == "base_estimator"
     assert output["type"] == "Hyperparameter"
     assert output["init_args"]["_structural_type"] == "Estimator"
+
+
+@pytest.mark.parametrize(
+    "annotation, expected_type",
+    [
+        (bool, "bool"),
+        (int, "int"),
+        (float, "float"),
+        (str, "str"),
+        (list, "list"),
+        (dict, "dict"),
+        (object, "object"),
+        (tuple, "tuple"),
+        (np.ndarray, "ndarray"),
+        (List[int], "List[int]"),
+        (Union[int, float], "Union[int, float]"),
+        (EstimatorType, "sklearn.base.BaseEstimator"),
+    ],
+)
+def test_convert_attribute_to_d3m(annotation, expected_type):
+    output = convert_attribute_to_d3m("attr", annotation, description="hello world")
+
+    assert output["name"] == "attr"
+    assert output["type"] == expected_type
+    assert output["description"] == "hello world"
