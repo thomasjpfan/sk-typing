@@ -114,43 +114,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "base_estimator_",
-        "type": "estimator",
-        "description": "The base estimator from which the ensemble is grown."
-      },
-      {
-        "name": "estimators_",
-        "type": "list of classifiers",
-        "description": "The collection of fitted sub-estimators."
-      },
-      {
-        "name": "classes_",
-        "type": "ndarray of shape (n_classes,)",
-        "description": "The classes labels."
-      },
-      {
-        "name": "n_classes_",
-        "type": "int",
-        "description": "The number of classes."
-      },
-      {
-        "name": "estimator_weights_",
-        "type": "ndarray of floats",
-        "description": "Weights for each estimator in the boosted ensemble."
-      },
-      {
-        "name": "estimator_errors_",
-        "type": "ndarray of floats",
-        "description": "Classification error for each estimator in the boosted ensemble."
-      },
-      {
-        "name": "feature_importances_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "The impurity-based feature importances if supported by the ``base_estimator`` (when based on decision trees).  Warning: impurity-based feature importances can be misleading for high cardinality features (many unique values). See :func:`sklearn.inspection.permutation_importance` as an alternative."
-      }
-    ]
+    "Params": []
   },
   "AdaBoostRegressor": {
     "name": "sklearn.ensemble._weight_boosting.AdaBoostRegressor",
@@ -268,33 +232,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "base_estimator_",
-        "type": "estimator",
-        "description": "The base estimator from which the ensemble is grown."
-      },
-      {
-        "name": "estimators_",
-        "type": "list of classifiers",
-        "description": "The collection of fitted sub-estimators."
-      },
-      {
-        "name": "estimator_weights_",
-        "type": "ndarray of floats",
-        "description": "Weights for each estimator in the boosted ensemble."
-      },
-      {
-        "name": "estimator_errors_",
-        "type": "ndarray of floats",
-        "description": "Regression error for each estimator in the boosted ensemble."
-      },
-      {
-        "name": "feature_importances_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "The impurity-based feature importances if supported by the ``base_estimator`` (when based on decision trees).  Warning: impurity-based feature importances can be misleading for high cardinality features (many unique values). See :func:`sklearn.inspection.permutation_importance` as an alternative."
-      }
-    ]
+    "Params": []
   },
   "BaggingClassifier": {
     "name": "sklearn.ensemble._bagging.BaggingClassifier",
@@ -545,53 +483,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "base_estimator_",
-        "type": "estimator",
-        "description": "The base estimator from which the ensemble is grown."
-      },
-      {
-        "name": "n_features_",
-        "type": "int",
-        "description": "The number of features when :meth:`fit` is performed."
-      },
-      {
-        "name": "estimators_",
-        "type": "list of estimators",
-        "description": "The collection of fitted base estimators."
-      },
-      {
-        "name": "estimators_samples_",
-        "type": "list of arrays",
-        "description": "The subset of drawn samples (i.e., the in-bag samples) for each base estimator. Each subset is defined by an array of the indices selected."
-      },
-      {
-        "name": "estimators_features_",
-        "type": "list of arrays",
-        "description": "The subset of drawn features for each base estimator."
-      },
-      {
-        "name": "classes_",
-        "type": "ndarray of shape (n_classes,)",
-        "description": "The classes labels."
-      },
-      {
-        "name": "n_classes_",
-        "type": "int or list",
-        "description": "The number of classes."
-      },
-      {
-        "name": "oob_score_",
-        "type": "float",
-        "description": "Score of the training dataset obtained using an out-of-bag estimate. This attribute exists only when ``oob_score`` is True."
-      },
-      {
-        "name": "oob_decision_function_",
-        "type": "ndarray of shape (n_samples, n_classes)",
-        "description": "Decision function computed with out-of-bag estimate on the training set. If n_estimators is small it might be possible that a data point was never left out during the bootstrap. In this case, `oob_decision_function_` might contain NaN. This attribute exists only when ``oob_score`` is True."
-      }
-    ]
+    "Params": []
   },
   "BaggingRegressor": {
     "name": "sklearn.ensemble._bagging.BaggingRegressor",
@@ -842,43 +734,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "base_estimator_",
-        "type": "estimator",
-        "description": "The base estimator from which the ensemble is grown."
-      },
-      {
-        "name": "n_features_",
-        "type": "int",
-        "description": "The number of features when :meth:`fit` is performed."
-      },
-      {
-        "name": "estimators_",
-        "type": "list of estimators",
-        "description": "The collection of fitted sub-estimators."
-      },
-      {
-        "name": "estimators_samples_",
-        "type": "list of arrays",
-        "description": "The subset of drawn samples (i.e., the in-bag samples) for each base estimator. Each subset is defined by an array of the indices selected."
-      },
-      {
-        "name": "estimators_features_",
-        "type": "list of arrays",
-        "description": "The subset of drawn features for each base estimator."
-      },
-      {
-        "name": "oob_score_",
-        "type": "float",
-        "description": "Score of the training dataset obtained using an out-of-bag estimate. This attribute exists only when ``oob_score`` is True."
-      },
-      {
-        "name": "oob_prediction_",
-        "type": "ndarray of shape (n_samples,)",
-        "description": "Prediction computed with out-of-bag estimate on the training set. If n_estimators is small it might be possible that a data point was never left out during the bootstrap. In this case, `oob_prediction_` might contain NaN. This attribute exists only when ``oob_score`` is True."
-      }
-    ]
+    "Params": []
   },
   "ExtraTreesClassifier": {
     "name": "sklearn.ensemble._forest.ExtraTreesClassifier",
@@ -1388,53 +1244,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "base_estimator_",
-        "type": "ExtraTreesClassifier",
-        "description": "The child estimator template used to create the collection of fitted sub-estimators."
-      },
-      {
-        "name": "estimators_",
-        "type": "list of DecisionTreeClassifier",
-        "description": "The collection of fitted sub-estimators."
-      },
-      {
-        "name": "classes_",
-        "type": "ndarray of shape (n_classes,) or a list of such arrays",
-        "description": "The classes labels (single output problem), or a list of arrays of class labels (multi-output problem)."
-      },
-      {
-        "name": "n_classes_",
-        "type": "int or list",
-        "description": "The number of classes (single output problem), or a list containing the number of classes for each output (multi-output problem)."
-      },
-      {
-        "name": "feature_importances_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "The impurity-based feature importances. The higher, the more important the feature. The importance of a feature is computed as the (normalized) total reduction of the criterion brought by that feature.  It is also known as the Gini importance.  Warning: impurity-based feature importances can be misleading for high cardinality features (many unique values). See :func:`sklearn.inspection.permutation_importance` as an alternative."
-      },
-      {
-        "name": "n_features_",
-        "type": "int",
-        "description": "The number of features when ``fit`` is performed."
-      },
-      {
-        "name": "n_outputs_",
-        "type": "int",
-        "description": "The number of outputs when ``fit`` is performed."
-      },
-      {
-        "name": "oob_score_",
-        "type": "float",
-        "description": "Score of the training dataset obtained using an out-of-bag estimate. This attribute exists only when ``oob_score`` is True."
-      },
-      {
-        "name": "oob_decision_function_",
-        "type": "ndarray of shape (n_samples, n_classes)",
-        "description": "Decision function computed with out-of-bag estimate on the training set. If n_estimators is small it might be possible that a data point was never left out during the bootstrap. In this case, `oob_decision_function_` might contain NaN. This attribute exists only when ``oob_score`` is True."
-      }
-    ]
+    "Params": []
   },
   "ExtraTreesRegressor": {
     "name": "sklearn.ensemble._forest.ExtraTreesRegressor",
@@ -1886,43 +1696,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "base_estimator_",
-        "type": "ExtraTreeRegressor",
-        "description": "The child estimator template used to create the collection of fitted sub-estimators."
-      },
-      {
-        "name": "estimators_",
-        "type": "list of DecisionTreeRegressor",
-        "description": "The collection of fitted sub-estimators."
-      },
-      {
-        "name": "feature_importances_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "The impurity-based feature importances. The higher, the more important the feature. The importance of a feature is computed as the (normalized) total reduction of the criterion brought by that feature.  It is also known as the Gini importance.  Warning: impurity-based feature importances can be misleading for high cardinality features (many unique values). See :func:`sklearn.inspection.permutation_importance` as an alternative."
-      },
-      {
-        "name": "n_features_",
-        "type": "int",
-        "description": "The number of features."
-      },
-      {
-        "name": "n_outputs_",
-        "type": "int",
-        "description": "The number of outputs."
-      },
-      {
-        "name": "oob_score_",
-        "type": "float",
-        "description": "Score of the training dataset obtained using an out-of-bag estimate. This attribute exists only when ``oob_score`` is True."
-      },
-      {
-        "name": "oob_prediction_",
-        "type": "ndarray of shape (n_samples,)",
-        "description": "Prediction computed with out-of-bag estimate on the training set. This attribute exists only when ``oob_score`` is True."
-      }
-    ]
+    "Params": []
   },
   "GradientBoostingClassifier": {
     "name": "sklearn.ensemble._gb.GradientBoostingClassifier",
@@ -2370,63 +2144,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "n_estimators_",
-        "type": "int",
-        "description": "The number of estimators as selected by early stopping (if ``n_iter_no_change`` is specified). Otherwise it is set to ``n_estimators``.  .. versionadded:: 0.20"
-      },
-      {
-        "name": "feature_importances_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "The impurity-based feature importances. The higher, the more important the feature. The importance of a feature is computed as the (normalized) total reduction of the criterion brought by that feature.  It is also known as the Gini importance.  Warning: impurity-based feature importances can be misleading for high cardinality features (many unique values). See :func:`sklearn.inspection.permutation_importance` as an alternative."
-      },
-      {
-        "name": "oob_improvement_",
-        "type": "ndarray of shape (n_estimators,)",
-        "description": "The improvement in loss (= deviance) on the out-of-bag samples relative to the previous iteration. ``oob_improvement_[0]`` is the improvement in loss of the first stage over the ``init`` estimator. Only available if ``subsample < 1.0``"
-      },
-      {
-        "name": "train_score_",
-        "type": "ndarray of shape (n_estimators,)",
-        "description": "The i-th score ``train_score_[i]`` is the deviance (= loss) of the model at iteration ``i`` on the in-bag sample. If ``subsample == 1`` this is the deviance on the training data."
-      },
-      {
-        "name": "loss_",
-        "type": "LossFunction",
-        "description": "The concrete ``LossFunction`` object."
-      },
-      {
-        "name": "init_",
-        "type": "estimator",
-        "description": "The estimator that provides the initial predictions. Set via the ``init`` argument or ``loss.init_estimator``."
-      },
-      {
-        "name": "estimators_",
-        "type": "ndarray of DecisionTreeRegressor of shape (n_estimators, ``loss_.K``)",
-        "description": "The collection of fitted sub-estimators. ``loss_.K`` is 1 for binary classification, otherwise n_classes."
-      },
-      {
-        "name": "classes_",
-        "type": "ndarray of shape (n_classes,)",
-        "description": "The classes labels."
-      },
-      {
-        "name": "n_features_",
-        "type": "int",
-        "description": "The number of data features."
-      },
-      {
-        "name": "n_classes_",
-        "type": "int",
-        "description": "The number of classes."
-      },
-      {
-        "name": "max_features_",
-        "type": "int",
-        "description": "The inferred value of max_features."
-      }
-    ]
+    "Params": []
   },
   "GradientBoostingRegressor": {
     "name": "sklearn.ensemble._gb.GradientBoostingRegressor",
@@ -2910,58 +2628,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "feature_importances_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "The impurity-based feature importances. The higher, the more important the feature. The importance of a feature is computed as the (normalized) total reduction of the criterion brought by that feature.  It is also known as the Gini importance.  Warning: impurity-based feature importances can be misleading for high cardinality features (many unique values). See :func:`sklearn.inspection.permutation_importance` as an alternative."
-      },
-      {
-        "name": "oob_improvement_",
-        "type": "ndarray of shape (n_estimators,)",
-        "description": "The improvement in loss (= deviance) on the out-of-bag samples relative to the previous iteration. ``oob_improvement_[0]`` is the improvement in loss of the first stage over the ``init`` estimator. Only available if ``subsample < 1.0``"
-      },
-      {
-        "name": "train_score_",
-        "type": "ndarray of shape (n_estimators,)",
-        "description": "The i-th score ``train_score_[i]`` is the deviance (= loss) of the model at iteration ``i`` on the in-bag sample. If ``subsample == 1`` this is the deviance on the training data."
-      },
-      {
-        "name": "loss_",
-        "type": "LossFunction",
-        "description": "The concrete ``LossFunction`` object."
-      },
-      {
-        "name": "init_",
-        "type": "estimator",
-        "description": "The estimator that provides the initial predictions. Set via the ``init`` argument or ``loss.init_estimator``."
-      },
-      {
-        "name": "estimators_",
-        "type": "ndarray of DecisionTreeRegressor of shape (n_estimators, 1)",
-        "description": "The collection of fitted sub-estimators."
-      },
-      {
-        "name": "n_classes_",
-        "type": "int",
-        "description": "The number of classes, set to 1 for regressors.  .. deprecated:: 0.24     Attribute ``n_classes_`` was deprecated in version 0.24 and     will be removed in 1.1 (renaming of 0.26)."
-      },
-      {
-        "name": "n_estimators_",
-        "type": "int",
-        "description": "The number of estimators as selected by early stopping (if ``n_iter_no_change`` is specified). Otherwise it is set to ``n_estimators``."
-      },
-      {
-        "name": "n_features_",
-        "type": "int",
-        "description": "The number of data features."
-      },
-      {
-        "name": "max_features_",
-        "type": "int",
-        "description": "The inferred value of max_features."
-      }
-    ]
+    "Params": []
   },
   "HistGradientBoostingClassifier": {
     "name": "sklearn.ensemble._hist_gradient_boosting.gradient_boosting.HistGradientBoostingClassifier",
@@ -3409,43 +3076,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "classes_",
-        "type": "array, shape = (n_classes,)",
-        "description": "Class labels."
-      },
-      {
-        "name": "do_early_stopping_",
-        "type": "bool",
-        "description": "Indicates whether early stopping is used during training."
-      },
-      {
-        "name": "n_iter_",
-        "type": "int",
-        "description": "The number of iterations as selected by early stopping, depending on the `early_stopping` parameter. Otherwise it corresponds to max_iter."
-      },
-      {
-        "name": "n_trees_per_iteration_",
-        "type": "int",
-        "description": "The number of tree that are built at each iteration. This is equal to 1 for binary classification, and to ``n_classes`` for multiclass classification."
-      },
-      {
-        "name": "train_score_",
-        "type": "ndarray, shape (n_iter_+1,)",
-        "description": "The scores at each iteration on the training data. The first entry is the score of the ensemble before the first iteration. Scores are computed according to the ``scoring`` parameter. If ``scoring`` is not 'loss', scores are computed on a subset of at most 10 000 samples. Empty if no early stopping."
-      },
-      {
-        "name": "validation_score_",
-        "type": "ndarray, shape (n_iter_+1,)",
-        "description": "The scores at each iteration on the held-out validation data. The first entry is the score of the ensemble before the first iteration. Scores are computed according to the ``scoring`` parameter. Empty if no early stopping or if ``validation_fraction`` is None."
-      },
-      {
-        "name": "is_categorical_",
-        "type": "ndarray, shape (n_features, ) or None",
-        "description": "Boolean mask for the categorical features. ``None`` if there are no categorical features."
-      }
-    ]
+    "Params": []
   },
   "HistGradientBoostingRegressor": {
     "name": "sklearn.ensemble._hist_gradient_boosting.gradient_boosting.HistGradientBoostingRegressor",
@@ -3893,38 +3524,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "do_early_stopping_",
-        "type": "bool",
-        "description": "Indicates whether early stopping is used during training."
-      },
-      {
-        "name": "n_iter_",
-        "type": "int",
-        "description": "The number of iterations as selected by early stopping, depending on the `early_stopping` parameter. Otherwise it corresponds to max_iter."
-      },
-      {
-        "name": "n_trees_per_iteration_",
-        "type": "int",
-        "description": "The number of tree that are built at each iteration. For regressors, this is always 1."
-      },
-      {
-        "name": "train_score_",
-        "type": "ndarray, shape (n_iter_+1,)",
-        "description": "The scores at each iteration on the training data. The first entry is the score of the ensemble before the first iteration. Scores are computed according to the ``scoring`` parameter. If ``scoring`` is not 'loss', scores are computed on a subset of at most 10 000 samples. Empty if no early stopping."
-      },
-      {
-        "name": "validation_score_",
-        "type": "ndarray, shape (n_iter_+1,)",
-        "description": "The scores at each iteration on the held-out validation data. The first entry is the score of the ensemble before the first iteration. Scores are computed according to the ``scoring`` parameter. Empty if no early stopping or if ``validation_fraction`` is None."
-      },
-      {
-        "name": "is_categorical_",
-        "type": "ndarray, shape (n_features, ) or None",
-        "description": "Boolean mask for the categorical features. ``None`` if there are no categorical features."
-      }
-    ]
+    "Params": []
   },
   "IsolationForest": {
     "name": "sklearn.ensemble._iforest.IsolationForest",
@@ -4161,43 +3761,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "base_estimator_",
-        "type": "ExtraTreeRegressor instance",
-        "description": "The child estimator template used to create the collection of fitted sub-estimators."
-      },
-      {
-        "name": "estimators_",
-        "type": "list of ExtraTreeRegressor instances",
-        "description": "The collection of fitted sub-estimators."
-      },
-      {
-        "name": "estimators_features_",
-        "type": "list of ndarray",
-        "description": "The subset of drawn features for each base estimator."
-      },
-      {
-        "name": "estimators_samples_",
-        "type": "list of ndarray",
-        "description": "The subset of drawn samples (i.e., the in-bag samples) for each base estimator."
-      },
-      {
-        "name": "max_samples_",
-        "type": "int",
-        "description": "The actual number of samples."
-      },
-      {
-        "name": "offset_",
-        "type": "float",
-        "description": "Offset used to define the decision function from the raw scores. We have the relation: ``decision_function = score_samples - offset_``. ``offset_`` is defined as follows. When the contamination parameter is set to \"auto\", the offset is equal to -0.5 as the scores of inliers are close to 0 and the scores of outliers are close to -1. When a contamination parameter different than \"auto\" is provided, the offset is defined in such a way we obtain the expected number of outliers (samples with decision function < 0) in training.  .. versionadded:: 0.20"
-      },
-      {
-        "name": "n_features_",
-        "type": "int",
-        "description": "The number of features when ``fit`` is performed."
-      }
-    ]
+    "Params": []
   },
   "RandomForestClassifier": {
     "name": "sklearn.ensemble._forest.RandomForestClassifier",
@@ -4707,53 +4271,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "base_estimator_",
-        "type": "DecisionTreeClassifier",
-        "description": "The child estimator template used to create the collection of fitted sub-estimators."
-      },
-      {
-        "name": "estimators_",
-        "type": "list of DecisionTreeClassifier",
-        "description": "The collection of fitted sub-estimators."
-      },
-      {
-        "name": "classes_",
-        "type": "ndarray of shape (n_classes,) or a list of such arrays",
-        "description": "The classes labels (single output problem), or a list of arrays of class labels (multi-output problem)."
-      },
-      {
-        "name": "n_classes_",
-        "type": "int or list",
-        "description": "The number of classes (single output problem), or a list containing the number of classes for each output (multi-output problem)."
-      },
-      {
-        "name": "n_features_",
-        "type": "int",
-        "description": "The number of features when ``fit`` is performed."
-      },
-      {
-        "name": "n_outputs_",
-        "type": "int",
-        "description": "The number of outputs when ``fit`` is performed."
-      },
-      {
-        "name": "feature_importances_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "The impurity-based feature importances. The higher, the more important the feature. The importance of a feature is computed as the (normalized) total reduction of the criterion brought by that feature.  It is also known as the Gini importance.  Warning: impurity-based feature importances can be misleading for high cardinality features (many unique values). See :func:`sklearn.inspection.permutation_importance` as an alternative."
-      },
-      {
-        "name": "oob_score_",
-        "type": "float",
-        "description": "Score of the training dataset obtained using an out-of-bag estimate. This attribute exists only when ``oob_score`` is True."
-      },
-      {
-        "name": "oob_decision_function_",
-        "type": "ndarray of shape (n_samples, n_classes)",
-        "description": "Decision function computed with out-of-bag estimate on the training set. If n_estimators is small it might be possible that a data point was never left out during the bootstrap. In this case, `oob_decision_function_` might contain NaN. This attribute exists only when ``oob_score`` is True."
-      }
-    ]
+    "Params": []
   },
   "RandomForestRegressor": {
     "name": "sklearn.ensemble._forest.RandomForestRegressor",
@@ -5205,43 +4723,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "base_estimator_",
-        "type": "DecisionTreeRegressor",
-        "description": "The child estimator template used to create the collection of fitted sub-estimators."
-      },
-      {
-        "name": "estimators_",
-        "type": "list of DecisionTreeRegressor",
-        "description": "The collection of fitted sub-estimators."
-      },
-      {
-        "name": "feature_importances_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "The impurity-based feature importances. The higher, the more important the feature. The importance of a feature is computed as the (normalized) total reduction of the criterion brought by that feature.  It is also known as the Gini importance.  Warning: impurity-based feature importances can be misleading for high cardinality features (many unique values). See :func:`sklearn.inspection.permutation_importance` as an alternative."
-      },
-      {
-        "name": "n_features_",
-        "type": "int",
-        "description": "The number of features when ``fit`` is performed."
-      },
-      {
-        "name": "n_outputs_",
-        "type": "int",
-        "description": "The number of outputs when ``fit`` is performed."
-      },
-      {
-        "name": "oob_score_",
-        "type": "float",
-        "description": "Score of the training dataset obtained using an out-of-bag estimate. This attribute exists only when ``oob_score`` is True."
-      },
-      {
-        "name": "oob_prediction_",
-        "type": "ndarray of shape (n_samples,)",
-        "description": "Prediction computed with out-of-bag estimate on the training set. This attribute exists only when ``oob_score`` is True."
-      }
-    ]
+    "Params": []
   },
   "RandomTreesEmbedding": {
     "name": "sklearn.ensemble._forest.RandomTreesEmbedding",
@@ -5538,38 +5020,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "base_estimator_",
-        "type": "DecisionTreeClassifier instance",
-        "description": "The child estimator template used to create the collection of fitted sub-estimators."
-      },
-      {
-        "name": "estimators_",
-        "type": "list of DecisionTreeClassifier instances",
-        "description": "The collection of fitted sub-estimators."
-      },
-      {
-        "name": "feature_importances_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "The feature importances (the higher, the more important the feature)."
-      },
-      {
-        "name": "n_features_",
-        "type": "int",
-        "description": "The number of features when ``fit`` is performed."
-      },
-      {
-        "name": "n_outputs_",
-        "type": "int",
-        "description": "The number of outputs when ``fit`` is performed."
-      },
-      {
-        "name": "one_hot_encoder_",
-        "type": "OneHotEncoder instance",
-        "description": "One-hot encoder used to create the sparse embedding."
-      }
-    ]
+    "Params": []
   },
   "StackingClassifier": {
     "name": "sklearn.ensemble._stacking.StackingClassifier",
@@ -5722,33 +5173,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "classes_",
-        "type": "ndarray of shape (n_classes,)",
-        "description": "Class labels."
-      },
-      {
-        "name": "estimators_",
-        "type": "list of estimators",
-        "description": "The elements of the estimators parameter, having been fitted on the training data. If an estimator has been set to `'drop'`, it will not appear in `estimators_`."
-      },
-      {
-        "name": "named_estimators_",
-        "type": ":class:`~sklearn.utils.Bunch`",
-        "description": "Attribute to access any fitted sub-estimators by name."
-      },
-      {
-        "name": "final_estimator_",
-        "type": "estimator",
-        "description": "The classifier which predicts given the output of `estimators_`."
-      },
-      {
-        "name": "stack_method_",
-        "type": "list of str",
-        "description": "The method used by each base estimator."
-      }
-    ]
+    "Params": []
   },
   "StackingRegressor": {
     "name": "sklearn.ensemble._stacking.StackingRegressor",
@@ -5883,23 +5308,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "estimators_",
-        "type": "list of estimator",
-        "description": "The elements of the estimators parameter, having been fitted on the training data. If an estimator has been set to `'drop'`, it will not appear in `estimators_`."
-      },
-      {
-        "name": "named_estimators_",
-        "type": ":class:`~sklearn.utils.Bunch`",
-        "description": "Attribute to access any fitted sub-estimators by name."
-      },
-      {
-        "name": "final_estimator_",
-        "type": "estimator",
-        "description": "The regressor to stacked the base estimators fitted."
-      }
-    ]
+    "Params": []
   },
   "VotingClassifier": {
     "name": "sklearn.ensemble._voting.VotingClassifier",
@@ -6016,23 +5425,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "estimators_",
-        "type": "list of classifiers",
-        "description": "The collection of fitted sub-estimators as defined in ``estimators`` that are not 'drop'."
-      },
-      {
-        "name": "named_estimators_",
-        "type": ":class:`~sklearn.utils.Bunch`",
-        "description": "Attribute to access any fitted sub-estimators by name.  .. versionadded:: 0.20"
-      },
-      {
-        "name": "classes_",
-        "type": "array-like of shape (n_predictions,)",
-        "description": "The classes labels."
-      }
-    ]
+    "Params": []
   },
   "VotingRegressor": {
     "name": "sklearn.ensemble._voting.VotingRegressor",
@@ -6121,17 +5514,6 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "estimators_",
-        "type": "list of regressors",
-        "description": "The collection of fitted sub-estimators as defined in ``estimators`` that are not 'drop'."
-      },
-      {
-        "name": "named_estimators_",
-        "type": "Bunch",
-        "description": "Attribute to access any fitted sub-estimators by name.  .. versionadded:: 0.20"
-      }
-    ]
+    "Params": []
   }
 }

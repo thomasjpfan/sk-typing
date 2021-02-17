@@ -126,33 +126,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "X_",
-        "type": "ndarray of shape (n_samples, n_features)",
-        "description": "Input array."
-      },
-      {
-        "name": "classes_",
-        "type": "ndarray of shape (n_classes,)",
-        "description": "The distinct labels used in classifying instances."
-      },
-      {
-        "name": "label_distributions_",
-        "type": "ndarray of shape (n_samples, n_classes)",
-        "description": "Categorical distribution for each item."
-      },
-      {
-        "name": "transduction_",
-        "type": "ndarray of shape (n_samples)",
-        "description": "Label assigned to each item via the transduction."
-      },
-      {
-        "name": "n_iter_",
-        "type": "int",
-        "description": "Number of iterations run."
-      }
-    ]
+    "Params": []
   },
   "LabelSpreading": {
     "name": "sklearn.semi_supervised._label_propagation.LabelSpreading",
@@ -293,33 +267,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "X_",
-        "type": "ndarray of shape (n_samples, n_features)",
-        "description": "Input array."
-      },
-      {
-        "name": "classes_",
-        "type": "ndarray of shape (n_classes,)",
-        "description": "The distinct labels used in classifying instances."
-      },
-      {
-        "name": "label_distributions_",
-        "type": "ndarray of shape (n_samples, n_classes)",
-        "description": "Categorical distribution for each item."
-      },
-      {
-        "name": "transduction_",
-        "type": "ndarray of shape (n_samples,)",
-        "description": "Label assigned to each item via the transduction."
-      },
-      {
-        "name": "n_iter_",
-        "type": "int",
-        "description": "Number of iterations run."
-      }
-    ]
+    "Params": []
   },
   "SelfTrainingClassifier": {
     "name": "sklearn.semi_supervised._self_training.SelfTrainingClassifier",
@@ -413,37 +361,6 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "base_estimator_",
-        "type": "estimator object",
-        "description": "The fitted estimator."
-      },
-      {
-        "name": "classes_",
-        "type": "ndarray or list of ndarray of shape (n_classes,)",
-        "description": "Class labels for each output. (Taken from the trained ``base_estimator_``)."
-      },
-      {
-        "name": "transduction_",
-        "type": "ndarray of shape (n_samples,)",
-        "description": "The labels used for the final fit of the classifier, including pseudo-labels added during fit."
-      },
-      {
-        "name": "labeled_iter_",
-        "type": "ndarray of shape (n_samples,)",
-        "description": "The iteration in which each sample was labeled. When a sample has iteration 0, the sample was already labeled in the original dataset. When a sample has iteration -1, the sample was not labeled in any iteration."
-      },
-      {
-        "name": "n_iter_",
-        "type": "int",
-        "description": "The number of rounds of self-training, that is the number of times the base estimator is fitted on relabeled variants of the training set."
-      },
-      {
-        "name": "termination_condition_",
-        "type": "{'max_iter', 'no_change', 'all_labeled'}",
-        "description": "The reason that fitting was stopped.  - 'max_iter': `n_iter_` reached `max_iter`. - 'no_change': no new labels were predicted. - 'all_labeled': all unlabeled samples were labeled before `max_iter`   was reached."
-      }
-    ]
+    "Params": []
   }
 }

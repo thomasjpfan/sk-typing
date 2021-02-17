@@ -43,7 +43,6 @@ else:
 CVType = Union[int, CVSplitter, Iterator[Tuple[np.ndarray, np.ndarray]], None]
 
 ArrayLike = TypeVar("ArrayLike")
-NDArray = TypeVar("NDArray")
 EstimatorType = TypeVar("EstimatorType")
 DType = TypeVar("DType")
 KernelType = TypeVar("KernelType")

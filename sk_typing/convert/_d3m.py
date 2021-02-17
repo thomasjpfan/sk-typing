@@ -1,4 +1,5 @@
 import inspect
+import numpy as np
 from ._extract import unpack_annotation
 from ._extract import AnnotatedMeta
 
@@ -81,7 +82,7 @@ def _process_union(name, annotation_meta, default=inspect.Parameter.empty):
 
     for sub_annotation in annotation_meta.args:
         try:
-            sub_output = get_d3m_representation(name, sub_annotation)
+            sub_output = convert_hyperparam_to_d3m(name, sub_annotation)
         except ValueError:
             continue
         sub_type = sub_output["init_args"]["_structural_type"]
@@ -123,7 +124,7 @@ def _process_type_var(name, annotation_meta):
     raise ValueError(f"Unsupported Typevar {name}")
 
 
-def get_d3m_representation(
+def convert_hyperparam_to_d3m(
     name, annotation, description="", default=inspect.Parameter.empty
 ):
     annotation_meta = unpack_annotation(annotation)
@@ -164,5 +165,36 @@ def get_d3m_representation(
         output["init_args"]["default"] = _get_default(default)
     if description:
         output["init_args"]["description"] = description
+
+    return output
+
+
+def convert_attribute_to_d3m(name, annotation, description=""):
+    annotation_meta = unpack_annotation(annotation)
+
+    output = {"name": name, "description": description}
+
+    if annotation_meta.class_name in {
+        "bool",
+        "int",
+        "float",
+        "str",
+        "list",
+        "dict",
+        "object",
+        "tuple",
+    }:
+        output["type"] = annotation_meta.class_name
+    elif annotation is np.ndarray:
+        output["type"] = "ndarray"
+    elif annotation_meta.class_name == "None":
+        output["type"] = "None"
+    elif annotation_meta.class_name == "Union":
+        # Get the next representation of Union
+        output["type"] = str(annotation).split(".")[1]
+    else:
+        raise ValueError(
+            f"Unsupported class_name: {annotation_meta.class_name} in {name}"
+        )
 
     return output

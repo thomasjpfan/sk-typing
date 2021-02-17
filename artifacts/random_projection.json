@@ -86,18 +86,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "n_components_",
-        "type": "int",
-        "description": "Concrete number of components computed when n_components=\"auto\"."
-      },
-      {
-        "name": "components_",
-        "type": "ndarray of shape (n_components, n_features)",
-        "description": "Random matrix used for the projection."
-      }
-    ]
+    "Params": []
   },
   "SparseRandomProjection": {
     "name": "sklearn.random_projection.SparseRandomProjection",
@@ -232,22 +221,6 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "n_components_",
-        "type": "int",
-        "description": "Concrete number of components computed when n_components=\"auto\"."
-      },
-      {
-        "name": "components_",
-        "type": "sparse matrix of shape (n_components, n_features)",
-        "description": "Random matrix used for the projection. Sparse matrix will be of CSR format."
-      },
-      {
-        "name": "density_",
-        "type": "float in range 0.0 - 1.0",
-        "description": "Concrete density computed from when density = \"auto\"."
-      }
-    ]
+    "Params": []
   }
 }

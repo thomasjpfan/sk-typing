@@ -380,43 +380,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "classes_",
-        "type": "ndarray of shape (n_classes,) or list of ndarray",
-        "description": "The classes labels (single output problem), or a list of arrays of class labels (multi-output problem)."
-      },
-      {
-        "name": "feature_importances_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "The impurity-based feature importances. The higher, the more important the feature. The importance of a feature is computed as the (normalized) total reduction of the criterion brought by that feature.  It is also known as the Gini importance [4]_.  Warning: impurity-based feature importances can be misleading for high cardinality features (many unique values). See :func:`sklearn.inspection.permutation_importance` as an alternative."
-      },
-      {
-        "name": "max_features_",
-        "type": "int",
-        "description": "The inferred value of max_features."
-      },
-      {
-        "name": "n_classes_",
-        "type": "int or list of int",
-        "description": "The number of classes (for single output problems), or a list containing the number of classes for each output (for multi-output problems)."
-      },
-      {
-        "name": "n_features_",
-        "type": "int",
-        "description": "The number of features when ``fit`` is performed."
-      },
-      {
-        "name": "n_outputs_",
-        "type": "int",
-        "description": "The number of outputs when ``fit`` is performed."
-      },
-      {
-        "name": "tree_",
-        "type": "Tree instance",
-        "description": "The underlying Tree object. Please refer to ``help(sklearn.tree._tree.Tree)`` for attributes of Tree object and :ref:`sphx_glr_auto_examples_tree_plot_unveil_tree_structure.py` for basic usage of these attributes."
-      }
-    ]
+    "Params": []
   },
   "DecisionTreeRegressor": {
     "name": "sklearn.tree._classes.DecisionTreeRegressor",
@@ -758,33 +722,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "feature_importances_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "The feature importances. The higher, the more important the feature. The importance of a feature is computed as the (normalized) total reduction of the criterion brought by that feature. It is also known as the Gini importance [4]_.  Warning: impurity-based feature importances can be misleading for high cardinality features (many unique values). See :func:`sklearn.inspection.permutation_importance` as an alternative."
-      },
-      {
-        "name": "max_features_",
-        "type": "int",
-        "description": "The inferred value of max_features."
-      },
-      {
-        "name": "n_features_",
-        "type": "int",
-        "description": "The number of features when ``fit`` is performed."
-      },
-      {
-        "name": "n_outputs_",
-        "type": "int",
-        "description": "The number of outputs when ``fit`` is performed."
-      },
-      {
-        "name": "tree_",
-        "type": "Tree instance",
-        "description": "The underlying Tree object. Please refer to ``help(sklearn.tree._tree.Tree)`` for attributes of Tree object and :ref:`sphx_glr_auto_examples_tree_plot_unveil_tree_structure.py` for basic usage of these attributes."
-      }
-    ]
+    "Params": []
   },
   "ExtraTreeClassifier": {
     "name": "sklearn.tree._classes.ExtraTreeClassifier",
@@ -1178,43 +1116,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "classes_",
-        "type": "ndarray of shape (n_classes,) or list of ndarray",
-        "description": "The classes labels (single output problem), or a list of arrays of class labels (multi-output problem)."
-      },
-      {
-        "name": "max_features_",
-        "type": "int",
-        "description": "The inferred value of max_features."
-      },
-      {
-        "name": "n_classes_",
-        "type": "int or list of int",
-        "description": "The number of classes (for single output problems), or a list containing the number of classes for each output (for multi-output problems)."
-      },
-      {
-        "name": "feature_importances_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "The impurity-based feature importances. The higher, the more important the feature. The importance of a feature is computed as the (normalized) total reduction of the criterion brought by that feature.  It is also known as the Gini importance.  Warning: impurity-based feature importances can be misleading for high cardinality features (many unique values). See :func:`sklearn.inspection.permutation_importance` as an alternative."
-      },
-      {
-        "name": "n_features_",
-        "type": "int",
-        "description": "The number of features when ``fit`` is performed."
-      },
-      {
-        "name": "n_outputs_",
-        "type": "int",
-        "description": "The number of outputs when ``fit`` is performed."
-      },
-      {
-        "name": "tree_",
-        "type": "Tree instance",
-        "description": "The underlying Tree object. Please refer to ``help(sklearn.tree._tree.Tree)`` for attributes of Tree object and :ref:`sphx_glr_auto_examples_tree_plot_unveil_tree_structure.py` for basic usage of these attributes."
-      }
-    ]
+    "Params": []
   },
   "ExtraTreeRegressor": {
     "name": "sklearn.tree._classes.ExtraTreeRegressor",
@@ -1554,32 +1456,6 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "max_features_",
-        "type": "int",
-        "description": "The inferred value of max_features."
-      },
-      {
-        "name": "n_features_",
-        "type": "int",
-        "description": "The number of features when ``fit`` is performed."
-      },
-      {
-        "name": "feature_importances_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "Return impurity-based feature importances (the higher, the more important the feature).  Warning: impurity-based feature importances can be misleading for high cardinality features (many unique values). See :func:`sklearn.inspection.permutation_importance` as an alternative."
-      },
-      {
-        "name": "n_outputs_",
-        "type": "int",
-        "description": "The number of outputs when ``fit`` is performed."
-      },
-      {
-        "name": "tree_",
-        "type": "Tree instance",
-        "description": "The underlying Tree object. Please refer to ``help(sklearn.tree._tree.Tree)`` for attributes of Tree object and :ref:`sphx_glr_auto_examples_tree_plot_unveil_tree_structure.py` for basic usage of these attributes."
-      }
-    ]
+    "Params": []
   }
 }

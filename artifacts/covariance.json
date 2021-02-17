@@ -110,53 +110,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "location_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "Estimated robust location."
-      },
-      {
-        "name": "covariance_",
-        "type": "ndarray of shape (n_features, n_features)",
-        "description": "Estimated robust covariance matrix."
-      },
-      {
-        "name": "precision_",
-        "type": "ndarray of shape (n_features, n_features)",
-        "description": "Estimated pseudo inverse matrix. (stored only if store_precision is True)"
-      },
-      {
-        "name": "support_",
-        "type": "ndarray of shape (n_samples,)",
-        "description": "A mask of the observations that have been used to compute the robust estimates of location and shape."
-      },
-      {
-        "name": "offset_",
-        "type": "float",
-        "description": "Offset used to define the decision function from the raw scores. We have the relation: ``decision_function = score_samples - offset_``. The offset depends on the contamination parameter and is defined in such a way we obtain the expected number of outliers (samples with decision function < 0) in training.  .. versionadded:: 0.20"
-      },
-      {
-        "name": "raw_location_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "The raw robust estimated location before correction and re-weighting."
-      },
-      {
-        "name": "raw_covariance_",
-        "type": "ndarray of shape (n_features, n_features)",
-        "description": "The raw robust estimated covariance before correction and re-weighting."
-      },
-      {
-        "name": "raw_support_",
-        "type": "ndarray of shape (n_samples,)",
-        "description": "A mask of the observations that have been used to compute the raw robust estimates of location and shape, before correction and re-weighting."
-      },
-      {
-        "name": "dist_",
-        "type": "ndarray of shape (n_samples,)",
-        "description": "Mahalanobis distances of the training set (on which :meth:`fit` is called) observations."
-      }
-    ]
+    "Params": []
   },
   "EmpiricalCovariance": {
     "name": "sklearn.covariance._empirical_covariance.EmpiricalCovariance",
@@ -189,23 +143,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "location_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "Estimated location, i.e. the estimated mean."
-      },
-      {
-        "name": "covariance_",
-        "type": "ndarray of shape (n_features, n_features)",
-        "description": "Estimated covariance matrix"
-      },
-      {
-        "name": "precision_",
-        "type": "ndarray of shape (n_features, n_features)",
-        "description": "Estimated pseudo-inverse matrix. (stored only if store_precision is True)"
-      }
-    ]
+    "Params": []
   },
   "GraphicalLasso": {
     "name": "sklearn.covariance._graph_lasso.GraphicalLasso",
@@ -302,28 +240,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "location_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "Estimated location, i.e. the estimated mean."
-      },
-      {
-        "name": "covariance_",
-        "type": "ndarray of shape (n_features, n_features)",
-        "description": "Estimated covariance matrix"
-      },
-      {
-        "name": "precision_",
-        "type": "ndarray of shape (n_features, n_features)",
-        "description": "Estimated pseudo inverse matrix."
-      },
-      {
-        "name": "n_iter_",
-        "type": "int",
-        "description": "Number of iterations run."
-      }
-    ]
+    "Params": []
   },
   "GraphicalLassoCV": {
     "name": "sklearn.covariance._graph_lasso.GraphicalLassoCV",
@@ -522,48 +439,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "location_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "Estimated location, i.e. the estimated mean."
-      },
-      {
-        "name": "covariance_",
-        "type": "ndarray of shape (n_features, n_features)",
-        "description": "Estimated covariance matrix."
-      },
-      {
-        "name": "precision_",
-        "type": "ndarray of shape (n_features, n_features)",
-        "description": "Estimated precision matrix (inverse covariance)."
-      },
-      {
-        "name": "alpha_",
-        "type": "float",
-        "description": "Penalization parameter selected."
-      },
-      {
-        "name": "cv_alphas_",
-        "type": "list of shape (n_alphas,), dtype=float",
-        "description": "All penalization parameters explored.  .. deprecated:: 0.24     The `cv_alphas_` attribute is deprecated in version 0.24 in favor     of `cv_results_['alphas']` and will be removed in version     1.1 (renaming of 0.26)."
-      },
-      {
-        "name": "grid_scores_",
-        "type": "ndarray of shape (n_alphas, n_folds)",
-        "description": "Log-likelihood score on left-out data across folds.  .. deprecated:: 0.24     The `grid_scores_` attribute is deprecated in version 0.24 in favor     of `cv_results_` and will be removed in version     1.1 (renaming of 0.26)."
-      },
-      {
-        "name": "cv_results_",
-        "type": "dict of ndarrays",
-        "description": "A dict with keys:  alphas : ndarray of shape (n_alphas,)     All penalization parameters explored.  split(k)_score : ndarray of shape (n_alphas,)     Log-likelihood score on left-out data across (k)th fold.  mean_score : ndarray of shape (n_alphas,)     Mean of scores over the folds.  std_score : ndarray of shape (n_alphas,)     Standard deviation of scores over the folds.  .. versionadded:: 0.24"
-      },
-      {
-        "name": "n_iter_",
-        "type": "int",
-        "description": "Number of iterations run for the optimal alpha."
-      }
-    ]
+    "Params": []
   },
   "LedoitWolf": {
     "name": "sklearn.covariance._shrunk_covariance.LedoitWolf",
@@ -608,28 +484,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "covariance_",
-        "type": "ndarray of shape (n_features, n_features)",
-        "description": "Estimated covariance matrix."
-      },
-      {
-        "name": "location_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "Estimated location, i.e. the estimated mean."
-      },
-      {
-        "name": "precision_",
-        "type": "ndarray of shape (n_features, n_features)",
-        "description": "Estimated pseudo inverse matrix. (stored only if store_precision is True)"
-      },
-      {
-        "name": "shrinkage_",
-        "type": "float",
-        "description": "Coefficient in the convex combination used for the computation of the shrunk estimate. Range is [0, 1]."
-      }
-    ]
+    "Params": []
   },
   "MinCovDet": {
     "name": "sklearn.covariance._robust_covariance.MinCovDet",
@@ -730,48 +585,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "raw_location_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "The raw robust estimated location before correction and re-weighting."
-      },
-      {
-        "name": "raw_covariance_",
-        "type": "ndarray of shape (n_features, n_features)",
-        "description": "The raw robust estimated covariance before correction and re-weighting."
-      },
-      {
-        "name": "raw_support_",
-        "type": "ndarray of shape (n_samples,)",
-        "description": "A mask of the observations that have been used to compute the raw robust estimates of location and shape, before correction and re-weighting."
-      },
-      {
-        "name": "location_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "Estimated robust location."
-      },
-      {
-        "name": "covariance_",
-        "type": "ndarray of shape (n_features, n_features)",
-        "description": "Estimated robust covariance matrix."
-      },
-      {
-        "name": "precision_",
-        "type": "ndarray of shape (n_features, n_features)",
-        "description": "Estimated pseudo inverse matrix. (stored only if store_precision is True)"
-      },
-      {
-        "name": "support_",
-        "type": "ndarray of shape (n_samples,)",
-        "description": "A mask of the observations that have been used to compute the robust estimates of location and shape."
-      },
-      {
-        "name": "dist_",
-        "type": "ndarray of shape (n_samples,)",
-        "description": "Mahalanobis distances of the training set (on which :meth:`fit` is called) observations."
-      }
-    ]
+    "Params": []
   },
   "OAS": {
     "name": "sklearn.covariance._shrunk_covariance.OAS",
@@ -804,28 +618,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "covariance_",
-        "type": "ndarray of shape (n_features, n_features)",
-        "description": "Estimated covariance matrix."
-      },
-      {
-        "name": "location_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "Estimated location, i.e. the estimated mean."
-      },
-      {
-        "name": "precision_",
-        "type": "ndarray of shape (n_features, n_features)",
-        "description": "Estimated pseudo inverse matrix. (stored only if store_precision is True)"
-      },
-      {
-        "name": "shrinkage_",
-        "type": "float",
-        "description": "coefficient in the convex combination used for the computation of the shrunk estimate. Range is [0, 1]."
-      }
-    ]
+    "Params": []
   },
   "ShrunkCovariance": {
     "name": "sklearn.covariance._shrunk_covariance.ShrunkCovariance",
@@ -870,22 +663,6 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "covariance_",
-        "type": "ndarray of shape (n_features, n_features)",
-        "description": "Estimated covariance matrix"
-      },
-      {
-        "name": "location_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "Estimated location, i.e. the estimated mean."
-      },
-      {
-        "name": "precision_",
-        "type": "ndarray of shape (n_features, n_features)",
-        "description": "Estimated pseudo inverse matrix. (stored only if store_precision is True)"
-      }
-    ]
+    "Params": []
   }
 }

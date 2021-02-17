@@ -127,13 +127,13 @@
     "Params": [
       {
         "name": "classes_",
-        "type": "ndarray of shape (n_classes,)",
-        "description": "The class labels."
+        "description": "The class labels.",
+        "type": "ndarray"
       },
       {
         "name": "calibrated_classifiers_",
-        "type": "list (len() equal to cv or 1 if `cv=\"prefit\"`             or `ensemble=False`)",
-        "description": "The list of classifier and calibrator pairs.  - When `cv=\"prefit\"`, the fitted `base_estimator` and fitted   calibrator. - When `cv` is not \"prefit\" and `ensemble=True`, `n_cv` fitted   `base_estimator` and calibrator pairs. `n_cv` is the number of   cross-validation folds. - When `cv` is not \"prefit\" and `ensemble=False`, the `base_estimator`,   fitted on all the data, and fitted calibrator.  .. versionchanged:: 0.24     Single calibrated classifier case when `ensemble=False`."
+        "description": "The list of classifier and calibrator pairs.  - When `cv=\"prefit\"`, the fitted `base_estimator` and fitted   calibrator. - When `cv` is not \"prefit\" and `ensemble=True`, `n_cv` fitted   `base_estimator` and calibrator pairs. `n_cv` is the number of   cross-validation folds. - When `cv` is not \"prefit\" and `ensemble=False`, the `base_estimator`,   fitted on all the data, and fitted calibrator.  .. versionchanged:: 0.24     Single calibrated classifier case when `ensemble=False`.",
+        "type": "list"
       }
     ]
   }

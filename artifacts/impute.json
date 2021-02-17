@@ -319,38 +319,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "initial_imputer_",
-        "type": "object of type :class:`~sklearn.impute.SimpleImputer`",
-        "description": "Imputer used to initialize the missing values."
-      },
-      {
-        "name": "imputation_sequence_",
-        "type": "list of tuples",
-        "description": "Each tuple has ``(feat_idx, neighbor_feat_idx, estimator)``, where ``feat_idx`` is the current feature to be imputed, ``neighbor_feat_idx`` is the array of other features used to impute the current feature, and ``estimator`` is the trained estimator used for the imputation. Length is ``self.n_features_with_missing_ * self.n_iter_``."
-      },
-      {
-        "name": "n_iter_",
-        "type": "int",
-        "description": "Number of iteration rounds that occurred. Will be less than ``self.max_iter`` if early stopping criterion was reached."
-      },
-      {
-        "name": "n_features_with_missing_",
-        "type": "int",
-        "description": "Number of features with missing values."
-      },
-      {
-        "name": "indicator_",
-        "type": ":class:`~sklearn.impute.MissingIndicator`",
-        "description": "Indicator used to add binary indicators for missing values. ``None`` if add_indicator is False."
-      },
-      {
-        "name": "random_state_",
-        "type": "RandomState instance",
-        "description": "RandomState instance that is generated either from a seed, the random number generator or by `np.random`."
-      }
-    ]
+    "Params": []
   },
   "KNNImputer": {
     "name": "sklearn.impute._knn.KNNImputer",
@@ -521,13 +490,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "indicator_",
-        "type": ":class:`~sklearn.impute.MissingIndicator`",
-        "description": "Indicator used to add binary indicators for missing values. ``None`` if add_indicator is False."
-      }
-    ]
+    "Params": []
   },
   "MissingIndicator": {
     "name": "sklearn.impute._base.MissingIndicator",
@@ -652,13 +615,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "features_",
-        "type": "ndarray, shape (n_missing_features,) or (n_features,)",
-        "description": "The features indices which will be returned when calling ``transform``. They are computed during ``fit``. For ``features='all'``, it is to ``range(n_features)``."
-      }
-    ]
+    "Params": []
   },
   "SimpleImputer": {
     "name": "sklearn.impute._base.SimpleImputer",
@@ -829,17 +786,6 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "statistics_",
-        "type": "array of shape (n_features,)",
-        "description": "The imputation fill value for each feature. Computing statistics can result in `np.nan` values. During :meth:`transform`, features corresponding to `np.nan` statistics will be discarded."
-      },
-      {
-        "name": "indicator_",
-        "type": ":class:`~sklearn.impute.MissingIndicator`",
-        "description": "Indicator used to add binary indicators for missing values. ``None`` if add_indicator is False."
-      }
-    ]
+    "Params": []
   }
 }

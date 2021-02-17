@@ -168,18 +168,19 @@
           "semantic_types": [
             "metric"
           ],
-          "default": "minkowski",
+          "default": "metric__str",
           "description": "The metric to use when calculating distance between instances in a feature array. If metric is a string or callable, it must be one of the options allowed by :func:`sklearn.metrics.pairwise_distances` for its metric parameter. If metric is \"precomputed\", X is assumed to be a distance matrix and must be square. X may be a :term:`Glossary <sparse graph>`.  .. versionadded:: 0.22"
         },
         "hyperparams": [
           {
             "type": "Hyperparameter",
-            "name": "metric__int",
+            "name": "metric__str",
             "init_args": {
               "semantic_types": [
                 "metric"
               ],
-              "_structural_type": "int"
+              "_structural_type": "str",
+              "default": "minkowski"
             }
           },
           {
@@ -241,28 +242,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "embedding_",
-        "type": "array-like, shape (n_samples, n_components)",
-        "description": "Stores the embedding vectors."
-      },
-      {
-        "name": "kernel_pca_",
-        "type": "object",
-        "description": ":class:`~sklearn.decomposition.KernelPCA` object used to implement the embedding."
-      },
-      {
-        "name": "nbrs_",
-        "type": "sklearn.neighbors.NearestNeighbors instance",
-        "description": "Stores nearest neighbors instance, including BallTree or KDtree if applicable."
-      },
-      {
-        "name": "dist_matrix_",
-        "type": "array-like, shape (n_samples, n_samples)",
-        "description": "Stores the geodesic distance matrix of training data."
-      }
-    ]
+    "Params": []
   },
   "LocallyLinearEmbedding": {
     "name": "sklearn.manifold._locally_linear.LocallyLinearEmbedding",
@@ -476,23 +456,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "embedding_",
-        "type": "array-like, shape [n_samples, n_components]",
-        "description": "Stores the embedding vectors"
-      },
-      {
-        "name": "reconstruction_error_",
-        "type": "float",
-        "description": "Reconstruction error associated with `embedding_`"
-      },
-      {
-        "name": "nbrs_",
-        "type": "NearestNeighbors object",
-        "description": "Stores nearest neighbors instance, including BallTree or KDtree if applicable."
-      }
-    ]
+    "Params": []
   },
   "MDS": {
     "name": "sklearn.manifold._mds.MDS",
@@ -657,28 +621,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "embedding_",
-        "type": "ndarray of shape (n_samples, n_components)",
-        "description": "Stores the position of the dataset in the embedding space."
-      },
-      {
-        "name": "stress_",
-        "type": "float",
-        "description": "The final value of the stress (sum of squared distance of the disparities and the distances for all constrained points)."
-      },
-      {
-        "name": "dissimilarity_matrix_",
-        "type": "ndarray of shape (n_samples, n_samples)",
-        "description": "Pairwise dissimilarities between the points. Symmetric matrix that:  - either uses a custom dissimilarity matrix by setting `dissimilarity`   to 'precomputed'; - or constructs a dissimilarity matrix from data using   Euclidean distances."
-      },
-      {
-        "name": "n_iter_",
-        "type": "int",
-        "description": "The number of iterations corresponding to the best stress."
-      }
-    ]
+    "Params": []
   },
   "SpectralEmbedding": {
     "name": "sklearn.manifold._spectral_embedding.SpectralEmbedding",
@@ -870,23 +813,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "embedding_",
-        "type": "ndarray of shape (n_samples, n_components)",
-        "description": "Spectral embedding of the training matrix."
-      },
-      {
-        "name": "affinity_matrix_",
-        "type": "ndarray of shape (n_samples, n_samples)",
-        "description": "Affinity_matrix constructed from samples or precomputed."
-      },
-      {
-        "name": "n_neighbors_",
-        "type": "int",
-        "description": "Number of nearest neighbors effectively used."
-      }
-    ]
+    "Params": []
   },
   "TSNE": {
     "name": "sklearn.manifold._t_sne.TSNE",
@@ -1037,16 +964,6 @@
               "_structural_type": "str",
               "default": "random"
             }
-          },
-          {
-            "name": "init__ndarray",
-            "type": "Hyperparameter",
-            "init_args": {
-              "_structural_type": "ndarray",
-              "semantic_types": [
-                "init"
-              ]
-            }
           }
         ]
       },
@@ -1189,22 +1106,6 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "embedding_",
-        "type": "array-like of shape (n_samples, n_components)",
-        "description": "Stores the embedding vectors."
-      },
-      {
-        "name": "kl_divergence_",
-        "type": "float",
-        "description": "Kullback-Leibler divergence after optimization."
-      },
-      {
-        "name": "n_iter_",
-        "type": "int",
-        "description": "Number of iterations run."
-      }
-    ]
+    "Params": []
   }
 }

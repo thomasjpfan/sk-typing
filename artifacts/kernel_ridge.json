@@ -144,17 +144,6 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "dual_coef_",
-        "type": "ndarray of shape (n_samples,) or (n_samples, n_targets)",
-        "description": "Representation of weight vector(s) in kernel space"
-      },
-      {
-        "name": "X_fit_",
-        "type": "{ndarray, sparse matrix} of shape (n_samples, n_features)",
-        "description": "Training data, which is also required for prediction. If kernel == \"precomputed\" this is instead the precomputed training matrix, of shape (n_samples, n_samples)."
-      }
-    ]
+    "Params": []
   }
 }

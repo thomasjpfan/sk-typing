@@ -1,3 +1,3 @@
-from ._d3m import get_d3m_representation
+from ._d3m import convert_hyperparam_to_d3m
 
-__all__ = ["get_d3m_representation"]
+__all__ = ["convert_hyperparam_to_d3m"]

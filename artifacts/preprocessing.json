@@ -312,18 +312,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "n_bins_",
-        "type": "ndarray of shape (n_features,), dtype=np.int_",
-        "description": "Number of bins per feature. Bins whose width are too small (i.e., <= 1e-8) are removed with a warning."
-      },
-      {
-        "name": "bin_edges_",
-        "type": "ndarray of ndarray of shape (n_features,)",
-        "description": "The edges of each bin. Contain arrays of varying shapes ``(n_bins_, )`` Ignored features will have empty arrays."
-      }
-    ]
+    "Params": []
   },
   "KernelCenterer": {
     "name": "sklearn.preprocessing._data.KernelCenterer",
@@ -331,18 +320,7 @@
     "description": "Center a kernel matrix. Let K(x, z) be a kernel defined by phi(x)^T phi(z), where phi is a function mapping x to a Hilbert space. KernelCenterer centers (i.e., normalize to have zero mean) the data without explicitly computing phi(x). It is equivalent to centering phi(x) with sklearn.preprocessing.StandardScaler(with_std=False).  Read more in the :ref:`User Guide <kernel_centering>`.",
     "sklearn_version": "0.24.0",
     "Hyperparams": [],
-    "Params": [
-      {
-        "name": "K_fit_rows_",
-        "type": "array of shape (n_samples,)",
-        "description": "Average of each column of kernel matrix."
-      },
-      {
-        "name": "K_fit_all_",
-        "type": "float",
-        "description": "Average of kernel matrix."
-      }
-    ]
+    "Params": []
   },
   "LabelBinarizer": {
     "name": "sklearn.preprocessing._label.LabelBinarizer",
@@ -387,23 +365,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "classes_",
-        "type": "ndarray of shape (n_classes,)",
-        "description": "Holds the label for each class."
-      },
-      {
-        "name": "y_type_",
-        "type": "str",
-        "description": "Represents the type of the target data as evaluated by utils.multiclass.type_of_target. Possible type are 'continuous', 'continuous-multioutput', 'binary', 'multiclass', 'multiclass-multioutput', 'multilabel-indicator', and 'unknown'."
-      },
-      {
-        "name": "sparse_input_",
-        "type": "bool",
-        "description": "True if the input data to transform is given as a sparse matrix, False otherwise."
-      }
-    ]
+    "Params": []
   },
   "LabelEncoder": {
     "name": "sklearn.preprocessing._label.LabelEncoder",
@@ -411,13 +373,7 @@
     "description": "Encode target labels with value between 0 and n_classes-1. This transformer should be used to encode target values, *i.e.* `y`, and not the input `X`.  Read more in the :ref:`User Guide <preprocessing_targets>`.  .. versionadded:: 0.12",
     "sklearn_version": "0.24.0",
     "Hyperparams": [],
-    "Params": [
-      {
-        "name": "classes_",
-        "type": "ndarray of shape (n_classes,)",
-        "description": "Holds the label for each class."
-      }
-    ]
+    "Params": []
   },
   "MaxAbsScaler": {
     "name": "sklearn.preprocessing._data.MaxAbsScaler",
@@ -438,23 +394,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "scale_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "Per feature relative scaling of the data.  .. versionadded:: 0.17    *scale_* attribute."
-      },
-      {
-        "name": "max_abs_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "Per feature maximum absolute value."
-      },
-      {
-        "name": "n_samples_seen_",
-        "type": "int",
-        "description": "The number of samples processed by the estimator. Will be reset on new calls to fit, but increments across ``partial_fit`` calls."
-      }
-    ]
+    "Params": []
   },
   "MinMaxScaler": {
     "name": "sklearn.preprocessing._data.MinMaxScaler",
@@ -498,38 +438,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "min_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "Per feature adjustment for minimum. Equivalent to ``min - X.min(axis=0) * self.scale_``"
-      },
-      {
-        "name": "scale_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "Per feature relative scaling of the data. Equivalent to ``(max - min) / (X.max(axis=0) - X.min(axis=0))``  .. versionadded:: 0.17    *scale_* attribute."
-      },
-      {
-        "name": "data_min_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "Per feature minimum seen in the data  .. versionadded:: 0.17    *data_min_*"
-      },
-      {
-        "name": "data_max_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "Per feature maximum seen in the data  .. versionadded:: 0.17    *data_max_*"
-      },
-      {
-        "name": "data_range_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "Per feature range ``(data_max_ - data_min_)`` seen in the data  .. versionadded:: 0.17    *data_range_*"
-      },
-      {
-        "name": "n_samples_seen_",
-        "type": "int",
-        "description": "The number of samples processed by the estimator. It will be reset on new calls to fit, but increments across ``partial_fit`` calls."
-      }
-    ]
+    "Params": []
   },
   "MultiLabelBinarizer": {
     "name": "sklearn.preprocessing._label.MultiLabelBinarizer",
@@ -584,13 +493,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "classes_",
-        "type": "ndarray of shape (n_classes,)",
-        "description": "A copy of the `classes` parameter when provided. Otherwise it corresponds to the sorted set of classes found when fitting."
-      }
-    ]
+    "Params": []
   },
   "Normalizer": {
     "name": "sklearn.preprocessing._data.Normalizer",
@@ -747,18 +650,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "categories_",
-        "type": "list of arrays",
-        "description": "The categories of each feature determined during fitting (in order of the features in X and corresponding with the output of ``transform``). This includes the category specified in ``drop`` (if any)."
-      },
-      {
-        "name": "drop_idx_",
-        "type": "array of shape (n_features,)",
-        "description": "- ``drop_idx_[i]`` is\u00a0the index in ``categories_[i]`` of the category   to be dropped for each feature. - ``drop_idx_[i] = None`` if no category is to be dropped from the   feature with index ``i``, e.g. when `drop='if_binary'` and the   feature isn't binary. - ``drop_idx_ = None`` if all the transformed features will be   retained.  .. versionchanged:: 0.23    Added the possibility to contain `None` values."
-      }
-    ]
+    "Params": []
   },
   "OrdinalEncoder": {
     "name": "sklearn.preprocessing._encoders.OrdinalEncoder",
@@ -861,13 +753,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "categories_",
-        "type": "list of arrays",
-        "description": "The categories of each feature determined during ``fit`` (in order of the features in X and corresponding with the output of ``transform``). This does not include categories that weren't seen during ``fit``."
-      }
-    ]
+    "Params": []
   },
   "PolynomialFeatures": {
     "name": "sklearn.preprocessing._data.PolynomialFeatures",
@@ -928,23 +814,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "powers_",
-        "type": "ndarray of shape (n_output_features, n_input_features)",
-        "description": "powers_[i, j] is the exponent of the jth input in the ith output."
-      },
-      {
-        "name": "n_input_features_",
-        "type": "int",
-        "description": "The total number of input features."
-      },
-      {
-        "name": "n_output_features_",
-        "type": "int",
-        "description": "The total number of polynomial output features. The number of output features is computed by iterating over all suitably sized combinations of input features."
-      }
-    ]
+    "Params": []
   },
   "PowerTransformer": {
     "name": "sklearn.preprocessing._data.PowerTransformer",
@@ -993,13 +863,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "lambdas_",
-        "type": "ndarray of float of shape (n_features,)",
-        "description": "The parameters of the power transformation for the selected features."
-      }
-    ]
+    "Params": []
   },
   "QuantileTransformer": {
     "name": "sklearn.preprocessing._data.QuantileTransformer",
@@ -1106,23 +970,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "n_quantiles_",
-        "type": "int",
-        "description": "The actual number of quantiles used to discretize the cumulative distribution function."
-      },
-      {
-        "name": "quantiles_",
-        "type": "ndarray of shape (n_quantiles, n_features)",
-        "description": "The values corresponding the quantiles of reference."
-      },
-      {
-        "name": "references_",
-        "type": "ndarray of shape (n_quantiles, )",
-        "description": "Quantiles of references."
-      }
-    ]
+    "Params": []
   },
   "RobustScaler": {
     "name": "sklearn.preprocessing._data.RobustScaler",
@@ -1191,18 +1039,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "center_",
-        "type": "array of floats",
-        "description": "The median value for each feature in the training set."
-      },
-      {
-        "name": "scale_",
-        "type": "array of floats",
-        "description": "The (scaled) interquartile range for each feature in the training set.  .. versionadded:: 0.17    *scale_* attribute."
-      }
-    ]
+    "Params": []
   },
   "StandardScaler": {
     "name": "sklearn.preprocessing._data.StandardScaler",
@@ -1247,27 +1084,6 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "scale_",
-        "type": "ndarray of shape (n_features,) or None",
-        "description": "Per feature relative scaling of the data. This is calculated using `np.sqrt(var_)`. Equal to ``None`` when ``with_std=False``.  .. versionadded:: 0.17    *scale_*"
-      },
-      {
-        "name": "mean_",
-        "type": "ndarray of shape (n_features,) or None",
-        "description": "The mean value for each feature in the training set. Equal to ``None`` when ``with_mean=False``."
-      },
-      {
-        "name": "var_",
-        "type": "ndarray of shape (n_features,) or None",
-        "description": "The variance for each feature in the training set. Used to compute `scale_`. Equal to ``None`` when ``with_std=False``."
-      },
-      {
-        "name": "n_samples_seen_",
-        "type": "int or ndarray of shape (n_features,)",
-        "description": "The number of samples processed by the estimator for each feature. If there are no missing samples, the ``n_samples_seen`` will be an integer, otherwise it will be an array of dtype int. If `sample_weights` are used it will be a float (if no missing data) or an array of dtype float that sums the weights seen so far. Will be reset on new calls to fit, but increments across ``partial_fit`` calls."
-      }
-    ]
+    "Params": []
   }
 }

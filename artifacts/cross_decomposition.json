@@ -66,58 +66,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "x_weights_",
-        "type": "ndarray of shape (n_features, n_components)",
-        "description": "The left singular vectors of the cross-covariance matrices of each iteration."
-      },
-      {
-        "name": "y_weights_",
-        "type": "ndarray of shape (n_targets, n_components)",
-        "description": "The right singular vectors of the cross-covariance matrices of each iteration."
-      },
-      {
-        "name": "x_loadings_",
-        "type": "ndarray of shape (n_features, n_components)",
-        "description": "The loadings of `X`."
-      },
-      {
-        "name": "y_loadings_",
-        "type": "ndarray of shape (n_targets, n_components)",
-        "description": "The loadings of `Y`."
-      },
-      {
-        "name": "x_scores_",
-        "type": "ndarray of shape (n_samples, n_components)",
-        "description": "The transformed training samples.  .. deprecated:: 0.24    `x_scores_` is deprecated in 0.24 and will be removed in 1.1    (renaming of 0.26). You can just call `transform` on the training    data instead."
-      },
-      {
-        "name": "y_scores_",
-        "type": "ndarray of shape (n_samples, n_components)",
-        "description": "The transformed training targets.  .. deprecated:: 0.24    `y_scores_` is deprecated in 0.24 and will be removed in 1.1    (renaming of 0.26). You can just call `transform` on the training    data instead."
-      },
-      {
-        "name": "x_rotations_",
-        "type": "ndarray of shape (n_features, n_components)",
-        "description": "The projection matrix used to transform `X`."
-      },
-      {
-        "name": "y_rotations_",
-        "type": "ndarray of shape (n_features, n_components)",
-        "description": "The projection matrix used to transform `Y`."
-      },
-      {
-        "name": "coef_",
-        "type": "ndarray of shape (n_features, n_targets)",
-        "description": "The coefficients of the linear model such that `Y` is approximated as `Y = X @ coef_`."
-      },
-      {
-        "name": "n_iter_",
-        "type": "list of shape (n_components,)",
-        "description": "Number of iterations of the power method, for each component."
-      }
-    ]
+    "Params": []
   },
   "PLSCanonical": {
     "name": "sklearn.cross_decomposition._pls.PLSCanonical",
@@ -202,58 +151,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "x_weights_",
-        "type": "ndarray of shape (n_features, n_components)",
-        "description": "The left singular vectors of the cross-covariance matrices of each iteration."
-      },
-      {
-        "name": "y_weights_",
-        "type": "ndarray of shape (n_targets, n_components)",
-        "description": "The right singular vectors of the cross-covariance matrices of each iteration."
-      },
-      {
-        "name": "x_loadings_",
-        "type": "ndarray of shape (n_features, n_components)",
-        "description": "The loadings of `X`."
-      },
-      {
-        "name": "y_loadings_",
-        "type": "ndarray of shape (n_targets, n_components)",
-        "description": "The loadings of `Y`."
-      },
-      {
-        "name": "x_scores_",
-        "type": "ndarray of shape (n_samples, n_components)",
-        "description": "The transformed training samples.  .. deprecated:: 0.24    `x_scores_` is deprecated in 0.24 and will be removed in 1.1    (renaming of 0.26). You can just call `transform` on the training    data instead."
-      },
-      {
-        "name": "y_scores_",
-        "type": "ndarray of shape (n_samples, n_components)",
-        "description": "The transformed training targets.  .. deprecated:: 0.24    `y_scores_` is deprecated in 0.24 and will be removed in 1.1    (renaming of 0.26). You can just call `transform` on the training    data instead."
-      },
-      {
-        "name": "x_rotations_",
-        "type": "ndarray of shape (n_features, n_components)",
-        "description": "The projection matrix used to transform `X`."
-      },
-      {
-        "name": "y_rotations_",
-        "type": "ndarray of shape (n_features, n_components)",
-        "description": "The projection matrix used to transform `Y`."
-      },
-      {
-        "name": "coef_",
-        "type": "ndarray of shape (n_features, n_targets)",
-        "description": "The coefficients of the linear model such that `Y` is approximated as `Y = X @ coef_`."
-      },
-      {
-        "name": "n_iter_",
-        "type": "list of shape (n_components,)",
-        "description": "Number of iterations of the power method, for each component. Empty if `algorithm='svd'`."
-      }
-    ]
+    "Params": []
   },
   "PLSRegression": {
     "name": "sklearn.cross_decomposition._pls.PLSRegression",
@@ -322,58 +220,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "x_weights_",
-        "type": "ndarray of shape (n_features, n_components)",
-        "description": "The left singular vectors of the cross-covariance matrices of each iteration."
-      },
-      {
-        "name": "y_weights_",
-        "type": "ndarray of shape (n_targets, n_components)",
-        "description": "The right singular vectors of the cross-covariance matrices of each iteration."
-      },
-      {
-        "name": "x_loadings_",
-        "type": "ndarray of shape (n_features, n_components)",
-        "description": "The loadings of `X`."
-      },
-      {
-        "name": "y_loadings_",
-        "type": "ndarray of shape (n_targets, n_components)",
-        "description": "The loadings of `Y`."
-      },
-      {
-        "name": "x_scores_",
-        "type": "ndarray of shape (n_samples, n_components)",
-        "description": "The transformed training samples."
-      },
-      {
-        "name": "y_scores_",
-        "type": "ndarray of shape (n_samples, n_components)",
-        "description": "The transformed training targets."
-      },
-      {
-        "name": "x_rotations_",
-        "type": "ndarray of shape (n_features, n_components)",
-        "description": "The projection matrix used to transform `X`."
-      },
-      {
-        "name": "y_rotations_",
-        "type": "ndarray of shape (n_features, n_components)",
-        "description": "The projection matrix used to transform `Y`."
-      },
-      {
-        "name": "coef_",
-        "type": "ndarray of shape (n_features, n_targets)",
-        "description": "The coefficients of the linear model such that `Y` is approximated as `Y = X @ coef_`."
-      },
-      {
-        "name": "n_iter_",
-        "type": "list of shape (n_components,)",
-        "description": "Number of iterations of the power method, for each component. Empty if `algorithm='svd'`."
-      }
-    ]
+    "Params": []
   },
   "PLSSVD": {
     "name": "sklearn.cross_decomposition._pls.PLSSVD",
@@ -418,27 +265,6 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "x_weights_",
-        "type": "ndarray of shape (n_features, n_components)",
-        "description": "The left singular vectors of the SVD of the cross-covariance matrix. Used to project `X` in `transform`."
-      },
-      {
-        "name": "y_weights_",
-        "type": "ndarray of (n_targets, n_components)",
-        "description": "The right singular vectors of the SVD of the cross-covariance matrix. Used to project `X` in `transform`."
-      },
-      {
-        "name": "x_scores_",
-        "type": "ndarray of shape (n_samples, n_components)",
-        "description": "The transformed training samples.  .. deprecated:: 0.24    `x_scores_` is deprecated in 0.24 and will be removed in 1.1    (renaming of 0.26). You can just call `transform` on the training    data instead."
-      },
-      {
-        "name": "y_scores_",
-        "type": "ndarray of shape (n_samples, n_components)",
-        "description": "The transformed training targets.  .. deprecated:: 0.24    `y_scores_` is deprecated in 0.24 and will be removed in 1.1    (renaming of 0.26). You can just call `transform` on the training    data instead."
-      }
-    ]
+    "Params": []
   }
 }

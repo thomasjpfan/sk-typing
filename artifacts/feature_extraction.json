@@ -415,23 +415,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "vocabulary_",
-        "type": "dict",
-        "description": "A mapping of terms to feature indices."
-      },
-      {
-        "name": "fixed_vocabulary_: boolean",
-        "type": "",
-        "description": "True if a fixed vocabulary of term to indices mapping is provided by the user"
-      },
-      {
-        "name": "stop_words_",
-        "type": "set",
-        "description": "Terms that were ignored because they either:    - occurred in too many documents (`max_df`)   - occurred in too few documents (`min_df`)   - were cut off by feature selection (`max_features`).  This is only available if no vocabulary was given."
-      }
-    ]
+    "Params": []
   },
   "DictVectorizer": {
     "name": "sklearn.feature_extraction._dict_vectorizer.DictVectorizer",
@@ -476,18 +460,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "vocabulary_",
-        "type": "dict",
-        "description": "A dictionary mapping feature names to feature indices."
-      },
-      {
-        "name": "feature_names_",
-        "type": "list",
-        "description": "A list of length n_features containing the feature names (e.g., \"f=ham\" and \"f=spam\")."
-      }
-    ]
+    "Params": []
   },
   "FeatureHasher": {
     "name": "sklearn.feature_extraction._hash.FeatureHasher",
@@ -1029,13 +1002,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "idf_",
-        "type": "array of shape (n_features)",
-        "description": "The inverse document frequency (IDF) vector; only defined if  ``use_idf`` is True.  .. versionadded:: 0.20"
-      }
-    ]
+    "Params": []
   },
   "TfidfVectorizer": {
     "name": "sklearn.feature_extraction.text.TfidfVectorizer",
@@ -1483,27 +1450,6 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "vocabulary_",
-        "type": "dict",
-        "description": "A mapping of terms to feature indices."
-      },
-      {
-        "name": "fixed_vocabulary_: bool",
-        "type": "",
-        "description": "True if a fixed vocabulary of term to indices mapping is provided by the user"
-      },
-      {
-        "name": "idf_",
-        "type": "array of shape (n_features,)",
-        "description": "The inverse document frequency (IDF) vector; only defined if ``use_idf`` is True."
-      },
-      {
-        "name": "stop_words_",
-        "type": "set",
-        "description": "Terms that were ignored because they either:    - occurred in too many documents (`max_df`)   - occurred in too few documents (`min_df`)   - were cut off by feature selection (`max_features`).  This is only available if no vocabulary was given."
-      }
-    ]
+    "Params": []
   }
 }

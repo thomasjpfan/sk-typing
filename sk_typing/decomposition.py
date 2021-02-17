@@ -2,7 +2,8 @@ from typing import Optional
 from typing import Union
 from collections.abc import Callable
 
-from .typing import NDArray
+import numpy as np
+
 from .typing import RandomStateType
 from .typing import Literal
 
@@ -21,8 +22,8 @@ class DictionaryLearning:
         transform_n_nonzero_coefs: Optional[int] = None,
         transform_alpha: Optional[float] = None,
         n_jobs: Optional[int] = None,
-        code_init: Optional[NDArray] = None,
-        dict_init: Optional[NDArray] = None,
+        code_init: Optional[np.ndarray] = None,
+        dict_init: Optional[np.ndarray] = None,
         verbose: bool = False,
         split_sign: bool = False,
         random_state: RandomStateType = None,
@@ -40,7 +41,7 @@ class FactorAnalysis:
         tol: float = 0.01,
         copy: bool = True,
         max_iter: int = 1000,
-        noise_variance_init: Optional[NDArray] = None,
+        noise_variance_init: Optional[np.ndarray] = None,
         svd_method: Literal["lapack", "randomized"] = "randomized",
         iterated_power: int = 3,
         rotation: Literal["varimax", "quartimax"] = None,
@@ -59,7 +60,7 @@ class FastICA:
         fun_args: Optional[dict] = None,
         max_iter: int = 200,
         tol: float = 0.0001,
-        w_init: Optional[NDArray] = None,
+        w_init: Optional[np.ndarray] = None,
         random_state: RandomStateType = None,
     ):
         ...
@@ -133,7 +134,7 @@ class MiniBatchDictionaryLearning:
         n_jobs: Optional[int] = None,
         batch_size: int = 3,
         shuffle: bool = True,
-        dict_init: Optional[NDArray] = None,
+        dict_init: Optional[np.ndarray] = None,
         transform_algorithm: Literal[
             "lasso_lars", "lasso_cd", "lars", "omp", "threshold"
         ] = "omp",
@@ -207,7 +208,7 @@ class PCA:
 class SparseCoder:
     def __init__(
         self,
-        dictionary: NDArray,
+        dictionary: np.ndarray,
         transform_algorithm: Literal[
             "lasso_lars", "lasso_cd", "lars", "omp", "threshold"
         ] = "omp",
@@ -231,8 +232,8 @@ class SparsePCA:
         tol: float = 1e-08,
         method: Literal["lars", "cd"] = "lars",
         n_jobs: Optional[int] = None,
-        U_init: Optional[NDArray] = None,
-        V_init: Optional[NDArray] = None,
+        U_init: Optional[np.ndarray] = None,
+        V_init: Optional[np.ndarray] = None,
         verbose: Union[int, bool] = False,
         random_state: RandomStateType = None,
     ):

@@ -193,53 +193,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "coef_",
-        "type": "ndarray of shape (n_features,) or (n_classes, n_features)",
-        "description": "Weight vector(s)."
-      },
-      {
-        "name": "intercept_",
-        "type": "ndarray of shape (n_classes,)",
-        "description": "Intercept term."
-      },
-      {
-        "name": "covariance_",
-        "type": "array-like of shape (n_features, n_features)",
-        "description": "Weighted within-class covariance matrix. It corresponds to `sum_k prior_k * C_k` where `C_k` is the covariance matrix of the samples in class `k`. The `C_k` are estimated using the (potentially shrunk) biased estimator of covariance. If solver is 'svd', only exists when `store_covariance` is True."
-      },
-      {
-        "name": "explained_variance_ratio_",
-        "type": "ndarray of shape (n_components,)",
-        "description": "Percentage of variance explained by each of the selected components. If ``n_components`` is not set then all components are stored and the sum of explained variances is equal to 1.0. Only available when eigen or svd solver is used."
-      },
-      {
-        "name": "means_",
-        "type": "array-like of shape (n_classes, n_features)",
-        "description": "Class-wise means."
-      },
-      {
-        "name": "priors_",
-        "type": "array-like of shape (n_classes,)",
-        "description": "Class priors (sum to 1)."
-      },
-      {
-        "name": "scalings_",
-        "type": "array-like of shape (rank, n_classes - 1)",
-        "description": "Scaling of the features in the space spanned by the class centroids. Only available for 'svd' and 'eigen' solvers."
-      },
-      {
-        "name": "xbar_",
-        "type": "array-like of shape (n_features,)",
-        "description": "Overall mean. Only present if solver is 'svd'."
-      },
-      {
-        "name": "classes_",
-        "type": "array-like of shape (n_classes,)",
-        "description": "Unique class labels."
-      }
-    ]
+    "Params": []
   },
   "QuadraticDiscriminantAnalysis": {
     "name": "sklearn.discriminant_analysis.QuadraticDiscriminantAnalysis",
@@ -318,37 +272,6 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "covariance_",
-        "type": "list of len n_classes of ndarray             of shape (n_features, n_features)",
-        "description": "For each class, gives the covariance matrix estimated using the samples of that class. The estimations are unbiased. Only present if `store_covariance` is True."
-      },
-      {
-        "name": "means_",
-        "type": "array-like of shape (n_classes, n_features)",
-        "description": "Class-wise means."
-      },
-      {
-        "name": "priors_",
-        "type": "array-like of shape (n_classes,)",
-        "description": "Class priors (sum to 1)."
-      },
-      {
-        "name": "rotations_",
-        "type": "list of len n_classes of ndarray of shape (n_features, n_k)",
-        "description": "For each class k an array of shape (n_features, n_k), where ``n_k = min(n_features, number of elements in class k)`` It is the rotation of the Gaussian distribution, i.e. its principal axis. It corresponds to `V`, the matrix of eigenvectors coming from the SVD of `Xk = U S Vt` where `Xk` is the centered matrix of samples from class k."
-      },
-      {
-        "name": "scalings_",
-        "type": "list of len n_classes of ndarray of shape (n_k,)",
-        "description": "For each class, contains the scaling of the Gaussian distributions along its principal axes, i.e. the variance in the rotated coordinate system. It corresponds to `S^2 / (n_samples - 1)`, where `S` is the diagonal matrix of singular values from the SVD of `Xk`, where `Xk` is the centered matrix of samples from class k."
-      },
-      {
-        "name": "classes_",
-        "type": "ndarray of shape (n_classes,)",
-        "description": "Unique class labels."
-      }
-    ]
+    "Params": []
   }
 }

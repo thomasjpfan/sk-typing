@@ -1,14 +1,14 @@
-import numpy as np
 from typing import Optional
 from typing import Union
 from typing import Callable
+
+import numpy as np
 
 from .typing import EstimatorType
 from .typing import Literal
 from .typing import RandomStateType
 from .typing import ArrayLike
 from .typing import CVType
-from .typing import NDArray
 
 
 class ARDRegression:
@@ -75,7 +75,7 @@ class ElasticNetCV:
         l1_ratio: Union[float, list] = 0.5,
         eps: float = 0.001,
         n_alphas: int = 100,
-        alphas: Optional[NDArray] = None,
+        alphas: Optional[np.ndarray] = None,
         fit_intercept: bool = True,
         normalize: bool = False,
         precompute: Union[Literal["auto"], bool, ArrayLike] = "auto",
@@ -175,7 +175,7 @@ class LassoCV:
         self,
         eps: float = 0.001,
         n_alphas: int = 100,
-        alphas: Optional[NDArray] = None,
+        alphas: Optional[np.ndarray] = None,
         fit_intercept: bool = True,
         normalize: bool = False,
         precompute: Union[Literal["auto"], bool, ArrayLike] = "auto",
@@ -506,7 +506,7 @@ class RANSACRegressor:
 class Ridge:
     def __init__(
         self,
-        alpha: Union[float, NDArray] = 1.0,
+        alpha: Union[float, np.ndarray] = 1.0,
         fit_intercept: bool = True,
         normalize: bool = False,
         copy_X: bool = True,

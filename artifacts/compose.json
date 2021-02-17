@@ -136,23 +136,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "transformers_",
-        "type": "list",
-        "description": "The collection of fitted transformers as tuples of (name, fitted_transformer, column). `fitted_transformer` can be an estimator, 'drop', or 'passthrough'. In case there were no columns selected, this will be the unfitted transformer. If there are remaining columns, the final element is a tuple of the form: ('remainder', transformer, remaining_columns) corresponding to the ``remainder`` parameter. If there are remaining columns, then ``len(transformers_)==len(transformers)+1``, otherwise ``len(transformers_)==len(transformers)``."
-      },
-      {
-        "name": "named_transformers_",
-        "type": ":class:`~sklearn.utils.Bunch`",
-        "description": "Read-only attribute to access any transformer by given name. Keys are transformer names and values are the fitted transformer objects."
-      },
-      {
-        "name": "sparse_output_",
-        "type": "bool",
-        "description": "Boolean flag indicating whether the output of ``transform`` is a sparse matrix or a dense numpy array, which depends on the output of the individual transformers and the `sparse_threshold` keyword."
-      }
-    ]
+    "Params": []
   },
   "TransformedTargetRegressor": {
     "name": "sklearn.compose._target.TransformedTargetRegressor",
@@ -265,17 +249,6 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "regressor_",
-        "type": "object",
-        "description": "Fitted regressor."
-      },
-      {
-        "name": "transformer_",
-        "type": "object",
-        "description": "Transformer used in ``fit`` and ``predict``."
-      }
-    ]
+    "Params": []
   }
 }

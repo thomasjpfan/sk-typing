@@ -1,14 +1,15 @@
+import numpy as np
+
 from typing import Optional
 from typing import Union
 
 from .typing import CVType
 from .typing import EstimatorType
 from .typing import Literal
-from .typing import NDArray
 
 
 class CalibratedClassifierCV:
-    classes_: NDArray
+    classes_: np.ndarray
     calibrated_classifiers_: list
 
     def __init__(

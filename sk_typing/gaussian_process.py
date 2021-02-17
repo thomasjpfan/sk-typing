@@ -2,10 +2,11 @@ from typing import Optional
 from typing import Union
 from typing import Callable
 
+import numpy as np
+
 from .typing import KernelType
 from .typing import Literal
 from .typing import RandomStateType
-from .typing import NDArray
 
 
 class GaussianProcessClassifier:
@@ -28,7 +29,7 @@ class GaussianProcessRegressor:
     def __init__(
         self,
         kernel: Optional[KernelType] = None,
-        alpha: Union[float, NDArray] = 1e-10,
+        alpha: Union[float, np.ndarray] = 1e-10,
         optimizer: Union[Literal["fmin_l_bfgs_b"], Callable] = "fmin_l_bfgs_b",
         n_restarts_optimizer: int = 0,
         normalize_y: bool = False,

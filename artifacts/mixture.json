@@ -366,88 +366,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "weights_",
-        "type": "array-like of shape (n_components,)",
-        "description": "The weights of each mixture components."
-      },
-      {
-        "name": "means_",
-        "type": "array-like of shape (n_components, n_features)",
-        "description": "The mean of each mixture component."
-      },
-      {
-        "name": "covariances_",
-        "type": "array-like",
-        "description": "The covariance of each mixture component. The shape depends on `covariance_type`::      (n_components,)                        if 'spherical',     (n_features, n_features)               if 'tied',     (n_components, n_features)             if 'diag',     (n_components, n_features, n_features) if 'full'"
-      },
-      {
-        "name": "precisions_",
-        "type": "array-like",
-        "description": "The precision matrices for each component in the mixture. A precision matrix is the inverse of a covariance matrix. A covariance matrix is symmetric positive definite so the mixture of Gaussian can be equivalently parameterized by the precision matrices. Storing the precision matrices instead of the covariance matrices makes it more efficient to compute the log-likelihood of new samples at test time. The shape depends on ``covariance_type``::      (n_components,)                        if 'spherical',     (n_features, n_features)               if 'tied',     (n_components, n_features)             if 'diag',     (n_components, n_features, n_features) if 'full'"
-      },
-      {
-        "name": "precisions_cholesky_",
-        "type": "array-like",
-        "description": "The cholesky decomposition of the precision matrices of each mixture component. A precision matrix is the inverse of a covariance matrix. A covariance matrix is symmetric positive definite so the mixture of Gaussian can be equivalently parameterized by the precision matrices. Storing the precision matrices instead of the covariance matrices makes it more efficient to compute the log-likelihood of new samples at test time. The shape depends on ``covariance_type``::      (n_components,)                        if 'spherical',     (n_features, n_features)               if 'tied',     (n_components, n_features)             if 'diag',     (n_components, n_features, n_features) if 'full'"
-      },
-      {
-        "name": "converged_",
-        "type": "bool",
-        "description": "True when convergence was reached in fit(), False otherwise."
-      },
-      {
-        "name": "n_iter_",
-        "type": "int",
-        "description": "Number of step used by the best fit of inference to reach the convergence."
-      },
-      {
-        "name": "lower_bound_",
-        "type": "float",
-        "description": "Lower bound value on the likelihood (of the training data with respect to the model) of the best fit of inference."
-      },
-      {
-        "name": "weight_concentration_prior_",
-        "type": "tuple or float",
-        "description": "The dirichlet concentration of each component on the weight distribution (Dirichlet). The type depends on ``weight_concentration_prior_type``::      (float, float) if 'dirichlet_process' (Beta parameters),     float          if 'dirichlet_distribution' (Dirichlet parameters).  The higher concentration puts more mass in the center and will lead to more components being active, while a lower concentration parameter will lead to more mass at the edge of the simplex."
-      },
-      {
-        "name": "weight_concentration_",
-        "type": "array-like of shape (n_components,)",
-        "description": "The dirichlet concentration of each component on the weight distribution (Dirichlet)."
-      },
-      {
-        "name": "mean_precision_prior_",
-        "type": "float",
-        "description": "The precision prior on the mean distribution (Gaussian). Controls the extent of where means can be placed. Larger values concentrate the cluster means around `mean_prior`. If mean_precision_prior is set to None, `mean_precision_prior_` is set to 1."
-      },
-      {
-        "name": "mean_precision_",
-        "type": "array-like of shape (n_components,)",
-        "description": "The precision of each components on the mean distribution (Gaussian)."
-      },
-      {
-        "name": "mean_prior_",
-        "type": "array-like of shape (n_features,)",
-        "description": "The prior on the mean distribution (Gaussian)."
-      },
-      {
-        "name": "degrees_of_freedom_prior_",
-        "type": "float",
-        "description": "The prior of the number of degrees of freedom on the covariance distributions (Wishart)."
-      },
-      {
-        "name": "degrees_of_freedom_",
-        "type": "array-like of shape (n_components,)",
-        "description": "The number of degrees of freedom of each components in the model."
-      },
-      {
-        "name": "covariance_prior_",
-        "type": "float or array-like",
-        "description": "The prior on the covariance distribution (Wishart). The shape depends on `covariance_type`::      (n_features, n_features) if 'full',     (n_features, n_features) if 'tied',     (n_features)             if 'diag',     float                    if 'spherical'"
-      }
-    ]
+    "Params": []
   },
   "GaussianMixture": {
     "name": "sklearn.mixture._gaussian_mixture.GaussianMixture",
@@ -722,47 +641,6 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "weights_",
-        "type": "array-like of shape (n_components,)",
-        "description": "The weights of each mixture components."
-      },
-      {
-        "name": "means_",
-        "type": "array-like of shape (n_components, n_features)",
-        "description": "The mean of each mixture component."
-      },
-      {
-        "name": "covariances_",
-        "type": "array-like",
-        "description": "The covariance of each mixture component. The shape depends on `covariance_type`::      (n_components,)                        if 'spherical',     (n_features, n_features)               if 'tied',     (n_components, n_features)             if 'diag',     (n_components, n_features, n_features) if 'full'"
-      },
-      {
-        "name": "precisions_",
-        "type": "array-like",
-        "description": "The precision matrices for each component in the mixture. A precision matrix is the inverse of a covariance matrix. A covariance matrix is symmetric positive definite so the mixture of Gaussian can be equivalently parameterized by the precision matrices. Storing the precision matrices instead of the covariance matrices makes it more efficient to compute the log-likelihood of new samples at test time. The shape depends on `covariance_type`::      (n_components,)                        if 'spherical',     (n_features, n_features)               if 'tied',     (n_components, n_features)             if 'diag',     (n_components, n_features, n_features) if 'full'"
-      },
-      {
-        "name": "precisions_cholesky_",
-        "type": "array-like",
-        "description": "The cholesky decomposition of the precision matrices of each mixture component. A precision matrix is the inverse of a covariance matrix. A covariance matrix is symmetric positive definite so the mixture of Gaussian can be equivalently parameterized by the precision matrices. Storing the precision matrices instead of the covariance matrices makes it more efficient to compute the log-likelihood of new samples at test time. The shape depends on `covariance_type`::      (n_components,)                        if 'spherical',     (n_features, n_features)               if 'tied',     (n_components, n_features)             if 'diag',     (n_components, n_features, n_features) if 'full'"
-      },
-      {
-        "name": "converged_",
-        "type": "bool",
-        "description": "True when convergence was reached in fit(), False otherwise."
-      },
-      {
-        "name": "n_iter_",
-        "type": "int",
-        "description": "Number of step used by the best fit of EM to reach the convergence."
-      },
-      {
-        "name": "lower_bound_",
-        "type": "float",
-        "description": "Lower bound value on the log-likelihood (of the training data with respect to the model) of the best fit of EM."
-      }
-    ]
+    "Params": []
   }
 }

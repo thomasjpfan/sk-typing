@@ -14,7 +14,7 @@ from sk_typing.typing import NDArray
 from sk_typing.typing import EstimatorType
 
 
-from sk_typing.convert import get_d3m_representation
+from sk_typing.convert import convert_hyperparam_to_d3m
 
 
 ALL_ESTIMATORS = all_estimators()
@@ -28,8 +28,8 @@ def test_get_output_for_module(name, estimator):
 
 
 @pytest.mark.parametrize("annotation", [bool, int, float, str, tuple])
-def test_get_d3m_representation_builtin(annotation):
-    output = get_d3m_representation("parameter", annotation)
+def test_convert_hyperparam_to_d3m_builtin(annotation):
+    output = convert_hyperparam_to_d3m("parameter", annotation)
     assert output["type"] == "Hyperparameter"
     assert output["name"] == "parameter"
     assert output["init_args"]["semantic_types"][0] == "parameter"
@@ -40,8 +40,8 @@ def test_get_d3m_representation_builtin(annotation):
     "annotation, default",
     [(bool, True), (int, 10), (float, 0.1), (str, "Hello world"), (tuple, (1, 2))],
 )
-def test_get_d3m_representation_builtin_default(annotation, default):
-    output = get_d3m_representation(
+def test_convert_hyperparam_to_d3m_builtin_default(annotation, default):
+    output = convert_hyperparam_to_d3m(
         "parameter", annotation, description="This is awesome", default=default
     )
     if annotation == bool:
@@ -53,17 +53,17 @@ def test_get_d3m_representation_builtin_default(annotation, default):
     assert output["init_args"]["description"] == "This is awesome"
 
 
-def test_get_d3m_representation_builtin_none():
-    output = get_d3m_representation("this_is_none", None, default="None")
+def test_convert_hyperparam_to_d3m_builtin_none():
+    output = convert_hyperparam_to_d3m("this_is_none", None, default="None")
     assert output["name"] == "this_is_none"
     assert output["type"] == "Constant"
     assert output["init_args"]["default"] == "None"
     assert output["init_args"]["_structural_type"] == "None"
 
 
-def test_get_d3m_representation_literal():
+def test_convert_hyperparam_to_d3m_literal():
     literal_dtype = Literal["auto", "sqrt", "log2"]
-    output = get_d3m_representation("calculated", literal_dtype, default="auto")
+    output = convert_hyperparam_to_d3m("calculated", literal_dtype, default="auto")
     assert output["name"] == "calculated"
     assert output["type"] == "Enumeration"
     assert output["init_args"]["values"] == ["auto", "sqrt", "log2"]
@@ -72,18 +72,18 @@ def test_get_d3m_representation_literal():
     assert output["init_args"]["semantic_types"] == ["calculated"]
 
 
-def test_test_get_d3m_representation_literal_single():
+def test_test_convert_hyperparam_to_d3m_literal_single():
     single_dtype = Literal["auto"]
-    output = get_d3m_representation("hello", single_dtype, default="auto")
+    output = convert_hyperparam_to_d3m("hello", single_dtype, default="auto")
     assert output["name"] == "hello"
     assert output["type"] == "Constant"
     assert output["init_args"]["default"] == "auto"
     assert output["init_args"]["_structural_type"] == "str"
 
 
-def test_get_d3m_representation_union():
+def test_convert_hyperparam_to_d3m_union():
     simple_union = Union[Literal["auto", "sqrt", "log2"], int, float]
-    output = get_d3m_representation("max_features", simple_union, default=1)
+    output = convert_hyperparam_to_d3m("max_features", simple_union, default=1)
     assert output["name"] == "max_features"
     assert output["type"] == "Union"
     assert output["init_args"]["default"] == "max_features__int"
@@ -110,9 +110,9 @@ def test_get_d3m_representation_union():
     assert float_output["init_args"]["_structural_type"] == "float"
 
 
-def test_get_d3m_representation_union_one_literal():
+def test_convert_hyperparam_to_d3m_union_one_literal():
     simple_union = Union[Literal["auto"], float]
-    output = get_d3m_representation("max_depth", simple_union, default="auto")
+    output = convert_hyperparam_to_d3m("max_depth", simple_union, default="auto")
     assert output["name"] == "max_depth"
     assert output["type"] == "Union"
     assert output["init_args"]["default"] == "max_depth__str"
@@ -133,9 +133,9 @@ def test_get_d3m_representation_union_one_literal():
     assert float_output["init_args"]["_structural_type"] == "float"
 
 
-def test_get_d3m_representation_union_none():
+def test_convert_hyperparam_to_d3m_union_none():
     none_union = Union[float, int, None]
-    output = get_d3m_representation("great_union", none_union, default=None)
+    output = convert_hyperparam_to_d3m("great_union", none_union, default=None)
     assert output["name"] == "great_union"
     assert output["type"] == "Union"
     assert output["init_args"]["default"] == "great_union__None"
@@ -162,8 +162,8 @@ def test_get_d3m_representation_union_none():
 
 
 @pytest.mark.parametrize("annotation", [Optional[int], Union[int, None]])
-def test_get_d3m_representation_optional(annotation):
-    output = get_d3m_representation("n_jobs", annotation, default=1)
+def test_convert_hyperparam_to_d3m_optional(annotation):
+    output = convert_hyperparam_to_d3m("n_jobs", annotation, default=1)
     assert output["name"] == "n_jobs"
     assert output["type"] == "Union"
     assert output["init_args"]["default"] == "n_jobs__int"
@@ -185,8 +185,8 @@ def test_get_d3m_representation_optional(annotation):
 
 
 @pytest.mark.parametrize("array_like", [ArrayLike, NDArray])
-def test_get_d3m_representation_ndarray(array_like):
-    output = get_d3m_representation("X", Optional[array_like], default=None)
+def test_convert_hyperparam_to_d3m_ndarray(array_like):
+    output = convert_hyperparam_to_d3m("X", Optional[array_like], default=None)
     assert output["name"] == "X"
     assert output["type"] == "Union"
     assert output["init_args"]["default"] == "X__None"
@@ -205,8 +205,8 @@ def test_get_d3m_representation_ndarray(array_like):
     assert none_output["init_args"]["_structural_type"] == "None"
 
 
-def test_get_d3m_representation_base_estimator():
-    output = get_d3m_representation("base_estimator", EstimatorType)
+def test_convert_hyperparam_to_d3m_base_estimator():
+    output = convert_hyperparam_to_d3m("base_estimator", EstimatorType)
     assert output["name"] == "base_estimator"
     assert output["type"] == "Hyperparameter"
     assert output["init_args"]["_structural_type"] == "Estimator"

@@ -86,13 +86,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "n_features_in_",
-        "type": "",
-        "description": ""
-      }
-    ]
+    "Params": []
   },
   "Pipeline": {
     "name": "sklearn.pipeline.Pipeline",
@@ -147,12 +141,6 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "named_steps",
-        "type": ":class:`~sklearn.utils.Bunch`",
-        "description": "Dictionary-like object, with the following attributes. Read-only attribute to access any step parameter by user given name. Keys are step names and values are steps parameters."
-      }
-    ]
+    "Params": []
   }
 }

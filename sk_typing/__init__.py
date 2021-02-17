@@ -63,7 +63,7 @@ def get_metadata(estimator_name):
     try:
         return {
             "parameters": annotations.__init__.__annotations__,
-            "attributes": annotations.__annotations__,
+            "attributes": getattr(annotations, "__annotations__", {}),
         }
     except KeyError:
         raise ValueError(f"Type annotations was not defined for {estimator_name}")

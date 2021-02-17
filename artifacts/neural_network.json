@@ -100,28 +100,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "intercept_hidden_",
-        "type": "array-like of shape (n_components,)",
-        "description": "Biases of the hidden units."
-      },
-      {
-        "name": "intercept_visible_",
-        "type": "array-like of shape (n_features,)",
-        "description": "Biases of the visible units."
-      },
-      {
-        "name": "components_",
-        "type": "array-like of shape (n_components, n_features)",
-        "description": "Weight matrix, where n_features in the number of visible units and n_components is the number of hidden units."
-      },
-      {
-        "name": "h_samples_",
-        "type": "array-like of shape (batch_size, n_components)",
-        "description": "Hidden Activation sampled from the model distribution, where batch_size in the number of examples per minibatch and n_components is the number of hidden units."
-      }
-    ]
+    "Params": []
   },
   "MLPClassifier": {
     "name": "sklearn.neural_network._multilayer_perceptron.MLPClassifier",
@@ -466,63 +445,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "classes_",
-        "type": "ndarray or list of ndarray of shape (n_classes,)",
-        "description": "Class labels for each output."
-      },
-      {
-        "name": "loss_",
-        "type": "float",
-        "description": "The current loss computed with the loss function."
-      },
-      {
-        "name": "best_loss_",
-        "type": "float",
-        "description": "The minimum loss reached by the solver throughout fitting."
-      },
-      {
-        "name": "loss_curve_",
-        "type": "list of shape (`n_iter_`,)",
-        "description": "The ith element in the list represents the loss at the ith iteration."
-      },
-      {
-        "name": "t_",
-        "type": "int",
-        "description": "The number of training samples seen by the solver during fitting."
-      },
-      {
-        "name": "coefs_",
-        "type": "list of shape (n_layers - 1,)",
-        "description": "The ith element in the list represents the weight matrix corresponding to layer i."
-      },
-      {
-        "name": "intercepts_",
-        "type": "list of shape (n_layers - 1,)",
-        "description": "The ith element in the list represents the bias vector corresponding to layer i + 1."
-      },
-      {
-        "name": "n_iter_",
-        "type": "int",
-        "description": "The number of iterations the solver has ran."
-      },
-      {
-        "name": "n_layers_",
-        "type": "int",
-        "description": "Number of layers."
-      },
-      {
-        "name": "n_outputs_",
-        "type": "int",
-        "description": "Number of outputs."
-      },
-      {
-        "name": "out_activation_",
-        "type": "str",
-        "description": "Name of the output activation function."
-      }
-    ]
+    "Params": []
   },
   "MLPRegressor": {
     "name": "sklearn.neural_network._multilayer_perceptron.MLPRegressor",
@@ -867,67 +790,6 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "loss_",
-        "type": "float",
-        "description": "The current loss computed with the loss function."
-      },
-      {
-        "name": "best_loss_",
-        "type": "float",
-        "description": "The minimum loss reached by the solver throughout fitting."
-      },
-      {
-        "name": "loss_curve_",
-        "type": "list of shape (`n_iter_`,)",
-        "description": "The ith element in the list represents the loss at the ith iteration."
-      },
-      {
-        "name": "t_",
-        "type": "int",
-        "description": "The number of training samples seen by the solver during fitting."
-      },
-      {
-        "name": "coefs_",
-        "type": "list of shape (n_layers - 1,)",
-        "description": "The ith element in the list represents the weight matrix corresponding to layer i."
-      },
-      {
-        "name": "intercepts_",
-        "type": "list of shape (n_layers - 1,)",
-        "description": "The ith element in the list represents the bias vector corresponding to layer i + 1."
-      },
-      {
-        "name": "n_iter_",
-        "type": "int",
-        "description": "The number of iterations the solver has ran."
-      },
-      {
-        "name": "n_layers_",
-        "type": "int",
-        "description": "Number of layers."
-      },
-      {
-        "name": "n_outputs_",
-        "type": "int",
-        "description": "Number of outputs."
-      },
-      {
-        "name": "out_activation_",
-        "type": "str",
-        "description": "Name of the output activation function."
-      },
-      {
-        "name": "loss_curve_",
-        "type": "list of shape (n_iters,)",
-        "description": "Loss value evaluated at the end of each training step."
-      },
-      {
-        "name": "t_",
-        "type": "int",
-        "description": "Mathematically equals `n_iters * X.shape[0]`, it means `time_step` and it is used by optimizer's learning rate scheduler."
-      }
-    ]
+    "Params": []
   }
 }

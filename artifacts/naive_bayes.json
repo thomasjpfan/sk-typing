@@ -98,48 +98,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "class_count_",
-        "type": "ndarray of shape (n_classes)",
-        "description": "Number of samples encountered for each class during fitting. This value is weighted by the sample weight when provided."
-      },
-      {
-        "name": "class_log_prior_",
-        "type": "ndarray of shape (n_classes)",
-        "description": "Log probability of each class (smoothed)."
-      },
-      {
-        "name": "classes_",
-        "type": "ndarray of shape (n_classes,)",
-        "description": "Class labels known to the classifier"
-      },
-      {
-        "name": "coef_",
-        "type": "ndarray of shape (n_classes, n_features)",
-        "description": "Mirrors ``feature_log_prob_`` for interpreting `BernoulliNB` as a linear model."
-      },
-      {
-        "name": "feature_count_",
-        "type": "ndarray of shape (n_classes, n_features)",
-        "description": "Number of samples encountered for each (class, feature) during fitting. This value is weighted by the sample weight when provided."
-      },
-      {
-        "name": "feature_log_prob_",
-        "type": "ndarray of shape (n_classes, n_features)",
-        "description": "Empirical log probability of features given a class, P(x_i|y)."
-      },
-      {
-        "name": "intercept_",
-        "type": "ndarray of shape (n_classes,)",
-        "description": "Mirrors ``class_log_prior_`` for interpreting `BernoulliNB` as a linear model."
-      },
-      {
-        "name": "n_features_",
-        "type": "int",
-        "description": "Number of features of each sample."
-      }
-    ]
+    "Params": []
   },
   "CategoricalNB": {
     "name": "sklearn.naive_bayes.CategoricalNB",
@@ -250,43 +209,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "category_count_",
-        "type": "list of arrays of shape (n_features,)",
-        "description": "Holds arrays of shape (n_classes, n_categories of respective feature) for each feature. Each array provides the number of samples encountered for each class and category of the specific feature."
-      },
-      {
-        "name": "class_count_",
-        "type": "ndarray of shape (n_classes,)",
-        "description": "Number of samples encountered for each class during fitting. This value is weighted by the sample weight when provided."
-      },
-      {
-        "name": "class_log_prior_",
-        "type": "ndarray of shape (n_classes,)",
-        "description": "Smoothed empirical log probability for each class."
-      },
-      {
-        "name": "classes_",
-        "type": "ndarray of shape (n_classes,)",
-        "description": "Class labels known to the classifier"
-      },
-      {
-        "name": "feature_log_prob_",
-        "type": "list of arrays of shape (n_features,)",
-        "description": "Holds arrays of shape (n_classes, n_categories of respective feature) for each feature. Each array provides the empirical log probability of categories given the respective feature and class, ``P(x_i|y)``."
-      },
-      {
-        "name": "n_features_",
-        "type": "int",
-        "description": "Number of features of each sample."
-      },
-      {
-        "name": "n_categories_",
-        "type": "ndarray of shape (n_features,), dtype=np.int64",
-        "description": "Number of categories for each feature. This value is inferred from the data or set by the minimum number of categories.  .. versionadded:: 0.24"
-      }
-    ]
+    "Params": []
   },
   "ComplementNB": {
     "name": "sklearn.naive_bayes.ComplementNB",
@@ -365,53 +288,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "class_count_",
-        "type": "ndarray of shape (n_classes,)",
-        "description": "Number of samples encountered for each class during fitting. This value is weighted by the sample weight when provided."
-      },
-      {
-        "name": "class_log_prior_",
-        "type": "ndarray of shape (n_classes,)",
-        "description": "Smoothed empirical log probability for each class. Only used in edge case with a single class in the training set."
-      },
-      {
-        "name": "classes_",
-        "type": "ndarray of shape (n_classes,)",
-        "description": "Class labels known to the classifier"
-      },
-      {
-        "name": "coef_",
-        "type": "ndarray of shape (n_classes, n_features)",
-        "description": "Mirrors ``feature_log_prob_`` for interpreting `ComplementNB` as a linear model.  .. deprecated:: 0.24     ``coef_`` is deprecated in 0.24 and will be removed in 1.1     (renaming of 0.26)."
-      },
-      {
-        "name": "feature_all_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "Number of samples encountered for each feature during fitting. This value is weighted by the sample weight when provided."
-      },
-      {
-        "name": "feature_count_",
-        "type": "ndarray of shape (n_classes, n_features)",
-        "description": "Number of samples encountered for each (class, feature) during fitting. This value is weighted by the sample weight when provided."
-      },
-      {
-        "name": "feature_log_prob_",
-        "type": "ndarray of shape (n_classes, n_features)",
-        "description": "Empirical weights for class complements."
-      },
-      {
-        "name": "intercept_",
-        "type": "ndarray of shape (n_classes,)",
-        "description": "Mirrors ``class_log_prior_`` for interpreting `ComplementNB` as a linear model.  .. deprecated:: 0.24     ``coef_`` is deprecated in 0.24 and will be removed in 1.1     (renaming of 0.26)."
-      },
-      {
-        "name": "n_features_",
-        "type": "int",
-        "description": "Number of features of each sample."
-      }
-    ]
+    "Params": []
   },
   "GaussianNB": {
     "name": "sklearn.naive_bayes.GaussianNB",
@@ -466,38 +343,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "class_count_",
-        "type": "ndarray of shape (n_classes,)",
-        "description": "number of training samples observed in each class."
-      },
-      {
-        "name": "class_prior_",
-        "type": "ndarray of shape (n_classes,)",
-        "description": "probability of each class."
-      },
-      {
-        "name": "classes_",
-        "type": "ndarray of shape (n_classes,)",
-        "description": "class labels known to the classifier"
-      },
-      {
-        "name": "epsilon_",
-        "type": "float",
-        "description": "absolute additive value to variances"
-      },
-      {
-        "name": "sigma_",
-        "type": "ndarray of shape (n_classes, n_features)",
-        "description": "variance of each feature per class"
-      },
-      {
-        "name": "theta_",
-        "type": "ndarray of shape (n_classes, n_features)",
-        "description": "mean of each feature per class"
-      }
-    ]
+    "Params": []
   },
   "MultinomialNB": {
     "name": "sklearn.naive_bayes.MultinomialNB",
@@ -564,47 +410,6 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "class_count_",
-        "type": "ndarray of shape (n_classes,)",
-        "description": "Number of samples encountered for each class during fitting. This value is weighted by the sample weight when provided."
-      },
-      {
-        "name": "class_log_prior_",
-        "type": "ndarray of shape (n_classes, )",
-        "description": "Smoothed empirical log probability for each class."
-      },
-      {
-        "name": "classes_",
-        "type": "ndarray of shape (n_classes,)",
-        "description": "Class labels known to the classifier"
-      },
-      {
-        "name": "coef_",
-        "type": "ndarray of shape (n_classes, n_features)",
-        "description": "Mirrors ``feature_log_prob_`` for interpreting `MultinomialNB` as a linear model.  .. deprecated:: 0.24     ``coef_`` is deprecated in 0.24 and will be removed in 1.1     (renaming of 0.26)."
-      },
-      {
-        "name": "feature_count_",
-        "type": "ndarray of shape (n_classes, n_features)",
-        "description": "Number of samples encountered for each (class, feature) during fitting. This value is weighted by the sample weight when provided."
-      },
-      {
-        "name": "feature_log_prob_",
-        "type": "ndarray of shape (n_classes, n_features)",
-        "description": "Empirical log probability of features given a class, ``P(x_i|y)``."
-      },
-      {
-        "name": "intercept_",
-        "type": "ndarray of shape (n_classes,)",
-        "description": "Mirrors ``class_log_prior_`` for interpreting `MultinomialNB` as a linear model.  .. deprecated:: 0.24     ``intercept_`` is deprecated in 0.24 and will be removed in 1.1     (renaming of 0.26)."
-      },
-      {
-        "name": "n_features_",
-        "type": "int",
-        "description": "Number of features of each sample."
-      }
-    ]
+    "Params": []
   }
 }

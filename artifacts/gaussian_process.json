@@ -196,33 +196,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "base_estimator_",
-        "type": "``Estimator`` instance",
-        "description": "The estimator instance that defines the likelihood function using the observed data."
-      },
-      {
-        "name": "kernel_",
-        "type": "kernel instance",
-        "description": "The kernel used for prediction. In case of binary classification, the structure of the kernel is the same as the one passed as parameter but with optimized hyperparameters. In case of multi-class classification, a CompoundKernel is returned which consists of the different kernels used in the one-versus-rest classifiers."
-      },
-      {
-        "name": "log_marginal_likelihood_value_",
-        "type": "float",
-        "description": "The log-marginal-likelihood of ``self.kernel_.theta``"
-      },
-      {
-        "name": "classes_",
-        "type": "array-like of shape (n_classes,)",
-        "description": "Unique class labels."
-      },
-      {
-        "name": "n_classes_",
-        "type": "int",
-        "description": "The number of classes in the training data"
-      }
-    ]
+    "Params": []
   },
   "GaussianProcessRegressor": {
     "name": "sklearn.gaussian_process._gpr.GaussianProcessRegressor",
@@ -274,16 +248,6 @@
               ],
               "_structural_type": "float",
               "default": 1e-10
-            }
-          },
-          {
-            "name": "alpha__ndarray",
-            "type": "Hyperparameter",
-            "init_args": {
-              "_structural_type": "ndarray",
-              "semantic_types": [
-                "alpha"
-              ]
             }
           }
         ]
@@ -393,37 +357,6 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "X_train_",
-        "type": "array-like of shape (n_samples, n_features) or list of object",
-        "description": "Feature vectors or other representations of training data (also required for prediction)."
-      },
-      {
-        "name": "y_train_",
-        "type": "array-like of shape (n_samples,) or (n_samples, n_targets)",
-        "description": "Target values in training data (also required for prediction)"
-      },
-      {
-        "name": "kernel_",
-        "type": "kernel instance",
-        "description": "The kernel used for prediction. The structure of the kernel is the same as the one passed as parameter but with optimized hyperparameters"
-      },
-      {
-        "name": "L_",
-        "type": "array-like of shape (n_samples, n_samples)",
-        "description": "Lower-triangular Cholesky decomposition of the kernel in ``X_train_``"
-      },
-      {
-        "name": "alpha_",
-        "type": "array-like of shape (n_samples,)",
-        "description": "Dual coefficients of training data points in kernel space"
-      },
-      {
-        "name": "log_marginal_likelihood_value_",
-        "type": "float",
-        "description": "The log-marginal-likelihood of ``self.kernel_.theta``"
-      }
-    ]
+    "Params": []
   }
 }

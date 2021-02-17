@@ -118,23 +118,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "classes_",
-        "type": "list",
-        "description": "A list of arrays of length ``len(estimators_)`` containing the class labels for each estimator in the chain."
-      },
-      {
-        "name": "estimators_",
-        "type": "list",
-        "description": "A list of clones of base_estimator."
-      },
-      {
-        "name": "order_",
-        "type": "list",
-        "description": "The order of labels in the classifier chain."
-      }
-    ]
+    "Params": []
   },
   "MultiOutputClassifier": {
     "name": "sklearn.multioutput.MultiOutputClassifier",
@@ -177,18 +161,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "classes_",
-        "type": "ndarray of shape (n_classes,)",
-        "description": "Class labels."
-      },
-      {
-        "name": "estimators_",
-        "type": "list of ``n_output`` estimators",
-        "description": "Estimators used for predictions."
-      }
-    ]
+    "Params": []
   },
   "MultiOutputRegressor": {
     "name": "sklearn.multioutput.MultiOutputRegressor",
@@ -231,13 +204,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "estimators_",
-        "type": "list of ``n_output`` estimators",
-        "description": "Estimators used for predictions."
-      }
-    ]
+    "Params": []
   },
   "RegressorChain": {
     "name": "sklearn.multioutput.RegressorChain",
@@ -358,17 +325,6 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "estimators_",
-        "type": "list",
-        "description": "A list of clones of base_estimator."
-      },
-      {
-        "name": "order_",
-        "type": "list",
-        "description": "The order of labels in the classifier chain."
-      }
-    ]
+    "Params": []
   }
 }

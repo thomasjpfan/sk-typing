@@ -216,28 +216,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "coef_",
-        "type": "ndarray of shape (1, n_features) if n_classes == 2             else (n_classes, n_features)",
-        "description": "Weights assigned to the features (coefficients in the primal problem). This is only available in the case of a linear kernel.  ``coef_`` is a readonly property derived from ``raw_coef_`` that follows the internal memory layout of liblinear."
-      },
-      {
-        "name": "intercept_",
-        "type": "ndarray of shape (1,) if n_classes == 2 else (n_classes,)",
-        "description": "Constants in decision function."
-      },
-      {
-        "name": "classes_",
-        "type": "ndarray of shape (n_classes,)",
-        "description": "The unique classes labels."
-      },
-      {
-        "name": "n_iter_",
-        "type": "int",
-        "description": "Maximum number of iterations run across all classes."
-      }
-    ]
+    "Params": []
   },
   "LinearSVR": {
     "name": "sklearn.svm._classes.LinearSVR",
@@ -392,23 +371,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "coef_",
-        "type": "ndarray of shape (n_features) if n_classes == 2             else (n_classes, n_features)",
-        "description": "Weights assigned to the features (coefficients in the primal problem). This is only available in the case of a linear kernel.  `coef_` is a readonly property derived from `raw_coef_` that follows the internal memory layout of liblinear."
-      },
-      {
-        "name": "intercept_",
-        "type": "ndarray of shape (1) if n_classes == 2 else (n_classes)",
-        "description": "Constants in decision function."
-      },
-      {
-        "name": "n_iter_",
-        "type": "int",
-        "description": "Maximum number of iterations run across all classes."
-      }
-    ]
+    "Params": []
   },
   "NuSVC": {
     "name": "sklearn.svm._classes.NuSVC",
@@ -666,73 +629,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "class_weight_",
-        "type": "ndarray of shape (n_classes,)",
-        "description": "Multipliers of parameter C of each class. Computed based on the ``class_weight`` parameter."
-      },
-      {
-        "name": "classes_",
-        "type": "ndarray of shape (n_classes,)",
-        "description": "The unique classes labels."
-      },
-      {
-        "name": "coef_",
-        "type": "ndarray of shape (n_classes * (n_classes -1) / 2, n_features)",
-        "description": "Weights assigned to the features (coefficients in the primal problem). This is only available in the case of a linear kernel.  `coef_` is readonly property derived from `dual_coef_` and `support_vectors_`."
-      },
-      {
-        "name": "dual_coef_",
-        "type": "ndarray of shape (n_classes - 1, n_SV)",
-        "description": "Dual coefficients of the support vector in the decision function (see :ref:`sgd_mathematical_formulation`), multiplied by their targets. For multiclass, coefficient for all 1-vs-1 classifiers. The layout of the coefficients in the multiclass case is somewhat non-trivial. See the :ref:`multi-class section of the User Guide <svm_multi_class>` for details."
-      },
-      {
-        "name": "fit_status_",
-        "type": "int",
-        "description": "0 if correctly fitted, 1 if the algorithm did not converge."
-      },
-      {
-        "name": "intercept_",
-        "type": "ndarray of shape (n_classes * (n_classes - 1) / 2,)",
-        "description": "Constants in decision function."
-      },
-      {
-        "name": "support_",
-        "type": "ndarray of shape (n_SV,)",
-        "description": "Indices of support vectors."
-      },
-      {
-        "name": "support_vectors_",
-        "type": "ndarray of shape (n_SV, n_features)",
-        "description": "Support vectors."
-      },
-      {
-        "name": "n_support_",
-        "type": "ndarray of shape (n_classes,), dtype=int32",
-        "description": "Number of support vectors for each class."
-      },
-      {
-        "name": "fit_status_",
-        "type": "int",
-        "description": "0 if correctly fitted, 1 if the algorithm did not converge."
-      },
-      {
-        "name": "probA_",
-        "type": "ndarray of shape (n_classes * (n_classes - 1) / 2,)",
-        "description": ""
-      },
-      {
-        "name": "probB_",
-        "type": "ndarray of shape (n_classes * (n_classes - 1) / 2,)",
-        "description": "If `probability=True`, it corresponds to the parameters learned in Platt scaling to produce probability estimates from decision values. If `probability=False`, it's an empty array. Platt scaling uses the logistic function ``1 / (1 + exp(decision_value * probA_ + probB_))`` where ``probA_`` and ``probB_`` are learned from the dataset [2]_. For more information on the multiclass case and training procedure see section 8 of [1]_."
-      },
-      {
-        "name": "shape_fit_",
-        "type": "tuple of int of shape (n_dimensions_of_X,)",
-        "description": "Array dimensions of training vector ``X``."
-      }
-    ]
+    "Params": []
   },
   "NuSVR": {
     "name": "sklearn.svm._classes.NuSVR",
@@ -906,53 +803,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "class_weight_",
-        "type": "ndarray of shape (n_classes,)",
-        "description": "Multipliers of parameter C for each class. Computed based on the ``class_weight`` parameter."
-      },
-      {
-        "name": "coef_",
-        "type": "ndarray of shape (1, n_features)",
-        "description": "Weights assigned to the features (coefficients in the primal problem). This is only available in the case of a linear kernel.  `coef_` is readonly property derived from `dual_coef_` and `support_vectors_`."
-      },
-      {
-        "name": "dual_coef_",
-        "type": "ndarray of shape (1, n_SV)",
-        "description": "Coefficients of the support vector in the decision function."
-      },
-      {
-        "name": "fit_status_",
-        "type": "int",
-        "description": "0 if correctly fitted, 1 otherwise (will raise warning)"
-      },
-      {
-        "name": "intercept_",
-        "type": "ndarray of shape (1,)",
-        "description": "Constants in decision function."
-      },
-      {
-        "name": "n_support_",
-        "type": "ndarray of shape (n_classes,), dtype=int32",
-        "description": "Number of support vectors for each class."
-      },
-      {
-        "name": "shape_fit_",
-        "type": "tuple of int of shape (n_dimensions_of_X,)",
-        "description": "Array dimensions of training vector ``X``."
-      },
-      {
-        "name": "support_",
-        "type": "ndarray of shape (n_SV,)",
-        "description": "Indices of support vectors."
-      },
-      {
-        "name": "support_vectors_",
-        "type": "ndarray of shape (n_SV, n_features)",
-        "description": "Support vectors."
-      }
-    ]
+    "Params": []
   },
   "OneClassSVM": {
     "name": "sklearn.svm._classes.OneClassSVM",
@@ -1114,58 +965,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "class_weight_",
-        "type": "ndarray of shape (n_classes,)",
-        "description": "Multipliers of parameter C for each class. Computed based on the ``class_weight`` parameter."
-      },
-      {
-        "name": "coef_",
-        "type": "ndarray of shape (1, n_features)",
-        "description": "Weights assigned to the features (coefficients in the primal problem). This is only available in the case of a linear kernel.  `coef_` is readonly property derived from `dual_coef_` and `support_vectors_`."
-      },
-      {
-        "name": "dual_coef_",
-        "type": "ndarray of shape (1, n_SV)",
-        "description": "Coefficients of the support vectors in the decision function."
-      },
-      {
-        "name": "fit_status_",
-        "type": "int",
-        "description": "0 if correctly fitted, 1 otherwise (will raise warning)"
-      },
-      {
-        "name": "intercept_",
-        "type": "ndarray of shape (1,)",
-        "description": "Constant in the decision function."
-      },
-      {
-        "name": "n_support_",
-        "type": "ndarray of shape (n_classes,), dtype=int32",
-        "description": "Number of support vectors for each class."
-      },
-      {
-        "name": "offset_",
-        "type": "float",
-        "description": "Offset used to define the decision function from the raw scores. We have the relation: decision_function = score_samples - `offset_`. The offset is the opposite of `intercept_` and is provided for consistency with other outlier detection algorithms.  .. versionadded:: 0.20"
-      },
-      {
-        "name": "shape_fit_",
-        "type": "tuple of int of shape (n_dimensions_of_X,)",
-        "description": "Array dimensions of training vector ``X``."
-      },
-      {
-        "name": "support_",
-        "type": "ndarray of shape (n_SV,)",
-        "description": "Indices of support vectors."
-      },
-      {
-        "name": "support_vectors_",
-        "type": "ndarray of shape (n_SV, n_features)",
-        "description": "Support vectors."
-      }
-    ]
+    "Params": []
   },
   "SVC": {
     "name": "sklearn.svm._classes.SVC",
@@ -1445,68 +1245,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "class_weight_",
-        "type": "ndarray of shape (n_classes,)",
-        "description": "Multipliers of parameter C for each class. Computed based on the ``class_weight`` parameter."
-      },
-      {
-        "name": "classes_",
-        "type": "ndarray of shape (n_classes,)",
-        "description": "The classes labels."
-      },
-      {
-        "name": "coef_",
-        "type": "ndarray of shape (n_classes * (n_classes - 1) / 2, n_features)",
-        "description": "Weights assigned to the features (coefficients in the primal problem). This is only available in the case of a linear kernel.  `coef_` is a readonly property derived from `dual_coef_` and `support_vectors_`."
-      },
-      {
-        "name": "dual_coef_",
-        "type": "ndarray of shape (n_classes -1, n_SV)",
-        "description": "Dual coefficients of the support vector in the decision function (see :ref:`sgd_mathematical_formulation`), multiplied by their targets. For multiclass, coefficient for all 1-vs-1 classifiers. The layout of the coefficients in the multiclass case is somewhat non-trivial. See the :ref:`multi-class section of the User Guide <svm_multi_class>` for details."
-      },
-      {
-        "name": "fit_status_",
-        "type": "int",
-        "description": "0 if correctly fitted, 1 otherwise (will raise warning)"
-      },
-      {
-        "name": "intercept_",
-        "type": "ndarray of shape (n_classes * (n_classes - 1) / 2,)",
-        "description": "Constants in decision function."
-      },
-      {
-        "name": "support_",
-        "type": "ndarray of shape (n_SV)",
-        "description": "Indices of support vectors."
-      },
-      {
-        "name": "support_vectors_",
-        "type": "ndarray of shape (n_SV, n_features)",
-        "description": "Support vectors."
-      },
-      {
-        "name": "n_support_",
-        "type": "ndarray of shape (n_classes,), dtype=int32",
-        "description": "Number of support vectors for each class."
-      },
-      {
-        "name": "probA_",
-        "type": "ndarray of shape (n_classes * (n_classes - 1) / 2)",
-        "description": ""
-      },
-      {
-        "name": "probB_",
-        "type": "ndarray of shape (n_classes * (n_classes - 1) / 2)",
-        "description": "If `probability=True`, it corresponds to the parameters learned in Platt scaling to produce probability estimates from decision values. If `probability=False`, it's an empty array. Platt scaling uses the logistic function ``1 / (1 + exp(decision_value * probA_ + probB_))`` where ``probA_`` and ``probB_`` are learned from the dataset [2]_. For more information on the multiclass case and training procedure see section 8 of [1]_."
-      },
-      {
-        "name": "shape_fit_",
-        "type": "tuple of int of shape (n_dimensions_of_X,)",
-        "description": "Array dimensions of training vector ``X``."
-      }
-    ]
+    "Params": []
   },
   "SVR": {
     "name": "sklearn.svm._classes.SVR",
@@ -1680,52 +1419,6 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "class_weight_",
-        "type": "ndarray of shape (n_classes,)",
-        "description": "Multipliers of parameter C for each class. Computed based on the ``class_weight`` parameter."
-      },
-      {
-        "name": "coef_",
-        "type": "ndarray of shape (1, n_features)",
-        "description": "Weights assigned to the features (coefficients in the primal problem). This is only available in the case of a linear kernel.  `coef_` is readonly property derived from `dual_coef_` and `support_vectors_`."
-      },
-      {
-        "name": "dual_coef_",
-        "type": "ndarray of shape (1, n_SV)",
-        "description": "Coefficients of the support vector in the decision function."
-      },
-      {
-        "name": "fit_status_",
-        "type": "int",
-        "description": "0 if correctly fitted, 1 otherwise (will raise warning)"
-      },
-      {
-        "name": "intercept_",
-        "type": "ndarray of shape (1,)",
-        "description": "Constants in decision function."
-      },
-      {
-        "name": "n_support_",
-        "type": "ndarray of shape (n_classes,), dtype=int32",
-        "description": "Number of support vectors for each class."
-      },
-      {
-        "name": "shape_fit_",
-        "type": "tuple of int of shape (n_dimensions_of_X,)",
-        "description": "Array dimensions of training vector ``X``."
-      },
-      {
-        "name": "support_",
-        "type": "ndarray of shape (n_SV,)",
-        "description": "Indices of support vectors."
-      },
-      {
-        "name": "support_vectors_",
-        "type": "ndarray of shape (n_SV, n_features)",
-        "description": "Support vectors."
-      }
-    ]
+    "Params": []
   }
 }

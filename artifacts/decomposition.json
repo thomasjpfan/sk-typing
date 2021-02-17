@@ -224,16 +224,6 @@
         },
         "hyperparams": [
           {
-            "name": "code_init__ndarray",
-            "type": "Hyperparameter",
-            "init_args": {
-              "_structural_type": "ndarray",
-              "semantic_types": [
-                "code_init"
-              ]
-            }
-          },
-          {
             "type": "Constant",
             "name": "code_init__None",
             "init_args": {
@@ -257,16 +247,6 @@
           "description": "Initial values for the dictionary, for warm restart."
         },
         "hyperparams": [
-          {
-            "name": "dict_init__ndarray",
-            "type": "Hyperparameter",
-            "init_args": {
-              "_structural_type": "ndarray",
-              "semantic_types": [
-                "dict_init"
-              ]
-            }
-          },
           {
             "type": "Constant",
             "name": "dict_init__None",
@@ -375,23 +355,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "components_",
-        "type": "ndarray of shape (n_components, n_features)",
-        "description": "dictionary atoms extracted from the data"
-      },
-      {
-        "name": "error_",
-        "type": "array",
-        "description": "vector of errors at each iteration"
-      },
-      {
-        "name": "n_iter_",
-        "type": "int",
-        "description": "Number of iterations run."
-      }
-    ]
+    "Params": []
   },
   "FactorAnalysis": {
     "name": "sklearn.decomposition._factor_analysis.FactorAnalysis",
@@ -480,16 +444,6 @@
           "description": "The initial guess of the noise variance for each feature. If None, it defaults to np.ones(n_features)."
         },
         "hyperparams": [
-          {
-            "name": "noise_variance_init__ndarray",
-            "type": "Hyperparameter",
-            "init_args": {
-              "_structural_type": "ndarray",
-              "semantic_types": [
-                "noise_variance_init"
-              ]
-            }
-          },
           {
             "type": "Constant",
             "name": "noise_variance_init__None",
@@ -582,33 +536,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "components_",
-        "type": "ndarray of shape (n_components, n_features)",
-        "description": "Components with maximum variance."
-      },
-      {
-        "name": "loglike_",
-        "type": "list of shape (n_iterations,)",
-        "description": "The log likelihood at each iteration."
-      },
-      {
-        "name": "noise_variance_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "The estimated noise variance for each feature."
-      },
-      {
-        "name": "n_iter_",
-        "type": "int",
-        "description": "Number of iterations run."
-      },
-      {
-        "name": "mean_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "Per-feature empirical mean, estimated from the training set."
-      }
-    ]
+    "Params": []
   },
   "FastICA": {
     "name": "sklearn.decomposition._fastica.FastICA",
@@ -787,16 +715,6 @@
         },
         "hyperparams": [
           {
-            "name": "w_init__ndarray",
-            "type": "Hyperparameter",
-            "init_args": {
-              "_structural_type": "ndarray",
-              "semantic_types": [
-                "w_init"
-              ]
-            }
-          },
-          {
             "type": "Constant",
             "name": "w_init__None",
             "init_args": {
@@ -844,33 +762,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "components_",
-        "type": "ndarray of shape (n_components, n_features)",
-        "description": "The linear operator to apply to the data to get the independent sources. This is equal to the unmixing matrix when ``whiten`` is False, and equal to ``np.dot(unmixing_matrix, self.whitening_)`` when ``whiten`` is True."
-      },
-      {
-        "name": "mixing_",
-        "type": "ndarray of shape (n_features, n_components)",
-        "description": "The pseudo-inverse of ``components_``. It is the linear operator that maps independent sources to the data."
-      },
-      {
-        "name": "mean_",
-        "type": "ndarray of shape(n_features,)",
-        "description": "The mean over features. Only set if `self.whiten` is True."
-      },
-      {
-        "name": "n_iter_",
-        "type": "int",
-        "description": "If the algorithm is \"deflation\", n_iter is the maximum number of iterations run across all components. Else they are just the number of iterations taken to converge."
-      },
-      {
-        "name": "whitening_",
-        "type": "ndarray of shape (n_components, n_features)",
-        "description": "Only set if whiten is 'True'. This is the pre-whitening matrix that projects data onto the first `n_components` principal components."
-      }
-    ]
+    "Params": []
   },
   "IncrementalPCA": {
     "name": "sklearn.decomposition._incremental_pca.IncrementalPCA",
@@ -971,58 +863,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "components_",
-        "type": "ndarray of shape (n_components, n_features)",
-        "description": "Components with maximum variance."
-      },
-      {
-        "name": "explained_variance_",
-        "type": "ndarray of shape (n_components,)",
-        "description": "Variance explained by each of the selected components."
-      },
-      {
-        "name": "explained_variance_ratio_",
-        "type": "ndarray of shape (n_components,)",
-        "description": "Percentage of variance explained by each of the selected components. If all components are stored, the sum of explained variances is equal to 1.0."
-      },
-      {
-        "name": "singular_values_",
-        "type": "ndarray of shape (n_components,)",
-        "description": "The singular values corresponding to each of the selected components. The singular values are equal to the 2-norms of the ``n_components`` variables in the lower-dimensional space."
-      },
-      {
-        "name": "mean_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "Per-feature empirical mean, aggregate over calls to ``partial_fit``."
-      },
-      {
-        "name": "var_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "Per-feature empirical variance, aggregate over calls to ``partial_fit``."
-      },
-      {
-        "name": "noise_variance_",
-        "type": "float",
-        "description": "The estimated noise covariance following the Probabilistic PCA model from Tipping and Bishop 1999. See \"Pattern Recognition and Machine Learning\" by C. Bishop, 12.2.1 p. 574 or http://www.miketipping.com/papers/met-mppca.pdf."
-      },
-      {
-        "name": "n_components_",
-        "type": "int",
-        "description": "The estimated number of components. Relevant when ``n_components=None``."
-      },
-      {
-        "name": "n_samples_seen_",
-        "type": "int",
-        "description": "The number of samples processed by the estimator. Will be reset on new calls to fit, but increments across ``partial_fit`` calls."
-      },
-      {
-        "name": "batch_size_",
-        "type": "int",
-        "description": "Inferred batch size from ``batch_size``."
-      }
-    ]
+    "Params": []
   },
   "KernelPCA": {
     "name": "sklearn.decomposition._kernel_pca.KernelPCA",
@@ -1312,33 +1153,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "lambdas_",
-        "type": "ndarray of shape (n_components,)",
-        "description": "Eigenvalues of the centered kernel matrix in decreasing order. If `n_components` and `remove_zero_eig` are not set, then all values are stored."
-      },
-      {
-        "name": "alphas_",
-        "type": "ndarray of shape (n_samples, n_components)",
-        "description": "Eigenvectors of the centered kernel matrix. If `n_components` and `remove_zero_eig` are not set, then all components are stored."
-      },
-      {
-        "name": "dual_coef_",
-        "type": "ndarray of shape (n_samples, n_features)",
-        "description": "Inverse transform matrix. Only available when ``fit_inverse_transform`` is True."
-      },
-      {
-        "name": "X_transformed_fit_",
-        "type": "ndarray of shape (n_samples, n_components)",
-        "description": "Projection of the fitted data on the kernel principal components. Only available when ``fit_inverse_transform`` is True."
-      },
-      {
-        "name": "X_fit_",
-        "type": "ndarray of shape (n_samples, n_features)",
-        "description": "The data used to fit the model. If `copy_X=False`, then `X_fit_` is a reference. This attribute is used for the calls to transform."
-      }
-    ]
+    "Params": []
   },
   "LatentDirichletAllocation": {
     "name": "sklearn.decomposition._lda.LatentDirichletAllocation",
@@ -1631,48 +1446,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "components_",
-        "type": "ndarray of shape (n_components, n_features)",
-        "description": "Variational parameters for topic word distribution. Since the complete conditional for topic word distribution is a Dirichlet, ``components_[i, j]`` can be viewed as pseudocount that represents the number of times word `j` was assigned to topic `i`. It can also be viewed as distribution over the words for each topic after normalization: ``model.components_ / model.components_.sum(axis=1)[:, np.newaxis]``."
-      },
-      {
-        "name": "exp_dirichlet_component_",
-        "type": "ndarray of shape (n_components, n_features)",
-        "description": "Exponential value of expectation of log topic word distribution. In the literature, this is `exp(E[log(beta)])`."
-      },
-      {
-        "name": "n_batch_iter_",
-        "type": "int",
-        "description": "Number of iterations of the EM step."
-      },
-      {
-        "name": "n_iter_",
-        "type": "int",
-        "description": "Number of passes over the dataset."
-      },
-      {
-        "name": "bound_",
-        "type": "float",
-        "description": "Final perplexity score on training set."
-      },
-      {
-        "name": "doc_topic_prior_",
-        "type": "float",
-        "description": "Prior of document topic distribution `theta`. If the value is None, it is `1 / n_components`."
-      },
-      {
-        "name": "random_state_",
-        "type": "RandomState instance",
-        "description": "RandomState instance that is generated either from a seed, the random number generator or by `np.random`."
-      },
-      {
-        "name": "topic_word_prior_",
-        "type": "float",
-        "description": "Prior of topic word distribution `beta`. If the value is None, it is `1 / n_components`."
-      }
-    ]
+    "Params": []
   },
   "MiniBatchDictionaryLearning": {
     "name": "sklearn.decomposition._dict_learning.MiniBatchDictionaryLearning",
@@ -1801,16 +1575,6 @@
           "description": "initial value of the dictionary for warm restart scenarios"
         },
         "hyperparams": [
-          {
-            "name": "dict_init__ndarray",
-            "type": "Hyperparameter",
-            "init_args": {
-              "_structural_type": "ndarray",
-              "semantic_types": [
-                "dict_init"
-              ]
-            }
-          },
           {
             "type": "Constant",
             "name": "dict_init__None",
@@ -2006,33 +1770,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "components_",
-        "type": "ndarray of shape (n_components, n_features)",
-        "description": "Components extracted from the data."
-      },
-      {
-        "name": "inner_stats_",
-        "type": "tuple of (A, B) ndarrays",
-        "description": "Internal sufficient statistics that are kept by the algorithm. Keeping them is useful in online settings, to avoid losing the history of the evolution, but they shouldn't have any use for the end user. `A` `(n_components, n_components)` is the dictionary covariance matrix. `B` `(n_features, n_components)` is the data approximation matrix."
-      },
-      {
-        "name": "n_iter_",
-        "type": "int",
-        "description": "Number of iterations run."
-      },
-      {
-        "name": "iter_offset_",
-        "type": "int",
-        "description": "The number of iteration on data batches that has been performed before."
-      },
-      {
-        "name": "random_state_",
-        "type": "RandomState instance",
-        "description": "RandomState instance that is generated either from a seed, the random number generattor or by `np.random`."
-      }
-    ]
+    "Params": []
   },
   "MiniBatchSparsePCA": {
     "name": "sklearn.decomposition._sparse_pca.MiniBatchSparsePCA",
@@ -2287,28 +2025,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "components_",
-        "type": "ndarray of shape (n_components, n_features)",
-        "description": "Sparse components extracted from the data."
-      },
-      {
-        "name": "n_components_",
-        "type": "int",
-        "description": "Estimated number of components.  .. versionadded:: 0.23"
-      },
-      {
-        "name": "n_iter_",
-        "type": "int",
-        "description": "Number of iterations run."
-      },
-      {
-        "name": "mean_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "Per-feature empirical mean, estimated from the training set. Equal to ``X.mean(axis=0)``."
-      }
-    ]
+    "Params": []
   },
   "NMF": {
     "name": "sklearn.decomposition._nmf.NMF",
@@ -2572,28 +2289,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "components_",
-        "type": "ndarray of shape (n_components, n_features)",
-        "description": "Factorization matrix, sometimes called 'dictionary'."
-      },
-      {
-        "name": "n_components_",
-        "type": "int",
-        "description": "The number of components. It is same as the `n_components` parameter if it was given. Otherwise, it will be same as the number of features."
-      },
-      {
-        "name": "reconstruction_err_",
-        "type": "float",
-        "description": "Frobenius norm of the matrix difference, or beta-divergence, between the training data ``X`` and the reconstructed data ``WH`` from the fitted model."
-      },
-      {
-        "name": "n_iter_",
-        "type": "int",
-        "description": "Actual number of iterations."
-      }
-    ]
+    "Params": []
   },
   "PCA": {
     "name": "sklearn.decomposition._pca.PCA",
@@ -2778,53 +2474,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "components_",
-        "type": "ndarray of shape (n_components, n_features)",
-        "description": "Principal axes in feature space, representing the directions of maximum variance in the data. The components are sorted by ``explained_variance_``."
-      },
-      {
-        "name": "explained_variance_",
-        "type": "ndarray of shape (n_components,)",
-        "description": "The amount of variance explained by each of the selected components.  Equal to n_components largest eigenvalues of the covariance matrix of X.  .. versionadded:: 0.18"
-      },
-      {
-        "name": "explained_variance_ratio_",
-        "type": "ndarray of shape (n_components,)",
-        "description": "Percentage of variance explained by each of the selected components.  If ``n_components`` is not set then all components are stored and the sum of the ratios is equal to 1.0."
-      },
-      {
-        "name": "singular_values_",
-        "type": "ndarray of shape (n_components,)",
-        "description": "The singular values corresponding to each of the selected components. The singular values are equal to the 2-norms of the ``n_components`` variables in the lower-dimensional space.  .. versionadded:: 0.19"
-      },
-      {
-        "name": "mean_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "Per-feature empirical mean, estimated from the training set.  Equal to `X.mean(axis=0)`."
-      },
-      {
-        "name": "n_components_",
-        "type": "int",
-        "description": "The estimated number of components. When n_components is set to 'mle' or a number between 0 and 1 (with svd_solver == 'full') this number is estimated from input data. Otherwise it equals the parameter n_components, or the lesser value of n_features and n_samples if n_components is None."
-      },
-      {
-        "name": "n_features_",
-        "type": "int",
-        "description": "Number of features in the training data."
-      },
-      {
-        "name": "n_samples_",
-        "type": "int",
-        "description": "Number of samples in the training data."
-      },
-      {
-        "name": "noise_variance_",
-        "type": "float",
-        "description": "The estimated noise covariance following the Probabilistic PCA model from Tipping and Bishop 1999. See \"Pattern Recognition and Machine Learning\" by C. Bishop, 12.2.1 p. 574 or http://www.miketipping.com/papers/met-mppca.pdf. It is required to compute the estimated data covariance and score samples.  Equal to the average of (min(n_features, n_samples) - n_components) smallest eigenvalues of the covariance matrix of X."
-      }
-    ]
+    "Params": []
   },
   "SparseCoder": {
     "name": "sklearn.decomposition._dict_learning.SparseCoder",
@@ -2990,13 +2640,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "components_",
-        "type": "ndarray of shape (n_components, n_features)",
-        "description": "The unchanged dictionary atoms.  .. deprecated:: 0.24    This attribute is deprecated in 0.24 and will be removed in    1.1 (renaming of 0.26). Use `dictionary` instead."
-      }
-    ]
+    "Params": []
   },
   "SparsePCA": {
     "name": "sklearn.decomposition._sparse_pca.SparsePCA",
@@ -3148,16 +2792,6 @@
         },
         "hyperparams": [
           {
-            "name": "U_init__ndarray",
-            "type": "Hyperparameter",
-            "init_args": {
-              "_structural_type": "ndarray",
-              "semantic_types": [
-                "U_init"
-              ]
-            }
-          },
-          {
             "type": "Constant",
             "name": "U_init__None",
             "init_args": {
@@ -3181,16 +2815,6 @@
           "description": "Initial values for the components for warm restart scenarios."
         },
         "hyperparams": [
-          {
-            "name": "V_init__ndarray",
-            "type": "Hyperparameter",
-            "init_args": {
-              "_structural_type": "ndarray",
-              "semantic_types": [
-                "V_init"
-              ]
-            }
-          },
           {
             "type": "Constant",
             "name": "V_init__None",
@@ -3273,33 +2897,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "components_",
-        "type": "ndarray of shape (n_components, n_features)",
-        "description": "Sparse components extracted from the data."
-      },
-      {
-        "name": "error_",
-        "type": "ndarray",
-        "description": "Vector of errors at each iteration."
-      },
-      {
-        "name": "n_components_",
-        "type": "int",
-        "description": "Estimated number of components.  .. versionadded:: 0.23"
-      },
-      {
-        "name": "n_iter_",
-        "type": "int",
-        "description": "Number of iterations run."
-      },
-      {
-        "name": "mean_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "Per-feature empirical mean, estimated from the training set. Equal to ``X.mean(axis=0)``."
-      }
-    ]
+    "Params": []
   },
   "TruncatedSVD": {
     "name": "sklearn.decomposition._truncated_svd.TruncatedSVD",
@@ -3394,27 +2992,6 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "components_",
-        "type": "ndarray of shape (n_components, n_features)",
-        "description": ""
-      },
-      {
-        "name": "explained_variance_",
-        "type": "ndarray of shape (n_components,)",
-        "description": "The variance of the training samples transformed by a projection to each component."
-      },
-      {
-        "name": "explained_variance_ratio_",
-        "type": "ndarray of shape (n_components,)",
-        "description": "Percentage of variance explained by each of the selected components."
-      },
-      {
-        "name": "singular_values_",
-        "type": "ndarray od shape (n_components,)",
-        "description": "The singular values corresponding to each of the selected components. The singular values are equal to the 2-norms of the ``n_components`` variables in the lower-dimensional space."
-      }
-    ]
+    "Params": []
   }
 }

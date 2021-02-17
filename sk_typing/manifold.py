@@ -2,9 +2,10 @@ from typing import Optional
 from typing import Union
 from typing import Callable
 
+import numpy as np
+
 from .typing import Literal
 from .typing import RandomStateType
-from .typing import NDArray
 
 
 class Isomap:
@@ -87,7 +88,7 @@ class TSNE:
         n_iter_without_progress: int = 300,
         min_grad_norm: float = 1e-07,
         metric: Union[str, Callable] = "euclidean",
-        init: Union[Literal["random", "pca"], NDArray] = "random",
+        init: Union[Literal["random", "pca"], np.ndarray] = "random",
         verbose: int = 0,
         random_state: RandomStateType = None,
         method: str = "barnes_hut",

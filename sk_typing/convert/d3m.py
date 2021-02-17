@@ -8,25 +8,29 @@ from numpydoc.docscrape import ClassDoc
 import sklearn
 
 from .. import get_metadata
-from ._d3m import get_d3m_representation
+from ._d3m import convert_hyperparam_to_d3m
+from ._d3m import convert_attribute_to_d3m
 
 __all__ = ["get_output_for_module"]
 
 
 def _get_output_for_estimator(name, estimator):
     metadata = get_metadata(estimator.__name__)
-    annotations = metadata["parameters"]
-    # attribute_annot = metadata["attribute"]
+    init_annotations = metadata["parameters"]
+    attribute_annotations = metadata["attributes"]
     init_params = inspect.signature(estimator).parameters
 
     class_doc = ClassDoc(estimator)
     param_descriptions = {
         param.name: " ".join(param.desc) for param in class_doc["Parameters"]
     }
+    attribute_descriptions = {
+        attr.name.split(":")[0]: " ".join(attr.desc) for attr in class_doc["Attributes"]
+    }
 
     hyperparmas = []
 
-    for param, annotation in annotations.items():
+    for param, annotation in init_annotations.items():
 
         # Remove parameters that is not JSON serializable
         default = init_params[param].default
@@ -40,7 +44,7 @@ def _get_output_for_estimator(name, estimator):
             description = ""
 
         try:
-            hyperparam = get_d3m_representation(
+            hyperparam = convert_hyperparam_to_d3m(
                 param,
                 annotation,
                 description=description,
@@ -51,6 +55,25 @@ def _get_output_for_estimator(name, estimator):
 
         hyperparmas.append(hyperparam)
 
+    params = []
+    for attribute, annotation in attribute_annotations.items():
+
+        try:
+            description = attribute_descriptions[attribute]
+        except KeyError:
+            description = ""
+
+        try:
+            param = convert_attribute_to_d3m(
+                attribute,
+                annotation,
+                description=description,
+            )
+        except ValueError as e:
+            raise ValueError(f"Failed parsing {name}: {e}")
+
+        params.append(param)
+
     estimator_output = {}
     estimator_output["name"] = f"{estimator.__module__}.{name}"
     estimator_output["common_name"] = name
@@ -59,12 +82,7 @@ def _get_output_for_estimator(name, estimator):
     )
     estimator_output["sklearn_version"] = sklearn.__version__
     estimator_output["Hyperparams"] = hyperparmas
-
-    # Add attributes
-    estimator_output["Params"] = [
-        {"name": p.name, "type": p.type, "description": " ".join(p.desc)}
-        for p in class_doc["Attributes"]
-    ]
+    estimator_output["Params"] = params
 
     return estimator_output
 

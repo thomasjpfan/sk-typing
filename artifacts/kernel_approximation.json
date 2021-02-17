@@ -52,13 +52,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "sample_interval_",
-        "type": "float",
-        "description": "Stored sampling interval. Specified as a parameter if sample_steps not in {1,2,3}."
-      }
-    ]
+    "Params": []
   },
   "Nystroem": {
     "name": "sklearn.kernel_approximation.Nystroem",
@@ -317,23 +311,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "components_",
-        "type": "ndarray of shape (n_components, n_features)",
-        "description": "Subset of training points used to construct the feature map."
-      },
-      {
-        "name": "component_indices_",
-        "type": "ndarray of shape (n_components)",
-        "description": "Indices of ``components_`` in the training set."
-      },
-      {
-        "name": "normalization_",
-        "type": "ndarray of shape (n_components, n_components)",
-        "description": "Normalization matrix needed for embedding. Square root of the kernel matrix on ``components_``."
-      }
-    ]
+    "Params": []
   },
   "PolynomialCountSketch": {
     "name": "sklearn.kernel_approximation.PolynomialCountSketch",
@@ -424,18 +402,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "indexHash_",
-        "type": "ndarray of shape (degree, n_features), dtype=int64",
-        "description": "Array of indexes in range [0, n_components) used to represent the 2-wise independent hash functions for Count Sketch computation."
-      },
-      {
-        "name": "bitHash_",
-        "type": "ndarray of shape (degree, n_features), dtype=float32",
-        "description": "Array with random entries in {+1, -1}, used to represent the 2-wise independent hash functions for Count Sketch computation."
-      }
-    ]
+    "Params": []
   },
   "RBFSampler": {
     "name": "sklearn.kernel_approximation.RBFSampler",
@@ -502,18 +469,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "random_offset_",
-        "type": "ndarray of shape (n_components,), dtype=float64",
-        "description": "Random offset used to compute the projection in the `n_components` dimensions of the feature space."
-      },
-      {
-        "name": "random_weights_",
-        "type": "ndarray of shape (n_features, n_components),        dtype=float64",
-        "description": "Random projection directions drawn from the Fourier transform of the RBF kernel."
-      }
-    ]
+    "Params": []
   },
   "SkewedChi2Sampler": {
     "name": "sklearn.kernel_approximation.SkewedChi2Sampler",
@@ -580,17 +536,6 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "random_weights_",
-        "type": "ndarray of shape (n_features, n_components)",
-        "description": "Weight array, sampled from a secant hyperbolic distribution, which will be used to linearly transform the log of the data."
-      },
-      {
-        "name": "random_offset_",
-        "type": "ndarray of shape (n_features, n_components)",
-        "description": "Bias term, which will be added to the data. It is uniformly distributed between 0 and 2*pi."
-      }
-    ]
+    "Params": []
   }
 }

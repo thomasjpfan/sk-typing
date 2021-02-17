@@ -170,33 +170,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "cluster_centers_indices_",
-        "type": "ndarray of shape (n_clusters,)",
-        "description": "Indices of cluster centers."
-      },
-      {
-        "name": "cluster_centers_",
-        "type": "ndarray of shape (n_clusters, n_features)",
-        "description": "Cluster centers (if affinity != ``precomputed``)."
-      },
-      {
-        "name": "labels_",
-        "type": "ndarray of shape (n_samples,)",
-        "description": "Labels of each point."
-      },
-      {
-        "name": "affinity_matrix_",
-        "type": "ndarray of shape (n_samples, n_samples)",
-        "description": "Stores the affinity matrix used in ``fit``."
-      },
-      {
-        "name": "n_iter_",
-        "type": "int",
-        "description": "Number of iterations taken to converge."
-      }
-    ]
+    "Params": []
   },
   "AgglomerativeClustering": {
     "name": "sklearn.cluster._agglomerative.AgglomerativeClustering",
@@ -427,38 +401,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "n_clusters_",
-        "type": "int",
-        "description": "The number of clusters found by the algorithm. If ``distance_threshold=None``, it will be equal to the given ``n_clusters``."
-      },
-      {
-        "name": "labels_",
-        "type": "ndarray of shape (n_samples)",
-        "description": "cluster labels for each point"
-      },
-      {
-        "name": "n_leaves_",
-        "type": "int",
-        "description": "Number of leaves in the hierarchical tree."
-      },
-      {
-        "name": "n_connected_components_",
-        "type": "int",
-        "description": "The estimated number of connected components in the graph.  .. versionadded:: 0.21     ``n_connected_components_`` was added to replace ``n_components_``."
-      },
-      {
-        "name": "children_",
-        "type": "array-like of shape (n_samples-1, 2)",
-        "description": "The children of each non-leaf node. Values less than `n_samples` correspond to leaves of the tree which are the original samples. A node `i` greater than or equal to `n_samples` is a non-leaf node and has children `children_[i - n_samples]`. Alternatively at the i-th iteration, children[i][0] and children[i][1] are merged to form node `n_samples + i`"
-      },
-      {
-        "name": "distances_",
-        "type": "array-like of shape (n_nodes-1,)",
-        "description": "Distances between nodes in the corresponding place in `children_`. Only computed if `distance_threshold` is used or `compute_distances` is set to `True`."
-      }
-    ]
+    "Params": []
   },
   "Birch": {
     "name": "sklearn.cluster._birch.Birch",
@@ -559,33 +502,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "root_",
-        "type": "_CFNode",
-        "description": "Root of the CFTree."
-      },
-      {
-        "name": "dummy_leaf_",
-        "type": "_CFNode",
-        "description": "Start pointer to all the leaves."
-      },
-      {
-        "name": "subcluster_centers_",
-        "type": "ndarray",
-        "description": "Centroids of all subclusters read directly from the leaves."
-      },
-      {
-        "name": "subcluster_labels_",
-        "type": "ndarray",
-        "description": "Labels assigned to the centroids of the subclusters after they are clustered globally."
-      },
-      {
-        "name": "labels_",
-        "type": "ndarray of shape (n_samples,)",
-        "description": "Array of labels assigned to the input data. if partial_fit is used instead of fit, they are assigned to the last batch of data."
-      }
-    ]
+    "Params": []
   },
   "DBSCAN": {
     "name": "sklearn.cluster._dbscan.DBSCAN",
@@ -784,23 +701,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "core_sample_indices_",
-        "type": "ndarray of shape (n_core_samples,)",
-        "description": "Indices of core samples."
-      },
-      {
-        "name": "components_",
-        "type": "ndarray of shape (n_core_samples, n_features)",
-        "description": "Copy of each core sample found by training."
-      },
-      {
-        "name": "labels_",
-        "type": "ndarray of shape (n_samples)",
-        "description": "Cluster labels for each point in the dataset given to fit(). Noisy samples are given the label -1."
-      }
-    ]
+    "Params": []
   },
   "FeatureAgglomeration": {
     "name": "sklearn.cluster._agglomerative.FeatureAgglomeration",
@@ -1020,38 +921,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "n_clusters_",
-        "type": "int",
-        "description": "The number of clusters found by the algorithm. If ``distance_threshold=None``, it will be equal to the given ``n_clusters``."
-      },
-      {
-        "name": "labels_",
-        "type": "array-like of (n_features,)",
-        "description": "cluster labels for each feature."
-      },
-      {
-        "name": "n_leaves_",
-        "type": "int",
-        "description": "Number of leaves in the hierarchical tree."
-      },
-      {
-        "name": "n_connected_components_",
-        "type": "int",
-        "description": "The estimated number of connected components in the graph.  .. versionadded:: 0.21     ``n_connected_components_`` was added to replace ``n_components_``."
-      },
-      {
-        "name": "children_",
-        "type": "array-like of shape (n_nodes-1, 2)",
-        "description": "The children of each non-leaf node. Values less than `n_features` correspond to leaves of the tree which are the original samples. A node `i` greater than or equal to `n_features` is a non-leaf node and has children `children_[i - n_features]`. Alternatively at the i-th iteration, children[i][0] and children[i][1] are merged to form node `n_features + i`"
-      },
-      {
-        "name": "distances_",
-        "type": "array-like of shape (n_nodes-1,)",
-        "description": "Distances between nodes in the corresponding place in `children_`. Only computed if `distance_threshold` is used or `compute_distances` is set to `True`."
-      }
-    ]
+    "Params": []
   },
   "KMeans": {
     "name": "sklearn.cluster._kmeans.KMeans",
@@ -1313,28 +1183,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "cluster_centers_",
-        "type": "ndarray of shape (n_clusters, n_features)",
-        "description": "Coordinates of cluster centers. If the algorithm stops before fully converging (see ``tol`` and ``max_iter``), these will not be consistent with ``labels_``."
-      },
-      {
-        "name": "labels_",
-        "type": "ndarray of shape (n_samples,)",
-        "description": "Labels of each point"
-      },
-      {
-        "name": "inertia_",
-        "type": "float",
-        "description": "Sum of squared distances of samples to their closest cluster center."
-      },
-      {
-        "name": "n_iter_",
-        "type": "int",
-        "description": "Number of iterations run."
-      }
-    ]
+    "Params": []
   },
   "MeanShift": {
     "name": "sklearn.cluster._mean_shift.MeanShift",
@@ -1471,23 +1320,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "cluster_centers_",
-        "type": "ndarray of shape (n_clusters, n_features)",
-        "description": "Coordinates of cluster centers."
-      },
-      {
-        "name": "labels_",
-        "type": "ndarray of shape (n_samples,)",
-        "description": "Labels of each point."
-      },
-      {
-        "name": "n_iter_",
-        "type": "int",
-        "description": "Maximum number of iterations performed on each seed.  .. versionadded:: 0.22"
-      }
-    ]
+    "Params": []
   },
   "MiniBatchKMeans": {
     "name": "sklearn.cluster._kmeans.MiniBatchKMeans",
@@ -1720,38 +1553,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "cluster_centers_",
-        "type": "ndarray of shape (n_clusters, n_features)",
-        "description": "Coordinates of cluster centers."
-      },
-      {
-        "name": "labels_",
-        "type": "int",
-        "description": "Labels of each point (if compute_labels is set to True)."
-      },
-      {
-        "name": "inertia_",
-        "type": "float",
-        "description": "The value of the inertia criterion associated with the chosen partition (if compute_labels is set to True). The inertia is defined as the sum of square distances of samples to their nearest neighbor."
-      },
-      {
-        "name": "n_iter_",
-        "type": "int",
-        "description": "Number of batches processed."
-      },
-      {
-        "name": "counts_",
-        "type": "ndarray of shape (n_clusters,)",
-        "description": "Weigth sum of each cluster.  .. deprecated:: 0.24    This attribute is deprecated in 0.24 and will be removed in    1.1 (renaming of 0.26)."
-      },
-      {
-        "name": "init_size_",
-        "type": "int",
-        "description": "The effective number of samples used for the initialization.  .. deprecated:: 0.24    This attribute is deprecated in 0.24 and will be removed in    1.1 (renaming of 0.26)."
-      }
-    ]
+    "Params": []
   },
   "OPTICS": {
     "name": "sklearn.cluster._optics.OPTICS",
@@ -2035,38 +1837,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "labels_",
-        "type": "ndarray of shape (n_samples,)",
-        "description": "Cluster labels for each point in the dataset given to fit(). Noisy samples and points which are not included in a leaf cluster of ``cluster_hierarchy_`` are labeled as -1."
-      },
-      {
-        "name": "reachability_",
-        "type": "ndarray of shape (n_samples,)",
-        "description": "Reachability distances per sample, indexed by object order. Use ``clust.reachability_[clust.ordering_]`` to access in cluster order."
-      },
-      {
-        "name": "ordering_",
-        "type": "ndarray of shape (n_samples,)",
-        "description": "The cluster ordered list of sample indices."
-      },
-      {
-        "name": "core_distances_",
-        "type": "ndarray of shape (n_samples,)",
-        "description": "Distance at which each sample becomes a core point, indexed by object order. Points which will never be core have a distance of inf. Use ``clust.core_distances_[clust.ordering_]`` to access in cluster order."
-      },
-      {
-        "name": "predecessor_",
-        "type": "ndarray of shape (n_samples,)",
-        "description": "Point that a sample was reached from, indexed by object order. Seed points have a predecessor of -1."
-      },
-      {
-        "name": "cluster_hierarchy_",
-        "type": "ndarray of shape (n_clusters, 2)",
-        "description": "The list of clusters in the form of ``[start, end]`` in each row, with all indices inclusive. The clusters are ordered according to ``(end, -start)`` (ascending) so that larger clusters encompassing smaller clusters come after those smaller ones. Since ``labels_`` does not reflect the hierarchy, usually ``len(cluster_hierarchy_) > np.unique(optics.labels_)``. Please also note that these indices are of the ``ordering_``, i.e. ``X[ordering_][start:end + 1]`` form a cluster. Only available when ``cluster_method='xi'``."
-      }
-    ]
+    "Params": []
   },
   "SpectralBiclustering": {
     "name": "sklearn.cluster._bicluster.SpectralBiclustering",
@@ -2330,28 +2101,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "rows_",
-        "type": "array-like of shape (n_row_clusters, n_rows)",
-        "description": "Results of the clustering. `rows[i, r]` is True if cluster `i` contains row `r`. Available only after calling ``fit``."
-      },
-      {
-        "name": "columns_",
-        "type": "array-like of shape (n_column_clusters, n_columns)",
-        "description": "Results of the clustering, like `rows`."
-      },
-      {
-        "name": "row_labels_",
-        "type": "array-like of shape (n_rows,)",
-        "description": "Row partition labels."
-      },
-      {
-        "name": "column_labels_",
-        "type": "array-like of shape (n_cols,)",
-        "description": "Column partition labels."
-      }
-    ]
+    "Params": []
   },
   "SpectralClustering": {
     "name": "sklearn.cluster._spectral.SpectralClustering",
@@ -2665,18 +2415,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "affinity_matrix_",
-        "type": "array-like of shape (n_samples, n_samples)",
-        "description": "Affinity matrix used for clustering. Available only if after calling ``fit``."
-      },
-      {
-        "name": "labels_",
-        "type": "ndarray of shape (n_samples,)",
-        "description": "Labels of each point"
-      }
-    ]
+    "Params": []
   },
   "SpectralCoclustering": {
     "name": "sklearn.cluster._bicluster.SpectralCoclustering",
@@ -2877,27 +2616,6 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "rows_",
-        "type": "array-like of shape (n_row_clusters, n_rows)",
-        "description": "Results of the clustering. `rows[i, r]` is True if cluster `i` contains row `r`. Available only after calling ``fit``."
-      },
-      {
-        "name": "columns_",
-        "type": "array-like of shape (n_column_clusters, n_columns)",
-        "description": "Results of the clustering, like `rows`."
-      },
-      {
-        "name": "row_labels_",
-        "type": "array-like of shape (n_rows,)",
-        "description": "The bicluster label of each row."
-      },
-      {
-        "name": "column_labels_",
-        "type": "array-like of shape (n_cols,)",
-        "description": "The bicluster label of each column."
-      }
-    ]
+    "Params": []
   }
 }

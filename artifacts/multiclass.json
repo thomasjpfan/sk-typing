@@ -40,28 +40,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "estimators_",
-        "type": "list of ``n_classes * (n_classes - 1) / 2`` estimators",
-        "description": "Estimators used for predictions."
-      },
-      {
-        "name": "classes_",
-        "type": "numpy array of shape [n_classes]",
-        "description": "Array containing labels."
-      },
-      {
-        "name": "n_classes_",
-        "type": "int",
-        "description": "Number of classes"
-      },
-      {
-        "name": "pairwise_indices_",
-        "type": "list, length = ``len(estimators_)``, or ``None``",
-        "description": "Indices of samples used when training the estimators. ``None`` when ``estimator``'s `pairwise` tag is False.  .. deprecated:: 0.24      The _pairwise attribute is deprecated in 0.24. From 1.1     (renaming of 0.25) and onward, `pairwise_indices_` will use the     pairwise estimator tag instead."
-      }
-    ]
+    "Params": []
   },
   "OneVsRestClassifier": {
     "name": "sklearn.multiclass.OneVsRestClassifier",
@@ -104,43 +83,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "estimators_",
-        "type": "list of `n_classes` estimators",
-        "description": "Estimators used for predictions."
-      },
-      {
-        "name": "coef_",
-        "type": "ndarray of shape (1, n_features) or (n_classes, n_features)",
-        "description": "Coefficient of the features in the decision function. This attribute exists only if the ``estimators_`` defines ``coef_``.  .. deprecated:: 0.24     This attribute is deprecated in 0.24 and will     be removed in 1.1 (renaming of 0.26). If you use this attribute     in :class:`~sklearn.feature_selection.RFE` or     :class:`~sklearn.feature_selection.SelectFromModel`,     you may pass a callable to the `importance_getter`     parameter that extracts feature the importances     from `estimators_`."
-      },
-      {
-        "name": "intercept_",
-        "type": "ndarray of shape (1, 1) or (n_classes, 1)",
-        "description": "If ``y`` is binary, the shape is ``(1, 1)`` else ``(n_classes, 1)`` This attribute exists only if the ``estimators_`` defines ``intercept_``.  .. deprecated:: 0.24     This attribute is deprecated in 0.24 and will     be removed in 1.1 (renaming of 0.26). If you use this attribute     in :class:`~sklearn.feature_selection.RFE` or     :class:`~sklearn.feature_selection.SelectFromModel`,     you may pass a callable to the `importance_getter`     parameter that extracts feature the importances     from `estimators_`."
-      },
-      {
-        "name": "classes_",
-        "type": "array, shape = [`n_classes`]",
-        "description": "Class labels."
-      },
-      {
-        "name": "n_classes_",
-        "type": "int",
-        "description": "Number of classes."
-      },
-      {
-        "name": "label_binarizer_",
-        "type": "LabelBinarizer object",
-        "description": "Object used to transform multiclass labels to binary labels and vice-versa."
-      },
-      {
-        "name": "multilabel_",
-        "type": "boolean",
-        "description": "Whether a OneVsRestClassifier is a multilabel classifier."
-      }
-    ]
+    "Params": []
   },
   "OutputCodeClassifier": {
     "name": "sklearn.multiclass.OutputCodeClassifier",
@@ -229,22 +172,6 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "estimators_",
-        "type": "list of `int(n_classes * code_size)` estimators",
-        "description": "Estimators used for predictions."
-      },
-      {
-        "name": "classes_",
-        "type": "numpy array of shape [n_classes]",
-        "description": "Array containing labels."
-      },
-      {
-        "name": "code_book_",
-        "type": "numpy array of shape [n_classes, code_size]",
-        "description": "Binary array containing the code of each class."
-      }
-    ]
+    "Params": []
   }
 }

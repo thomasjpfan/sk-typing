@@ -113,33 +113,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "classes_",
-        "type": "ndarray of shape (n_classes,) or list thereof",
-        "description": "Class labels for each output."
-      },
-      {
-        "name": "n_classes_",
-        "type": "int or list of int",
-        "description": "Number of label for each output."
-      },
-      {
-        "name": "class_prior_",
-        "type": "ndarray of shape (n_classes,) or list thereof",
-        "description": "Probability of each class for each output."
-      },
-      {
-        "name": "n_outputs_",
-        "type": "int",
-        "description": "Number of outputs."
-      },
-      {
-        "name": "sparse_output_",
-        "type": "bool",
-        "description": "True if the array returned from predict is to be in sparse CSC format. Is automatically set to True if the input y is passed in sparse format."
-      }
-    ]
+    "Params": []
   },
   "DummyRegressor": {
     "name": "sklearn.dummy.DummyRegressor",
@@ -254,17 +228,6 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "constant_",
-        "type": "ndarray of shape (1, n_outputs)",
-        "description": "Mean or median or quantile of the training targets or constant value given by the user."
-      },
-      {
-        "name": "n_outputs_",
-        "type": "int",
-        "description": "Number of outputs."
-      }
-    ]
+    "Params": []
   }
 }

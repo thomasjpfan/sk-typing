@@ -125,37 +125,6 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "X_min_",
-        "type": "float",
-        "description": "Minimum value of input array `X_` for left bound."
-      },
-      {
-        "name": "X_max_",
-        "type": "float",
-        "description": "Maximum value of input array `X_` for right bound."
-      },
-      {
-        "name": "X_thresholds_",
-        "type": "ndarray of shape (n_thresholds,)",
-        "description": "Unique ascending `X` values used to interpolate the y = f(X) monotonic function.  .. versionadded:: 0.24"
-      },
-      {
-        "name": "y_thresholds_",
-        "type": "ndarray of shape (n_thresholds,)",
-        "description": "De-duplicated `y` values suitable to interpolate the y = f(X) monotonic function.  .. versionadded:: 0.24"
-      },
-      {
-        "name": "f_",
-        "type": "function",
-        "description": "The stepwise interpolating function that covers the input domain ``X``."
-      },
-      {
-        "name": "increasing_",
-        "type": "bool",
-        "description": "Inferred value for ``increasing``."
-      }
-    ]
+    "Params": []
   }
 }

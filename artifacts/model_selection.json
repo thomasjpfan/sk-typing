@@ -262,53 +262,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "cv_results_",
-        "type": "dict of numpy (masked) ndarrays",
-        "description": "A dict with keys as column headers and values as columns, that can be imported into a pandas ``DataFrame``.  For instance the below given table  +------------+-----------+------------+-----------------+---+---------+ |param_kernel|param_gamma|param_degree|split0_test_score|...|rank_t...| +============+===========+============+=================+===+=========+ |  'poly'    |     --    |      2     |       0.80      |...|    2    | +------------+-----------+------------+-----------------+---+---------+ |  'poly'    |     --    |      3     |       0.70      |...|    4    | +------------+-----------+------------+-----------------+---+---------+ |  'rbf'     |     0.1   |     --     |       0.80      |...|    3    | +------------+-----------+------------+-----------------+---+---------+ |  'rbf'     |     0.2   |     --     |       0.93      |...|    1    | +------------+-----------+------------+-----------------+---+---------+  will be represented by a ``cv_results_`` dict of::      {     'param_kernel': masked_array(data = ['poly', 'poly', 'rbf', 'rbf'],                                  mask = [False False False False]...)     'param_gamma': masked_array(data = [-- -- 0.1 0.2],                                 mask = [ True  True False False]...),     'param_degree': masked_array(data = [2.0 3.0 -- --],                                  mask = [False False  True  True]...),     'split0_test_score'  : [0.80, 0.70, 0.80, 0.93],     'split1_test_score'  : [0.82, 0.50, 0.70, 0.78],     'mean_test_score'    : [0.81, 0.60, 0.75, 0.85],     'std_test_score'     : [0.01, 0.10, 0.05, 0.08],     'rank_test_score'    : [2, 4, 3, 1],     'split0_train_score' : [0.80, 0.92, 0.70, 0.93],     'split1_train_score' : [0.82, 0.55, 0.70, 0.87],     'mean_train_score'   : [0.81, 0.74, 0.70, 0.90],     'std_train_score'    : [0.01, 0.19, 0.00, 0.03],     'mean_fit_time'      : [0.73, 0.63, 0.43, 0.49],     'std_fit_time'       : [0.01, 0.02, 0.01, 0.01],     'mean_score_time'    : [0.01, 0.06, 0.04, 0.04],     'std_score_time'     : [0.00, 0.00, 0.00, 0.01],     'params'             : [{'kernel': 'poly', 'degree': 2}, ...],     }  NOTE  The key ``'params'`` is used to store a list of parameter settings dicts for all the parameter candidates.  The ``mean_fit_time``, ``std_fit_time``, ``mean_score_time`` and ``std_score_time`` are all in seconds.  For multi-metric evaluation, the scores for all the scorers are available in the ``cv_results_`` dict at the keys ending with that scorer's name (``'_<scorer_name>'``) instead of ``'_score'`` shown above. ('split0_test_precision', 'mean_train_precision' etc.)"
-      },
-      {
-        "name": "best_estimator_",
-        "type": "estimator",
-        "description": "Estimator that was chosen by the search, i.e. estimator which gave highest score (or smallest loss if specified) on the left out data. Not available if ``refit=False``.  See ``refit`` parameter for more information on allowed values."
-      },
-      {
-        "name": "best_score_",
-        "type": "float",
-        "description": "Mean cross-validated score of the best_estimator  For multi-metric evaluation, this is present only if ``refit`` is specified.  This attribute is not available if ``refit`` is a function."
-      },
-      {
-        "name": "best_params_",
-        "type": "dict",
-        "description": "Parameter setting that gave the best results on the hold out data.  For multi-metric evaluation, this is present only if ``refit`` is specified."
-      },
-      {
-        "name": "best_index_",
-        "type": "int",
-        "description": "The index (of the ``cv_results_`` arrays) which corresponds to the best candidate parameter setting.  The dict at ``search.cv_results_['params'][search.best_index_]`` gives the parameter setting for the best model, that gives the highest mean score (``search.best_score_``).  For multi-metric evaluation, this is present only if ``refit`` is specified."
-      },
-      {
-        "name": "scorer_",
-        "type": "function or a dict",
-        "description": "Scorer function used on the held out data to choose the best parameters for the model.  For multi-metric evaluation, this attribute holds the validated ``scoring`` dict which maps the scorer key to the scorer callable."
-      },
-      {
-        "name": "n_splits_",
-        "type": "int",
-        "description": "The number of cross-validation splits (folds/iterations)."
-      },
-      {
-        "name": "refit_time_",
-        "type": "float",
-        "description": "Seconds used for refitting the best model on the whole dataset.  This is present only if ``refit`` is not False.  .. versionadded:: 0.20"
-      },
-      {
-        "name": "multimetric_",
-        "type": "bool",
-        "description": "Whether or not the scorers compute several metrics."
-      }
-    ]
+    "Params": []
   },
   "HalvingGridSearchCV": {
     "name": "sklearn.model_selection._search_successive_halving.HalvingGridSearchCV",
@@ -663,88 +617,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "n_resources_",
-        "type": "list of int",
-        "description": "The amount of resources used at each iteration."
-      },
-      {
-        "name": "n_candidates_",
-        "type": "list of int",
-        "description": "The number of candidate parameters that were evaluated at each iteration."
-      },
-      {
-        "name": "n_remaining_candidates_",
-        "type": "int",
-        "description": "The number of candidate parameters that are left after the last iteration. It corresponds to `ceil(n_candidates[-1] / factor)`"
-      },
-      {
-        "name": "max_resources_",
-        "type": "int",
-        "description": "The maximum number of resources that any candidate is allowed to use for a given iteration. Note that since the number of resources used at each iteration must be a multiple of ``min_resources_``, the actual number of resources used at the last iteration may be smaller than ``max_resources_``."
-      },
-      {
-        "name": "min_resources_",
-        "type": "int",
-        "description": "The amount of resources that are allocated for each candidate at the first iteration."
-      },
-      {
-        "name": "n_iterations_",
-        "type": "int",
-        "description": "The actual number of iterations that were run. This is equal to ``n_required_iterations_`` if ``aggressive_elimination`` is ``True``. Else, this is equal to ``min(n_possible_iterations_, n_required_iterations_)``."
-      },
-      {
-        "name": "n_possible_iterations_",
-        "type": "int",
-        "description": "The number of iterations that are possible starting with ``min_resources_`` resources and without exceeding ``max_resources_``."
-      },
-      {
-        "name": "n_required_iterations_",
-        "type": "int",
-        "description": "The number of iterations that are required to end up with less than ``factor`` candidates at the last iteration, starting with ``min_resources_`` resources. This will be smaller than ``n_possible_iterations_`` when there isn't enough resources."
-      },
-      {
-        "name": "cv_results_",
-        "type": "dict of numpy (masked) ndarrays",
-        "description": "A dict with keys as column headers and values as columns, that can be imported into a pandas ``DataFrame``. It contains many informations for analysing the results of a search. Please refer to the :ref:`User guide<successive_halving_cv_results>` for details."
-      },
-      {
-        "name": "best_estimator_",
-        "type": "estimator or dict",
-        "description": "Estimator that was chosen by the search, i.e. estimator which gave highest score (or smallest loss if specified) on the left out data. Not available if ``refit=False``."
-      },
-      {
-        "name": "best_score_",
-        "type": "float",
-        "description": "Mean cross-validated score of the best_estimator."
-      },
-      {
-        "name": "best_params_",
-        "type": "dict",
-        "description": "Parameter setting that gave the best results on the hold out data."
-      },
-      {
-        "name": "best_index_",
-        "type": "int",
-        "description": "The index (of the ``cv_results_`` arrays) which corresponds to the best candidate parameter setting.  The dict at ``search.cv_results_['params'][search.best_index_]`` gives the parameter setting for the best model, that gives the highest mean score (``search.best_score_``)."
-      },
-      {
-        "name": "scorer_",
-        "type": "function or a dict",
-        "description": "Scorer function used on the held out data to choose the best parameters for the model."
-      },
-      {
-        "name": "n_splits_",
-        "type": "int",
-        "description": "The number of cross-validation splits (folds/iterations)."
-      },
-      {
-        "name": "refit_time_",
-        "type": "float",
-        "description": "Seconds used for refitting the best model on the whole dataset.  This is present only if ``refit`` is not False."
-      }
-    ]
+    "Params": []
   },
   "HalvingRandomSearchCV": {
     "name": "sklearn.model_selection._search_successive_halving.HalvingRandomSearchCV",
@@ -1133,88 +1006,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "n_resources_",
-        "type": "list of int",
-        "description": "The amount of resources used at each iteration."
-      },
-      {
-        "name": "n_candidates_",
-        "type": "list of int",
-        "description": "The number of candidate parameters that were evaluated at each iteration."
-      },
-      {
-        "name": "n_remaining_candidates_",
-        "type": "int",
-        "description": "The number of candidate parameters that are left after the last iteration. It corresponds to `ceil(n_candidates[-1] / factor)`"
-      },
-      {
-        "name": "max_resources_",
-        "type": "int",
-        "description": "The maximum number of resources that any candidate is allowed to use for a given iteration. Note that since the number of resources used at each iteration must be a multiple of ``min_resources_``, the actual number of resources used at the last iteration may be smaller than ``max_resources_``."
-      },
-      {
-        "name": "min_resources_",
-        "type": "int",
-        "description": "The amount of resources that are allocated for each candidate at the first iteration."
-      },
-      {
-        "name": "n_iterations_",
-        "type": "int",
-        "description": "The actual number of iterations that were run. This is equal to ``n_required_iterations_`` if ``aggressive_elimination`` is ``True``. Else, this is equal to ``min(n_possible_iterations_, n_required_iterations_)``."
-      },
-      {
-        "name": "n_possible_iterations_",
-        "type": "int",
-        "description": "The number of iterations that are possible starting with ``min_resources_`` resources and without exceeding ``max_resources_``."
-      },
-      {
-        "name": "n_required_iterations_",
-        "type": "int",
-        "description": "The number of iterations that are required to end up with less than ``factor`` candidates at the last iteration, starting with ``min_resources_`` resources. This will be smaller than ``n_possible_iterations_`` when there isn't enough resources."
-      },
-      {
-        "name": "cv_results_",
-        "type": "dict of numpy (masked) ndarrays",
-        "description": "A dict with keys as column headers and values as columns, that can be imported into a pandas ``DataFrame``. It contains many informations for analysing the results of a search. Please refer to the :ref:`User guide<successive_halving_cv_results>` for details."
-      },
-      {
-        "name": "best_estimator_",
-        "type": "estimator or dict",
-        "description": "Estimator that was chosen by the search, i.e. estimator which gave highest score (or smallest loss if specified) on the left out data. Not available if ``refit=False``."
-      },
-      {
-        "name": "best_score_",
-        "type": "float",
-        "description": "Mean cross-validated score of the best_estimator."
-      },
-      {
-        "name": "best_params_",
-        "type": "dict",
-        "description": "Parameter setting that gave the best results on the hold out data."
-      },
-      {
-        "name": "best_index_",
-        "type": "int",
-        "description": "The index (of the ``cv_results_`` arrays) which corresponds to the best candidate parameter setting.  The dict at ``search.cv_results_['params'][search.best_index_]`` gives the parameter setting for the best model, that gives the highest mean score (``search.best_score_``)."
-      },
-      {
-        "name": "scorer_",
-        "type": "function or a dict",
-        "description": "Scorer function used on the held out data to choose the best parameters for the model."
-      },
-      {
-        "name": "n_splits_",
-        "type": "int",
-        "description": "The number of cross-validation splits (folds/iterations)."
-      },
-      {
-        "name": "refit_time_",
-        "type": "float",
-        "description": "Seconds used for refitting the best model on the whole dataset.  This is present only if ``refit`` is not False."
-      }
-    ]
+    "Params": []
   },
   "RandomizedSearchCV": {
     "name": "sklearn.model_selection._search.RandomizedSearchCV",
@@ -1525,52 +1317,6 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "cv_results_",
-        "type": "dict of numpy (masked) ndarrays",
-        "description": "A dict with keys as column headers and values as columns, that can be imported into a pandas ``DataFrame``.  For instance the below given table  +--------------+-------------+-------------------+---+---------------+ | param_kernel | param_gamma | split0_test_score |...|rank_test_score| +==============+=============+===================+===+===============+ |    'rbf'     |     0.1     |       0.80        |...|       1       | +--------------+-------------+-------------------+---+---------------+ |    'rbf'     |     0.2     |       0.84        |...|       3       | +--------------+-------------+-------------------+---+---------------+ |    'rbf'     |     0.3     |       0.70        |...|       2       | +--------------+-------------+-------------------+---+---------------+  will be represented by a ``cv_results_`` dict of::      {     'param_kernel' : masked_array(data = ['rbf', 'rbf', 'rbf'],                                   mask = False),     'param_gamma'  : masked_array(data = [0.1 0.2 0.3], mask = False),     'split0_test_score'  : [0.80, 0.84, 0.70],     'split1_test_score'  : [0.82, 0.50, 0.70],     'mean_test_score'    : [0.81, 0.67, 0.70],     'std_test_score'     : [0.01, 0.24, 0.00],     'rank_test_score'    : [1, 3, 2],     'split0_train_score' : [0.80, 0.92, 0.70],     'split1_train_score' : [0.82, 0.55, 0.70],     'mean_train_score'   : [0.81, 0.74, 0.70],     'std_train_score'    : [0.01, 0.19, 0.00],     'mean_fit_time'      : [0.73, 0.63, 0.43],     'std_fit_time'       : [0.01, 0.02, 0.01],     'mean_score_time'    : [0.01, 0.06, 0.04],     'std_score_time'     : [0.00, 0.00, 0.00],     'params'             : [{'kernel' : 'rbf', 'gamma' : 0.1}, ...],     }  NOTE  The key ``'params'`` is used to store a list of parameter settings dicts for all the parameter candidates.  The ``mean_fit_time``, ``std_fit_time``, ``mean_score_time`` and ``std_score_time`` are all in seconds.  For multi-metric evaluation, the scores for all the scorers are available in the ``cv_results_`` dict at the keys ending with that scorer's name (``'_<scorer_name>'``) instead of ``'_score'`` shown above. ('split0_test_precision', 'mean_train_precision' etc.)"
-      },
-      {
-        "name": "best_estimator_",
-        "type": "estimator",
-        "description": "Estimator that was chosen by the search, i.e. estimator which gave highest score (or smallest loss if specified) on the left out data. Not available if ``refit=False``.  For multi-metric evaluation, this attribute is present only if ``refit`` is specified.  See ``refit`` parameter for more information on allowed values."
-      },
-      {
-        "name": "best_score_",
-        "type": "float",
-        "description": "Mean cross-validated score of the best_estimator.  For multi-metric evaluation, this is not available if ``refit`` is ``False``. See ``refit`` parameter for more information.  This attribute is not available if ``refit`` is a function."
-      },
-      {
-        "name": "best_params_",
-        "type": "dict",
-        "description": "Parameter setting that gave the best results on the hold out data.  For multi-metric evaluation, this is not available if ``refit`` is ``False``. See ``refit`` parameter for more information."
-      },
-      {
-        "name": "best_index_",
-        "type": "int",
-        "description": "The index (of the ``cv_results_`` arrays) which corresponds to the best candidate parameter setting.  The dict at ``search.cv_results_['params'][search.best_index_]`` gives the parameter setting for the best model, that gives the highest mean score (``search.best_score_``).  For multi-metric evaluation, this is not available if ``refit`` is ``False``. See ``refit`` parameter for more information."
-      },
-      {
-        "name": "scorer_",
-        "type": "function or a dict",
-        "description": "Scorer function used on the held out data to choose the best parameters for the model.  For multi-metric evaluation, this attribute holds the validated ``scoring`` dict which maps the scorer key to the scorer callable."
-      },
-      {
-        "name": "n_splits_",
-        "type": "int",
-        "description": "The number of cross-validation splits (folds/iterations)."
-      },
-      {
-        "name": "refit_time_",
-        "type": "float",
-        "description": "Seconds used for refitting the best model on the whole dataset.  This is present only if ``refit`` is not False.  .. versionadded:: 0.20"
-      },
-      {
-        "name": "multimetric_",
-        "type": "bool",
-        "description": "Whether or not the scorers compute several metrics."
-      }
-    ]
+    "Params": []
   }
 }

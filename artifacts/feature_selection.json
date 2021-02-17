@@ -59,18 +59,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "scores_",
-        "type": "array-like of shape (n_features,)",
-        "description": "Scores of features."
-      },
-      {
-        "name": "pvalues_",
-        "type": "array-like of shape (n_features,)",
-        "description": "p-values of feature scores, None if `score_func` returned scores only."
-      }
-    ]
+    "Params": []
   },
   "RFE": {
     "name": "sklearn.feature_selection._rfe.RFE",
@@ -203,28 +192,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "estimator_",
-        "type": "``Estimator`` instance",
-        "description": "The fitted estimator used to select features."
-      },
-      {
-        "name": "n_features_",
-        "type": "int",
-        "description": "The number of selected features."
-      },
-      {
-        "name": "ranking_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "The feature ranking, such that ``ranking_[i]`` corresponds to the ranking position of the i-th feature. Selected (i.e., estimated best) features are assigned rank 1."
-      },
-      {
-        "name": "support_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "The mask of selected features."
-      }
-    ]
+    "Params": []
   },
   "RFECV": {
     "name": "sklearn.feature_selection._rfe.RFECV",
@@ -437,33 +405,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "estimator_",
-        "type": "``Estimator`` instance",
-        "description": "The fitted estimator used to select features."
-      },
-      {
-        "name": "grid_scores_",
-        "type": "ndarray of shape (n_subsets_of_features,)",
-        "description": "The cross-validation scores such that ``grid_scores_[i]`` corresponds to the CV score of the i-th subset of features."
-      },
-      {
-        "name": "n_features_",
-        "type": "int",
-        "description": "The number of selected features with cross-validation."
-      },
-      {
-        "name": "ranking_",
-        "type": "narray of shape (n_features,)",
-        "description": "The feature ranking, such that `ranking_[i]` corresponds to the ranking position of the i-th feature. Selected (i.e., estimated best) features are assigned rank 1."
-      },
-      {
-        "name": "support_",
-        "type": "ndarray of shape (n_features,)",
-        "description": "The mask of selected features."
-      }
-    ]
+    "Params": []
   },
   "SelectFdr": {
     "name": "sklearn.feature_selection._univariate_selection.SelectFdr",
@@ -484,18 +426,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "scores_",
-        "type": "array-like of shape (n_features,)",
-        "description": "Scores of features."
-      },
-      {
-        "name": "pvalues_",
-        "type": "array-like of shape (n_features,)",
-        "description": "p-values of feature scores."
-      }
-    ]
+    "Params": []
   },
   "SelectFpr": {
     "name": "sklearn.feature_selection._univariate_selection.SelectFpr",
@@ -516,18 +447,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "scores_",
-        "type": "array-like of shape (n_features,)",
-        "description": "Scores of features."
-      },
-      {
-        "name": "pvalues_",
-        "type": "array-like of shape (n_features,)",
-        "description": "p-values of feature scores."
-      }
-    ]
+    "Params": []
   },
   "SelectFromModel": {
     "name": "sklearn.feature_selection._from_model.SelectFromModel",
@@ -672,18 +592,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "estimator_",
-        "type": "an estimator",
-        "description": "The base estimator from which the transformer is built. This is stored only when a non-fitted estimator is passed to the ``SelectFromModel``, i.e when prefit is False."
-      },
-      {
-        "name": "threshold_",
-        "type": "float",
-        "description": "The threshold value used for feature selection."
-      }
-    ]
+    "Params": []
   },
   "SelectFwe": {
     "name": "sklearn.feature_selection._univariate_selection.SelectFwe",
@@ -704,18 +613,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "scores_",
-        "type": "array-like of shape (n_features,)",
-        "description": "Scores of features."
-      },
-      {
-        "name": "pvalues_",
-        "type": "array-like of shape (n_features,)",
-        "description": "p-values of feature scores."
-      }
-    ]
+    "Params": []
   },
   "SelectKBest": {
     "name": "sklearn.feature_selection._univariate_selection.SelectKBest",
@@ -758,18 +656,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "scores_",
-        "type": "array-like of shape (n_features,)",
-        "description": "Scores of features."
-      },
-      {
-        "name": "pvalues_",
-        "type": "array-like of shape (n_features,)",
-        "description": "p-values of feature scores, None if `score_func` returned only scores."
-      }
-    ]
+    "Params": []
   },
   "SelectPercentile": {
     "name": "sklearn.feature_selection._univariate_selection.SelectPercentile",
@@ -790,18 +677,7 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "scores_",
-        "type": "array-like of shape (n_features,)",
-        "description": "Scores of features."
-      },
-      {
-        "name": "pvalues_",
-        "type": "array-like of shape (n_features,)",
-        "description": "p-values of feature scores, None if `score_func` returned only scores."
-      }
-    ]
+    "Params": []
   },
   "SequentialFeatureSelector": {
     "name": "sklearn.feature_selection._sequential.SequentialFeatureSelector",
@@ -1011,18 +887,7 @@
         ]
       }
     ],
-    "Params": [
-      {
-        "name": "n_features_to_select_",
-        "type": "int",
-        "description": "The number of features that were selected."
-      },
-      {
-        "name": "support_",
-        "type": "ndarray of shape (n_features,), dtype=bool",
-        "description": "The mask of selected features."
-      }
-    ]
+    "Params": []
   },
   "VarianceThreshold": {
     "name": "sklearn.feature_selection._variance_threshold.VarianceThreshold",
@@ -1043,12 +908,6 @@
         }
       }
     ],
-    "Params": [
-      {
-        "name": "variances_",
-        "type": "array, shape (n_features,)",
-        "description": "Variances of individual features."
-      }
-    ]
+    "Params": []
   }
 }
