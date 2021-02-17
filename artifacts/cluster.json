@@ -3,7 +3,7 @@
     "name": "sklearn.cluster._affinity_propagation.AffinityPropagation",
     "common_name": "AffinityPropagation",
     "description": "Perform Affinity Propagation Clustering of data. Read more in the :ref:`User Guide <affinity_propagation>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -124,59 +124,41 @@
           "default": "False",
           "description": "Whether to be verbose."
         }
-      },
-      {
-        "name": "random_state",
-        "type": "Union",
-        "init_args": {
-          "semantic_types": [
-            "random_state"
-          ],
-          "default": "random_state__str",
-          "description": "Pseudo-random number generator to control the starting state. Use an int for reproducible results across function calls. See the :term:`Glossary <random_state>`.  .. versionadded:: 0.23     this parameter was previously hardcoded as 0."
-        },
-        "hyperparams": [
-          {
-            "type": "Hyperparameter",
-            "name": "random_state__int",
-            "init_args": {
-              "semantic_types": [
-                "random_state"
-              ],
-              "_structural_type": "int"
-            }
-          },
-          {
-            "type": "Constant",
-            "name": "random_state__None",
-            "init_args": {
-              "semantic_types": [
-                "random_state"
-              ],
-              "_structural_type": "None"
-            }
-          },
-          {
-            "type": "Constant",
-            "name": "random_state__str",
-            "init_args": {
-              "semantic_types": [
-                "random_state"
-              ],
-              "_structural_type": "str",
-              "default": "warn"
-            }
-          }
-        ]
       }
     ],
-    "Params": []
+    "Params": [
+      {
+        "name": "cluster_centers_indices_",
+        "description": "Indices of cluster centers",
+        "type": "ndarray"
+      },
+      {
+        "name": "cluster_centers_",
+        "description": "Cluster centers (if affinity != ``precomputed``).",
+        "type": "ndarray"
+      },
+      {
+        "name": "labels_",
+        "description": "Labels of each point",
+        "type": "ndarray"
+      },
+      {
+        "name": "affinity_matrix_",
+        "description": "Stores the affinity matrix used in ``fit``.",
+        "type": "ndarray"
+      },
+      {
+        "name": "n_iter_",
+        "description": "Number of iterations taken to converge.",
+        "type": "int"
+      }
+    ]
   },
   "AgglomerativeClustering": {
     "name": "sklearn.cluster._agglomerative.AgglomerativeClustering",
     "common_name": "AgglomerativeClustering",
     "description": "Agglomerative Clustering Recursively merges the pair of clusters that minimally increases a given linkage distance.  Read more in the :ref:`User Guide <hierarchical_clustering>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "name": "n_clusters",
@@ -288,7 +270,7 @@
             "connectivity"
           ],
           "default": "connectivity__None",
-          "description": "Connectivity matrix. Defines for each sample the neighboring samples following a given structure of the data. This can be a connectivity matrix itself or a callable that transforms the data into a connectivity matrix, such as derived from kneighbors_graph. Default is ``None``, i.e, the hierarchical clustering algorithm is unstructured."
+          "description": "Connectivity matrix. Defines for each sample the neighboring samples following a given structure of the data. This can be a connectivity matrix itself or a callable that transforms the data into a connectivity matrix, such as derived from kneighbors_graph. Default is None, i.e, the hierarchical clustering algorithm is unstructured."
         },
         "hyperparams": [
           {
@@ -332,7 +314,7 @@
             "compute_full_tree"
           ],
           "default": "compute_full_tree__str",
-          "description": "Stop early the construction of the tree at ``n_clusters``. This is useful to decrease computation time if the number of clusters is not small compared to the number of samples. This option is useful only when specifying a connectivity matrix. Note also that when varying the number of clusters and using caching, it may be advantageous to compute the full tree. It must be ``True`` if ``distance_threshold`` is not ``None``. By default `compute_full_tree` is \"auto\", which is equivalent to `True` when `distance_threshold` is not `None` or that `n_clusters` is inferior to the maximum between 100 or `0.02 * n_samples`. Otherwise, \"auto\" is equivalent to `False`."
+          "description": "Stop early the construction of the tree at n_clusters. This is useful to decrease computation time if the number of clusters is not small compared to the number of samples. This option is useful only when specifying a connectivity matrix. Note also that when varying the number of clusters and using caching, it may be advantageous to compute the full tree. It must be ``True`` if ``distance_threshold`` is not ``None``. By default `compute_full_tree` is \"auto\", which is equivalent to `True` when `distance_threshold` is not `None` or that `n_clusters` is inferior to the maximum between 100 or `0.02 * n_samples`. Otherwise, \"auto\" is equivalent to `False`."
         },
         "hyperparams": [
           {
@@ -373,7 +355,7 @@
           ],
           "_structural_type": "str",
           "default": "ward",
-          "description": "Which linkage criterion to use. The linkage criterion determines which distance to use between sets of observation. The algorithm will merge the pairs of cluster that minimize this criterion.  - 'ward' minimizes the variance of the clusters being merged. - 'average' uses the average of the distances of each observation of   the two sets. - 'complete' or 'maximum' linkage uses the maximum distances between   all observations of the two sets. - 'single' uses the minimum of the distances between all observations   of the two sets.  .. versionadded:: 0.20     Added the 'single' option"
+          "description": "Which linkage criterion to use. The linkage criterion determines which distance to use between sets of observation. The algorithm will merge the pairs of cluster that minimize this criterion.  - ward minimizes the variance of the clusters being merged. - average uses the average of the distances of each observation of   the two sets. - complete or maximum linkage uses the maximum distances between   all observations of the two sets. - single uses the minimum of the distances between all observations   of the two sets."
         }
       },
       {
@@ -387,27 +369,41 @@
           "default": "None",
           "description": "The linkage distance threshold above which, clusters will not be merged. If not ``None``, ``n_clusters`` must be ``None`` and ``compute_full_tree`` must be ``True``.  .. versionadded:: 0.21"
         }
-      },
-      {
-        "type": "Hyperparameter",
-        "name": "compute_distances",
-        "init_args": {
-          "semantic_types": [
-            "compute_distances"
-          ],
-          "_structural_type": "bool",
-          "default": "False",
-          "description": "Computes distances between clusters even if `distance_threshold` is not used. This can be used to make dendrogram visualization, but introduces a computational and memory overhead.  .. versionadded:: 0.24"
-        }
       }
     ],
-    "Params": []
+    "Params": [
+      {
+        "name": "n_clusters_",
+        "description": "The number of clusters found by the algorithm. If ``distance_threshold=None``, it will be equal to the given ``n_clusters``.",
+        "type": "int"
+      },
+      {
+        "name": "labels_",
+        "description": "cluster labels for each point",
+        "type": "ndarray"
+      },
+      {
+        "name": "n_leaves_",
+        "description": "Number of leaves in the hierarchical tree.",
+        "type": "int"
+      },
+      {
+        "name": "n_connected_components_",
+        "description": "The estimated number of connected components in the graph.",
+        "type": "int"
+      },
+      {
+        "name": "children_",
+        "description": "The children of each non-leaf node. Values less than `n_samples` correspond to leaves of the tree which are the original samples. A node `i` greater than or equal to `n_samples` is a non-leaf node and has children `children_[i - n_samples]`. Alternatively at the i-th iteration, children[i][0] and children[i][1] are merged to form node `n_samples + i`",
+        "type": "ndarray"
+      }
+    ]
   },
   "Birch": {
     "name": "sklearn.cluster._birch.Birch",
     "common_name": "Birch",
     "description": "Implements the Birch clustering algorithm. It is a memory-efficient, online-learning algorithm provided as an alternative to :class:`MiniBatchKMeans`. It constructs a tree data structure with the cluster centroids being read off the leaf. These can be either the final cluster centroids or can be provided as input to another clustering algorithm such as :class:`AgglomerativeClustering`.  Read more in the :ref:`User Guide <birch>`.  .. versionadded:: 0.16",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -502,13 +498,39 @@
         }
       }
     ],
-    "Params": []
+    "Params": [
+      {
+        "name": "root_",
+        "description": "Root of the CFTree.",
+        "type": "object"
+      },
+      {
+        "name": "dummy_leaf_",
+        "description": "Start pointer to all the leaves.",
+        "type": "object"
+      },
+      {
+        "name": "subcluster_centers_",
+        "description": "Centroids of all subclusters read directly from the leaves.",
+        "type": "ndarray"
+      },
+      {
+        "name": "subcluster_labels_",
+        "description": "Labels assigned to the centroids of the subclusters after they are clustered globally.",
+        "type": "ndarray"
+      },
+      {
+        "name": "labels_",
+        "description": "Array of labels assigned to the input data. if partial_fit is used instead of fit, they are assigned to the last batch of data.",
+        "type": "ndarray"
+      }
+    ]
   },
   "DBSCAN": {
     "name": "sklearn.cluster._dbscan.DBSCAN",
     "common_name": "DBSCAN",
     "description": "Perform DBSCAN clustering from vector array or distance matrix. DBSCAN - Density-Based Spatial Clustering of Applications with Noise. Finds core samples of high density and expands clusters from them. Good for data which contains clusters of similar density.  Read more in the :ref:`User Guide <dbscan>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -640,7 +662,7 @@
             "p"
           ],
           "default": "p__None",
-          "description": "The power of the Minkowski metric to be used to calculate distance between points. If None, then ``p=2`` (equivalent to the Euclidean distance)."
+          "description": "The power of the Minkowski metric to be used to calculate distance between points."
         },
         "hyperparams": [
           {
@@ -701,13 +723,29 @@
         ]
       }
     ],
-    "Params": []
+    "Params": [
+      {
+        "name": "core_sample_indices_",
+        "description": "Indices of core samples.",
+        "type": "ndarray"
+      },
+      {
+        "name": "components_",
+        "description": "Copy of each core sample found by training.",
+        "type": "ndarray"
+      },
+      {
+        "name": "labels_",
+        "description": "Cluster labels for each point in the dataset given to fit(). Noisy samples are given the label -1.",
+        "type": "ndarray"
+      }
+    ]
   },
   "FeatureAgglomeration": {
     "name": "sklearn.cluster._agglomerative.FeatureAgglomeration",
     "common_name": "FeatureAgglomeration",
     "description": "Agglomerate features. Similar to AgglomerativeClustering, but recursively merges features instead of samples.  Read more in the :ref:`User Guide <hierarchical_clustering>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -907,27 +945,46 @@
             }
           }
         ]
-      },
-      {
-        "type": "Hyperparameter",
-        "name": "compute_distances",
-        "init_args": {
-          "semantic_types": [
-            "compute_distances"
-          ],
-          "_structural_type": "bool",
-          "default": "False",
-          "description": "Computes distances between clusters even if `distance_threshold` is not used. This can be used to make dendrogram visualization, but introduces a computational and memory overhead.  .. versionadded:: 0.24"
-        }
       }
     ],
-    "Params": []
+    "Params": [
+      {
+        "name": "n_clusters_",
+        "description": "The number of clusters found by the algorithm. If ``distance_threshold=None``, it will be equal to the given ``n_clusters``.",
+        "type": "int"
+      },
+      {
+        "name": "labels_",
+        "description": "cluster labels for each feature.",
+        "type": "ndarray"
+      },
+      {
+        "name": "n_leaves_",
+        "description": "Number of leaves in the hierarchical tree.",
+        "type": "int"
+      },
+      {
+        "name": "n_connected_components_",
+        "description": "The estimated number of connected components in the graph.",
+        "type": "int"
+      },
+      {
+        "name": "children_",
+        "description": "The children of each non-leaf node. Values less than `n_features` correspond to leaves of the tree which are the original samples. A node `i` greater than or equal to `n_features` is a non-leaf node and has children `children_[i - n_features]`. Alternatively at the i-th iteration, children[i][0] and children[i][1] are merged to form node `n_features + i`",
+        "type": "ndarray"
+      },
+      {
+        "name": "distances_",
+        "description": "Distances between nodes in the corresponding place in `children_`. Only computed if distance_threshold is not None.",
+        "type": "ndarray"
+      }
+    ]
   },
   "KMeans": {
     "name": "sklearn.cluster._kmeans.KMeans",
     "common_name": "KMeans",
     "description": "K-Means clustering. Read more in the :ref:`User Guide <k_means>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -949,7 +1006,7 @@
             "init"
           ],
           "default": "init__str",
-          "description": "Method for initialization:  'k-means++' : selects initial cluster centers for k-mean clustering in a smart way to speed up convergence. See section Notes in k_init for more details.  'random': choose `n_clusters` observations (rows) at random from data for the initial centroids.  If an array is passed, it should be of shape (n_clusters, n_features) and gives the initial centers.  If a callable is passed, it should take arguments X, n_clusters and a random state and return an initialization."
+          "description": "Method for initialization, defaults to 'k-means++':  'k-means++' : selects initial cluster centers for k-mean clustering in a smart way to speed up convergence. See section Notes in k_init for more details.  'random': choose k observations (rows) at random from data for the initial centroids.  If an ndarray is passed, it should be of shape (n_clusters, n_features) and gives the initial centers."
         },
         "hyperparams": [
           {
@@ -1022,7 +1079,7 @@
           ],
           "_structural_type": "float",
           "default": 0.0001,
-          "description": "Relative tolerance with regards to Frobenius norm of the difference in the cluster centers of two consecutive iterations to declare convergence."
+          "description": "Relative tolerance with regards to inertia to declare convergence."
         }
       },
       {
@@ -1033,7 +1090,7 @@
             "precompute_distances"
           ],
           "default": "precompute_distances__str",
-          "description": "Precompute distances (faster but takes more memory).  'auto' : do not precompute distances if n_samples * n_clusters > 12 million. This corresponds to about 100MB overhead per job using double precision.  True : always precompute distances.  False : never precompute distances.  .. deprecated:: 0.23     'precompute_distances' was deprecated in version 0.22 and will be     removed in 1.0 (renaming of 0.25). It has no effect."
+          "description": "Precompute distances (faster but takes more memory).  'auto' : do not precompute distances if n_samples * n_clusters > 12 million. This corresponds to about 100MB overhead per job using double precision.  True : always precompute distances.  False : never precompute distances."
         },
         "hyperparams": [
           {
@@ -1048,7 +1105,7 @@
                 "deprecated"
               ],
               "_structural_type": "str",
-              "default": "deprecated"
+              "default": "auto"
             }
           },
           {
@@ -1118,52 +1175,8 @@
           ],
           "_structural_type": "bool",
           "default": "True",
-          "description": "When pre-computing distances it is more numerically accurate to center the data first. If copy_x is True (default), then the original data is not modified. If False, the original data is modified, and put back before the function returns, but small numerical differences may be introduced by subtracting and then adding the data mean. Note that if the original data is not C-contiguous, a copy will be made even if copy_x is False. If the original data is sparse, but not in CSR format, a copy will be made even if copy_x is False."
+          "description": "When pre-computing distances it is more numerically accurate to center the data first.  If copy_x is True (default), then the original data is not modified, ensuring X is C-contiguous.  If False, the original data is modified, and put back before the function returns, but small numerical differences may be introduced by subtracting and then adding the data mean, in this case it will also not ensure that data is C-contiguous which may cause a significant slowdown."
         }
-      },
-      {
-        "name": "n_jobs",
-        "type": "Union",
-        "init_args": {
-          "semantic_types": [
-            "n_jobs"
-          ],
-          "default": "n_jobs__str",
-          "description": "The number of OpenMP threads to use for the computation. Parallelism is sample-wise on the main cython loop which assigns each sample to its closest center.  ``None`` or ``-1`` means using all processors.  .. deprecated:: 0.23     ``n_jobs`` was deprecated in version 0.23 and will be removed in     1.0 (renaming of 0.25)."
-        },
-        "hyperparams": [
-          {
-            "type": "Hyperparameter",
-            "name": "n_jobs__int",
-            "init_args": {
-              "semantic_types": [
-                "n_jobs"
-              ],
-              "_structural_type": "int"
-            }
-          },
-          {
-            "type": "Constant",
-            "name": "n_jobs__None",
-            "init_args": {
-              "semantic_types": [
-                "n_jobs"
-              ],
-              "_structural_type": "None"
-            }
-          },
-          {
-            "type": "Constant",
-            "name": "n_jobs__str",
-            "init_args": {
-              "semantic_types": [
-                "n_jobs"
-              ],
-              "_structural_type": "str",
-              "default": "deprecated"
-            }
-          }
-        ]
       },
       {
         "type": "Enumeration",
@@ -1179,17 +1192,38 @@
           ],
           "_structural_type": "str",
           "default": "auto",
-          "description": "K-means algorithm to use. The classical EM-style algorithm is \"full\". The \"elkan\" variation is more efficient on data with well-defined clusters, by using the triangle inequality. However it's more memory intensive due to the allocation of an extra array of shape (n_samples, n_clusters).  For now \"auto\" (kept for backward compatibiliy) chooses \"elkan\" but it might change in the future for a better heuristic.  .. versionchanged:: 0.18     Added Elkan algorithm"
+          "description": "K-means algorithm to use. The classical EM-style algorithm is \"full\". The \"elkan\" variation is more efficient by using the triangle inequality, but currently doesn't support sparse data. \"auto\" chooses \"elkan\" for dense data and \"full\" for sparse data."
         }
       }
     ],
-    "Params": []
+    "Params": [
+      {
+        "name": "cluster_centers_",
+        "description": "Coordinates of cluster centers. If the algorithm stops before fully converging (see ``tol`` and ``max_iter``), these will not be consistent with ``labels_``.",
+        "type": "ndarray"
+      },
+      {
+        "name": "labels_",
+        "description": "Labels of each point",
+        "type": "ndarray"
+      },
+      {
+        "name": "inertia_",
+        "description": "Sum of squared distances of samples to their closest cluster center.",
+        "type": "float"
+      },
+      {
+        "name": "n_iter_",
+        "description": "Number of iterations run.",
+        "type": "int"
+      }
+    ]
   },
   "MeanShift": {
     "name": "sklearn.cluster._mean_shift.MeanShift",
     "common_name": "MeanShift",
     "description": "Mean shift clustering using a flat kernel. Mean shift clustering aims to discover \"blobs\" in a smooth density of samples. It is a centroid-based algorithm, which works by updating candidates for centroids to be the mean of the points within a given region. These candidates are then filtered in a post-processing stage to eliminate near-duplicates to form the final set of centroids.  Seeding is performed using a binning technique for scalability.  Read more in the :ref:`User Guide <mean_shift>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Constant",
@@ -1246,7 +1280,7 @@
           ],
           "_structural_type": "bool",
           "default": "False",
-          "description": "If true, initial kernel locations are not locations of all points, but rather the location of the discretized version of points, where points are binned onto a grid whose coarseness corresponds to the bandwidth. Setting this option to True will speed up the algorithm because fewer seeds will be initialized. The default value is False. Ignored if seeds argument is not None."
+          "description": "If true, initial kernel locations are not locations of all points, but rather the location of the discretized version of points, where points are binned onto a grid whose coarseness corresponds to the bandwidth. Setting this option to True will speed up the algorithm because fewer seeds will be initialized. default value: False Ignored if seeds argument is not None."
         }
       },
       {
@@ -1258,7 +1292,7 @@
           ],
           "_structural_type": "int",
           "default": 1,
-          "description": "To speed up the algorithm, accept only those bins with at least min_bin_freq points as seeds."
+          "description": "To speed up the algorithm, accept only those bins with at least min_bin_freq points as seeds. If not defined, set to 1."
         }
       },
       {
@@ -1320,13 +1354,29 @@
         }
       }
     ],
-    "Params": []
+    "Params": [
+      {
+        "name": "cluster_centers_",
+        "description": "Coordinates of cluster centers.",
+        "type": "ndarray"
+      },
+      {
+        "name": "labels_",
+        "description": "Labels of each point.",
+        "type": "ndarray"
+      },
+      {
+        "name": "n_iter_",
+        "description": "Maximum number of iterations performed on each seed.  .. versionadded:: 0.22",
+        "type": "int"
+      }
+    ]
   },
   "MiniBatchKMeans": {
     "name": "sklearn.cluster._kmeans.MiniBatchKMeans",
     "common_name": "MiniBatchKMeans",
     "description": "Mini-Batch K-Means clustering. Read more in the :ref:`User Guide <mini_batch_kmeans>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -1348,7 +1398,7 @@
             "init"
           ],
           "default": "init__str",
-          "description": "Method for initialization:  'k-means++' : selects initial cluster centers for k-mean clustering in a smart way to speed up convergence. See section Notes in k_init for more details.  'random': choose `n_clusters` observations (rows) at random from data for the initial centroids.  If an array is passed, it should be of shape (n_clusters, n_features) and gives the initial centers.  If a callable is passed, it should take arguments X, n_clusters and a random state and return an initialization."
+          "description": "Method for initialization  'k-means++' : selects initial cluster centers for k-mean clustering in a smart way to speed up convergence. See section Notes in k_init for more details.  'random': choose k observations (rows) at random from data for the initial centroids.  If an ndarray is passed, it should be of shape (n_clusters, n_features) and gives the initial centers."
         },
         "hyperparams": [
           {
@@ -1553,13 +1603,29 @@
         }
       }
     ],
-    "Params": []
+    "Params": [
+      {
+        "name": "cluster_centers_",
+        "description": "Coordinates of cluster centers",
+        "type": "ndarray"
+      },
+      {
+        "name": "labels_",
+        "description": "Labels of each point (if compute_labels is set to True).",
+        "type": "int"
+      },
+      {
+        "name": "inertia_",
+        "description": "The value of the inertia criterion associated with the chosen partition (if compute_labels is set to True). The inertia is defined as the sum of square distances of samples to their nearest neighbor.",
+        "type": "float"
+      }
+    ]
   },
   "OPTICS": {
     "name": "sklearn.cluster._optics.OPTICS",
     "common_name": "OPTICS",
     "description": "Estimate clustering structure from vector array. OPTICS (Ordering Points To Identify the Clustering Structure), closely related to DBSCAN, finds core sample of high density and expands clusters from them [1]_. Unlike DBSCAN, keeps cluster hierarchy for a variable neighborhood radius. Better suited for usage on large datasets than the current sklearn implementation of DBSCAN.  Clusters are then extracted using a DBSCAN-like method (cluster_method = 'dbscan') or an automatic technique proposed in [1]_ (cluster_method = 'xi').  This implementation deviates from the original OPTICS by first performing k-nearest-neighborhood searches on all points to identify core sizes, then computing only the distances to unprocessed points when constructing the cluster order. Note that we do not employ a heap to manage the expansion candidates, so the time complexity will be O(n^2).  Read more in the :ref:`User Guide <optics>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "name": "min_samples",
@@ -1569,7 +1635,7 @@
             "min_samples"
           ],
           "default": "min_samples__int",
-          "description": "The number of samples in a neighborhood for a point to be considered as a core point. Also, up and down steep regions can't have more than ``min_samples`` consecutive non-steep points. Expressed as an absolute number or a fraction of the number of samples (rounded to be at least 2)."
+          "description": "The number of samples in a neighborhood for a point to be considered as a core point. Also, up and down steep regions can't have more then ``min_samples`` consecutive non-steep points. Expressed as an absolute number or a fraction of the number of samples (rounded to be at least 2)."
         },
         "hyperparams": [
           {
@@ -1650,7 +1716,7 @@
           ],
           "_structural_type": "int",
           "default": 2,
-          "description": "Parameter for the Minkowski metric from :class:`~sklearn.metrics.pairwise_distances`. When p = 1, this is equivalent to using manhattan_distance (l1), and euclidean_distance (l2) for p = 2. For arbitrary p, minkowski_distance (l_p) is used."
+          "description": "Parameter for the Minkowski metric from :class:`sklearn.metrics.pairwise_distances`. When p = 1, this is equivalent to using manhattan_distance (l1), and euclidean_distance (l2) for p = 2. For arbitrary p, minkowski_distance (l_p) is used."
         }
       },
       {
@@ -1837,13 +1903,44 @@
         ]
       }
     ],
-    "Params": []
+    "Params": [
+      {
+        "name": "labels_",
+        "description": "Cluster labels for each point in the dataset given to fit(). Noisy samples and points which are not included in a leaf cluster of ``cluster_hierarchy_`` are labeled as -1.",
+        "type": "ndarray"
+      },
+      {
+        "name": "reachability_",
+        "description": "Reachability distances per sample, indexed by object order. Use ``clust.reachability_[clust.ordering_]`` to access in cluster order.",
+        "type": "ndarray"
+      },
+      {
+        "name": "ordering_",
+        "description": "The cluster ordered list of sample indices.",
+        "type": "ndarray"
+      },
+      {
+        "name": "core_distances_",
+        "description": "Distance at which each sample becomes a core point, indexed by object order. Points which will never be core have a distance of inf. Use ``clust.core_distances_[clust.ordering_]`` to access in cluster order.",
+        "type": "ndarray"
+      },
+      {
+        "name": "predecessor_",
+        "description": "Point that a sample was reached from, indexed by object order. Seed points have a predecessor of -1.",
+        "type": "ndarray"
+      },
+      {
+        "name": "cluster_hierarchy_",
+        "description": "The list of clusters in the form of ``[start, end]`` in each row, with all indices inclusive. The clusters are ordered according to ``(end, -start)`` (ascending) so that larger clusters encompassing smaller clusters come after those smaller ones. Since ``labels_`` does not reflect the hierarchy, usually ``len(cluster_hierarchy_) > np.unique(optics.labels_)``. Please also note that these indices are of the ``ordering_``, i.e. ``X[ordering_][start:end + 1]`` form a cluster. Only available when ``cluster_method='xi'``.",
+        "type": "ndarray"
+      }
+    ]
   },
   "SpectralBiclustering": {
     "name": "sklearn.cluster._bicluster.SpectralBiclustering",
     "common_name": "SpectralBiclustering",
     "description": "Spectral biclustering (Kluger, 2003). Partitions rows and columns under the assumption that the data has an underlying checkerboard structure. For instance, if there are two row partitions and three column partitions, each row will belong to three biclusters, and each column will belong to two biclusters. The outer product of the corresponding row and column label vectors gives this checkerboard structure.  Read more in the :ref:`User Guide <spectral_biclustering>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "name": "n_clusters",
@@ -2007,6 +2104,16 @@
               "_structural_type": "str",
               "default": "k-means++"
             }
+          },
+          {
+            "name": "init__ndarray",
+            "type": "Hyperparameter",
+            "init_args": {
+              "_structural_type": "ndarray",
+              "semantic_types": [
+                "init"
+              ]
+            }
           }
         ]
       },
@@ -2029,8 +2136,8 @@
           "semantic_types": [
             "n_jobs"
           ],
-          "default": "n_jobs__str",
-          "description": "The number of jobs to use for the computation. This works by breaking down the pairwise matrix into n_jobs even slices and computing them in parallel.  ``None`` means 1 unless in a :obj:`joblib.parallel_backend` context. ``-1`` means using all processors. See :term:`Glossary <n_jobs>` for more details.  .. deprecated:: 0.23     ``n_jobs`` was deprecated in version 0.23 and will be removed in     1.0 (renaming of 0.25)."
+          "default": "n_jobs__None",
+          "description": "The number of jobs to use for the computation. This works by breaking down the pairwise matrix into n_jobs even slices and computing them in parallel.  ``None`` means 1 unless in a :obj:`joblib.parallel_backend` context. ``-1`` means using all processors. See :term:`Glossary <n_jobs>` for more details."
         },
         "hyperparams": [
           {
@@ -2050,7 +2157,8 @@
               "semantic_types": [
                 "n_jobs"
               ],
-              "_structural_type": "None"
+              "_structural_type": "None",
+              "default": "None"
             }
           },
           {
@@ -2060,8 +2168,7 @@
               "semantic_types": [
                 "n_jobs"
               ],
-              "_structural_type": "str",
-              "default": "deprecated"
+              "_structural_type": "str"
             }
           }
         ]
@@ -2101,13 +2208,34 @@
         ]
       }
     ],
-    "Params": []
+    "Params": [
+      {
+        "name": "rows_",
+        "description": "Results of the clustering. `rows[i, r]` is True if cluster `i` contains row `r`. Available only after calling ``fit``.",
+        "type": "ndarray"
+      },
+      {
+        "name": "columns_",
+        "description": "Results of the clustering, like `rows`.",
+        "type": "ndarray"
+      },
+      {
+        "name": "row_labels_",
+        "description": "Row partition labels.",
+        "type": "ndarray"
+      },
+      {
+        "name": "column_labels_",
+        "description": "Column partition labels.",
+        "type": "ndarray"
+      }
+    ]
   },
   "SpectralClustering": {
     "name": "sklearn.cluster._spectral.SpectralClustering",
     "common_name": "SpectralClustering",
     "description": "Apply clustering to a projection of the normalized Laplacian. In practice Spectral Clustering is very useful when the structure of the individual clusters is highly non-convex or more generally when a measure of the center and spread of the cluster is not a suitable description of the complete cluster. For instance when clusters are nested circles on the 2D plane.  If affinity is the adjacency matrix of a graph, this method can be used to find normalized graph cuts.  When calling ``fit``, an affinity matrix is constructed using either kernel function such the Gaussian (aka RBF) kernel of the euclidean distanced ``d(X, X)``::          np.exp(-gamma * d(X,X) ** 2)  or a k-nearest neighbors connectivity matrix.  Alternatively, using ``precomputed``, a user-provided affinity matrix can be used.  Read more in the :ref:`User Guide <spectral_clustering>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -2129,7 +2257,7 @@
             "eigen_solver"
           ],
           "default": "eigen_solver__None",
-          "description": "The eigenvalue decomposition strategy to use. AMG requires pyamg to be installed. It can be faster on very large, sparse problems, but may also lead to instabilities. If None, then ``'arpack'`` is used."
+          "description": "The eigenvalue decomposition strategy to use. AMG requires pyamg to be installed. It can be faster on very large, sparse problems, but may also lead to instabilities."
         },
         "hyperparams": [
           {
@@ -2376,7 +2504,7 @@
             "n_jobs"
           ],
           "default": "n_jobs__None",
-          "description": "The number of parallel jobs to run when `affinity='nearest_neighbors'` or `affinity='precomputed_nearest_neighbors'`. The neighbors search will be done in parallel. ``None`` means 1 unless in a :obj:`joblib.parallel_backend` context. ``-1`` means using all processors. See :term:`Glossary <n_jobs>` for more details."
+          "description": "The number of parallel jobs to run. ``None`` means 1 unless in a :obj:`joblib.parallel_backend` context. ``-1`` means using all processors. See :term:`Glossary <n_jobs>` for more details."
         },
         "hyperparams": [
           {
@@ -2401,27 +2529,26 @@
             }
           }
         ]
-      },
-      {
-        "type": "Hyperparameter",
-        "name": "verbose",
-        "init_args": {
-          "semantic_types": [
-            "verbose"
-          ],
-          "_structural_type": "bool",
-          "default": "False",
-          "description": "Verbosity mode.  .. versionadded:: 0.24"
-        }
       }
     ],
-    "Params": []
+    "Params": [
+      {
+        "name": "affinity_matrix_",
+        "description": "Affinity matrix used for clustering. Available only if after calling ``fit``.",
+        "type": "ndarray"
+      },
+      {
+        "name": "labels_",
+        "description": "Labels of each point",
+        "type": "ndarray"
+      }
+    ]
   },
   "SpectralCoclustering": {
     "name": "sklearn.cluster._bicluster.SpectralCoclustering",
     "common_name": "SpectralCoclustering",
     "description": "Spectral Co-Clustering algorithm (Dhillon, 2001). Clusters rows and columns of an array `X` to solve the relaxed normalized cut of the bipartite graph created from `X` as follows: the edge between row vertex `i` and column vertex `j` has weight `X[i, j]`.  The resulting bicluster structure is block-diagonal, since each row and each column belongs to exactly one bicluster.  Supports sparse matrices, as long as they are nonnegative.  Read more in the :ref:`User Guide <spectral_coclustering>`.",
-    "sklearn_version": "0.24.0",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -2522,6 +2649,16 @@
               "_structural_type": "str",
               "default": "k-means++"
             }
+          },
+          {
+            "name": "init__ndarray",
+            "type": "Hyperparameter",
+            "init_args": {
+              "_structural_type": "ndarray",
+              "semantic_types": [
+                "init"
+              ]
+            }
           }
         ]
       },
@@ -2544,8 +2681,8 @@
           "semantic_types": [
             "n_jobs"
           ],
-          "default": "n_jobs__str",
-          "description": "The number of jobs to use for the computation. This works by breaking down the pairwise matrix into n_jobs even slices and computing them in parallel.  ``None`` means 1 unless in a :obj:`joblib.parallel_backend` context. ``-1`` means using all processors. See :term:`Glossary <n_jobs>` for more details.  .. deprecated:: 0.23     ``n_jobs`` was deprecated in version 0.23 and will be removed in     1.0 (renaming of 0.25)."
+          "default": "n_jobs__None",
+          "description": "The number of jobs to use for the computation. This works by breaking down the pairwise matrix into n_jobs even slices and computing them in parallel.  ``None`` means 1 unless in a :obj:`joblib.parallel_backend` context. ``-1`` means using all processors. See :term:`Glossary <n_jobs>` for more details."
         },
         "hyperparams": [
           {
@@ -2565,7 +2702,8 @@
               "semantic_types": [
                 "n_jobs"
               ],
-              "_structural_type": "None"
+              "_structural_type": "None",
+              "default": "None"
             }
           },
           {
@@ -2575,8 +2713,7 @@
               "semantic_types": [
                 "n_jobs"
               ],
-              "_structural_type": "str",
-              "default": "deprecated"
+              "_structural_type": "str"
             }
           }
         ]
@@ -2616,6 +2753,27 @@
         ]
       }
     ],
-    "Params": []
+    "Params": [
+      {
+        "name": "rows_",
+        "description": "Results of the clustering. `rows[i, r]` is True if cluster `i` contains row `r`. Available only after calling ``fit``.",
+        "type": "ndarray"
+      },
+      {
+        "name": "columns_",
+        "description": "Results of the clustering, like `rows`.",
+        "type": "ndarray"
+      },
+      {
+        "name": "row_labels_",
+        "description": "The bicluster label of each row.",
+        "type": "ndarray"
+      },
+      {
+        "name": "column_labels_",
+        "description": "The bicluster label of each column.",
+        "type": "ndarray"
+      }
+    ]
   }
 }

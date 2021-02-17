@@ -1,9 +1,9 @@
 {
   "CCA": {
-    "name": "sklearn.cross_decomposition._pls.CCA",
+    "name": "sklearn.cross_decomposition._cca.CCA",
     "common_name": "CCA",
-    "description": "Canonical Correlation Analysis, also known as \"Mode B\" PLS. Read more in the :ref:`User Guide <cross_decomposition>`.",
-    "sklearn_version": "0.24.0",
+    "description": "CCA Canonical Correlation Analysis. CCA inherits from PLS with mode=\"B\" and deflation_mode=\"canonical\".  Read more in the :ref:`User Guide <cross_decomposition>`.",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -14,7 +14,7 @@
           ],
           "_structural_type": "int",
           "default": 2,
-          "description": "Number of components to keep. Should be in `[1, min(n_samples, n_features, n_targets)]`."
+          "description": "number of components to keep."
         }
       },
       {
@@ -26,7 +26,7 @@
           ],
           "_structural_type": "bool",
           "default": "True",
-          "description": "Whether to scale `X` and `Y`."
+          "description": "whether to scale the data?"
         }
       },
       {
@@ -38,7 +38,7 @@
           ],
           "_structural_type": "int",
           "default": 500,
-          "description": "the maximum number of iterations of the power method."
+          "description": "the maximum number of iterations of the NIPALS inner loop"
         }
       },
       {
@@ -50,7 +50,7 @@
           ],
           "_structural_type": "float",
           "default": 1e-06,
-          "description": "The tolerance used as convergence criteria in the power method: the algorithm stops whenever the squared norm of `u_i - u_{i-1}` is less than `tol`, where `u` corresponds to the left singular vector."
+          "description": "the tolerance used in the iterative algorithm"
         }
       },
       {
@@ -62,7 +62,7 @@
           ],
           "_structural_type": "bool",
           "default": "True",
-          "description": "Whether to copy `X` and `Y` in fit before applying centering, and potentially scaling. If False, these operations will be done inplace, modifying both arrays."
+          "description": "Whether the deflation be done on a copy. Let the default value to True unless you don't care about side effects"
         }
       }
     ],
@@ -71,8 +71,8 @@
   "PLSCanonical": {
     "name": "sklearn.cross_decomposition._pls.PLSCanonical",
     "common_name": "PLSCanonical",
-    "description": "Partial Least Squares transformer and regressor. Read more in the :ref:`User Guide <cross_decomposition>`.  .. versionadded:: 0.8",
-    "sklearn_version": "0.24.0",
+    "description": "PLSCanonical implements the 2 blocks canonical PLS of the original Wold algorithm [Tenenhaus 1998] p.204, referred as PLS-C2A in [Wegelin 2000]. This class inherits from PLS with mode=\"A\" and deflation_mode=\"canonical\", norm_y_weights=True and algorithm=\"nipals\", but svd should provide similar results up to numerical errors.  Read more in the :ref:`User Guide <cross_decomposition>`.  .. versionadded:: 0.8",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -83,7 +83,7 @@
           ],
           "_structural_type": "int",
           "default": 2,
-          "description": "Number of components to keep. Should be in `[1, min(n_samples, n_features, n_targets)]`."
+          "description": "Number of components to keep"
         }
       },
       {
@@ -95,7 +95,7 @@
           ],
           "_structural_type": "bool",
           "default": "True",
-          "description": "Whether to scale `X` and `Y`."
+          "description": "Option to scale data"
         }
       },
       {
@@ -111,7 +111,7 @@
           ],
           "_structural_type": "str",
           "default": "nipals",
-          "description": "The algorithm used to estimate the first singular vectors of the cross-covariance matrix. 'nipals' uses the power method while 'svd' will compute the whole SVD."
+          "description": "The algorithm used to estimate the weights. It will be called n_components times, i.e. once for each iteration of the outer loop."
         }
       },
       {
@@ -123,7 +123,7 @@
           ],
           "_structural_type": "int",
           "default": 500,
-          "description": "the maximum number of iterations of the power method when `algorithm='nipals'`. Ignored otherwise."
+          "description": "the maximum number of iterations of the NIPALS inner loop (used only if algorithm=\"nipals\")"
         }
       },
       {
@@ -135,7 +135,7 @@
           ],
           "_structural_type": "float",
           "default": 1e-06,
-          "description": "The tolerance used as convergence criteria in the power method: the algorithm stops whenever the squared norm of `u_i - u_{i-1}` is less than `tol`, where `u` corresponds to the left singular vector."
+          "description": "the tolerance used in the iterative algorithm"
         }
       },
       {
@@ -147,7 +147,7 @@
           ],
           "_structural_type": "bool",
           "default": "True",
-          "description": "Whether to copy `X` and `Y` in fit before applying centering, and potentially scaling. If False, these operations will be done inplace, modifying both arrays."
+          "description": "Whether the deflation should be done on a copy. Let the default value to True unless you don't care about side effect"
         }
       }
     ],
@@ -156,8 +156,8 @@
   "PLSRegression": {
     "name": "sklearn.cross_decomposition._pls.PLSRegression",
     "common_name": "PLSRegression",
-    "description": "PLS regression PLSRegression is also known as PLS2 or PLS1, depending on the number of targets.  Read more in the :ref:`User Guide <cross_decomposition>`.  .. versionadded:: 0.8",
-    "sklearn_version": "0.24.0",
+    "description": "PLS regression PLSRegression implements the PLS 2 blocks regression known as PLS2 or PLS1 in case of one dimensional response. This class inherits from _PLS with mode=\"A\", deflation_mode=\"regression\", norm_y_weights=False and algorithm=\"nipals\".  Read more in the :ref:`User Guide <cross_decomposition>`.  .. versionadded:: 0.8",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -168,7 +168,7 @@
           ],
           "_structural_type": "int",
           "default": 2,
-          "description": "Number of components to keep. Should be in `[1, min(n_samples, n_features, n_targets)]`."
+          "description": "Number of components to keep."
         }
       },
       {
@@ -180,7 +180,7 @@
           ],
           "_structural_type": "bool",
           "default": "True",
-          "description": "Whether to scale `X` and `Y`."
+          "description": "whether to scale the data"
         }
       },
       {
@@ -192,7 +192,7 @@
           ],
           "_structural_type": "int",
           "default": 500,
-          "description": "The maximum number of iterations of the power method when `algorithm='nipals'`. Ignored otherwise."
+          "description": "the maximum number of iterations of the NIPALS inner loop (used only if algorithm=\"nipals\")"
         }
       },
       {
@@ -204,7 +204,7 @@
           ],
           "_structural_type": "float",
           "default": 1e-06,
-          "description": "The tolerance used as convergence criteria in the power method: the algorithm stops whenever the squared norm of `u_i - u_{i-1}` is less than `tol`, where `u` corresponds to the left singular vector."
+          "description": "Tolerance used in the iterative algorithm default 1e-06."
         }
       },
       {
@@ -216,7 +216,7 @@
           ],
           "_structural_type": "bool",
           "default": "True",
-          "description": "Whether to copy `X` and `Y` in fit before applying centering, and potentially scaling. If False, these operations will be done inplace, modifying both arrays."
+          "description": "Whether the deflation should be done on a copy. Let the default value to True unless you don't care about side effect"
         }
       }
     ],
@@ -225,8 +225,8 @@
   "PLSSVD": {
     "name": "sklearn.cross_decomposition._pls.PLSSVD",
     "common_name": "PLSSVD",
-    "description": "Partial Least Square SVD. This transformer simply performs a SVD on the crosscovariance matrix X'Y. It is able to project both the training data `X` and the targets `Y`. The training data X is projected on the left singular vectors, while the targets are projected on the right singular vectors.  Read more in the :ref:`User Guide <cross_decomposition>`.  .. versionadded:: 0.8",
-    "sklearn_version": "0.24.0",
+    "description": "Partial Least Square SVD Simply perform a svd on the crosscovariance matrix: X'Y There are no iterative deflation here.  Read more in the :ref:`User Guide <cross_decomposition>`.  .. versionadded:: 0.8",
+    "sklearn_version": "0.22.2.post1",
     "Hyperparams": [
       {
         "type": "Hyperparameter",
@@ -237,7 +237,7 @@
           ],
           "_structural_type": "int",
           "default": 2,
-          "description": "The number of components to keep. Should be in `[1, min(n_samples, n_features, n_targets)]`."
+          "description": "Number of components to keep."
         }
       },
       {
@@ -249,7 +249,7 @@
           ],
           "_structural_type": "bool",
           "default": "True",
-          "description": "Whether to scale `X` and `Y`."
+          "description": "Whether to scale X and Y."
         }
       },
       {
@@ -261,7 +261,7 @@
           ],
           "_structural_type": "bool",
           "default": "True",
-          "description": "Whether to copy `X` and `Y` in fit before applying centering, and potentially scaling. If False, these operations will be done inplace, modifying both arrays."
+          "description": "Whether to copy X and Y, or perform in-place computations."
         }
       }
     ],

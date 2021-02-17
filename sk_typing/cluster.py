@@ -11,6 +11,12 @@ from .typing import Literal
 
 
 class AffinityPropagation:
+    cluster_centers_indices_: np.ndarray
+    cluster_centers_: np.ndarray
+    labels_: np.ndarray
+    affinity_matrix_: np.ndarray
+    n_iter_: int
+
     def __init__(
         self,
         damping: float = 0.5,
@@ -25,6 +31,12 @@ class AffinityPropagation:
 
 
 class AgglomerativeClustering:
+    n_clusters_: int
+    labels_: np.ndarray
+    n_leaves_: int
+    n_connected_components_: int
+    children_: np.ndarray
+
     def __init__(
         self,
         n_clusters: Optional[int] = 2,
@@ -39,6 +51,12 @@ class AgglomerativeClustering:
 
 
 class Birch:
+    root_: object
+    dummy_leaf_: object
+    subcluster_centers_: np.ndarray
+    subcluster_labels_: np.ndarray
+    labels_: np.ndarray
+
     def __init__(
         self,
         threshold: float = 0.5,
@@ -51,6 +69,10 @@ class Birch:
 
 
 class DBSCAN:
+    core_sample_indices_: np.ndarray
+    components_: np.ndarray
+    labels_: np.ndarray
+
     def __init__(
         self,
         eps: float = 0.5,
@@ -66,6 +88,13 @@ class DBSCAN:
 
 
 class FeatureAgglomeration:
+    n_clusters_: int
+    labels_: np.ndarray
+    n_leaves_: int
+    n_connected_components_: int
+    children_: np.ndarray
+    distances_: np.ndarray
+
     def __init__(
         self,
         n_clusters: int = 2,
@@ -76,12 +105,16 @@ class FeatureAgglomeration:
         linkage: Literal["ward", "complete", "average", "single"] = "ward",
         pooling_func: Callable = np.mean,
         distance_threshold: Optional[float] = None,
-        compute_distances: bool = False,
     ):
         ...
 
 
 class KMeans:
+    cluster_centers_: np.ndarray
+    labels_: np.ndarray
+    inertia_: float
+    n_iter_: int
+
     def __init__(
         self,
         n_clusters: int = 8,
@@ -99,6 +132,10 @@ class KMeans:
 
 
 class MeanShift:
+    cluster_centers_: np.ndarray
+    labels_: np.ndarray
+    n_iter_: int
+
     def __init__(
         self,
         bandwidth: Optional[None] = None,
@@ -113,6 +150,10 @@ class MeanShift:
 
 
 class MiniBatchKMeans:
+    cluster_centers_: np.ndarray
+    labels_: int
+    inertia_: float
+
     def __init__(
         self,
         n_clusters: int = 8,
@@ -132,6 +173,13 @@ class MiniBatchKMeans:
 
 
 class OPTICS:
+    labels_: np.ndarray
+    reachability_: np.ndarray
+    ordering_: np.ndarray
+    core_distances_: np.ndarray
+    predecessor_: np.ndarray
+    cluster_hierarchy_: np.ndarray
+
     def __init__(
         self,
         min_samples: Union[int, float] = 5,
@@ -152,6 +200,11 @@ class OPTICS:
 
 
 class SpectralBiclustering:
+    rows_: np.ndarray
+    columns_: np.ndarray
+    row_labels_: np.ndarray
+    column_labels_: np.ndarray
+
     def __init__(
         self,
         n_clusters: Union[int, tuple] = 3,
@@ -170,6 +223,9 @@ class SpectralBiclustering:
 
 
 class SpectralClustering:
+    affinity_matrix_: np.ndarray
+    labels_: np.ndarray
+
     def __init__(
         self,
         n_clusters: int = 8,
@@ -199,6 +255,11 @@ class SpectralClustering:
 
 
 class SpectralCoclustering:
+    rows_: np.ndarray
+    columns_: np.ndarray
+    row_labels_: np.ndarray
+    column_labels_: np.ndarray
+
     def __init__(
         self,
         n_clusters: int = 3,
