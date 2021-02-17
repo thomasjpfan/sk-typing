@@ -2,6 +2,7 @@ import inspect
 import numpy as np
 from ._extract import unpack_annotation
 from ._extract import AnnotatedMeta
+from ..typing import EstimatorType
 
 
 def _get_default(default):
@@ -185,13 +186,15 @@ def convert_attribute_to_d3m(name, annotation, description=""):
         "tuple",
     }:
         output["type"] = annotation_meta.class_name
-    elif annotation is np.ndarray:
+    elif annotation == np.ndarray:
         output["type"] = "ndarray"
     elif annotation_meta.class_name == "None":
         output["type"] = "None"
-    elif annotation_meta.class_name == "Union":
+    elif annotation_meta.class_name in {"Union", "List"}:
         # Get the next representation of Union
-        output["type"] = str(annotation).split(".")[1]
+        output["type"] = str(annotation).replace("typing.", "")
+    elif annotation == EstimatorType:
+        output["type"] = "sklearn.base.BaseEstimator"
     else:
         raise ValueError(
             f"Unsupported class_name: {annotation_meta.class_name} in {name}"
