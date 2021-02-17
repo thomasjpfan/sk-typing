@@ -109,7 +109,7 @@ def _process_union(name, annotation_meta, default=inspect.Parameter.empty):
 def _process_type_var(name, annotation_meta):
     type_name = annotation_meta.args[0]
 
-    if type_name in {"NDArray", "ArrayLike"}:
+    if type_name in {"ArrayLike"}:
         return {
             "name": name,
             "type": "Hyperparameter",
@@ -146,6 +146,12 @@ def convert_hyperparam_to_d3m(
         )
     elif annotation_meta.class_name == "None":
         output = _process_constant(name, annotation_meta=annotation_meta)
+    elif annotation_meta.class_name == "ndarray":
+        output = {
+            "name": name,
+            "type": "Hyperparameter",
+            "init_args": {"_structural_type": "ndarray", "semantic_types": [name]},
+        }
     elif annotation_meta.class_name == "Union":
         output, default = _process_union(
             name, annotation_meta=annotation_meta, default=default
