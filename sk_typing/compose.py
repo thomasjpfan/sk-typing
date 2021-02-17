@@ -7,6 +7,10 @@ from .typing import Literal
 
 
 class ColumnTransformer:
+    transformers_: list
+    named_transformers_: dict
+    sparse_output_: bool
+
     def __init__(
         self,
         transformers: list,
@@ -20,6 +24,9 @@ class ColumnTransformer:
 
 
 class TransformedTargetRegressor:
+    regressor_: EstimatorType
+    transformer_: object
+
     def __init__(
         self,
         regressor: Optional[EstimatorType] = None,
