@@ -23,7 +23,7 @@ class RFE:
     def __init__(
         self,
         estimator: EstimatorType,
-        n_features_to_select: Union[int, float, None] = None,
+        n_features_to_select: Union[int, None] = None,
         step: Union[int, float] = 1,
         verbose: int = 0,
     ):
@@ -80,19 +80,6 @@ class SelectKBest:
 
 class SelectPercentile:
     def __init__(self, score_func: Callable = f_classif, percentile: int = 10):
-        ...
-
-
-class SequentialFeatureSelector:
-    def __init__(
-        self,
-        estimator: EstimatorType,
-        n_features_to_select: Union[int, float, None] = None,
-        direction: Literal["forward", "backward"] = "forward",
-        scoring: Union[str, Callable, list, tuple, dict, None] = None,
-        cv: CVType = 5,
-        n_jobs: Optional[int] = None,
-    ):
         ...
 
 
